@@ -1,1 +1,4 @@
-Visual Studio not found at: C:\Program Files (x86)\Microsoft Visual Studio\2019\Community Configure Disable profile
+"C:\Program Files\JetBrains\CLion 2021.1.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" "C:\Users\Fabian\Desktop\Semester 2\Labor C\VM Share\Roboter"
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/cmake-build-debug

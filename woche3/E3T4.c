@@ -123,7 +123,6 @@ void event_listener() {
 
     // TODO Warum muss ich hier was transmitten???
     USART_transmitByte('\n');
-
 }
 
 int main(void) {

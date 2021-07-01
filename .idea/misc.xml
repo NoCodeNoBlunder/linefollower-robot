@@ -5,5 +5,8 @@
     <sourceRoots>
       <file path="$PROJECT_DIR$/Tets" />
     </sourceRoots>
+    <libraryRoots>
+      <file path="$PROJECT_DIR$/include" />
+    </libraryRoots>
   </component>
 </project>
