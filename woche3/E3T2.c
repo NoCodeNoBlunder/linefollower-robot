@@ -45,7 +45,7 @@ int main(void) {
 
     while(1) {
 
-        // Es soll nur was ausgegeben werden, wenn es eine Ãnderung gab.
+        // Es soll nur was ausgegeben werden, wenn es eine Aenderung gab.
         if(get_is_bit_set(PINB, PB0) != state_PB0) {
             state_PB0 ^= 1;
             is_changed = 1;
