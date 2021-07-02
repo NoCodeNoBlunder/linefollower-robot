@@ -8,19 +8,32 @@
 #include "iesmotors.h"
 
 #define ADC0 PC0
+#define SAMPLE_SIZE 20
+#define THRESHOLD 512
 #define MAX_ADC 1023.0
 #define MAX_VOLT 5.0
-#define SAMPLE_SIZE 20
+#define LEFT_ENG PD5
+#define RIGHT_ENG PD6
 
 unsigned int cnt = 0;
 unsigned int cnt2 = 0;
 
 typedef enum {
+    STILL = 0,
+    SLOW = 50,
+    MID = 155,
+    FAST = 200
+} Speed;
+
+typedef enum {
+    NONE,
     LEFT_SENSOR,
     MID_SENSOR,
-    RIGHT_SENSOR
+    RIGHT_SENSOR,
+    ALL
 } Sensor;
 
+// TODO FSL adden später evt
 typedef enum {
     IDLE,
     FORWARD,
@@ -28,7 +41,9 @@ typedef enum {
     LEFT_TURN,
     RIGHT_TURN,
     LEFT_ROTATION,
-    RIGHT_ROTATION
+    RIGHT_ROTATION,
+    ACCELERATE,
+    DEACCELARATE
 } State ;
 
 // TODO steht für für ein Interrupt siehe Mehdi E3T3
@@ -47,6 +62,7 @@ void setup_timer2() {
     sei();
 }
 
+// ADC = Analog Digital Converter
 void ADC_Init(void) {
     ADMUX = (1 << REFS0); //Why not explicitely set bit REFS1 to 0?
     ADCSRA = (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); //Set clock (Takt)?
@@ -68,13 +84,12 @@ uint16_t adc_read_avg(uint8_t channel, uint8_t nsamples) {
     //Returns a more precise ADC-value of the tension. Use this over ADC_Read for more precision!
     //More precision is guaranteed by taking the arithmetic mean of multiple calculations.
     uint32_t sum = 0;
-    for (uint8_t i = 0; i < nsamples; ++i ) {
-        sum += ADC_Read( channel );
+    for (uint8_t i = 0; i < nsamples; ++i) {
+        sum += ADC_Read(channel);
     }
 
-    return (uint16_t)( sum / nsamples );
+    return (uint16_t)(sum / nsamples);
 }
-
 
 
 void init_adc() {
@@ -86,9 +101,7 @@ void init_adc() {
     ADC_Init();
 }
 // -------------------------  MOTORS  -----------------------
-
-
-
+// TODO need to compile iesmotors.c in
 
 void init_motors() {
 // Delete everything on ports B and D
@@ -105,14 +118,62 @@ void init_motors() {
     // Make PWM work on PD[5|6]
     setup_timer0();
 
-    // TODO states für verschiedene Speedsettings!
-    set_duty_cycle(PD5, 155);
-    set_duty_cycle(PD6, 155);
+    // TODO Drive Forward at start
+
+    // TODO Verschiedene Speedsettings hinzufügen!
+    set_duty_cycle(LEFT_ENG, MID);
+    set_duty_cycle(RIGHT_ENG, MID);
+}
+
+
+void fire_motor_event(State state) {
+
+    switch (state) {
+
+        // TODO wie stelle ich
+        case IDLE:
+            break;
+        case FORWARD:
+            break;
+        case BACKWARD:
+            break;
+        case LEFT_TURN:
+            break;
+        case RIGHT_TURN:
+            break;
+        case LEFT_ROTATION:
+            break;
+        case RIGHT_ROTATION:
+            break;
+        case ACCELERATE:
+            break;
+        case DEACCELARATE:
+            break;
+    }
+}
+
+
+void drive_forward() {
+    set_duty_cycle(LEFT_ENG, MID);
+    set_duty_cycle(RIGHT_ENG, MID);
+}
+
+void drive_left() {
+    set_duty_cycle(LEFT_ENG, SLOW);
+    set_duty_cycle(RIGHT_ENG, FAST);
+}
+
+void drive_right() {
+    set_duty_cycle(LEFT_ENG, FAST);
+    set_duty_cycle(RIGHT_ENG, SLOW);
 }
 
 int main(void) {
     init_adc();
     init_motors();
+
+    const char debug = 1;
+    Sensor sensor_state = NONE;
 
     while(1) {
 
@@ -120,19 +181,22 @@ int main(void) {
         short adc_mid = adc_read_avg(MID_SENSOR, SAMPLE_SIZE);
         short adc_right = adc_read_avg(RIGHT_SENSOR, SAMPLE_SIZE);
 
+        if (adc_left < THRESHOLD && adc_mid < THRESHOLD && adc_right < THRESHOLD) {
+            drive_forward();
+        }
 
-        /*USART_print("ADCVAL: ");
-        sprintf(strbuff, "%u", adcval);
-        USART_print(strbuff);
-        USART_print("\n");
-        USART_print("Volt: ");
-        sprintf(strbuff, "%u", voltval_int);
-        USART_print(strbuff);
-        USART_print(".");
-        sprintf(strbuff, "%u", voltval_frac);
-        USART_print(strbuff);
-        USART_print("\n\n\n");
-        _delay_ms(500);*/
+        else if (adc_right >= THRESHOLD) {
+            drive_right();
+        }
+
+        else if (adc_left >= THRESHOLD) {
+            drive_left();
+        }
+
+        else if (adc_mid >= THRESHOLD) {
+            drive_forward();
+        }
+
     }
     return 0;
 }
