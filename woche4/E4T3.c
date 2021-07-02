@@ -91,20 +91,12 @@ uint16_t adc_read_avg(uint8_t channel, uint8_t nsamples) {
     return (uint16_t)(sum / nsamples);
 }
 
-void init_adc() {
-    // Set pins as input.
-    // TODO Konstanten für die PINS
-    DDRC &= ~((1 << PC0) | (1 << PC1) | (1 << PC2));
-    // Init USART to be able to send data to serial Port
-    USART_init(UBRR_SETTING);
-    setup_timer2();
-    ADC_Init();
-}
 // -------------------------  MOTORS  -----------------------
 // TODO need to compile iesmotors.c in
 
 void init_motors() {
-// Delete everything on ports B and D
+    USART_init(UBRR_SETTING);
+
     DDRD = 0;
     DDRB = 0;
 
@@ -115,6 +107,8 @@ void init_motors() {
     // Set PB0, PB1, and PB3 as output (IN[1|2|3|4])
     DDRB = (1 << DD0) | (1 << DD1) | (1 << DD3) | (1 << DD7);
 
+    DDRC &= ~((1 << PC0) | (1 << PC1) | (1 << PC2));
+
     // Make PWM work on PD[5|6]
     setup_timer0();
 
@@ -122,6 +116,8 @@ void init_motors() {
     // Both sides forward
     PORTD |= (1 << PD7);
     PORTB |= (1 << PB3);
+
+    ADC_Init();
 
     // TODO Verschiedene Speedsettings hinzufügen!
     set_duty_cycle(LEFT_ENG, MID);
@@ -172,7 +168,6 @@ void drive_right() {
 }
 
 int main(void) {
-    init_adc();
     init_motors();
 
     const char debug = 1;
