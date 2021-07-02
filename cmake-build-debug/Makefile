@@ -222,6 +222,60 @@ woche3/iesusart.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche3/iesusart.c.s
 .PHONY : woche3/iesusart.c.s
 
+woche4/iesmotors.obj: woche4/iesmotors.c.obj
+
+.PHONY : woche4/iesmotors.obj
+
+# target to build an object file
+woche4/iesmotors.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/iesmotors.c.obj
+.PHONY : woche4/iesmotors.c.obj
+
+woche4/iesmotors.i: woche4/iesmotors.c.i
+
+.PHONY : woche4/iesmotors.i
+
+# target to preprocess a source file
+woche4/iesmotors.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/iesmotors.c.i
+.PHONY : woche4/iesmotors.c.i
+
+woche4/iesmotors.s: woche4/iesmotors.c.s
+
+.PHONY : woche4/iesmotors.s
+
+# target to generate assembly for a file
+woche4/iesmotors.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/iesmotors.c.s
+.PHONY : woche4/iesmotors.c.s
+
+woche4/skeleton_motors.obj: woche4/skeleton_motors.c.obj
+
+.PHONY : woche4/skeleton_motors.obj
+
+# target to build an object file
+woche4/skeleton_motors.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/skeleton_motors.c.obj
+.PHONY : woche4/skeleton_motors.c.obj
+
+woche4/skeleton_motors.i: woche4/skeleton_motors.c.i
+
+.PHONY : woche4/skeleton_motors.i
+
+# target to preprocess a source file
+woche4/skeleton_motors.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/skeleton_motors.c.i
+.PHONY : woche4/skeleton_motors.c.i
+
+woche4/skeleton_motors.s: woche4/skeleton_motors.c.s
+
+.PHONY : woche4/skeleton_motors.s
+
+# target to generate assembly for a file
+woche4/skeleton_motors.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/skeleton_motors.c.s
+.PHONY : woche4/skeleton_motors.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -240,6 +294,12 @@ help:
 	@echo ... woche3/iesusart.obj
 	@echo ... woche3/iesusart.i
 	@echo ... woche3/iesusart.s
+	@echo ... woche4/iesmotors.obj
+	@echo ... woche4/iesmotors.i
+	@echo ... woche4/iesmotors.s
+	@echo ... woche4/skeleton_motors.obj
+	@echo ... woche4/skeleton_motors.i
+	@echo ... woche4/skeleton_motors.s
 .PHONY : help
 
 

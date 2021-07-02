@@ -117,11 +117,41 @@ CMakeFiles/Roboter.dir/woche3/E3T2.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Roboter.dir/woche3/E3T2.c.s"
 	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Fabian\Desktop\Semester 2\Labor C\VM Share\Roboter\woche3\E3T2.c" -o CMakeFiles\Roboter.dir\woche3\E3T2.c.s
 
+CMakeFiles/Roboter.dir/woche4/iesmotors.c.obj: CMakeFiles/Roboter.dir/flags.make
+CMakeFiles/Roboter.dir/woche4/iesmotors.c.obj: CMakeFiles/Roboter.dir/includes_C.rsp
+CMakeFiles/Roboter.dir/woche4/iesmotors.c.obj: ../woche4/iesmotors.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Fabian\Desktop\Semester 2\Labor C\VM Share\Roboter\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Roboter.dir/woche4/iesmotors.c.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\Roboter.dir\woche4\iesmotors.c.obj -c "C:\Users\Fabian\Desktop\Semester 2\Labor C\VM Share\Roboter\woche4\iesmotors.c"
+
+CMakeFiles/Roboter.dir/woche4/iesmotors.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Roboter.dir/woche4/iesmotors.c.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Fabian\Desktop\Semester 2\Labor C\VM Share\Roboter\woche4\iesmotors.c" > CMakeFiles\Roboter.dir\woche4\iesmotors.c.i
+
+CMakeFiles/Roboter.dir/woche4/iesmotors.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Roboter.dir/woche4/iesmotors.c.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Fabian\Desktop\Semester 2\Labor C\VM Share\Roboter\woche4\iesmotors.c" -o CMakeFiles\Roboter.dir\woche4\iesmotors.c.s
+
+CMakeFiles/Roboter.dir/woche4/skeleton_motors.c.obj: CMakeFiles/Roboter.dir/flags.make
+CMakeFiles/Roboter.dir/woche4/skeleton_motors.c.obj: CMakeFiles/Roboter.dir/includes_C.rsp
+CMakeFiles/Roboter.dir/woche4/skeleton_motors.c.obj: ../woche4/skeleton_motors.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Fabian\Desktop\Semester 2\Labor C\VM Share\Roboter\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Roboter.dir/woche4/skeleton_motors.c.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\Roboter.dir\woche4\skeleton_motors.c.obj -c "C:\Users\Fabian\Desktop\Semester 2\Labor C\VM Share\Roboter\woche4\skeleton_motors.c"
+
+CMakeFiles/Roboter.dir/woche4/skeleton_motors.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Roboter.dir/woche4/skeleton_motors.c.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Fabian\Desktop\Semester 2\Labor C\VM Share\Roboter\woche4\skeleton_motors.c" > CMakeFiles\Roboter.dir\woche4\skeleton_motors.c.i
+
+CMakeFiles/Roboter.dir/woche4/skeleton_motors.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Roboter.dir/woche4/skeleton_motors.c.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Fabian\Desktop\Semester 2\Labor C\VM Share\Roboter\woche4\skeleton_motors.c" -o CMakeFiles\Roboter.dir\woche4\skeleton_motors.c.s
+
 # Object files for target Roboter
 Roboter_OBJECTS = \
 "CMakeFiles/Roboter.dir/woche3/E3T4.c.obj" \
 "CMakeFiles/Roboter.dir/woche3/iesusart.c.obj" \
-"CMakeFiles/Roboter.dir/woche3/E3T2.c.obj"
+"CMakeFiles/Roboter.dir/woche3/E3T2.c.obj" \
+"CMakeFiles/Roboter.dir/woche4/iesmotors.c.obj" \
+"CMakeFiles/Roboter.dir/woche4/skeleton_motors.c.obj"
 
 # External object files for target Roboter
 Roboter_EXTERNAL_OBJECTS =
@@ -129,11 +159,13 @@ Roboter_EXTERNAL_OBJECTS =
 Roboter.exe: CMakeFiles/Roboter.dir/woche3/E3T4.c.obj
 Roboter.exe: CMakeFiles/Roboter.dir/woche3/iesusart.c.obj
 Roboter.exe: CMakeFiles/Roboter.dir/woche3/E3T2.c.obj
+Roboter.exe: CMakeFiles/Roboter.dir/woche4/iesmotors.c.obj
+Roboter.exe: CMakeFiles/Roboter.dir/woche4/skeleton_motors.c.obj
 Roboter.exe: CMakeFiles/Roboter.dir/build.make
 Roboter.exe: CMakeFiles/Roboter.dir/linklibs.rsp
 Roboter.exe: CMakeFiles/Roboter.dir/objects1.rsp
 Roboter.exe: CMakeFiles/Roboter.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\Fabian\Desktop\Semester 2\Labor C\VM Share\Roboter\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable Roboter.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\Fabian\Desktop\Semester 2\Labor C\VM Share\Roboter\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable Roboter.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Roboter.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
