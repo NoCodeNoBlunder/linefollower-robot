@@ -26,10 +26,10 @@ typedef enum {
 } Speed;
 
 typedef enum {
-    NONE,
     LEFT_SENSOR,
     MID_SENSOR,
     RIGHT_SENSOR,
+    NONE,
     ALL
 } Sensor;
 
@@ -91,10 +91,10 @@ uint16_t adc_read_avg(uint8_t channel, uint8_t nsamples) {
     return (uint16_t)(sum / nsamples);
 }
 
-
 void init_adc() {
     // Set pins as input.
-    DDRC &= ~((1 << ADC0) | (1 << ADC1) | (1 << ADC2));
+    // TODO Konstanten für die PINS
+    DDRC &= ~((1 << PC0) | (1 << PC1) | (1 << PC2));
     // Init USART to be able to send data to serial Port
     USART_init(UBRR_SETTING);
     setup_timer2();
@@ -119,6 +119,9 @@ void init_motors() {
     setup_timer0();
 
     // TODO Drive Forward at start
+    // Both sides forward
+    PORTD |= (1 << PD7);
+    PORTB |= (1 << PB3);
 
     // TODO Verschiedene Speedsettings hinzufügen!
     set_duty_cycle(LEFT_ENG, MID);

@@ -2,7 +2,7 @@
 #include <stdio.h> 		   // sprintf()
 #include <string.h> 	   // memset();
 #include <avr/interrupt.h> // cli(), sli();
-#include "iesusart.h"      // USART functionality
+#include "../woche4/iesusart.h"      // USART functionality
 
 #define LED_BLUE PC0
 #define LED_GREEN PC1
