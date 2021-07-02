@@ -94,7 +94,7 @@ void send_start_message() {
     USART_print("4 : ALL\n");
 }
 
-void init() {
+void init_adc() {
     USART_init(UBRR_SETTING);
     DDRB = (1 << DDB2);
     DDRD = (1 << DDD4);
@@ -127,7 +127,7 @@ void event_listener() {
 
 int main(void) {
 
-    init();
+    init_adc();
     send_start_message();
 
     while (1) {

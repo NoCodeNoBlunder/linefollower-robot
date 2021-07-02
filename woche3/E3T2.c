@@ -10,7 +10,7 @@
 #define PB1_STR "PB1"
 #define STR_BUF_SIZE 30
 
-void init() {
+void init_adc() {
     // Set Data Direction Register B0, B1  as input.
     DDRB &= ~((1<<DDB0) | (1<<DDB1));
     USART_init(UBRR_SETTING);
@@ -34,7 +34,7 @@ void print_status_update(char* str_buf, char pinB0, char pinB1) {
 
 int main(void) {
 
-    init();
+    init_adc();
 
     char is_changed = 0;
     // Initialle Schalterstellung auslesen.

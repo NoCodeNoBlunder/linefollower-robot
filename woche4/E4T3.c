@@ -5,6 +5,8 @@
 #include <math.h>
 #include "iesusart.h"
 
+#include "iesmotors.h"
+
 #define ADC0 PC0
 #define MAX_ADC 1023.0
 #define MAX_VOLT 5.0
@@ -18,6 +20,16 @@ typedef enum {
     MID_SENSOR,
     RIGHT_SENSOR
 } Sensor;
+
+typedef enum {
+    IDLE,
+    FORWARD,
+    BACKWARD,
+    LEFT_TURN,
+    RIGHT_TURN,
+    LEFT_ROTATION,
+    RIGHT_ROTATION
+} State ;
 
 // TODO steht für für ein Interrupt siehe Mehdi E3T3
 ISR (TIMER2_COMPA_vect) {
@@ -63,27 +75,53 @@ uint16_t adc_read_avg(uint8_t channel, uint8_t nsamples) {
     return (uint16_t)( sum / nsamples );
 }
 
-int main(void) {
-    DDRC &= ~(1 << ADC0); //Removed code concerning Port C1 and C2 - they are not used anymore.
 
-    //Removed leftover code concerning transistors, which are not included in the curcuit anymore!
 
+void init_adc() {
+    // Set pins as input.
+    DDRC &= ~((1 << ADC0) | (1 << ADC1) | (1 << ADC2));
+    // Init USART to be able to send data to serial Port
     USART_init(UBRR_SETTING);
     setup_timer2();
     ADC_Init();
-    short adcval = -1;
+}
+// -------------------------  MOTORS  -----------------------
+
+
+
+
+void init_motors() {
+// Delete everything on ports B and D
+    DDRD = 0;
+    DDRB = 0;
+
+    // TODO alle pins müssen auf output gestellt sein.
+    // Set PD5 and PD6 as output (EN[A|B]!)
+    DDRD = (1 << DD5) | (1 << DD6);
+
+    // Set PB0, PB1, and PB3 as output (IN[1|2|3|4])
+    DDRB = (1 << DD0) | (1 << DD1) | (1 << DD3) | (1 << DD7);
+
+    // Make PWM work on PD[5|6]
+    setup_timer0();
+
+    // TODO states für verschiedene Speedsettings!
+    set_duty_cycle(PD5, 155);
+    set_duty_cycle(PD6, 155);
+}
+
+int main(void) {
+    init_adc();
+    init_motors();
+
     while(1) {
-        if (adcval == adc_read_avg(LEFT_SENSOR, SAMPLE_SIZE) ) {
-            continue; //waiting till change detected
-        }
-        adcval = adc_read_avg(LEFT_SENSOR, SAMPLE_SIZE); //Changed int to short. We will never surpass 10-bit-values. (Max-Value is 1023 = 0b11111111)
-        float voltval = adcval * ( MAX_VOLT / MAX_ADC );
-        unsigned char voltval_int = (char) voltval;
-        unsigned char voltval_frac = (char) trunc((voltval_int - voltval)*1000);
 
-        char strbuff[17];
+        short adc_left = adc_read_avg(LEFT_SENSOR, SAMPLE_SIZE);
+        short adc_mid = adc_read_avg(MID_SENSOR, SAMPLE_SIZE);
+        short adc_right = adc_read_avg(RIGHT_SENSOR, SAMPLE_SIZE);
 
-        USART_print("ADCVAL: ");
+
+        /*USART_print("ADCVAL: ");
         sprintf(strbuff, "%u", adcval);
         USART_print(strbuff);
         USART_print("\n");
@@ -94,8 +132,7 @@ int main(void) {
         sprintf(strbuff, "%u", voltval_frac);
         USART_print(strbuff);
         USART_print("\n\n\n");
-        _delay_ms(500);
-
+        _delay_ms(500);*/
     }
     return 0;
 }

@@ -98,7 +98,7 @@ void f_to_str(char *str_buf, float f_to_convert) {
     sprintf(str_buf, "ADCVAL: %hu.%s%hu\n", pre_comma, zero_str, post_comma_int);
 }
 
-void init() {
+void init_adc() {
     DDRC &= ~((1 << ADC0) | (1 << ADC1) | (1 << ADC2));
 
     DDRC &= ~(1 << TRANSISTOR);
@@ -111,7 +111,7 @@ void init() {
 
 int main(void) {
 
-    init();
+    init_adc();
     char str_buf[STR_BUF2_SIZE];
     int prev_value = ADC_read_avg(CH0, SAMPLESIZE);
 
