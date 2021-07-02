@@ -1,6 +1,5 @@
 #include <avr/io.h>
 #include <util/delay.h>
-// #include <avr/iom328p.h>
 #include "iesusart.h"
 
 #define SHORT_WTIME 250
