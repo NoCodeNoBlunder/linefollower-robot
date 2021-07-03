@@ -103,19 +103,21 @@ void fire_mode(Mode mode) {
     }
 }
 
-void set_mode(RoboterData *data) {
+void trigger_mode(RoboterData *data) {
     // NO Sensor detects path
-    if (data->sensor_left < THRESHOLD && data->sensor_mid < THRESHOLD && data->sensor_right <THRESHOLD) {
+    if (data->sensor_left < THRESHOLD && data->sensor_mid < THRESHOLD && data->sensor_right < THRESHOLD) {
         data->mode = FORWARD;
     }
-    else if (data->sensor_mid >= THRESHOLD) {
-        data->mode = FORWARD;
+    // Left Sensor detects path
+    else if (data->sensor_left >= THRESHOLD) {
+        data->mode = LEFT_TURN;
     }
+    // Right Sensor detects path
     else if (data->sensor_right >= THRESHOLD) {
         data->mode = RIGHT_TURN;
     }
     else {
-        data->mode = LEFT_TURN;
+        data->mode = FORWARD;
     }
 }
 
@@ -144,7 +146,7 @@ void send_data(RoboterData *data) {
             break;
     }
 
-    sprintf(str_buf, "%s Left:%d Mid:%d Right:%d \n", mode_str, data->sensor_left, data->sensor_mid, data->sensor_right);
+    sprintf(str_buf, "%s Left:%d Mid:%d Right:%d\n ", mode_str, data->sensor_left, data->sensor_mid, data->sensor_right);
     USART_print(str_buf);
 }
 
@@ -163,7 +165,7 @@ int main() {
         data.sensor_mid = ADC_read_avg(MID_SENSOR, SAMPLE_SIZE);
         data.sensor_right = ADC_read_avg(RIGHT_SENSOR, SAMPLE_SIZE);
 
-        set_mode(&data);
+        trigger_mode(&data);
         fire_mode(data.mode);
         send_data(&data);
         _delay_ms(250);

@@ -19,7 +19,7 @@ void setup_timer0() {
 void set_duty_cycle(uint8_t pin, uint8_t value)
 {
     // TODO Codewiederholunge?
-    if (pin == PD4) {
+    if (pin == PD6) {
         if (value == 0) {
             TCCR0A &= ~(1 << COM0A1) & ~(1 << COM0A0);  // normal port operation mode
             PORTD &= ~(1 << PD6);                       // PD6 LOW
@@ -50,3 +50,5 @@ void set_duty_cycle(uint8_t pin, uint8_t value)
         }
     }
 }
+
+
