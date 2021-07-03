@@ -10,7 +10,7 @@
 #define SAMPLE_SIZE 20
 #define STR_BUF_SIZE 50
 
-
+// TODO das sollte bei der funktionalität der Motoren sein!
 void init_motors() {
     // Delete everything on ports B and D
     DDRD = 0;
@@ -117,8 +117,7 @@ int main() {
     init_motors();
 
     // both sides forward
-    PORTD |= (1 << PD7);
-    PORTB |= (1 << PB3);
+    polarity_forward();
 
     RoboterData data;
 

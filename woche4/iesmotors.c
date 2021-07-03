@@ -61,6 +61,7 @@ void set_duty_cycle(uint8_t pin, uint8_t value)
     }
 }
 
+// region POLARITY
 void set_high(volatile char *reg, char pin) {
     reg[0] |= (1 << pin);
 }
@@ -71,13 +72,14 @@ void set_low(volatile char *reg, char pin) {
 }
 
 void left_forward() {
-    set_high(&PORTB, IN2);
-    set_low(&PORTD, IN1);
+    set_high(&PORTD, IN1);
+    set_low(&PORTD, IN2);
 }
 
 void left_backward() {
-    set_high(&PORTD, IN1);
-    set_low(&PORTD, IN2);
+    set_high(&PORTB, IN2);
+    set_low(&PORTD, IN1);
+
 }
 
 void right_forward() {
@@ -90,12 +92,12 @@ void right_backward() {
     set_low(&PORTB, IN4);
 }
 
-void both_forward() {
+void polarity_forward() {
     left_forward();
     right_forward();
 }
 
-void both_backward() {
+void polarity_backward() {
     left_backward();
     right_backward();
 }
@@ -109,6 +111,7 @@ void right_spin() {
     left_forward();
     right_backward();
 }
+// endregion
 
 
 
