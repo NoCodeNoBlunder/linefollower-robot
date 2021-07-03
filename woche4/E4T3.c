@@ -9,6 +9,7 @@
 #define SAMPLE_SIZE 20
 #define STR_BUF_SIZE 30
 
+// TODO not all have to be enum or typedefs!
 typedef enum {
     IDLE,
     FORWARD,
@@ -67,7 +68,24 @@ void drive_right() {
     set_duty_cycle(RIGHT_ENG, ENG_SLOW);
 }
 
+// TODO create struct with Data?
+typedef struct {
+    Mode mode;
+    short sensor_left;
+    short sensor_mid;
+    short sensor_right;
+
+    char left_eng_rot;
+    char right_eng_rot;
+    char left_eng_dir;
+    char right_eng_dir;
+
+} RoboterData;
+
+// TODO lohnt sich das?
 void fire_mode(Mode mode) {
+    static char str_buf[STR_BUF_SIZE];
+
     switch (mode) {
         case IDLE:
             break;
@@ -83,30 +101,22 @@ void fire_mode(Mode mode) {
             drive_right();
             break;
     }
-
-
 }
 
-void set_mode(Mode *mode, short sensor_left, short sensor_mid, short sensor_right) {
+void set_mode(RoboterData *data) {
     // NO Sensor detects path
-    if (sensor_left < THRESHOLD && sensor_mid < THRESHOLD && sensor_right <THRESHOLD) {
-        mode[0] = FORWARD;
+    if (data->sensor_left < THRESHOLD && data->sensor_mid < THRESHOLD && data->sensor_right <THRESHOLD) {
+        data->mode = FORWARD;
     }
-    else if (sensor_mid >= THRESHOLD) {
-        mode[0] = FORWARD;
+    else if (data->sensor_mid >= THRESHOLD) {
+        data->mode = FORWARD;
     }
-    else if (sensor_right >= THRESHOLD) {
-        mode[0] = RIGHT_TURN;
+    else if (data->sensor_right >= THRESHOLD) {
+        data->mode = RIGHT_TURN;
     }
     else {
-        mode[0] = LEFT_TURN;
+        data->mode = LEFT_TURN;
     }
-}
-
-void send_data() {
-    static char str_buf[STR_BUF_SIZE];
-
-    _delay_ms(100);
 }
 
 int main() {
@@ -117,16 +127,14 @@ int main() {
     PORTD |= (1 << PD7);
     PORTB |= (1 << PB3);
 
-    Mode roboter_mode = IDLE;
+    RoboterData data;
 
     while(1) {
+        data.sensor_left = ADC_read_avg(LEFT_SENSOR, SAMPLE_SIZE);
+        data.sensor_mid = ADC_read_avg(MID_SENSOR, SAMPLE_SIZE);
+        data.sensor_right = ADC_read_avg(RIGHT_SENSOR, SAMPLE_SIZE);
 
-        short sensor_left = ADC_read_avg(LEFT_SENSOR, SAMPLE_SIZE);
-        short sensor_mid = ADC_read_avg(MID_SENSOR, SAMPLE_SIZE);
-        short sensor_right = ADC_read_avg(RIGHT_SENSOR, SAMPLE_SIZE);
-
-        set_mode(roboter_mode, sensor_left, sensor_mid, sensor_right);
-        fire_mode(roboter_mode);
-        send_data(roboter_mode);
+        set_mode(&data);
+        fire_mode(data.mode);
     }
 }

@@ -222,6 +222,33 @@ woche3/E3T4.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche3/E3T4.c.s
 .PHONY : woche3/E3T4.c.s
 
+woche3/StructInfo.obj: woche3/StructInfo.c.obj
+
+.PHONY : woche3/StructInfo.obj
+
+# target to build an object file
+woche3/StructInfo.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche3/StructInfo.c.obj
+.PHONY : woche3/StructInfo.c.obj
+
+woche3/StructInfo.i: woche3/StructInfo.c.i
+
+.PHONY : woche3/StructInfo.i
+
+# target to preprocess a source file
+woche3/StructInfo.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche3/StructInfo.c.i
+.PHONY : woche3/StructInfo.c.i
+
+woche3/StructInfo.s: woche3/StructInfo.c.s
+
+.PHONY : woche3/StructInfo.s
+
+# target to generate assembly for a file
+woche3/StructInfo.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche3/StructInfo.c.s
+.PHONY : woche3/StructInfo.c.s
+
 woche3/iesusart.obj: woche3/iesusart.c.obj
 
 .PHONY : woche3/iesusart.obj
@@ -402,6 +429,9 @@ help:
 	@echo ... woche3/E3T4.obj
 	@echo ... woche3/E3T4.i
 	@echo ... woche3/E3T4.s
+	@echo ... woche3/StructInfo.obj
+	@echo ... woche3/StructInfo.i
+	@echo ... woche3/StructInfo.s
 	@echo ... woche3/iesusart.obj
 	@echo ... woche3/iesusart.i
 	@echo ... woche3/iesusart.s
