@@ -4,38 +4,13 @@
 #include <stdio.h>
 #include "iesusart.h"
 #include "iesadc.h"
+#include "typedefs.h"
 
 #define THRESHOLD 512
 #define SAMPLE_SIZE 20
 #define STR_BUF_SIZE 50
 
 // TODO not all have to be enum or typedefs!
-typedef enum {
-    IDLE,
-    FORWARD,
-    BACKWARD,
-    LEFT_TURN,
-    RIGHT_TURN
-} Mode;
-
-typedef enum {
-    LEFT_ENG = PD5,
-    RIGHT_ENG = PD6
-} Motor ;
-
-typedef enum {
-    ENG_STILL = 0,
-    ENG_SLOW = 50,
-    ENG_MID = 155,
-    ENG_FAST = 200
-} Speed;
-
-
-typedef enum {
-    LEFT_SENSOR = PC0,
-    MID_SENSOR = PC1,
-    RIGHT_SENSOR = PC2
-} Sensor;
 
 void init_motors() {
     // Delete everything on ports B and D
@@ -69,21 +44,9 @@ void drive_right() {
 }
 
 // TODO create struct with Data?
-typedef struct {
-    Mode mode;
-    short sensor_left;
-    short sensor_mid;
-    short sensor_right;
-
-    char left_eng_rot;
-    char right_eng_rot;
-    char left_eng_dir;
-    char right_eng_dir;
-
-} RoboterData;
 
 // TODO lohnt sich das?
-void fire_mode(Mode mode) {
+void fire_mode(DriveMode mode) {
     static char str_buf[STR_BUF_SIZE];
 
     switch (mode) {
@@ -142,7 +105,7 @@ void send_data(RoboterData *data) {
             mode_str = "RIGHT_TURN: ";
             break;
         default:
-            USART_print("There is no such Mode");
+            USART_print("There is no such DriveMode");
             break;
     }
 
