@@ -7,6 +7,15 @@
 
 #define THRESHOLD 512
 #define SAMPLE_SIZE 20
+#define STR_BUF_SIZE 30
+
+typedef enum {
+    IDLE,
+    FORWARD,
+    BACKWARD,
+    LEFT_TURN,
+    RIGHT_TURN
+} Mode;
 
 typedef enum {
     LEFT_ENG = PD5,
@@ -58,6 +67,48 @@ void drive_right() {
     set_duty_cycle(RIGHT_ENG, ENG_SLOW);
 }
 
+void fire_mode(Mode mode) {
+    switch (mode) {
+        case IDLE:
+            break;
+        case FORWARD:
+            drive_forward();
+            break;
+        case BACKWARD:
+            break;
+        case LEFT_TURN:
+            drive_left();
+            break;
+        case RIGHT_TURN:
+            drive_right();
+            break;
+    }
+
+
+}
+
+void set_mode(Mode *mode, short sensor_left, short sensor_mid, short sensor_right) {
+    // NO Sensor detects path
+    if (sensor_left < THRESHOLD && sensor_mid < THRESHOLD && sensor_right <THRESHOLD) {
+        mode[0] = FORWARD;
+    }
+    else if (sensor_mid >= THRESHOLD) {
+        mode[0] = FORWARD;
+    }
+    else if (sensor_right >= THRESHOLD) {
+        mode[0] = RIGHT_TURN;
+    }
+    else {
+        mode[0] = LEFT_TURN;
+    }
+}
+
+void send_data() {
+    static char str_buf[STR_BUF_SIZE];
+
+    _delay_ms(100);
+}
+
 int main() {
     init_ADC();
     init_motors();
@@ -66,21 +117,16 @@ int main() {
     PORTD |= (1 << PD7);
     PORTB |= (1 << PB3);
 
+    Mode roboter_mode = IDLE;
+
     while(1) {
 
         short sensor_left = ADC_read_avg(LEFT_SENSOR, SAMPLE_SIZE);
         short sensor_mid = ADC_read_avg(MID_SENSOR, SAMPLE_SIZE);
         short sensor_right = ADC_read_avg(RIGHT_SENSOR, SAMPLE_SIZE);
 
-        // NO Sensor detects path
-        if (sensor_left < THRESHOLD && sensor_mid < THRESHOLD && sensor_right <THRESHOLD) {
-            drive_forward();
-        } else if (sensor_right >= THRESHOLD) {
-            drive_left();
-        } else if (sensor_left >= THRESHOLD) {
-            drive_right();
-        } else {
-            drive_forward();
-        }
+        set_mode(roboter_mode, sensor_left, sensor_mid, sensor_right);
+        fire_mode(roboter_mode);
+        send_data(roboter_mode);
     }
 }
