@@ -6,6 +6,7 @@
 #include "iesadc.h"
 
 #define THRESHOLD 512
+#define SAMPLE_SIZE 20
 
 typedef enum {
     LEFT_ENG = PD5,
@@ -13,12 +14,18 @@ typedef enum {
 } Motor ;
 
 typedef enum {
-    STILL = 0,
-    SLOW = 50,
-    MID = 155,
-    FAST = 200
+    ENG_STILL = 0,
+    ENG_SLOW = 50,
+    ENG_MID = 155,
+    ENG_FAST = 200
 } Speed;
 
+
+typedef enum {
+    LEFT_SENSOR = PC0,
+    MID_SENSOR = PC1,
+    RIGHT_SENSOR = PC2
+} Sensor;
 
 void init_motors() {
     // Delete everything on ports B and D
@@ -36,15 +43,44 @@ void init_motors() {
     setup_timer0();
 }
 
+void drive_forward() {
+    set_duty_cycle(LEFT_ENG, ENG_MID);
+    set_duty_cycle(RIGHT_ENG, ENG_MID);
+}
+
+void drive_left() {
+    set_duty_cycle(LEFT_ENG, ENG_SLOW);
+    set_duty_cycle(RIGHT_ENG, ENG_FAST);
+}
+
+void drive_right() {
+    set_duty_cycle(LEFT_ENG, ENG_FAST);
+    set_duty_cycle(RIGHT_ENG, ENG_SLOW);
+}
 
 int main() {
-    init_motors();
     init_ADC();
-
-    set_duty_cycle(LEFT_ENG, MID);
-    set_duty_cycle(RIGHT_ENG, MID);
+    init_motors();
 
     // both sides forward
     PORTD |= (1 << PD7);
     PORTB |= (1 << PB3);
+
+    while(1) {
+
+        short sensor_left = ADC_read_avg(LEFT_SENSOR, SAMPLE_SIZE);
+        short sensor_mid = ADC_read_avg(MID_SENSOR, SAMPLE_SIZE);
+        short sensor_right = ADC_read_avg(RIGHT_SENSOR, SAMPLE_SIZE);
+
+        // NO Sensor detects path
+        if (sensor_left < THRESHOLD && sensor_mid < THRESHOLD && sensor_right <THRESHOLD) {
+            drive_forward();
+        } else if (sensor_right >= THRESHOLD) {
+            drive_left();
+        } else if (sensor_left >= THRESHOLD) {
+            drive_right();
+        } else {
+            drive_forward();
+        }
+    }
 }
