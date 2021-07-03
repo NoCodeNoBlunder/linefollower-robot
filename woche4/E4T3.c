@@ -10,7 +10,6 @@
 #define SAMPLE_SIZE 20
 #define STR_BUF_SIZE 50
 
-// TODO not all have to be enum or typedefs!
 
 void init_motors() {
     // Delete everything on ports B and D

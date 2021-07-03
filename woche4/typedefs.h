@@ -2,6 +2,8 @@
 #ifndef E3T4_C_TYPEDEFS_H
 #define E3T4_C_TYPEDEFS_H
 
+
+// TODO not all have to be enum or typedefs!
 typedef enum {
     IDLE,
     FORWARD,

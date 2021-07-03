@@ -1,4 +1,14 @@
 #include "iesmotors.h"
+#include "typedefs.h"
+
+// TODO macht kein sinn, da ich sowieso unterschiedliche Register nutze?!
+typedef enum {
+    IN1 = PD7,
+    IN2 = PB0,
+    IN3 = PB1,
+    IN4 = PB3
+} Engpolarity ;
+
 
 /* sets up timer 0 (8 bit) */
 void setup_timer0() {
@@ -50,6 +60,56 @@ void set_duty_cycle(uint8_t pin, uint8_t value)
         }
     }
 }
+
+void set_high(volatile char *reg, char pin) {
+    reg[0] |= (1 << pin);
+}
+
+// TODO seperate into left and right side!
+void set_low(volatile char *reg, char pin) {
+    reg[0] &= ~(1 << pin);
+}
+
+void left_forward() {
+    set_high(&PORTB, IN2);
+    set_low(&PORTD, IN1);
+}
+
+void left_backward() {
+    set_high(&PORTD, IN1);
+    set_low(&PORTD, IN2);
+}
+
+void right_forward() {
+    set_high(&PORTB, IN4);
+    set_low(&PORTB, IN3);
+}
+
+void right_backward() {
+    set_high(&PORTB, IN3);
+    set_low(&PORTB, IN4);
+}
+
+void both_forward() {
+    left_forward();
+    right_forward();
+}
+
+void both_backward() {
+    left_backward();
+    right_backward();
+}
+
+void left_spin() {
+    left_backward();
+    right_forward();
+}
+
+void right_spin() {
+    left_forward();
+    right_backward();
+}
+
 
 
 
