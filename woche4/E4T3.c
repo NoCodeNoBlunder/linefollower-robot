@@ -7,7 +7,7 @@
 
 #define THRESHOLD 512
 #define SAMPLE_SIZE 20
-#define STR_BUF_SIZE 30
+#define STR_BUF_SIZE 50
 
 // TODO not all have to be enum or typedefs!
 typedef enum {
@@ -119,6 +119,35 @@ void set_mode(RoboterData *data) {
     }
 }
 
+void send_data(RoboterData *data) {
+    static char str_buf[STR_BUF_SIZE];
+    static char *mode_str;
+
+    switch (data->mode) {
+        case IDLE:
+            mode_str = "IDLE: ";
+            break;
+        case FORWARD:
+            mode_str = "FORWARD: ";
+            break;
+        case BACKWARD:
+            mode_str = "BACKWARD: ";
+            break;
+        case LEFT_TURN:
+            mode_str = "LEFT_TURN: ";
+            break;
+        case RIGHT_TURN:
+            mode_str = "RIGHT_TURN: ";
+            break;
+        default:
+            USART_print("There is no such Mode");
+            break;
+    }
+
+    sprintf(str_buf, "%s Left:%d Mid:%d Right:%d \n", mode_str, data->sensor_left, data->sensor_mid, data->sensor_right);
+    USART_print(str_buf);
+}
+
 int main() {
     init_ADC();
     init_motors();
@@ -136,5 +165,7 @@ int main() {
 
         set_mode(&data);
         fire_mode(data.mode);
+        send_data(&data);
+        _delay_ms(250);
     }
 }
