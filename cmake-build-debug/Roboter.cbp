@@ -25,6 +25,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/include"/>
+					<Add directory="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/headers"/>
 					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
 					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
 					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
@@ -44,6 +45,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/include"/>
+					<Add directory="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/headers"/>
 					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
 					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
 					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
@@ -79,19 +81,37 @@
 		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche3/E3T2.c">
 			<Option target="Roboter"/>
 		</Unit>
+		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche3/E3T3.c">
+			<Option target="Roboter"/>
+		</Unit>
 		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche3/E3T4.c">
+			<Option target="Roboter"/>
+		</Unit>
+		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche3/StructInfo.c">
 			<Option target="Roboter"/>
 		</Unit>
 		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche3/iesusart.c">
 			<Option target="Roboter"/>
 		</Unit>
-		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche3/iesusart.h">
+		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/E4T3.c">
+			<Option target="Roboter"/>
+		</Unit>
+		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/iesadc.c">
+			<Option target="Roboter"/>
+		</Unit>
+		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/iesadc.h">
 			<Option target="Roboter"/>
 		</Unit>
 		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/iesmotors.c">
 			<Option target="Roboter"/>
 		</Unit>
 		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/iesmotors.h">
+			<Option target="Roboter"/>
+		</Unit>
+		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/iesusart.c">
+			<Option target="Roboter"/>
+		</Unit>
+		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/iesusart.h">
 			<Option target="Roboter"/>
 		</Unit>
 		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/skeleton_motors.c">

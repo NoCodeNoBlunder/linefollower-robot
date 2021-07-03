@@ -5,9 +5,14 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche3/E3T2.c" "C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/cmake-build-debug/CMakeFiles/Roboter.dir/woche3/E3T2.c.obj"
+  "C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche3/E3T3.c" "C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/cmake-build-debug/CMakeFiles/Roboter.dir/woche3/E3T3.c.obj"
   "C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche3/E3T4.c" "C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/cmake-build-debug/CMakeFiles/Roboter.dir/woche3/E3T4.c.obj"
+  "C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche3/StructInfo.c" "C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/cmake-build-debug/CMakeFiles/Roboter.dir/woche3/StructInfo.c.obj"
   "C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche3/iesusart.c" "C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/cmake-build-debug/CMakeFiles/Roboter.dir/woche3/iesusart.c.obj"
+  "C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/E4T3.c" "C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/cmake-build-debug/CMakeFiles/Roboter.dir/woche4/E4T3.c.obj"
+  "C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/iesadc.c" "C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/cmake-build-debug/CMakeFiles/Roboter.dir/woche4/iesadc.c.obj"
   "C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/iesmotors.c" "C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/cmake-build-debug/CMakeFiles/Roboter.dir/woche4/iesmotors.c.obj"
+  "C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/iesusart.c" "C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/cmake-build-debug/CMakeFiles/Roboter.dir/woche4/iesusart.c.obj"
   "C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/skeleton_motors.c" "C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/cmake-build-debug/CMakeFiles/Roboter.dir/woche4/skeleton_motors.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
@@ -15,6 +20,7 @@ set(CMAKE_C_COMPILER_ID "GNU")
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "../include"
+  "../headers"
   )
 
 # Targets to which this target links.
