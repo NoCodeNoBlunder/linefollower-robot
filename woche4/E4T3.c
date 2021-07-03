@@ -1,53 +1,16 @@
-#include "iesmotors.h"
 #include <util/delay.h>
-
 #include <stdio.h>
 #include "iesusart.h"
 #include "iesadc.h"
 #include "typedefs.h"
+#include "iesmotors.h"
 
 #define THRESHOLD 512
 #define SAMPLE_SIZE 20
 #define STR_BUF_SIZE 50
 
-// TODO das sollte bei der funktionalität der Motoren sein!
-void init_motors() {
-    // Delete everything on ports B and D
-    DDRD = 0;
-    DDRB = 0;
-
-    // TODO alle pins müssen auf output gestellt sein.
-    // Set PD5 and PD6 as output (EN[A|B]!)
-    DDRD = (1 << DD5) | (1 << DD6);
-
-    // Set PB0, PB1, and PB3 as output (IN[1|2|3|4])
-    DDRB = (1 << DD0) | (1 << DD1) | (1 << DD3) | (1 << DD7);
-
-    // Make PWM work on PD[5|6]
-    setup_timer0();
-}
-
-void drive_forward() {
-    set_duty_cycle(LEFT_ENG, ENG_MID);
-    set_duty_cycle(RIGHT_ENG, ENG_MID);
-}
-
-void drive_left() {
-    set_duty_cycle(LEFT_ENG, ENG_SLOW);
-    set_duty_cycle(RIGHT_ENG, ENG_FAST);
-}
-
-void drive_right() {
-    set_duty_cycle(LEFT_ENG, ENG_FAST);
-    set_duty_cycle(RIGHT_ENG, ENG_SLOW);
-}
-
-// TODO create struct with Data?
-
 // TODO lohnt sich das?
 void fire_mode(DriveMode mode) {
-    static char str_buf[STR_BUF_SIZE];
-
     switch (mode) {
         case IDLE:
             break;
@@ -55,6 +18,7 @@ void fire_mode(DriveMode mode) {
             drive_forward();
             break;
         case BACKWARD:
+            set_polarity_backward();
             break;
         case LEFT_TURN:
             drive_left();
@@ -112,12 +76,12 @@ void send_data(RoboterData *data) {
     USART_print(str_buf);
 }
 
+
 int main() {
     init_ADC();
     init_motors();
 
-    // both sides forward
-    polarity_forward();
+    set_polarity_forward();
 
     RoboterData data;
 

@@ -2,6 +2,7 @@
 #ifndef E3T4_C_TYPEDEFS_H
 #define E3T4_C_TYPEDEFS_H
 
+#include <avr/io.h>
 
 // TODO not all have to be enum or typedefs!
 typedef enum {
@@ -15,7 +16,7 @@ typedef enum {
 typedef enum {
     LEFT_ENG = PD5,
     RIGHT_ENG = PD6
-} Motor ;
+} Motor;
 
 typedef enum {
     ENG_STILL = 0,
@@ -23,7 +24,6 @@ typedef enum {
     ENG_MID = 155,
     ENG_FAST = 200
 } Speed;
-
 
 typedef enum {
     LEFT_SENSOR = PC0,

@@ -9,7 +9,6 @@ typedef enum {
     IN4 = PB3
 } Engpolarity ;
 
-
 /* sets up timer 0 (8 bit) */
 void setup_timer0() {
     cli();                                  // disable interrupt globally // TODO why do interrupt need to be disabled?
@@ -92,26 +91,65 @@ void right_backward() {
     set_low(&PORTB, IN4);
 }
 
-void polarity_forward() {
+void set_polarity_forward() {
     left_forward();
     right_forward();
 }
 
-void polarity_backward() {
+void set_polarity_backward() {
     left_backward();
     right_backward();
 }
 
-void left_spin() {
+void set_polarity_left_rot() {
     left_backward();
     right_forward();
 }
 
-void right_spin() {
+void set_polarity_right_rot() {
     left_forward();
     right_backward();
 }
 // endregion
+
+// region DUTY_CYCLE
+void init_motors() {
+    // Delete everything on ports B and D
+    DDRD = 0;
+    DDRB = 0;
+
+    // TODO alle pins müssen auf output gestellt sein.
+    // Set PD5 and PD6 as output (EN[A|B]!)
+    DDRD = (1 << DD5) | (1 << DD6);
+
+    // Set PB0, PB1, and PB3 as output (IN[1|2|3|4])
+    DDRB = (1 << DD0) | (1 << DD1) | (1 << DD3) | (1 << DD7);
+
+    // Make PWM work on PD[5|6]
+    setup_timer0();
+}
+
+void drive_forward() {
+    set_duty_cycle(LEFT_ENG, ENG_MID);
+    set_duty_cycle(RIGHT_ENG, ENG_MID);
+}
+
+void drive_left() {
+    set_duty_cycle(LEFT_ENG, ENG_SLOW);
+    set_duty_cycle(RIGHT_ENG, ENG_FAST);
+}
+
+void drive_right() {
+    set_duty_cycle(LEFT_ENG, ENG_FAST);
+    set_duty_cycle(RIGHT_ENG, ENG_SLOW);
+}
+// endregion
+
+
+
+
+
+
 
 
 
