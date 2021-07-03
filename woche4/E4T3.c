@@ -1,6 +1,10 @@
 #include "iesmotors.h"
 #include <util/delay.h>
 
+#include <stdio.h>
+#include "iesusart.h"
+#include "iesadc.h"
+
 #define THRESHOLD 512
 
 typedef enum {
@@ -35,6 +39,7 @@ void init_motors() {
 
 int main() {
     init_motors();
+    init_ADC();
 
     set_duty_cycle(LEFT_ENG, MID);
     set_duty_cycle(RIGHT_ENG, MID);
