@@ -15,15 +15,18 @@ void fire_mode(DriveMode mode) {
         case IDLE:
             break;
         case FORWARD:
+            set_polarity_forward();
             drive_forward();
             break;
         case BACKWARD:
             set_polarity_backward();
             break;
         case LEFT_TURN:
+            set_polarity_forward();
             drive_left();
             break;
         case RIGHT_TURN:
+            set_polarity_forward();
             drive_right();
             break;
     }
@@ -31,6 +34,7 @@ void fire_mode(DriveMode mode) {
 
 void trigger_mode(RoboterData *data) {
     // NO Sensor detects path
+    // TODO was sollte priorisiert werden?
     if (data->sensor_left < THRESHOLD && data->sensor_mid < THRESHOLD && data->sensor_right < THRESHOLD) {
         data->mode = FORWARD;
     }
@@ -75,7 +79,8 @@ void send_data(RoboterData *data) {
             break;
     }
 
-    sprintf(str_buf, "%s Left:%d Mid:%d Right:%d\n ", mode_str, data->sensor_left, data->sensor_mid, data->sensor_right);
+    sprintf(str_buf, "%s Left:%d Mid:%d Right:%d\n ", mode_str,
+            data->sensor_left, data->sensor_mid, data->sensor_right);
     USART_print(str_buf);
 }
 
@@ -84,8 +89,6 @@ int main() {
     ADC_Init();
     motors_Init();
     USART_Init(UBRR_SETTING);
-
-    set_polarity_forward();
 
     RoboterData data;
 

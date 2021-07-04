@@ -38,10 +38,7 @@ typedef struct {
     short sensor_mid;
     short sensor_right;
 
-    char left_eng_rot;
-    char right_eng_rot;
-    char left_eng_dir;
-    char right_eng_dir;
-
+    char left_eng_speed;
+    char right_eng_speed;
 } RoboterData;
 #endif //E3T4_C_TYPEDEFS_H
