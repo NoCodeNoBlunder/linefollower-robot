@@ -54,7 +54,7 @@ void USART_print(const char *c)
  * @brief Sets up the USART port (The USART baudrate register)
  * @param ubrr Content to write into the UBRR register
  */
-void USART_init(unsigned long ubrr)
+void USART_Init(unsigned long ubrr)
 {
     // Set baud rate, high byte first
     UBRR0H = (unsigned char) (ubrr >> 8);

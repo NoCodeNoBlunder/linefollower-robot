@@ -4,7 +4,7 @@
 #define W_TIME 1000
 
 
-void init_motors() {
+void motors_Init() {
     // Delete everything on ports B and D
     DDRD = 0;
     DDRB = 0;
@@ -13,8 +13,11 @@ void init_motors() {
     // Set PD5 and PD6 as output (EN[A|B]!)
     DDRD = (1 << DD5) | (1 << DD6);
 
-    // Set PB0, PB1, and PB3 as output (IN[1|2|3|4])
-    DDRB = (1 << DD0) | (1 << DD1) | (1 << DD3) | (1 << DD7);
+    // Set PD7 as output (IN1)
+    DDRD |= (1 << DD7);
+
+    // Set PB0, PB1, and PB3 as output ([2|3|4])
+    DDRB = (1 << DD0) | (1 << DD1) | (1 << DD3);
 
     // Make PWM work on PD[5|6]
     setup_timer0();
@@ -22,7 +25,7 @@ void init_motors() {
 
 int main(void) {
 
-    init_motors();
+    motors_Init();
 
     // Set the duty cycles for PD5/PD6
     set_duty_cycle(PD5, 155);
@@ -112,6 +115,10 @@ int main(void) {
     set_duty_cycle(PD5, 0);
     PORTD |= (1 << PB7);
 
+    // TODO add accelaration
+    // TODO acceleration abbrechen wenn Sensor sich ändert.
+    // Abfragen ob wert erreicht oder Modus nicht mehr auf vorwärts
+    // wie trigger ich wann beschleinigt werden soll?
     for (unsigned char i = 0; i < 255; i++) {
         set_duty_cycle(PD5, i+1);
         _delay_ms(50);

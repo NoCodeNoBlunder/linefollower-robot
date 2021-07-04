@@ -13,7 +13,7 @@
 void init_adc() {
     // Set Data Direction Register B0, B1  as input.
     DDRB &= ~((1<<DDB0) | (1<<DDB1));
-    USART_init(UBRR_SETTING);
+    USART_Init(UBRR_SETTING);
 }
 
 

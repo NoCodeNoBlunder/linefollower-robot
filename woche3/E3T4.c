@@ -87,7 +87,7 @@ int chr_to_int(char chr) {
 void send_start_message() {
     USART_print("Type in word containing only integers:\n");
     USART_print("Each word consists of tupels (x,y).\n");
-    USART_print("x := select Mode\n");
+    USART_print("x := select DriveMode\n");
     USART_print("y := n (250ms) wait cycles\n");
     USART_print("0 : RESET   ||   1 : LED1\n");
     USART_print("2 : LED2     ||   3 : LED3\n");
@@ -95,7 +95,7 @@ void send_start_message() {
 }
 
 void init_adc() {
-    USART_init(UBRR_SETTING);
+    USART_Init(UBRR_SETTING);
     DDRB = (1 << DDB2);
     DDRD = (1 << DDD4);
 }
