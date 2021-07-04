@@ -66,5 +66,5 @@ void USART_Init(unsigned long ubrr)
     /* Transmit something right after initialization to overcome the lagg at the
      * start of a simulation in SimulIDE.
     */
-    //USART_print("<(^_^)>\n\0");
+    USART_print("\n");
 }

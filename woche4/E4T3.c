@@ -7,32 +7,33 @@
 
 #define THRESHOLD 512
 #define SAMPLE_SIZE 20
-#define STR_BUF_SIZE 50
+#define STR_BUF_SIZE 100
 
 // TODO lohnt sich das?
-void fire_mode(DriveMode mode) {
-    switch (mode) {
+void fire_mode(RoboterData *data) {
+    switch (data -> mode) {
         case IDLE:
             break;
         case FORWARD:
             set_polarity_forward();
-            drive_straight();
+            drive_straight(data);
             break;
         case BACKWARD:
             set_polarity_backward();
+            drive_straight(data);
             break;
         case LEFT_TURN:
             set_polarity_forward();
-            turn_left();
+            turn_left(data);
             break;
         case RIGHT_TURN:
             set_polarity_forward();
-            turn_right();
+            turn_right(data);
             break;
     }
 }
 
-void trigger_mode(RoboterData *data) {
+void set_mode(RoboterData *data) {
     // NO Sensor detects path
     // TODO was sollte priorisiert werden?
     if (data->sensor_left < THRESHOLD && data->sensor_mid < THRESHOLD && data->sensor_right < THRESHOLD) {
@@ -58,7 +59,7 @@ void send_data(RoboterData *data) {
     static char str_buf[STR_BUF_SIZE];
     static char *mode_str;
 
-    switch (data->mode) {
+    switch (data -> mode) {
         case IDLE:
             mode_str = "IDLE: ";
             break;
@@ -79,8 +80,10 @@ void send_data(RoboterData *data) {
             break;
     }
 
-    sprintf(str_buf, "%s Left:%d Mid:%d Right:%d\n ", mode_str,
-            data->sensor_left, data->sensor_mid, data->sensor_right);
+    sprintf(str_buf,
+            "%s L:%d | M:%d | R:%d\n %d | %d\n\n",
+            mode_str,data->sensor_left, data->sensor_mid, data->sensor_right,
+            data->left_eng_speed ,data->right_eng_speed);
     USART_print(str_buf);
 }
 
@@ -93,12 +96,13 @@ int main() {
     RoboterData data;
 
     while(1) {
+
         data.sensor_left = ADC_read_avg(LEFT_SENSOR, SAMPLE_SIZE);
         data.sensor_mid = ADC_read_avg(MID_SENSOR, SAMPLE_SIZE);
         data.sensor_right = ADC_read_avg(RIGHT_SENSOR, SAMPLE_SIZE);
 
-        trigger_mode(&data);
-        fire_mode(data.mode);
+        set_mode(&data);
+        fire_mode(&data);
         send_data(&data);
         _delay_ms(250);
     }

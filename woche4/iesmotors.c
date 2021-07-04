@@ -1,5 +1,8 @@
 #include "iesmotors.h"
 #include "typedefs.h"
+#include "iesusart.h"
+#include <stdio.h>
+#include <util/delay.h>
 
 // TODO macht kein sinn, da ich sowieso unterschiedliche Register nutze?!
 typedef enum {
@@ -133,19 +136,43 @@ void motors_Init() {
 }
 
 // TODO Name change this?
-void drive_straight() {
+void drive_straight(RoboterData *data) {
+    // TODO Code wiederholung wie vermeide ich das?
+    data ->left_eng_speed = ENG_MID;
+    data ->right_eng_speed = ENG_MID;
     set_duty_cycle(LEFT_ENG, ENG_MID);
     set_duty_cycle(RIGHT_ENG, ENG_MID);
 }
 
-void turn_left() {
+void turn_left(RoboterData *data) {
+    data ->left_eng_speed = ENG_SLOW;
+    data ->right_eng_speed = ENG_FAST;
     set_duty_cycle(LEFT_ENG, ENG_SLOW);
     set_duty_cycle(RIGHT_ENG, ENG_FAST);
 }
 
-void turn_right() {
+void turn_right(RoboterData *data) {
+    data ->left_eng_speed = ENG_FAST;
+    data ->right_eng_speed = ENG_SLOW;
     set_duty_cycle(LEFT_ENG, ENG_FAST);
     set_duty_cycle(RIGHT_ENG, ENG_SLOW);
+}
+
+void accelerate_straight(RoboterData *data, int max_speed) {
+    for (unsigned char i = 0; i < max_speed; i++) {
+        set_duty_cycle(LEFT_ENG, i+1);
+        set_duty_cycle(RIGHT_ENG, i+1);
+        _delay_ms(50);
+    }
+}
+
+void deaccelerate_straight(RoboterData *data, int min_speed) {
+    // Slowly decrease the duty
+    for (unsigned char i = 255; i > min_speed; i--) {
+        set_duty_cycle(LEFT_ENG, i+1);
+        set_duty_cycle(RIGHT_ENG, i+1);
+        _delay_ms(50);
+    }
 }
 // endregion
 
