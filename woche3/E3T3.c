@@ -104,7 +104,7 @@ void init_adc() {
     DDRC &= ~(1 << TRANSISTOR);
     PORTC &= ~(1 << TRANSISTOR);
 
-    USART_init(UBRR_SETTING);
+    USART_Init(UBRR_SETTING);
     setup_timer();
     ADC_init();
 }

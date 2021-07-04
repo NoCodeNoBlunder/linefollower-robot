@@ -113,7 +113,7 @@ void set_polarity_right_rot() {
 // endregion
 
 // region DUTY_CYCLE
-void init_motors() {
+void motors_Init() {
     // Delete everything on ports B and D
     DDRD = 0;
     DDRB = 0;

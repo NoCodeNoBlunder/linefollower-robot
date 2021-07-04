@@ -81,9 +81,9 @@ void send_data(RoboterData *data) {
 
 // TODO reduce header ammount and file ammount and change names
 int main() {
-    init_ADC();
-    init_motors();
-    USART_init(UBRR_SETTING);
+    ADC_Init();
+    motors_Init();
+    USART_Init(UBRR_SETTING);
 
     set_polarity_forward();
 

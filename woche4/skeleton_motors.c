@@ -4,7 +4,7 @@
 #define W_TIME 1000
 
 
-void init_motors() {
+void motors_Init() {
     // Delete everything on ports B and D
     DDRD = 0;
     DDRB = 0;
@@ -25,7 +25,7 @@ void init_motors() {
 
 int main(void) {
 
-    init_motors();
+    motors_Init();
 
     // Set the duty cycles for PD5/PD6
     set_duty_cycle(PD5, 155);

@@ -95,7 +95,7 @@ void send_start_message() {
 }
 
 void init_adc() {
-    USART_init(UBRR_SETTING);
+    USART_Init(UBRR_SETTING);
     DDRB = (1 << DDB2);
     DDRD = (1 << DDD4);
 }
