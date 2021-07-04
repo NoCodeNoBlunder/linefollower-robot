@@ -158,17 +158,17 @@ void turn_right(RoboterData *data) {
     set_duty_cycle(RIGHT_ENG, ENG_SLOW);
 }
 
-void accelerate_straight(RoboterData *data, int max_speed) {
-    for (unsigned char i = 0; i < max_speed; i++) {
+void accelerate_straight(RoboterData *data, int to_value) {
+    for (unsigned char i = 0; i < to_value; i++) {
         set_duty_cycle(LEFT_ENG, i+1);
         set_duty_cycle(RIGHT_ENG, i+1);
         _delay_ms(50);
     }
 }
 
-void deaccelerate_straight(RoboterData *data, int min_speed) {
+void deaccelerate_straight(RoboterData *data, int to_value) {
     // Slowly decrease the duty
-    for (unsigned char i = 255; i > min_speed; i--) {
+    for (unsigned char i = 255; i > to_value; i--) {
         set_duty_cycle(LEFT_ENG, i+1);
         set_duty_cycle(RIGHT_ENG, i+1);
         _delay_ms(50);

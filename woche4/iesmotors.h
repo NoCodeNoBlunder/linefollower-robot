@@ -14,6 +14,6 @@ void motors_Init();
 void drive_straight(RoboterData *data);
 void turn_left(RoboterData *data);
 void turn_right(RoboterData *data);
-void accelerate_straight(RoboterData *data, int max_speed);
-void deaccelerate_straight(RoboterData *data, int min_speed);
+void accelerate_straight(RoboterData *data, int to_value);
+void deaccelerate_straight(RoboterData *data, int to_value);
 #endif
