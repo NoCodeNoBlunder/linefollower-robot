@@ -39,9 +39,6 @@ void set_mode(RoboterData *data) {
     if (data->sensor_left < THRESHOLD && data->sensor_mid < THRESHOLD && data->sensor_right < THRESHOLD) {
         data->mode = FORWARD;
     }
-    else if(data->sensor_mid >= THRESHOLD) {
-        data->mode = FORWARD;
-    }
     // Left Sensor detects path
     else if (data->sensor_left >= THRESHOLD) {
         data->mode = LEFT_TURN;
