@@ -34,6 +34,9 @@ void trigger_mode(RoboterData *data) {
     if (data->sensor_left < THRESHOLD && data->sensor_mid < THRESHOLD && data->sensor_right < THRESHOLD) {
         data->mode = FORWARD;
     }
+    else if(data->sensor_mid >= THRESHOLD) {
+        data->mode = FORWARD;
+    }
     // Left Sensor detects path
     else if (data->sensor_left >= THRESHOLD) {
         data->mode = LEFT_TURN;
@@ -76,10 +79,11 @@ void send_data(RoboterData *data) {
     USART_print(str_buf);
 }
 
-
+// TODO reduce header ammount and file ammount and change names
 int main() {
     init_ADC();
     init_motors();
+    USART_init(UBRR_SETTING);
 
     set_polarity_forward();
 

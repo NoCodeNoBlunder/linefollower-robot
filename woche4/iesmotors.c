@@ -122,13 +122,17 @@ void init_motors() {
     // Set PD5 and PD6 as output (EN[A|B]!)
     DDRD = (1 << DD5) | (1 << DD6);
 
-    // Set PB0, PB1, and PB3 as output (IN[1|2|3|4])
+    // IN1
+    DDRD |= (1 << DD7);
+
+    // Set PB0, PB1, and PB3 as output (IN[2|3|4])
     DDRB = (1 << DD0) | (1 << DD1) | (1 << DD3) | (1 << DD7);
 
     // Make PWM work on PD[5|6]
     setup_timer0();
 }
 
+// TODO Name change this?
 void drive_forward() {
     set_duty_cycle(LEFT_ENG, ENG_MID);
     set_duty_cycle(RIGHT_ENG, ENG_MID);

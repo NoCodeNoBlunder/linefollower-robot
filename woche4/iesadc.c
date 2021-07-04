@@ -19,6 +19,7 @@ ISR (TIMER2_COMPA_vect) {
     cnt2+=1;
 }
 
+// TODO do i need this and if yes what for?
 void setup_timer2() {
     cli();
     TCCR2B = (1<<CS00); // Prescaler: 1
@@ -57,14 +58,13 @@ uint16_t ADC_read_avg(uint8_t channel, uint8_t nsamples) {
     return (uint16_t)( sum / nsamples );
 }
 
-
+// TODO rename this.
 void init_ADC() {
     DDRC &= ~((1 << PC0) | (1 << PC1) | (1 << PC2));
-    USART_init(UBRR_SETTING);
     ADC_Init();
 
-    // TODO Potential danger!
-    setup_timer2();
+    // TODO Potential danger! Why is this needed?
+    // setup_timer2();
 }
 
 /*

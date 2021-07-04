@@ -5,6 +5,7 @@
 #include <avr/io.h>
 
 // TODO not all have to be enum or typedefs!
+// TODO I Should not have everything here it pollutes the name space!
 typedef enum {
     IDLE,
     FORWARD,
