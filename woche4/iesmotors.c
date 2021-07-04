@@ -133,17 +133,17 @@ void motors_Init() {
 }
 
 // TODO Name change this?
-void drive_forward() {
+void drive_straight() {
     set_duty_cycle(LEFT_ENG, ENG_MID);
     set_duty_cycle(RIGHT_ENG, ENG_MID);
 }
 
-void drive_left() {
+void turn_left() {
     set_duty_cycle(LEFT_ENG, ENG_SLOW);
     set_duty_cycle(RIGHT_ENG, ENG_FAST);
 }
 
-void drive_right() {
+void turn_right() {
     set_duty_cycle(LEFT_ENG, ENG_FAST);
     set_duty_cycle(RIGHT_ENG, ENG_SLOW);
 }

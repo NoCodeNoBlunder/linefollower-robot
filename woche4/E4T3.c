@@ -16,18 +16,18 @@ void fire_mode(DriveMode mode) {
             break;
         case FORWARD:
             set_polarity_forward();
-            drive_forward();
+            drive_straight();
             break;
         case BACKWARD:
             set_polarity_backward();
             break;
         case LEFT_TURN:
             set_polarity_forward();
-            drive_left();
+            turn_left();
             break;
         case RIGHT_TURN:
             set_polarity_forward();
-            drive_right();
+            turn_right();
             break;
     }
 }
