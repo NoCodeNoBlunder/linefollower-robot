@@ -11,7 +11,9 @@ typedef enum {
     FORWARD,
     BACKWARD,
     LEFT_TURN,
-    RIGHT_TURN
+    RIGHT_TURN,
+    LEFT_SPIN,
+    RIGHT_SPIN
 } DriveMode;
 
 typedef enum {

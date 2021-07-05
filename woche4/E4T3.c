@@ -15,6 +15,9 @@ void fire_mode(RoboterData *data) {
         case IDLE:
             break;
         case FORWARD:
+            // TODO Polarity sollte gesetzt werden indirekt, wenn die
+            // driveMod sich ändert!
+            // Set polarity sollte indirekt über die drive Mod gesteurt werden!
             set_polarity_forward();
             drive_straight(data);
             break;
@@ -50,6 +53,8 @@ void set_mode(RoboterData *data) {
     else {
         data->mode = FORWARD;
     }
+
+    event_handler(data);
 }
 
 void send_data(RoboterData *data) {
@@ -92,7 +97,7 @@ int main() {
 
     RoboterData data;
 
-    accelerate_straight(&data , ENG_FAST);
+    // accelerate_straight(&data , ENG_FAST);
 
     while(1) {
 

@@ -159,10 +159,11 @@ void turn_right(RoboterData *data) {
 }
 
 void accelerate_straight(RoboterData *data, int to_value) {
-    for (unsigned char i = 0; i < to_value; i++) {
+    for (unsigned char i = data->right_eng_speed; i < to_value; i++) {
+        // TODO hier muss auch gemessen werden!
         set_duty_cycle(LEFT_ENG, i+1);
         set_duty_cycle(RIGHT_ENG, i+1);
-        _delay_ms(50);
+        _delay_ms(10);
     }
 }
 
@@ -172,6 +173,26 @@ void deaccelerate_straight(RoboterData *data, int to_value) {
         set_duty_cycle(LEFT_ENG, i+1);
         set_duty_cycle(RIGHT_ENG, i+1);
         _delay_ms(50);
+    }
+}
+
+void event_handler(RoboterData *data) {
+    switch (data ->mode) {
+
+        case IDLE:
+            break;
+        case FORWARD:
+            break;
+        case BACKWARD:
+            break;
+        case LEFT_TURN:
+            break;
+        case RIGHT_TURN:
+            break;
+        case LEFT_SPIN:
+            break;
+        case RIGHT_SPIN:
+            break;
     }
 }
 // endregion
