@@ -16,4 +16,5 @@ void turn_left(RoboterData *data);
 void turn_right(RoboterData *data);
 void accelerate_straight(RoboterData *data, int to_value);
 void deaccelerate_straight(RoboterData *data, int to_value);
+void event_handler(RoboterData *data);
 #endif
