@@ -92,6 +92,8 @@ int main() {
 
     RoboterData data;
 
+    accelerate_straight(&data , ENG_FAST);
+
     while(1) {
 
         data.sensor_left = ADC_read_avg(LEFT_SENSOR, SAMPLE_SIZE);
