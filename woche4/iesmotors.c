@@ -158,13 +158,30 @@ void turn_right(RoboterData *data) {
     set_duty_cycle(RIGHT_ENG, ENG_SLOW);
 }
 
+// TODO kann ich hieraus eine Couroutine schreiben die für mehrere Funktionen
+// mit Pointern zur Funktion
+// verwendbar ist?
 void accelerate_straight(RoboterData *data, int to_value) {
-    for (unsigned char i = data->right_eng_speed; i < to_value; i++) {
+
+    static int i, state = 0;
+    switch (state) {
+        case 0: goto M0;
+        case 1: goto M1;
+    }
+
+    M0:
+        // TODO warum brauche ich eine schneller accel rate?
+    for (i = data -> right_eng_speed; i < to_value; i+=10) {
+        state = 1;
         // TODO hier muss auch gemessen werden!
         set_duty_cycle(LEFT_ENG, i+1);
         set_duty_cycle(RIGHT_ENG, i+1);
-        _delay_ms(10);
+        // _delay_ms(10);
+        return;
+        M1:;
     }
+
+    USART_print("\nICH BIN FERTIG!\n");
 }
 
 void deaccelerate_straight(RoboterData *data, int to_value) {
@@ -172,7 +189,7 @@ void deaccelerate_straight(RoboterData *data, int to_value) {
     for (unsigned char i = 255; i > to_value; i--) {
         set_duty_cycle(LEFT_ENG, i+1);
         set_duty_cycle(RIGHT_ENG, i+1);
-        _delay_ms(50);
+//        _delay_ms(50);
     }
 }
 

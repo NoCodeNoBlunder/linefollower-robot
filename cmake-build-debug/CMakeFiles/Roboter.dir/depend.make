@@ -1979,8 +1979,11 @@ CMakeFiles/Roboter.dir/woche4/iesmotors.c.obj: ../include/avr/sfr_defs.h
 CMakeFiles/Roboter.dir/woche4/iesmotors.c.obj: ../include/avr/version.h
 CMakeFiles/Roboter.dir/woche4/iesmotors.c.obj: ../include/avr/xmega.h
 CMakeFiles/Roboter.dir/woche4/iesmotors.c.obj: ../include/inttypes.h
+CMakeFiles/Roboter.dir/woche4/iesmotors.c.obj: ../include/math.h
 CMakeFiles/Roboter.dir/woche4/iesmotors.c.obj: ../include/stdint.h
 CMakeFiles/Roboter.dir/woche4/iesmotors.c.obj: ../include/stdio.h
+CMakeFiles/Roboter.dir/woche4/iesmotors.c.obj: ../include/util/delay.h
+CMakeFiles/Roboter.dir/woche4/iesmotors.c.obj: ../include/util/delay_basic.h
 CMakeFiles/Roboter.dir/woche4/iesmotors.c.obj: ../woche4/iesmotors.c
 CMakeFiles/Roboter.dir/woche4/iesmotors.c.obj: ../woche4/iesmotors.h
 CMakeFiles/Roboter.dir/woche4/iesmotors.c.obj: ../woche4/iesusart.h

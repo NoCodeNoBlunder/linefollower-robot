@@ -1375,6 +1375,8 @@ iesusart.h
 C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/iesusart.h
 stdio.h
 -
+util/delay.h
+-
 
 C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/iesmotors.h
 avr/io.h
@@ -1383,12 +1385,6 @@ avr/interrupt.h
 -
 typedefs.h
 C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/typedefs.h
-
-C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/iesusart.c
-iesusart.h
-C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/iesusart.h
-avr/io.h
--
 
 C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/iesusart.h
 

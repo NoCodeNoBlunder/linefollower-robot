@@ -7,7 +7,7 @@
 
 #define THRESHOLD 512
 #define SAMPLE_SIZE 20
-#define STR_BUF_SIZE 100
+#define STR_BUF_SIZE 40
 
 // TODO lohnt sich das?
 void fire_mode(RoboterData *data) {
@@ -19,7 +19,7 @@ void fire_mode(RoboterData *data) {
             // driveMod sich ändert!
             // Set polarity sollte indirekt über die drive Mod gesteurt werden!
             set_polarity_forward();
-            drive_straight(data);
+            // drive_straight(data);
             break;
         case BACKWARD:
             set_polarity_backward();
@@ -101,6 +101,7 @@ int main() {
 
     while(1) {
 
+        accelerate_straight(&data, ENG_FAST);
         data.sensor_left = ADC_read_avg(LEFT_SENSOR, SAMPLE_SIZE);
         data.sensor_mid = ADC_read_avg(MID_SENSOR, SAMPLE_SIZE);
         data.sensor_right = ADC_read_avg(RIGHT_SENSOR, SAMPLE_SIZE);
@@ -108,6 +109,6 @@ int main() {
         set_mode(&data);
         fire_mode(&data);
         send_data(&data);
-        _delay_ms(250);
+        _delay_ms( 250);
     }
 }
