@@ -10,7 +10,7 @@ typedef enum {
     IN2 = PB0,
     IN3 = PB1,
     IN4 = PB3
-} Engpolarity ;
+} Engpolarity;
 
 /* sets up timer 0 (8 bit) */
 void setup_timer0() {

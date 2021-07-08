@@ -1,19 +1,15 @@
-//
-// Created by Fabian on 07.07.2021.
-//
+
 
 #ifndef FSM_C_FSM_H
 #define FSM_C_FSM_H
 
-
 #include "typedefs.h"
 
 typedef enum {
-    // default State has to be the first state.
-    START,
+    INIT,     // default State has to be the first state.
     STEADY,
     ACCELRATION,
-    TERMINATE,
+    SHUTDOWN,
     STATECOUNT,
 } State ;
 
@@ -21,10 +17,8 @@ typedef enum {
 struct FSM;
 
 typedef struct ConcreteState {
-    // struct FSM state;
-    // TODO not needed state here is is clear because of array index.
     State state;
-    char * stateName;
+    char * stateName; // unused but good for debugging.
     void (*enter_ptr)(struct FSM *fsm, void *arg);
     void (*update_ptr)(struct FSM *fsm, void *arg);
 } ConcreteState;
@@ -32,7 +26,6 @@ typedef struct ConcreteState {
 typedef struct FSM {
     ConcreteState *currentState;
     ConcreteState *states[STATECOUNT];
-//    ConcreteState ** states; Wieso geht das nicht
 } FSM;
 
 // TODO hier muss bei den Funktionen die Signatur mit angegeben werden?

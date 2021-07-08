@@ -95,8 +95,6 @@ void enter_start(FSM *fsm, RoboterData *data) {
     motors_Init();
     USART_Init(UBRR_SETTING);
 
-    USART_print("Transition to STEADY\n");
-
     switchState(fsm, STEADY, data);
 }
 
@@ -105,8 +103,6 @@ void enter_steady() {
 
 }
 
-// TODO ich brauche hier ein void Pointer mindestens!
-// für die Instanz von Roboterdata
 void update_steady(FSM *fsm, RoboterData *data) {
     // accelerate_straight(data, ENG_FAST);
     data->sensor_left = ADC_read_avg(LEFT_SENSOR, SAMPLE_SIZE);
@@ -119,7 +115,7 @@ void update_steady(FSM *fsm, RoboterData *data) {
     // _delay_ms( 250);
 
     if (data ->sensor_right > THRESHOLD) {
-        switchState(fsm, TERMINATE, data);
+        switchState(fsm, SHUTDOWN, data);
     }
 }
 
@@ -128,8 +124,7 @@ int main() {
     FSM fsm;
     RoboterData data;
 
-    // TODO abfrage hinzufügen ob FunctionPointer NULL ist
-    addState(&fsm, START, "Start", enter_start, NULL);
+    addState(&fsm, INIT, "Start", enter_start, NULL);
     addState(&fsm, STEADY, "Steady", enter_steady, update_steady);
 
     start_fsm_cycle(&fsm, &data);

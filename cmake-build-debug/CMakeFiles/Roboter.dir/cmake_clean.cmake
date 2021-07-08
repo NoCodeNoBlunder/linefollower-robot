@@ -9,7 +9,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/Roboter.dir/woche4/iesmotors.c.obj"
   "CMakeFiles/Roboter.dir/woche4/iesusart.c.obj"
   "CMakeFiles/Roboter.dir/woche4/main.c.obj"
-  "CMakeFiles/Roboter.dir/woche4/skeleton_motors.c.obj"
   "Roboter.exe"
   "Roboter.exe.manifest"
   "Roboter.pdb"

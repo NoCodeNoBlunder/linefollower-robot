@@ -411,33 +411,6 @@ woche4/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/main.c.s
 .PHONY : woche4/main.c.s
 
-woche4/skeleton_motors.obj: woche4/skeleton_motors.c.obj
-
-.PHONY : woche4/skeleton_motors.obj
-
-# target to build an object file
-woche4/skeleton_motors.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/skeleton_motors.c.obj
-.PHONY : woche4/skeleton_motors.c.obj
-
-woche4/skeleton_motors.i: woche4/skeleton_motors.c.i
-
-.PHONY : woche4/skeleton_motors.i
-
-# target to preprocess a source file
-woche4/skeleton_motors.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/skeleton_motors.c.i
-.PHONY : woche4/skeleton_motors.c.i
-
-woche4/skeleton_motors.s: woche4/skeleton_motors.c.s
-
-.PHONY : woche4/skeleton_motors.s
-
-# target to generate assembly for a file
-woche4/skeleton_motors.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/skeleton_motors.c.s
-.PHONY : woche4/skeleton_motors.c.s
-
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -477,9 +450,6 @@ help:
 	@echo ... woche4/main.obj
 	@echo ... woche4/main.i
 	@echo ... woche4/main.s
-	@echo ... woche4/skeleton_motors.obj
-	@echo ... woche4/skeleton_motors.i
-	@echo ... woche4/skeleton_motors.s
 .PHONY : help
 
 
