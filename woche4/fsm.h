@@ -6,9 +6,12 @@
 #define FSM_C_FSM_H
 
 
+#include "typedefs.h"
+
 typedef enum {
     START,
-    RUN,
+    STEADY,
+    ACCELRATION,
     STATECOUNT,
 } State ;
 
@@ -21,7 +24,7 @@ typedef struct ConcreteState {
     State state;
     char * stateName;
     void (*enter_ptr)(void);
-    void (*update_ptr)(struct FSM*);
+    void (*update_ptr)(struct FSM*, void *arg);
 } ConcreteState;
 
 typedef struct FSM {
@@ -30,10 +33,10 @@ typedef struct FSM {
 //    ConcreteState ** states; Wieso geht das nicht
 } FSM;
 
-
+// TODO hier muss bei den Funktionen die Signatur mit angegeben werden?
 void addState(FSM *fsm, State state, char *name, void (*enter), void (*update));
 
-void start_fsm_cycle(FSM *fsm_instance);
+void start_fsm_cycle(FSM *fsm_instance, void *data);
 
 void switchState(FSM *fsm_instance, State nextState);
 

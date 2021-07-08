@@ -276,33 +276,6 @@ woche3/iesusart.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche3/iesusart.c.s
 .PHONY : woche3/iesusart.c.s
 
-woche4/E4T3.obj: woche4/E4T3.c.obj
-
-.PHONY : woche4/E4T3.obj
-
-# target to build an object file
-woche4/E4T3.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/E4T3.c.obj
-.PHONY : woche4/E4T3.c.obj
-
-woche4/E4T3.i: woche4/E4T3.c.i
-
-.PHONY : woche4/E4T3.i
-
-# target to preprocess a source file
-woche4/E4T3.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/E4T3.c.i
-.PHONY : woche4/E4T3.c.i
-
-woche4/E4T3.s: woche4/E4T3.c.s
-
-.PHONY : woche4/E4T3.s
-
-# target to generate assembly for a file
-woche4/E4T3.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/E4T3.c.s
-.PHONY : woche4/E4T3.c.s
-
 woche4/fsm.obj: woche4/fsm.c.obj
 
 .PHONY : woche4/fsm.obj
@@ -411,6 +384,33 @@ woche4/iesusart.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/iesusart.c.s
 .PHONY : woche4/iesusart.c.s
 
+woche4/main.obj: woche4/main.c.obj
+
+.PHONY : woche4/main.obj
+
+# target to build an object file
+woche4/main.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/main.c.obj
+.PHONY : woche4/main.c.obj
+
+woche4/main.i: woche4/main.c.i
+
+.PHONY : woche4/main.i
+
+# target to preprocess a source file
+woche4/main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/main.c.i
+.PHONY : woche4/main.c.i
+
+woche4/main.s: woche4/main.c.s
+
+.PHONY : woche4/main.s
+
+# target to generate assembly for a file
+woche4/main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/main.c.s
+.PHONY : woche4/main.c.s
+
 woche4/skeleton_motors.obj: woche4/skeleton_motors.c.obj
 
 .PHONY : woche4/skeleton_motors.obj
@@ -462,9 +462,6 @@ help:
 	@echo ... woche3/iesusart.obj
 	@echo ... woche3/iesusart.i
 	@echo ... woche3/iesusart.s
-	@echo ... woche4/E4T3.obj
-	@echo ... woche4/E4T3.i
-	@echo ... woche4/E4T3.s
 	@echo ... woche4/fsm.obj
 	@echo ... woche4/fsm.i
 	@echo ... woche4/fsm.s
@@ -477,6 +474,9 @@ help:
 	@echo ... woche4/iesusart.obj
 	@echo ... woche4/iesusart.i
 	@echo ... woche4/iesusart.s
+	@echo ... woche4/main.obj
+	@echo ... woche4/main.i
+	@echo ... woche4/main.s
 	@echo ... woche4/skeleton_motors.obj
 	@echo ... woche4/skeleton_motors.i
 	@echo ... woche4/skeleton_motors.s

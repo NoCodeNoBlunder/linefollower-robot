@@ -4,6 +4,7 @@
 #include "iesadc.h"
 #include "typedefs.h"
 #include "iesmotors.h"
+#include "fsm.h"
 
 #define THRESHOLD 512
 #define SAMPLE_SIZE 20
@@ -89,26 +90,47 @@ void send_data(RoboterData *data) {
     USART_print(str_buf);
 }
 
-// TODO reduce header ammount and file ammount and change names
-int main() {
+void enter_start() {
     ADC_Init();
     motors_Init();
     USART_Init(UBRR_SETTING);
+}
+
+void enter_steady() {
+
+}
+
+// TODO ich brauche hier ein void Pointer mindestens!
+// für die Instanz von Roboterdata
+void update_steady(FSM *fsm, void *arg) {
+    RoboterData *data = (RoboterData*)arg;
+    accelerate_straight(data, ENG_FAST);
+    data->sensor_left = ADC_read_avg(LEFT_SENSOR, SAMPLE_SIZE);
+    data->sensor_mid = ADC_read_avg(MID_SENSOR, SAMPLE_SIZE);
+    data->sensor_right = ADC_read_avg(RIGHT_SENSOR, SAMPLE_SIZE);
+
+    set_mode(data);
+    fire_mode(data);
+    send_data(data);
+    _delay_ms( 250);
+}
+
+// TODO reduce header ammount and file ammount and change names
+int main() {
+
 
     RoboterData data;
+    FSM fsm;
+    // TODO abfrage hinzufügen ob FunctionPointer NULL ist
+    addState(&fsm, START, "Start", enter_start, NULL);
+    addState(&fsm, STEADY, "Steady", enter_steady, update_steady);
 
+
+    USART_print("It went through?");
     // accelerate_straight(&data , ENG_FAST);
 
-    while(1) {
-
-        accelerate_straight(&data, ENG_FAST);
-        data.sensor_left = ADC_read_avg(LEFT_SENSOR, SAMPLE_SIZE);
-        data.sensor_mid = ADC_read_avg(MID_SENSOR, SAMPLE_SIZE);
-        data.sensor_right = ADC_read_avg(RIGHT_SENSOR, SAMPLE_SIZE);
-
-        set_mode(&data);
-        fire_mode(&data);
-        send_data(&data);
-        _delay_ms( 250);
-    }
+//    while(1) {
+//
+//
+//    }
 }
