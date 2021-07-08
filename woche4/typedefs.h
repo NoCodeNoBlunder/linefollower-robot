@@ -34,6 +34,7 @@ typedef enum {
     RIGHT_SENSOR = PC2
 } Sensor;
 
+// TODO add DriveMode name to better debug
 typedef struct {
     DriveMode mode;
     short sensor_left;

@@ -25,7 +25,7 @@ typedef struct ConcreteState {
     // TODO not needed state here is is clear because of array index.
     State state;
     char * stateName;
-    void (*enter_ptr)(struct FSM *fsm);
+    void (*enter_ptr)(struct FSM *fsm, void *arg);
     void (*update_ptr)(struct FSM *fsm, void *arg);
 } ConcreteState;
 
@@ -40,6 +40,6 @@ void addState(FSM *fsm, State state, char *name, void (*enter), void (*update));
 
 void start_fsm_cycle(FSM *fsm_instance, void *data);
 
-void switchState(FSM *fsm_instance, State nextState);
+void switchState(FSM *fsm_instance, State nextState, void *arg);
 
 #endif //FSM_C_FSM_H

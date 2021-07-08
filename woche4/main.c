@@ -90,14 +90,14 @@ void send_data(RoboterData *data) {
     USART_print(str_buf);
 }
 
-void enter_start(FSM *fsm) {
+void enter_start(FSM *fsm, RoboterData *data) {
     ADC_Init();
     motors_Init();
     USART_Init(UBRR_SETTING);
 
     USART_print("Transition to STEADY\n");
 
-    switchState(fsm, STEADY);
+    switchState(fsm, STEADY, data);
 }
 
 // TODO argument change!
@@ -107,8 +107,7 @@ void enter_steady() {
 
 // TODO ich brauche hier ein void Pointer mindestens!
 // für die Instanz von Roboterdata
-void update_steady(FSM *fsm, void *arg) {
-    RoboterData *data = (RoboterData*)arg;
+void update_steady(FSM *fsm, RoboterData *data) {
     // accelerate_straight(data, ENG_FAST);
     data->sensor_left = ADC_read_avg(LEFT_SENSOR, SAMPLE_SIZE);
     data->sensor_mid = ADC_read_avg(MID_SENSOR, SAMPLE_SIZE);
@@ -120,7 +119,7 @@ void update_steady(FSM *fsm, void *arg) {
     // _delay_ms( 250);
 
     if (data ->sensor_right > THRESHOLD) {
-        switchState(fsm, TERMINATE);
+        switchState(fsm, TERMINATE, data);
     }
 }
 
