@@ -9,6 +9,7 @@
 #include "typedefs.h"
 
 typedef enum {
+    // default State has to be the first state.
     START,
     STEADY,
     ACCELRATION,
@@ -24,8 +25,8 @@ typedef struct ConcreteState {
     // TODO not needed state here is is clear because of array index.
     State state;
     char * stateName;
-    void (*enter_ptr)(void);
-    void (*update_ptr)(struct FSM*, void *arg);
+    void (*enter_ptr)(struct FSM *fsm);
+    void (*update_ptr)(struct FSM *fsm, void *arg);
 } ConcreteState;
 
 typedef struct FSM {

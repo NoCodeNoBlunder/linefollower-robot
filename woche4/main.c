@@ -20,7 +20,7 @@ void fire_mode(RoboterData *data) {
             // driveMod sich ändert!
             // Set polarity sollte indirekt über die drive Mod gesteurt werden!
             set_polarity_forward();
-            // drive_straight(data);
+            drive_straight(data);
             break;
         case BACKWARD:
             set_polarity_backward();
@@ -90,12 +90,17 @@ void send_data(RoboterData *data) {
     USART_print(str_buf);
 }
 
-void enter_start() {
+void enter_start(FSM *fsm) {
     ADC_Init();
     motors_Init();
     USART_Init(UBRR_SETTING);
+
+    USART_print("Transition to STEADY\n");
+
+    switchState(fsm, STEADY);
 }
 
+// TODO argument change!
 void enter_steady() {
 
 }
@@ -104,7 +109,7 @@ void enter_steady() {
 // für die Instanz von Roboterdata
 void update_steady(FSM *fsm, void *arg) {
     RoboterData *data = (RoboterData*)arg;
-    accelerate_straight(data, ENG_FAST);
+    // accelerate_straight(data, ENG_FAST);
     data->sensor_left = ADC_read_avg(LEFT_SENSOR, SAMPLE_SIZE);
     data->sensor_mid = ADC_read_avg(MID_SENSOR, SAMPLE_SIZE);
     data->sensor_right = ADC_read_avg(RIGHT_SENSOR, SAMPLE_SIZE);
@@ -112,25 +117,23 @@ void update_steady(FSM *fsm, void *arg) {
     set_mode(data);
     fire_mode(data);
     send_data(data);
-    _delay_ms( 250);
+    // _delay_ms( 250);
+
+    if (data ->sensor_right > THRESHOLD) {
+        switchState(fsm, TERMINATE);
+    }
 }
 
 // TODO reduce header ammount and file ammount and change names
 int main() {
-
-
-    RoboterData data;
     FSM fsm;
+    RoboterData data;
+
     // TODO abfrage hinzufügen ob FunctionPointer NULL ist
     addState(&fsm, START, "Start", enter_start, NULL);
     addState(&fsm, STEADY, "Steady", enter_steady, update_steady);
 
+    start_fsm_cycle(&fsm, &data);
 
-    USART_print("It went through?");
-    // accelerate_straight(&data , ENG_FAST);
-
-//    while(1) {
-//
-//
-//    }
+    USART_print("Terminated?\n");
 }
