@@ -303,6 +303,33 @@ woche4/E4T3.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/E4T3.c.s
 .PHONY : woche4/E4T3.c.s
 
+woche4/fsm.obj: woche4/fsm.c.obj
+
+.PHONY : woche4/fsm.obj
+
+# target to build an object file
+woche4/fsm.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/fsm.c.obj
+.PHONY : woche4/fsm.c.obj
+
+woche4/fsm.i: woche4/fsm.c.i
+
+.PHONY : woche4/fsm.i
+
+# target to preprocess a source file
+woche4/fsm.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/fsm.c.i
+.PHONY : woche4/fsm.c.i
+
+woche4/fsm.s: woche4/fsm.c.s
+
+.PHONY : woche4/fsm.s
+
+# target to generate assembly for a file
+woche4/fsm.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/fsm.c.s
+.PHONY : woche4/fsm.c.s
+
 woche4/iesadc.obj: woche4/iesadc.c.obj
 
 .PHONY : woche4/iesadc.obj
@@ -438,6 +465,9 @@ help:
 	@echo ... woche4/E4T3.obj
 	@echo ... woche4/E4T3.i
 	@echo ... woche4/E4T3.s
+	@echo ... woche4/fsm.obj
+	@echo ... woche4/fsm.i
+	@echo ... woche4/fsm.s
 	@echo ... woche4/iesadc.obj
 	@echo ... woche4/iesadc.i
 	@echo ... woche4/iesadc.s

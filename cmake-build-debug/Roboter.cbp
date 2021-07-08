@@ -19,7 +19,7 @@
 			</Target>
 			<Target title="Roboter">
 				<Option output="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/cmake-build-debug/Roboter.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir=""/>
+				<Option working_dir="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -39,7 +39,7 @@
 			</Target>
 			<Target title="Roboter/fast">
 				<Option output="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/cmake-build-debug/Roboter.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir=""/>
+				<Option working_dir="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -94,6 +94,12 @@
 			<Option target="Roboter"/>
 		</Unit>
 		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/E4T3.c">
+			<Option target="Roboter"/>
+		</Unit>
+		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/fsm.c">
+			<Option target="Roboter"/>
+		</Unit>
+		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/fsm.h">
 			<Option target="Roboter"/>
 		</Unit>
 		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/iesadc.c">
