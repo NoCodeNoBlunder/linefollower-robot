@@ -27,7 +27,7 @@ void start_fsm_cycle(FSM *fsm_instance, void *data) {
     terminate_fsm_cycle(fsm_instance); // Terminates the Programm and shuts down Robot
 }
 
-void switchState(FSM *fsm_instance, State nextState, void *arg) {
+void switchState(FSM *fsm_instance, void *arg, State nextState) {
     fsm_instance -> currentState = fsm_instance ->states[nextState];
     void (*enter_fun)(struct FSM *, void *) = fsm_instance ->currentState ->enter_ptr;
     // Hier muss dereferenziert werden!

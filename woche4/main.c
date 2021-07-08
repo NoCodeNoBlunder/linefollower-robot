@@ -10,6 +10,12 @@
 #define SAMPLE_SIZE 20
 #define STR_BUF_SIZE 40
 
+enum Threshold{
+    THRESHOLD_L = 512,
+    THRESHOLD_M = 512,
+    THRESHOLD_R = 512,
+};
+
 // TODO lohnt sich das?
 void fire_mode(RoboterData *data) {
     switch (data -> mode) {
@@ -40,15 +46,15 @@ void fire_mode(RoboterData *data) {
 void set_mode(RoboterData *data) {
     // NO Sensor detects path
     // TODO was sollte priorisiert werden?
-    if (data->sensor_left < THRESHOLD && data->sensor_mid < THRESHOLD && data->sensor_right < THRESHOLD) {
+    if (data->sensor_left < THRESHOLD_L && data->sensor_mid < THRESHOLD_M && data->sensor_right < THRESHOLD_R) {
         data->mode = FORWARD;
     }
     // Left Sensor detects path
-    else if (data->sensor_left >= THRESHOLD) {
+    else if (data->sensor_left >= THRESHOLD_L) {
         data->mode = LEFT_TURN;
     }
     // Right Sensor detects path
-    else if (data->sensor_right >= THRESHOLD) {
+    else if (data->sensor_right >= THRESHOLD_R) {
         data->mode = RIGHT_TURN;
     }
     else {
@@ -95,7 +101,7 @@ void enter_start(FSM *fsm, RoboterData *data) {
     motors_Init();
     USART_Init(UBRR_SETTING);
 
-    switchState(fsm, STEADY, data);
+    switchState(fsm, data, STEADY);
 }
 
 // TODO argument change!
@@ -114,8 +120,8 @@ void update_steady(FSM *fsm, RoboterData *data) {
     send_data(data);
     // _delay_ms( 250);
 
-    if (data ->sensor_right > THRESHOLD) {
-        switchState(fsm, SHUTDOWN, data);
+    if (data ->sensor_right > THRESHOLD_R) {
+        switchState(fsm, data, SHUTDOWN);
     }
 }
 

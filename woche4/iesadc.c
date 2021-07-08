@@ -16,11 +16,12 @@ ISR (TIMER2_COMPA_vect) {
 }
 
 // TODO do i need this and if yes what for?
+// das wird beim Ultraschall benutzt. Gehört hier nicht hin.
 void setup_timer2() {
     cli();
-    TCCR2B = (1<<CS00); // Prescaler: 1
-    TIMSK2 |= (1<<OCIE2A);
-    TCCR2A = (1<<WGM01);
+    TCCR2B = (1 << CS00); // Prescaler: 1
+    TIMSK2 |= (1 << OCIE2A);
+    TCCR2A = (1 << WGM01);
     TCNT2 = 0;
     OCR2A = 255;
     sei();
@@ -34,7 +35,7 @@ void ADC_Init() {
     ADCSRA = (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); // Set clock (Takt)?
     ADCSRA |= (1 << ADEN); // Before you can start the conversion by setting the ADSC bit, you have to "allow" it first by setting the ADEN-bit.
     ADCSRA |= (1 << ADSC); // Single conversion
-    while (ADCSRA & (1<<ADSC) );
+    while (ADCSRA & (1 << ADSC) );
     ADCW; // Read once to "warm up" ADC.
 
     // TODO Potential danger! Why is this needed?
