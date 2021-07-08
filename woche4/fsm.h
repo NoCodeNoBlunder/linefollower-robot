@@ -12,6 +12,7 @@ typedef enum {
     START,
     STEADY,
     ACCELRATION,
+    TERMINATE,
     STATECOUNT,
 } State ;
 

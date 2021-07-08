@@ -16,8 +16,7 @@ void start_fsm_cycle(FSM *fsm_instance, void *data) {
     fsm_instance -> currentState ->enter_ptr();
 
     // TODO brauche ich hier eine Abbruchbedienung?
-    while(1) {
-
+    while(fsm_instance -> currentState -> state != TERMINATE) {
         // Muss ich hier die complette Signatur angeben??
         void (*update_fun)(struct FSM*, void *arg) = fsm_instance ->currentState ->update_ptr;
         if (update_fun != NULL) {
@@ -50,6 +49,7 @@ void addState(FSM *fsm, State state, char *name, void (*enter), void (*update)) 
     // The first State added becomes the default state
     if (state == 0) {
         fsm ->currentState = new_state;
+        addState(fsm, TERMINATE, "Terminate", NULL, NULL);
     }
 }
 
