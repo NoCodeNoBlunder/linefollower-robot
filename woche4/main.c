@@ -45,7 +45,7 @@ void fire_mode(RoboterData *data) {
 
 void set_mode(RoboterData *data) {
     // NO Sensor detects path
-    // TODO was sollte priorisiert werden?
+    // TODO was sollte priorisiert werden? Geht es effizienter schlauer? Könnte ich removen ist schon im else!
     if (data->sensor_left < THRESHOLD_L && data->sensor_mid < THRESHOLD_M && data->sensor_right < THRESHOLD_R) {
         data->mode = FORWARD;
     }
@@ -64,7 +64,7 @@ void set_mode(RoboterData *data) {
     event_handler(data);
 }
 
-void send_data(RoboterData *data) {
+void transmit_data(RoboterData *data) {
     static char str_buf[STR_BUF_SIZE];
     static char *mode_str;
 
@@ -101,7 +101,7 @@ void enter_start(FSM *fsm, RoboterData *data) {
     motors_Init();
     USART_Init(UBRR_SETTING);
 
-    switchState(fsm, data, STEADY);
+    switch_state(fsm, data, STEADY);
 }
 
 // TODO argument change!
@@ -117,11 +117,11 @@ void update_steady(FSM *fsm, RoboterData *data) {
 
     set_mode(data);
     fire_mode(data);
-    send_data(data);
+    transmit_data(data);
     // _delay_ms( 250);
 
     if (data ->sensor_right > THRESHOLD_R) {
-        switchState(fsm, data, SHUTDOWN);
+        switch_state(fsm, data, SHUTDOWN);
     }
 }
 
@@ -130,10 +130,10 @@ int main() {
     FSM fsm;
     RoboterData data;
 
-    addState(&fsm, INIT, "Start", enter_start, NULL);
-    addState(&fsm, STEADY, "Steady", enter_steady, update_steady);
+    add_state(&fsm, INIT, "Start", enter_start, NULL);
+    add_state(&fsm, STEADY, "Steady", enter_steady, update_steady);
 
     start_fsm_cycle(&fsm, &data);
 
-    USART_print("Terminated?\n");
+    USART_print("Programm terminated\n");
 }

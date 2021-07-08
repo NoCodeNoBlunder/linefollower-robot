@@ -12,6 +12,7 @@ typedef enum {
     IN4 = PB3
 } Engpolarity;
 
+// Info is needed for PWM...?
 /* sets up timer 0 (8 bit) */
 void setup_timer0() {
     cli();                                  // disable interrupt globally // TODO why do interrupt need to be disabled?
