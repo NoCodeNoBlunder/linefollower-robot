@@ -1,10 +1,10 @@
 #include "iesmotors.h"
-#include "typedefs.h"
 #include "iesusart.h"
+#include "typedefs.h"
 #include <stdio.h>
 #include <util/delay.h>
+#include "fsm.h"
 
-// TODO macht kein sinn, da ich sowieso unterschiedliche Register nutze?!
 typedef enum {
     IN1 = PD7,
     IN2 = PB0,
@@ -43,7 +43,7 @@ void setup_timer0() {
  * The required pins also need to be set as output first. */
 void set_duty_cycle(uint8_t pin, uint8_t value)
 {
-    // TODO Codewiederholunge?
+    // TODO Codewiederholunge? Ja aber andere Register..
     if (pin == PD6) {
         if (value == 0) {
             TCCR0A &= ~(1 << COM0A1) & ~(1 << COM0A0);  // normal port operation mode
@@ -77,6 +77,7 @@ void set_duty_cycle(uint8_t pin, uint8_t value)
 }
 
 // region POLARITY
+// TODO create util file with helper methods?
 void set_high(volatile char *reg, char pin) {
     reg[0] |= (1 << pin);
 }
@@ -110,11 +111,6 @@ void set_polarity_forward() {
     right_forward();
 }
 
-void set_polarity_backward() {
-    left_backward();
-    right_backward();
-}
-
 void set_polarity_left_rot() {
     left_backward();
     right_forward();
@@ -124,49 +120,12 @@ void set_polarity_right_rot() {
     left_forward();
     right_backward();
 }
+
+void set_polarity_backward() {
+    left_backward();
+    right_backward();
+}
 // endregion
-
-// region DUTY_CYCLE
-void motors_Init() {
-    // Delete everything on ports B and D
-    DDRD = 0;
-    DDRB = 0;
-
-    // TODO alle pins müssen auf output gestellt sein.
-    // Set PD5 and PD6 as output (EN[A|B]!)
-    DDRD = (1 << DD5) | (1 << DD6);
-
-    // IN1
-    DDRD |= (1 << DD7);
-
-    // Set PB0, PB1, and PB3 as output (IN[2|3|4])
-    DDRB = (1 << DD0) | (1 << DD1) | (1 << DD3) | (1 << DD7);
-
-    // Make PWM work on PD[5|6]
-    setup_timer0();
-}
-
-// TODO name chanes for these 3 Methods
-void set_duty_straight(RoboterData *data) {
-    data ->left_eng_speed = ENG_MID;
-    data ->right_eng_speed = ENG_MID;
-    set_duty_cycle(LEFT_ENG, ENG_MID);
-    set_duty_cycle(RIGHT_ENG, ENG_MID);
-}
-
-void set_duty_left_turn(RoboterData *data) {
-    data ->left_eng_speed = ENG_SLOW;
-    data ->right_eng_speed = ENG_FAST;
-    set_duty_cycle(LEFT_ENG, ENG_SLOW);
-    set_duty_cycle(RIGHT_ENG, ENG_FAST);
-}
-
-void set_duty_right_turn(RoboterData *data) {
-    data ->left_eng_speed = ENG_FAST;
-    data ->right_eng_speed = ENG_SLOW;
-    set_duty_cycle(LEFT_ENG, ENG_FAST);
-    set_duty_cycle(RIGHT_ENG, ENG_SLOW);
-}
 
 // TODO kann ich hieraus eine Couroutine schreiben die für mehrere Funktionen
 // mit Pointern zur Funktion
@@ -200,6 +159,51 @@ void deaccelerate_straight(RoboterData *data, int to_value) {
         set_duty_cycle(RIGHT_ENG, i+1);
 //        _delay_ms(50);
     }
+}
+// endregion
+
+// region API MOTORS
+void motors_Init() {
+    // Delete everything on ports B and D
+    DDRD = 0;
+    DDRB = 0;
+
+    // TODO alle pins müssen auf output gestellt sein.
+    // Set PD5 and PD6 as output (EN[A|B]!)
+    DDRD = (1 << DD5) | (1 << DD6);
+
+    // IN1
+    DDRD |= (1 << DD7);
+
+    // Set PB0, PB1, and PB3 as output (IN[2|3|4])
+    DDRB = (1 << DD0) | (1 << DD1) | (1 << DD3) | (1 << DD7);
+
+    // Make PWM work on PD[5|6]
+    setup_timer0();
+}
+
+void set_direction(RoboterData *data, State state) {
+
+    switch (state) {
+        case LEFT:
+            data ->left_eng_speed = ENG_SLOW;
+            data ->right_eng_speed = ENG_FAST;
+            set_polarity_left_rot();
+            break;
+        case RIGHT:
+            data ->left_eng_speed = ENG_FAST;
+            data ->right_eng_speed = ENG_SLOW;
+            set_polarity_right_rot();
+            break;
+        case FORWARD:
+            data ->left_eng_speed = ENG_MID;
+            data ->right_eng_speed = ENG_MID;
+            set_polarity_forward();
+            break;
+    }
+
+    set_duty_cycle(LEFT_ENG, data ->left_eng_speed);
+    set_duty_cycle(RIGHT_ENG, data ->right_eng_speed);
 }
 // endregion
 

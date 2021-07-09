@@ -8,7 +8,7 @@
 typedef enum {
     INIT,     // default State has to be the first state.
     COUNTDOWN,
-    STRAIGHT,
+    FORWARD,
     LEFT,
     RIGHT,
     GOAL_REACHED,
