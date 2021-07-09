@@ -10,7 +10,7 @@ typedef struct {
     short sensor_mid;
     short sensor_right;
 
-    // scheiß auf eng speed!
+    // scheiß auf end speed!
     unsigned char left_eng_speed; // Only has values between 0 and 255
     unsigned char right_eng_speed;
 } RoboterData;

@@ -32,17 +32,19 @@ void transmit_data(RoboterData *data) {
     USART_print(str_buf);
 }
 
-void enter_init(FSM *fsm, RoboterData *data) {
+void enter_init(RoboterData *data) {
     ADC_Init();
     motors_Init();
     USART_Init(UBRR_SETTING);
+}
 
+void update_init(FSM *fsm, RoboterData *data) {
     switch_state(fsm, data, STRAIGHT);
 }
 
 // TODO ich sollte keine driveMod states mehr haben sondern alles über die fsm regulieren.
 // das macht aber das RoboterData struct etwas unnötig.
-void enter_straight(FSM *fsm, RoboterData *data) {
+void enter_straight(RoboterData *data) {
     set_polarity_forward();
     drive_straight(data);
 }
@@ -67,8 +69,7 @@ void update_straight(FSM *fsm, RoboterData *data) {
     }
 }
 
-void enter_left(FSM *fsm, RoboterData *data) {
-    USART_print("POlarity left rot");
+void enter_left(RoboterData *data) {
     set_polarity_left_rot();
     turn_left(data);
 }
@@ -84,7 +85,7 @@ void update_left(FSM *fsm, RoboterData *data)
     }
 }
 
-void enter_right(FSM *fsm, RoboterData *data) {
+void enter_right(RoboterData *data) {
     set_polarity_right_rot();
     turn_right(data);
 }
@@ -99,7 +100,7 @@ void update_right(FSM *fsm, RoboterData *data) {
     }
 }
 
-void enter_goal_reached(FSM *fsm, RoboterData *data) {
+void enter_goal_reached(RoboterData *data) {
 
 }
 
@@ -108,7 +109,7 @@ int main() {
     FSM fsm;
     RoboterData data;
 
-    add_state(&fsm, INIT, "Init", enter_init, NULL);
+    add_state(&fsm, INIT, "Init", enter_init, update_init);
     add_state(&fsm, STRAIGHT, "Straight", enter_straight, update_straight);
     add_state(&fsm, LEFT, "Left", enter_left, update_left);
     add_state(&fsm, RIGHT, "Right", enter_right, update_right);

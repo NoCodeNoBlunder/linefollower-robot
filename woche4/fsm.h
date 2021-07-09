@@ -13,7 +13,7 @@ typedef enum {
     RIGHT,
     GOAL_REACHED,
     EXIT,
-    STATECOUNT,
+    STATECOUNT, // Is not an actual state but is there to know the statecount.
 } State ;
 
 // forward declaration
@@ -22,7 +22,7 @@ struct FSM;
 typedef struct ConcreteState {
     State state;
     char * state_name; // unused but good for debugging.
-    void (*enter_ptr)(struct FSM *fsm, void *arg);
+    void (*enter_ptr)(void *arg);
     void (*update_ptr)(struct FSM *fsm, void *arg);
 } ConcreteState;
 

@@ -77,7 +77,6 @@ void set_duty_cycle(uint8_t pin, uint8_t value)
 }
 
 // region POLARITY
-
 void set_high(volatile char *reg, char pin) {
     reg[0] |= (1 << pin);
 }
@@ -147,6 +146,7 @@ void motors_Init() {
     setup_timer0();
 }
 
+// TODO name chanes for these 3 Methods
 void drive_straight(RoboterData *data) {
     data ->left_eng_speed = ENG_MID;
     data ->right_eng_speed = ENG_MID;
