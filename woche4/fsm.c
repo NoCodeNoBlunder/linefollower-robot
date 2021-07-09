@@ -18,6 +18,9 @@ void start_fsm_cycle(FSM *fsm_instance, void *data) {
 
     while(fsm_instance -> current_state -> state != EXIT) {
 
+        // USART_print(fsm_instance ->current_state->state_name);
+        // USART_print("\n");
+
         void (*update_fun)(struct FSM*, void *) = fsm_instance ->current_state ->update_ptr;
         if (*update_fun != NULL) { update_fun(fsm_instance, data); }
 
@@ -28,12 +31,11 @@ void start_fsm_cycle(FSM *fsm_instance, void *data) {
 }
 
 void switch_state(FSM *fsm_instance, void *arg, State nextState) {
+
     fsm_instance -> current_state = fsm_instance ->states[nextState];
     void (*enter_fun)(struct FSM *, void *) = fsm_instance ->current_state ->enter_ptr;
     // Hier muss dereferenziert werden!
-    if (*enter_fun != NULL) {
-        enter_fun(fsm_instance, arg);
-    }
+    if (*enter_fun != NULL) { enter_fun(fsm_instance, arg); }
 }
 
 // TODO muss hier nich die vollständige Signatur angegeben werden?

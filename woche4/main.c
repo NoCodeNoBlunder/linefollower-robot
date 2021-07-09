@@ -150,7 +150,8 @@ void update_straight(FSM *fsm, RoboterData *data) {
 }
 
 void enter_left(FSM *fsm, RoboterData *data) {
-    set_polarity_forward();
+    USART_print("POlarity left rot");
+    set_polarity_left_rot();
     turn_left(data);
 }
 
@@ -166,7 +167,7 @@ void update_left(FSM *fsm, RoboterData *data)
 }
 
 void enter_right(FSM *fsm, RoboterData *data) {
-    set_polarity_forward();
+    set_polarity_right_rot();
     turn_right(data);
 }
 
@@ -175,7 +176,7 @@ void update_right(FSM *fsm, RoboterData *data) {
     data->sensor_right = ADC_read_avg(RIGHT_SENSOR, SAMPLE_SIZE);
 
     if (data ->sensor_left >= THRESHOLD_L || data ->sensor_right < THRESHOLD_R) {
-        // LEFT IS ON TRACK OR RIGH IS OFF TRACK
+        // LEFT IS ON TRACK OR RIGHT IS OFF TRACK
         switch_state(fsm, data, STRAIGHT);
     }
 }
