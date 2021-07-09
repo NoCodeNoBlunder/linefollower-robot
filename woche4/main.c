@@ -9,8 +9,7 @@
 #define STR_BUF_SIZE 40
 #define SHORT_wTIME 350
 
-// TODO eventuell seperate Files erstelle für die States
-
+/* Used to determine when a Sensor is on the line. */
 enum Threshold{
     THRESHOLD_L = 512,
     THRESHOLD_M = 512,
@@ -23,6 +22,7 @@ enum Sensor {
     RIGHT_SENSOR = PC2
 };
 
+/* Prints Roboter data via Serial Port if DebugMode is enabled. */
 void transmit_data(FSM *fsm, RoboterData *data) {
     static char str_buf[STR_BUF_SIZE];
 
@@ -33,8 +33,11 @@ void transmit_data(FSM *fsm, RoboterData *data) {
     USART_print(str_buf);
 }
 
-// TODO Kann ich auch weniger Argumente übergeben hier?
-void enter_init(RoboterData *data) {
+// region ConcreteStates Enter() and Update() implementations.
+// TODO eventuell seperate Files erstelle für die State functionen.
+
+// INFO es müssen nicht alle Argumente übergeben werden.
+void enter_init() {
     ADC_Init();
     motors_Init();
     USART_Init(UBRR_SETTING);
@@ -116,8 +119,8 @@ void update_right(FSM *fsm, RoboterData *data) {
 void enter_goal_reached(RoboterData *data) {
 
 }
+// endregion
 
-// TODO reduce header ammount and file ammount and change names
 int main() {
     FSM fsm;
     RoboterData data = {data.debug_mode = 1}; // if this is set to 0 Debug mode is disabled. No data will be sent to Serial PORT.

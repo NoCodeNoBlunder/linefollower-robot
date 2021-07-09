@@ -1,6 +1,6 @@
 #include "iesmotors.h"
 #include "iesusart.h"
-#include "typedefs.h"
+#include "main.h"
 #include <stdio.h>
 #include <util/delay.h>
 #include "fsm.h"
@@ -140,7 +140,6 @@ void accelerate_straight(RoboterData *data, int to_value) {
         state = 1;
         // TODO warum brauche ich eine schneller accel rate?
         for (i = data -> right_eng_speed; i < to_value; i+=10) {
-            // TODO hier muss auch gemessen werden!
             set_duty_cycle(LEFT_ENG, i+1);
             set_duty_cycle(RIGHT_ENG, i+1);
             // _delay_ms(10);
@@ -181,7 +180,7 @@ void motors_Init() {
     setup_timer0();
 }
 
-/* Sets Polarity and duty_cyles to control drive direction */
+/* Sets Polarity and duty_cyles to control the Roboter drive direction. */
 void set_direction(RoboterData *data, State state) {
 
     switch (state) {

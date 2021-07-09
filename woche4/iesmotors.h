@@ -2,7 +2,7 @@
 #define IESMOTORS
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include "typedefs.h"
+#include "main.h"
 #include "fsm.h"
 
 void motors_Init();

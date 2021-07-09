@@ -1,17 +1,18 @@
 #include <stdlib.h>
-#include <stdio.h>
-#include <util/delay.h>
-
+#include <stdio.h>      // Unused
+#include <util/delay.h> // Unused
 
 #include "fsm.h"
-#include "typedefs.h"
-#include "iesusart.h"
+#include "main.h"       // Unused
+#include "iesusart.h"   // Unused
 
 #define SHORT_wTIME 250
 
 // forward declaration
 void exit_fsm_cycle(FSM *fsm);
 
+/* Function adds a new ConcreteState to the fsm instance. */
+/* Each State has to have an Update() implementation which is used to switch state */
 void add_state(FSM *fsm, State state, char *name, void (*enter), void (*update)) {
     ConcreteState *new_state = (ConcreteState*)malloc(sizeof (ConcreteState));
     new_state ->state = state;
@@ -28,7 +29,8 @@ void add_state(FSM *fsm, State state, char *name, void (*enter), void (*update))
     }
 }
 
-/* Switches to next state and invokes its enter() */
+/* Function to change state to next_state.
+ * and execute next_state's enter() function */
 void switch_state(FSM *fsm, void *arg, State next_state) {
     fsm -> current_state = fsm ->states[next_state];
     fsm ->current_state ->enter_ptr(arg);
