@@ -12,6 +12,18 @@ typedef enum {
     IN4 = PB3
 } Engpolarity;
 
+typedef enum {
+    ENG_STILL = 0,
+    ENG_SLOW = 70,
+    ENG_MID = 155,
+    ENG_FAST = 200
+} Speed;
+
+typedef enum {
+    LEFT_ENG = PD5,
+    RIGHT_ENG = PD6
+} Motor;
+
 // Info is needed for PWM...?
 /* sets up timer 0 (8 bit) */
 void setup_timer0() {
@@ -70,7 +82,6 @@ void set_high(volatile char *reg, char pin) {
     reg[0] |= (1 << pin);
 }
 
-// TODO seperate into left and right side!
 void set_low(volatile char *reg, char pin) {
     reg[0] &= ~(1 << pin);
 }
@@ -95,13 +106,11 @@ void right_backward() {
     set_low(&PORTB, IN4);
 }
 
-// This only works from the start position of 0:0
 void set_polarity_forward() {
     left_forward();
     right_forward();
 }
 
-// This only works from the start position of 0:0
 void set_polarity_backward() {
     left_backward();
     right_backward();
@@ -138,9 +147,7 @@ void motors_Init() {
     setup_timer0();
 }
 
-// TODO Name change this?
 void drive_straight(RoboterData *data) {
-    // TODO Code wiederholung wie vermeide ich das?
     data ->left_eng_speed = ENG_MID;
     data ->right_eng_speed = ENG_MID;
     set_duty_cycle(LEFT_ENG, ENG_MID);
@@ -165,7 +172,6 @@ void turn_right(RoboterData *data) {
 // mit Pointern zur Funktion
 // verwendbar ist?
 void accelerate_straight(RoboterData *data, int to_value) {
-
     static int i, state = 0;
     switch (state) {
         case 0: goto M0;
@@ -193,27 +199,6 @@ void deaccelerate_straight(RoboterData *data, int to_value) {
         set_duty_cycle(LEFT_ENG, i+1);
         set_duty_cycle(RIGHT_ENG, i+1);
 //        _delay_ms(50);
-    }
-}
-
-// TODO i dont think this is needed anymore!
-void event_handler(RoboterData *data) {
-    switch (data ->mode) {
-
-        case IDLE:
-            break;
-        case FORWARD:
-            break;
-        case BACKWARD:
-            break;
-        case LEFT_TURN:
-            break;
-        case RIGHT_TURN:
-            break;
-        case LEFT_SPIN:
-            break;
-        case RIGHT_SPIN:
-            break;
     }
 }
 // endregion

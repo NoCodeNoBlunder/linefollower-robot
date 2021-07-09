@@ -11,6 +11,7 @@
 // forward declaration
 void terminate_fsm_cycle(FSM *fsm);
 
+// TODO kann ich das effizienter machen?
 void start_fsm_cycle(FSM *fsm_instance, void *data) {
 
     // enter wird einmalig für die erste state aufgerufen!
@@ -27,12 +28,14 @@ void start_fsm_cycle(FSM *fsm_instance, void *data) {
         _delay_ms(SHORT_wTIME);
     }
 
-    terminate_fsm_cycle(fsm_instance); // Terminates the Programm and shuts down Robot
+    terminate_fsm_cycle(fsm_instance); // Terminates Shuts down the Robot and terminates the programm.
 }
 
 void switch_state(FSM *fsm_instance, void *arg, State nextState) {
 
     fsm_instance -> current_state = fsm_instance ->states[nextState];
+
+    //TODO So programmieren, dass update immer die States ändert daher immer eine Update Methode vorhanden sein muss außer für EXIT!
     void (*enter_fun)(struct FSM *, void *) = fsm_instance ->current_state ->enter_ptr;
     // Hier muss dereferenziert werden!
     if (*enter_fun != NULL) { enter_fun(fsm_instance, arg); }
