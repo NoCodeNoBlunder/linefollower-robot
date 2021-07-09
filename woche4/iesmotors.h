@@ -1,6 +1,5 @@
 /**
  * @file iesusart.h
- * @brief Basic serial communication via USART for ATMEGA328
  * @version 0.1
  * @date 2021-06-08
  */

@@ -1,8 +1,11 @@
 /**
  * @file main.c
- * @brief Basic serial communication via USART for ATMEGA328
+ * @author Fabian Indrunas
+ * @brief Function implementation of all ConcreteStates
  * @version 0.1
  * @date 2021-06-08
+ *
+ * @details ?
  */
 
 #include <util/delay.h>
@@ -12,24 +15,41 @@
 #include "iesmotors.h"
 #include "fsm.h"
 
+/**
+ * @def SAMPLE_SIZE determines the
+ */
 #define SAMPLE_SIZE 20
 #define STR_BUF_SIZE 40
 #define SHORT_wTIME 350
 
-/* Used to determine when a Sensor is on the line. */
+
+/**
+ *  @enum Threshold
+ *  @brief enums values determine the threshold of each sensor
+ *  @details due to inaccuracy a sensor might fire early or late
+ */
 enum Threshold{
     THRESHOLD_L = 512,
     THRESHOLD_M = 512,
     THRESHOLD_R = 512,
 };
 
+/**
+ * @enum Sensor
+ * @brief enum stores the corrosponding pins for the sensors
+ */
 enum Sensor {
     LEFT_SENSOR = PC0,
     MID_SENSOR = PC1,
     RIGHT_SENSOR = PC2
 };
 
-/* Prints Roboter data via Serial Port if DebugMode is enabled. */
+/**
+ * Function to transmit data via Serial Port.
+ * @param fsm pointer to instance of FSM
+ * @param data pointer to instance of RoboterData
+ * @details this function is only called when the var debug_mode is enabled in data
+ */
 void transmit_data(FSM *fsm, RoboterData *data) {
     static char str_buf[STR_BUF_SIZE];
 
@@ -43,7 +63,7 @@ void transmit_data(FSM *fsm, RoboterData *data) {
 // region ConcreteStates Enter() and Update() implementations.
 // TODO eventuell seperate Files erstelle für die State functionen.
 
-// INFO es müssen nicht alle Argumente übergeben werden.
+
 void enter_init() {
     ADC_Init();
     motors_Init();

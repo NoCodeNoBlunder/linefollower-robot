@@ -1,6 +1,7 @@
 /**
  * @file iesadc.c
- * @brief Basic serial communication via USART for ATMEGA328
+ * @brief Provides basic functionality to read the volatege from a pin and convert it
+ * to a digital signal
  * @version 0.1
  * @date 2021-06-08
  */
@@ -48,6 +49,11 @@ void ADC_Init() {
 }
 
 /* Reads once from channel and converts analog value to digital from 0-1023 */
+/**
+ * Function to read the voltage and convert it to digital
+ * @param channel pin to read from
+ * @return digital uint16_6 value ranging from 0-1023
+ */
 uint16_t ADC_Read(uint8_t channel) {
     ADMUX = (ADMUX & ~(0x1F)) | (channel & 0x1F);   // TODO was passiert hier?
     ADCSRA |= (1 << ADSC);                          // Set the start bit
@@ -56,6 +62,13 @@ uint16_t ADC_Read(uint8_t channel) {
 }
 
 /* Combines multiple readings from channel to return more accurate values. */
+
+/**
+ * Combines multiple readings to return more accurate values
+ * @param channel pin to read from
+ * @param nsamples number of samples
+ * @return average value of readings
+ */
 uint16_t ADC_read_avg(uint8_t channel, uint8_t nsamples) {
     uint32_t sum = 0;
     for (uint8_t i = 0; i < nsamples; ++i) {

@@ -1,26 +1,27 @@
 /**
  * @file main.h
- * @brief Basic serial communication via USART for ATMEGA328
  * @version 0.1
  * @date 2021-06-08
  */
 
 
-#ifndef E3T4_C_TYPEDEFS_H
-#define E3T4_C_TYPEDEFS_H
+#ifndef TYPEDEFS_H
+#define TYPEDEFS_H
 
 #include <avr/io.h>
+// DONt use var
 
-// TODO add DriveMode name to better debug
-typedef struct {
+/**
+ * @struct RoboterData "main.h"
+ */
+typedef struct RoboterData {
     char debug_mode;
     short sensor_left;
     short sensor_mid;
     short sensor_right;
 
-    // TODO do I really need to store this data?
     unsigned char left_eng_speed; // Only has values between 0 and 255
     unsigned char right_eng_speed;
 } RoboterData;
 
-#endif //E3T4_C_TYPEDEFS_H
+#endif //TYPEDEFS_H

@@ -1,6 +1,6 @@
 /**
  * @file iesmotors.c
- * @brief Basic serial communication via USART for ATMEGA328
+ * @brief listens to main.c and controlls everything regarding the motors of the roboter
  * @version 0.1
  * @date 2021-06-08
  */
