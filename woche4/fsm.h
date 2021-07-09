@@ -1,12 +1,13 @@
 
-
 #ifndef FSM_C_FSM_H
 #define FSM_C_FSM_H
 
-#include "typedefs.h"
+// forward declaration
+struct FSM;
 
+/* These are all the states of the FSM */
 typedef enum {
-    INIT,     // default State has to be the first state.
+    INIT,      // default State has to be the first state.
     COUNTDOWN,
     FORWARD,
     LEFT,
@@ -16,9 +17,7 @@ typedef enum {
     STATECOUNT, // Is not an actual state but is there to know the statecount.
 } State ;
 
-// forward declaration
-struct FSM;
-
+/* Members of a State */
 typedef struct ConcreteState {
     State state;
     char * state_name; // unused but good for debugging.
@@ -32,10 +31,11 @@ typedef struct FSM {
 } FSM;
 
 // TODO hier muss bei den Funktionen die Signatur mit angegeben werden?
+// Nur der Return Typ der Funktionen muss hier angegeben werden.
 void add_state(FSM *fsm, State state, char *name, void (*enter), void (*update));
 
 void start_fsm_cycle(FSM *fsm_instance, void *data);
 
-void switch_state(FSM *fsm_instance, void *arg, State nextState);
+void switch_state(FSM *fsm, void *arg, State next_state);
 
 #endif //FSM_C_FSM_H

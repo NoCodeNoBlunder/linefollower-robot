@@ -5,24 +5,24 @@
 #include <util/delay.h>
 #include "fsm.h"
 
-typedef enum {
+enum {
     IN1 = PD7,
     IN2 = PB0,
     IN3 = PB1,
     IN4 = PB3
-} Engpolarity;
+};
 
-typedef enum {
+enum {
     ENG_STILL = 0,
     ENG_SLOW = 70,
     ENG_MID = 155,
     ENG_FAST = 200
-} Speed;
+};
 
-typedef enum {
+enum {
     LEFT_ENG = PD5,
     RIGHT_ENG = PD6
-} Motor;
+};
 
 // Info is needed for PWM...?
 /* sets up timer 0 (8 bit) */
@@ -127,11 +127,10 @@ void set_polarity_backward() {
 }
 // endregion
 
-// TODO kann ich hieraus eine Couroutine schreiben die für mehrere Funktionen
-// mit Pointern zur Funktion
-// verwendbar ist?
+// TODO FRAGE: Werde ich gelynched für diese Methode?
 void accelerate_straight(RoboterData *data, int to_value) {
     static int i, state = 0;
+
     switch (state) {
         case 0: goto M0;
         case 1: goto M1;
@@ -182,6 +181,7 @@ void motors_Init() {
     setup_timer0();
 }
 
+/* Sets Polarity and duty_cyles to control drive direction */
 void set_direction(RoboterData *data, State state) {
 
     switch (state) {

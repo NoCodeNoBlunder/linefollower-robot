@@ -7,7 +7,9 @@
 
 #define SAMPLE_SIZE 20
 #define STR_BUF_SIZE 40
-#define SHORT_wTIME 250
+#define SHORT_wTIME 350
+
+// TODO eventuell seperate Files erstelle für die States
 
 enum Threshold{
     THRESHOLD_L = 512,
@@ -22,7 +24,6 @@ enum Sensor {
 };
 
 void transmit_data(FSM *fsm, RoboterData *data) {
-
     static char str_buf[STR_BUF_SIZE];
 
     sprintf(str_buf,
@@ -33,7 +34,6 @@ void transmit_data(FSM *fsm, RoboterData *data) {
 }
 
 // TODO Kann ich auch weniger Argumente übergeben hier?
-// TODO eventuell seperate Files erstelle für die States
 void enter_init(RoboterData *data) {
     ADC_Init();
     motors_Init();
@@ -120,7 +120,7 @@ void enter_goal_reached(RoboterData *data) {
 // TODO reduce header ammount and file ammount and change names
 int main() {
     FSM fsm;
-    RoboterData data = {data.debug_mode = 0}; // if this is set to 0 Debug mode is disabled. No data will be sent to Serial PORT.
+    RoboterData data = {data.debug_mode = 1}; // if this is set to 0 Debug mode is disabled. No data will be sent to Serial PORT.
 
     add_state(&fsm, INIT, "Init", enter_init, update_init);
     add_state(&fsm, FORWARD, "Forward", enter_forward, update_forward);
