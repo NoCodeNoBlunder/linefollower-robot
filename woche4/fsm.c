@@ -16,7 +16,7 @@ void start_fsm_cycle(FSM *fsm_instance, void *data) {
     // enter wird einmalig für die erste state aufgerufen!
     fsm_instance -> current_state ->enter_ptr(fsm_instance, data);
 
-    while(fsm_instance -> current_state -> state != SHUTDOWN) {
+    while(fsm_instance -> current_state -> state != EXIT) {
 
         void (*update_fun)(struct FSM*, void *) = fsm_instance ->current_state ->update_ptr;
         if (*update_fun != NULL) { update_fun(fsm_instance, data); }
@@ -49,7 +49,7 @@ void add_state(FSM *fsm, State state, char *name, void (*enter), void (*update))
     // The first State added becomes the default state also automatically adds Termination state.
     if (state == 0) {
         fsm ->current_state = new_state;
-        add_state(fsm, SHUTDOWN, "Terminate", NULL, NULL);
+        add_state(fsm, EXIT, "Terminate", NULL, NULL);
     }
 }
 

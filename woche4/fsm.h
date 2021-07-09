@@ -7,9 +7,12 @@
 
 typedef enum {
     INIT,     // default State has to be the first state.
-    STEADY,
-    ACCELRATION,
-    SHUTDOWN,
+    COUNTDOWN,
+    STRAIGHT,
+    LEFT,
+    RIGHT,
+    GOAL_REACHED,
+    EXIT,
     STATECOUNT,
 } State ;
 

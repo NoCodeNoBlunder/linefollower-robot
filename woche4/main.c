@@ -125,13 +125,43 @@ void update_steady(FSM *fsm, RoboterData *data) {
     }
 }
 
+
+void enter_straight(FSM *fsm, RoboterData *data) {
+
+}
+
+void update_straight(FSM *fsm, RoboterData *data) {
+
+}
+
+void enter_left(FSM *fsm, RoboterData *data) {
+
+}
+
+void update_left(FSM *fsm, RoboterData *data)
+{
+
+}
+
+void enter_right(FSM *fsm, RoboterData *data) {
+
+}
+
+void update_right(FSM *fsm, RoboterData *data) {
+
+}
+
+void enter_goal_reached(FSM *fsm, RoboterData *data) {
+
+}
+
 // TODO reduce header ammount and file ammount and change names
 int main() {
     FSM fsm;
     RoboterData data;
 
     add_state(&fsm, INIT, "Start", enter_start, NULL);
-    add_state(&fsm, STEADY, "Steady", enter_steady, update_steady);
+    add_state(&fsm, STRAIGHT, "Steady", enter_steady, update_steady);
 
     start_fsm_cycle(&fsm, &data);
 
