@@ -194,6 +194,7 @@ void deaccelerate_straight(RoboterData *data, int to_value) {
     }
 }
 
+// TODO i dont think this is needed anymore!
 void event_handler(RoboterData *data) {
     switch (data ->mode) {
 
