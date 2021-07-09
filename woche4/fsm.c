@@ -14,16 +14,11 @@ void terminate_fsm_cycle(FSM *fsm);
 // TODO kann ich das effizienter machen?
 void start_fsm_cycle(FSM *fsm_instance, void *data) {
 
-    // enter wird einmalig für die erste state aufgerufen!
+    // enter is called once for the default state.
     fsm_instance -> current_state ->enter_ptr(data);
 
     while(fsm_instance -> current_state -> state != EXIT) {
-
-        // USART_print(fsm_instance ->current_state->state_name);
-
         fsm_instance ->current_state ->update_ptr(fsm_instance, data);
-
-        _delay_ms(SHORT_wTIME);
     }
 
     terminate_fsm_cycle(fsm_instance); // Terminates Shuts down the Robot and terminates the programm.
@@ -52,6 +47,8 @@ void add_state(FSM *fsm, State state, char *name, void (*enter), void (*update))
 }
 
 void terminate_fsm_cycle(FSM *fsm) {
+    // TODO stop robot
+
     // TODO Gebe ich dadurch den ganzen durch malloc allocierten Speicher wieder frei?
     for (int i = 0; i < STATECOUNT; ++i) {
         free(fsm ->states[i]);

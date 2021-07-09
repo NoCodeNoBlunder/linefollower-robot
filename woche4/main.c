@@ -8,6 +8,7 @@
 
 #define SAMPLE_SIZE 20
 #define STR_BUF_SIZE 40
+#define SHORT_wTIME 250
 
 enum Threshold{
     THRESHOLD_L = 512,
@@ -21,17 +22,19 @@ enum Sensor {
     RIGHT_SENSOR = PC2
 };
 
-void transmit_data(RoboterData *data) {
+void transmit_data(FSM *fsm, RoboterData *data) {
+
     static char str_buf[STR_BUF_SIZE];
     static char *mode_str;
 
     sprintf(str_buf,
             "%s L:%d | M:%d | R:%d\n %d | %d\n\n",
-            mode_str,data->sensor_left, data->sensor_mid, data->sensor_right,
-            data->left_eng_speed ,data->right_eng_speed);
+            fsm->current_state->state_name, data->sensor_left, data->sensor_mid, data->sensor_right,
+            data->left_eng_speed, data->right_eng_speed);
     USART_print(str_buf);
 }
 
+// TODO Kann ich auch weniger Argumente übergeben hier?
 void enter_init(RoboterData *data) {
     ADC_Init();
     motors_Init();
@@ -45,8 +48,10 @@ void update_init(FSM *fsm, RoboterData *data) {
 // TODO ich sollte keine driveMod states mehr haben sondern alles über die fsm regulieren.
 // das macht aber das RoboterData struct etwas unnötig.
 void enter_straight(RoboterData *data) {
+
+    // TODO should this be made into a Method and be the API of iesmotors?
     set_polarity_forward();
-    drive_straight(data);
+    set_duty_straight(data);
 }
 
 void update_straight(FSM *fsm, RoboterData *data) {
@@ -63,15 +68,20 @@ void update_straight(FSM *fsm, RoboterData *data) {
     else {
         // LEFT OFF TRACK
         if (data ->sensor_right >= THRESHOLD_R) {
-            // RIGHT ON TRACK
+            // LEFT OFF TRACK AND RIGHT ON TRACK
             switch_state(fsm, data, RIGHT);
         }
+    }
+
+    if (data ->debug_mode) {
+        transmit_data(fsm, data);
+        _delay_ms(SHORT_wTIME);
     }
 }
 
 void enter_left(RoboterData *data) {
     set_polarity_left_rot();
-    turn_left(data);
+    set_duty_left_turn(data);
 }
 
 void update_left(FSM *fsm, RoboterData *data)
@@ -83,11 +93,16 @@ void update_left(FSM *fsm, RoboterData *data)
         // LEFT IS OFF TRACK OR RIGH IS ON TRACK
         switch_state(fsm, data, STRAIGHT);
     }
+
+    if (data ->debug_mode) {
+        transmit_data(fsm, data);
+        _delay_ms(SHORT_wTIME);
+    }
 }
 
 void enter_right(RoboterData *data) {
     set_polarity_right_rot();
-    turn_right(data);
+    set_duty_right_turn(data);
 }
 
 void update_right(FSM *fsm, RoboterData *data) {
@@ -98,6 +113,11 @@ void update_right(FSM *fsm, RoboterData *data) {
         // LEFT IS ON TRACK OR RIGHT IS OFF TRACK
         switch_state(fsm, data, STRAIGHT);
     }
+
+    if (data ->debug_mode) {
+        transmit_data(fsm, data);
+        _delay_ms(SHORT_wTIME);
+    }
 }
 
 void enter_goal_reached(RoboterData *data) {
@@ -107,7 +127,7 @@ void enter_goal_reached(RoboterData *data) {
 // TODO reduce header ammount and file ammount and change names
 int main() {
     FSM fsm;
-    RoboterData data;
+    RoboterData data = {data.debug_mode = 1}; // if this is set to 0 no data will be transmited via USART.
 
     add_state(&fsm, INIT, "Init", enter_init, update_init);
     add_state(&fsm, STRAIGHT, "Straight", enter_straight, update_straight);

@@ -147,21 +147,21 @@ void motors_Init() {
 }
 
 // TODO name chanes for these 3 Methods
-void drive_straight(RoboterData *data) {
+void set_duty_straight(RoboterData *data) {
     data ->left_eng_speed = ENG_MID;
     data ->right_eng_speed = ENG_MID;
     set_duty_cycle(LEFT_ENG, ENG_MID);
     set_duty_cycle(RIGHT_ENG, ENG_MID);
 }
 
-void turn_left(RoboterData *data) {
+void set_duty_left_turn(RoboterData *data) {
     data ->left_eng_speed = ENG_SLOW;
     data ->right_eng_speed = ENG_FAST;
     set_duty_cycle(LEFT_ENG, ENG_SLOW);
     set_duty_cycle(RIGHT_ENG, ENG_FAST);
 }
 
-void turn_right(RoboterData *data) {
+void set_duty_right_turn(RoboterData *data) {
     data ->left_eng_speed = ENG_FAST;
     data ->right_eng_speed = ENG_SLOW;
     set_duty_cycle(LEFT_ENG, ENG_FAST);
@@ -179,15 +179,15 @@ void accelerate_straight(RoboterData *data, int to_value) {
     }
 
     M0:
-        // TODO warum brauche ich eine schneller accel rate?
-    for (i = data -> right_eng_speed; i < to_value; i+=10) {
         state = 1;
-        // TODO hier muss auch gemessen werden!
-        set_duty_cycle(LEFT_ENG, i+1);
-        set_duty_cycle(RIGHT_ENG, i+1);
-        // _delay_ms(10);
-        return;
-        M1:;
+        // TODO warum brauche ich eine schneller accel rate?
+        for (i = data -> right_eng_speed; i < to_value; i+=10) {
+            // TODO hier muss auch gemessen werden!
+            set_duty_cycle(LEFT_ENG, i+1);
+            set_duty_cycle(RIGHT_ENG, i+1);
+            // _delay_ms(10);
+            return;
+            M1:;
     }
 
     USART_print("\nICH BIN FERTIG!\n");
