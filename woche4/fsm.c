@@ -1,3 +1,10 @@
+/**
+ * @file fsm.c
+ * @brief Basic serial communication via USART for ATMEGA328
+ * @version 0.1
+ * @date 2021-06-08
+ */
+
 #include <stdlib.h>
 #include <stdio.h>      // Unused
 #include <util/delay.h> // Unused

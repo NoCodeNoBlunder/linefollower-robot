@@ -1,3 +1,10 @@
+/**
+ * @file main.c
+ * @brief Basic serial communication via USART for ATMEGA328
+ * @version 0.1
+ * @date 2021-06-08
+ */
+
 #include <util/delay.h>
 #include <stdio.h>
 #include "iesusart.h"

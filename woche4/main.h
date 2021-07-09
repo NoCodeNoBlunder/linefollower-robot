@@ -1,3 +1,10 @@
+/**
+ * @file main.h
+ * @brief Basic serial communication via USART for ATMEGA328
+ * @version 0.1
+ * @date 2021-06-08
+ */
+
 
 #ifndef E3T4_C_TYPEDEFS_H
 #define E3T4_C_TYPEDEFS_H
