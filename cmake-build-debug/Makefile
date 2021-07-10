@@ -66,10 +66,10 @@ RM = "C:\Program Files\JetBrains\CLion 2021.1.2\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\Fabian\Desktop\Semester 2\Labor C\VM Share\Roboter"
+CMAKE_SOURCE_DIR = C:\Users\Fabian\Desktop\Backup\Roboter
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\Fabian\Desktop\Semester 2\Labor C\VM Share\Roboter\cmake-build-debug"
+CMAKE_BINARY_DIR = C:\Users\Fabian\Desktop\Backup\Roboter\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -98,9 +98,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Fabian\Desktop\Semester 2\Labor C\VM Share\Roboter\cmake-build-debug\CMakeFiles" "C:\Users\Fabian\Desktop\Semester 2\Labor C\VM Share\Roboter\cmake-build-debug\\CMakeFiles\progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Fabian\Desktop\Backup\Roboter\cmake-build-debug\CMakeFiles C:\Users\Fabian\Desktop\Backup\Roboter\cmake-build-debug\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Fabian\Desktop\Semester 2\Labor C\VM Share\Roboter\cmake-build-debug\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Fabian\Desktop\Backup\Roboter\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -276,32 +276,32 @@ woche3/iesusart.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche3/iesusart.c.s
 .PHONY : woche3/iesusart.c.s
 
-woche4/E4T3.obj: woche4/E4T3.c.obj
+woche4/fsm.obj: woche4/fsm.c.obj
 
-.PHONY : woche4/E4T3.obj
+.PHONY : woche4/fsm.obj
 
 # target to build an object file
-woche4/E4T3.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/E4T3.c.obj
-.PHONY : woche4/E4T3.c.obj
+woche4/fsm.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/fsm.c.obj
+.PHONY : woche4/fsm.c.obj
 
-woche4/E4T3.i: woche4/E4T3.c.i
+woche4/fsm.i: woche4/fsm.c.i
 
-.PHONY : woche4/E4T3.i
+.PHONY : woche4/fsm.i
 
 # target to preprocess a source file
-woche4/E4T3.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/E4T3.c.i
-.PHONY : woche4/E4T3.c.i
+woche4/fsm.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/fsm.c.i
+.PHONY : woche4/fsm.c.i
 
-woche4/E4T3.s: woche4/E4T3.c.s
+woche4/fsm.s: woche4/fsm.c.s
 
-.PHONY : woche4/E4T3.s
+.PHONY : woche4/fsm.s
 
 # target to generate assembly for a file
-woche4/E4T3.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/E4T3.c.s
-.PHONY : woche4/E4T3.c.s
+woche4/fsm.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/fsm.c.s
+.PHONY : woche4/fsm.c.s
 
 woche4/iesadc.obj: woche4/iesadc.c.obj
 
@@ -384,32 +384,32 @@ woche4/iesusart.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/iesusart.c.s
 .PHONY : woche4/iesusart.c.s
 
-woche4/skeleton_motors.obj: woche4/skeleton_motors.c.obj
+woche4/main.obj: woche4/main.c.obj
 
-.PHONY : woche4/skeleton_motors.obj
+.PHONY : woche4/main.obj
 
 # target to build an object file
-woche4/skeleton_motors.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/skeleton_motors.c.obj
-.PHONY : woche4/skeleton_motors.c.obj
+woche4/main.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/main.c.obj
+.PHONY : woche4/main.c.obj
 
-woche4/skeleton_motors.i: woche4/skeleton_motors.c.i
+woche4/main.i: woche4/main.c.i
 
-.PHONY : woche4/skeleton_motors.i
+.PHONY : woche4/main.i
 
 # target to preprocess a source file
-woche4/skeleton_motors.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/skeleton_motors.c.i
-.PHONY : woche4/skeleton_motors.c.i
+woche4/main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/main.c.i
+.PHONY : woche4/main.c.i
 
-woche4/skeleton_motors.s: woche4/skeleton_motors.c.s
+woche4/main.s: woche4/main.c.s
 
-.PHONY : woche4/skeleton_motors.s
+.PHONY : woche4/main.s
 
 # target to generate assembly for a file
-woche4/skeleton_motors.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/skeleton_motors.c.s
-.PHONY : woche4/skeleton_motors.c.s
+woche4/main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/main.c.s
+.PHONY : woche4/main.c.s
 
 # Help Target
 help:
@@ -435,9 +435,9 @@ help:
 	@echo ... woche3/iesusart.obj
 	@echo ... woche3/iesusart.i
 	@echo ... woche3/iesusart.s
-	@echo ... woche4/E4T3.obj
-	@echo ... woche4/E4T3.i
-	@echo ... woche4/E4T3.s
+	@echo ... woche4/fsm.obj
+	@echo ... woche4/fsm.i
+	@echo ... woche4/fsm.s
 	@echo ... woche4/iesadc.obj
 	@echo ... woche4/iesadc.i
 	@echo ... woche4/iesadc.s
@@ -447,9 +447,9 @@ help:
 	@echo ... woche4/iesusart.obj
 	@echo ... woche4/iesusart.i
 	@echo ... woche4/iesusart.s
-	@echo ... woche4/skeleton_motors.obj
-	@echo ... woche4/skeleton_motors.i
-	@echo ... woche4/skeleton_motors.s
+	@echo ... woche4/main.obj
+	@echo ... woche4/main.i
+	@echo ... woche4/main.s
 .PHONY : help
 
 

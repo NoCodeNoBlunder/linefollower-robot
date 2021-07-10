@@ -1,0 +1,105 @@
+\hypertarget{iesmotors_8c}{}\section{iesmotors.\+c File Reference}
+\label{iesmotors_8c}\index{iesmotors.\+c@{iesmotors.\+c}}
+
+
+Basic serial communication via U\+S\+A\+RT for A\+T\+M\+E\+G\+A328.  
+
+
+{\ttfamily \#include \char`\"{}iesmotors.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}iesusart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$util/delay.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}fsm.\+h\char`\"{}}\newline
+Include dependency graph for iesmotors.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{iesmotors_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{iesmotors_8c_a06fc87d81c62e9abb8790b6e5713c55b}\label{iesmotors_8c_a06fc87d81c62e9abb8790b6e5713c55b}} 
+enum \{ {\bfseries I\+N1} = P\+D7, 
+{\bfseries I\+N2} = P\+B0, 
+{\bfseries I\+N3} = P\+B1, 
+{\bfseries I\+N4} = P\+B3
+ \}
+\item 
+\mbox{\Hypertarget{iesmotors_8c_adf764cbdea00d65edcd07bb9953ad2b7}\label{iesmotors_8c_adf764cbdea00d65edcd07bb9953ad2b7}} 
+enum \{ {\bfseries E\+N\+G\+\_\+\+S\+T\+I\+LL} = 0, 
+{\bfseries E\+N\+G\+\_\+\+S\+L\+OW} = 70, 
+{\bfseries E\+N\+G\+\_\+\+M\+ID} = 155, 
+{\bfseries E\+N\+G\+\_\+\+F\+A\+ST} = 200
+ \}
+\item 
+\mbox{\Hypertarget{iesmotors_8c_a99fb83031ce9923c84392b4e92f956b5}\label{iesmotors_8c_a99fb83031ce9923c84392b4e92f956b5}} 
+enum \{ {\bfseries L\+E\+F\+T\+\_\+\+E\+NG} = P\+D5, 
+{\bfseries R\+I\+G\+H\+T\+\_\+\+E\+NG} = P\+D6
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{iesmotors_8c_a17a57db7dff7680ed3c46e149bd0bf7d}\label{iesmotors_8c_a17a57db7dff7680ed3c46e149bd0bf7d}} 
+void {\bfseries setup\+\_\+timer0} ()
+\item 
+\mbox{\Hypertarget{iesmotors_8c_abb45263d7fd584db888c9e77cc6a7941}\label{iesmotors_8c_abb45263d7fd584db888c9e77cc6a7941}} 
+void {\bfseries set\+\_\+duty\+\_\+cycle} (uint8\+\_\+t pin, uint8\+\_\+t value)
+\item 
+\mbox{\Hypertarget{iesmotors_8c_a870e8bb7ecd41a972ec48b62a7645da9}\label{iesmotors_8c_a870e8bb7ecd41a972ec48b62a7645da9}} 
+void {\bfseries set\+\_\+high} (volatile char $\ast$reg, char pin)
+\item 
+\mbox{\Hypertarget{iesmotors_8c_a8a27629894a9519cb6e7ce772f1abce2}\label{iesmotors_8c_a8a27629894a9519cb6e7ce772f1abce2}} 
+void {\bfseries set\+\_\+low} (volatile char $\ast$reg, char pin)
+\item 
+\mbox{\Hypertarget{iesmotors_8c_a1c1888be3f4bcd9b587f7c642be3618c}\label{iesmotors_8c_a1c1888be3f4bcd9b587f7c642be3618c}} 
+void {\bfseries left\+\_\+forward} ()
+\item 
+\mbox{\Hypertarget{iesmotors_8c_ab030c370acbdb5cf01408d85b77f6429}\label{iesmotors_8c_ab030c370acbdb5cf01408d85b77f6429}} 
+void {\bfseries left\+\_\+backward} ()
+\item 
+\mbox{\Hypertarget{iesmotors_8c_a17123b454e16790f8bf2612d726d7ffd}\label{iesmotors_8c_a17123b454e16790f8bf2612d726d7ffd}} 
+void {\bfseries right\+\_\+forward} ()
+\item 
+\mbox{\Hypertarget{iesmotors_8c_ae37c1401a9428268e644d4af87f18c67}\label{iesmotors_8c_ae37c1401a9428268e644d4af87f18c67}} 
+void {\bfseries right\+\_\+backward} ()
+\item 
+\mbox{\Hypertarget{iesmotors_8c_ae146d0b52c0aa1d832eb33ae7119800b}\label{iesmotors_8c_ae146d0b52c0aa1d832eb33ae7119800b}} 
+void {\bfseries set\+\_\+polarity\+\_\+forward} ()
+\item 
+\mbox{\Hypertarget{iesmotors_8c_a4f8ea3f3449b0b76da7d6b4d0a2cf0c2}\label{iesmotors_8c_a4f8ea3f3449b0b76da7d6b4d0a2cf0c2}} 
+void {\bfseries set\+\_\+polarity\+\_\+left\+\_\+rot} ()
+\item 
+\mbox{\Hypertarget{iesmotors_8c_ac0f518e65db7ed9d84258b6d5cad3c6d}\label{iesmotors_8c_ac0f518e65db7ed9d84258b6d5cad3c6d}} 
+void {\bfseries set\+\_\+polarity\+\_\+right\+\_\+rot} ()
+\item 
+\mbox{\Hypertarget{iesmotors_8c_aaaac7dd1342d8df7435a3330ec6d75d7}\label{iesmotors_8c_aaaac7dd1342d8df7435a3330ec6d75d7}} 
+void {\bfseries set\+\_\+polarity\+\_\+backward} ()
+\item 
+\mbox{\Hypertarget{iesmotors_8c_af8e689467759d600b145950b96c588f2}\label{iesmotors_8c_af8e689467759d600b145950b96c588f2}} 
+void {\bfseries accelerate\+\_\+straight} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data, int to\+\_\+value)
+\item 
+\mbox{\Hypertarget{iesmotors_8c_a5c1d72f3373d7833f9cae12eb24d7ec6}\label{iesmotors_8c_a5c1d72f3373d7833f9cae12eb24d7ec6}} 
+void {\bfseries deaccelerate\+\_\+straight} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data, int to\+\_\+value)
+\item 
+\mbox{\Hypertarget{iesmotors_8c_aac7ab57ee3b0d1a6aee54821aa7b79f2}\label{iesmotors_8c_aac7ab57ee3b0d1a6aee54821aa7b79f2}} 
+void {\bfseries motors\+\_\+\+Init} ()
+\item 
+\mbox{\Hypertarget{iesmotors_8c_aedcc8ddfc6f7a9d3f55833ac09fa01f5}\label{iesmotors_8c_aedcc8ddfc6f7a9d3f55833ac09fa01f5}} 
+void {\bfseries set\+\_\+direction} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data, State state)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Basic serial communication via U\+S\+A\+RT for A\+T\+M\+E\+G\+A328. 
+
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2021-\/06-\/08 
+\end{DoxyDate}

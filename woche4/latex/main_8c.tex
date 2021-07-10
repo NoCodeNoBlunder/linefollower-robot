@@ -1,0 +1,94 @@
+\hypertarget{main_8c}{}\section{main.\+c File Reference}
+\label{main_8c}\index{main.\+c@{main.\+c}}
+
+
+Basic serial communication via U\+S\+A\+RT for A\+T\+M\+E\+G\+A328.  
+
+
+{\ttfamily \#include $<$util/delay.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}iesusart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}iesadc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}iesmotors.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fsm.\+h\char`\"{}}\newline
+Include dependency graph for main.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8c_ae25e0da7cdb20c758a56dc6aece92ba7}\label{main_8c_ae25e0da7cdb20c758a56dc6aece92ba7}} 
+\#define {\bfseries S\+A\+M\+P\+L\+E\+\_\+\+S\+I\+ZE}~20
+\item 
+\mbox{\Hypertarget{main_8c_ad6e15065c0a342050a71942658732756}\label{main_8c_ad6e15065c0a342050a71942658732756}} 
+\#define {\bfseries S\+T\+R\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE}~40
+\item 
+\mbox{\Hypertarget{main_8c_ad340a4d5ea39f2eae949eaa1dd84ff39}\label{main_8c_ad340a4d5ea39f2eae949eaa1dd84ff39}} 
+\#define {\bfseries S\+H\+O\+R\+T\+\_\+w\+T\+I\+ME}~350
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8c_a4a25793c4c2c1c850fbfb0ab682c35dd}\label{main_8c_a4a25793c4c2c1c850fbfb0ab682c35dd}} 
+enum {\bfseries Threshold} \{ {\bfseries T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+L} = 512, 
+{\bfseries T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+M} = 512, 
+{\bfseries T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+R} = 512
+ \}
+\item 
+\mbox{\Hypertarget{main_8c_a9628766e5f200cc84b296b071b09ff4a}\label{main_8c_a9628766e5f200cc84b296b071b09ff4a}} 
+enum {\bfseries Sensor} \{ {\bfseries L\+E\+F\+T\+\_\+\+S\+E\+N\+S\+OR} = P\+C0, 
+{\bfseries M\+I\+D\+\_\+\+S\+E\+N\+S\+OR} = P\+C1, 
+{\bfseries R\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+OR} = P\+C2
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8c_a2d40eebca898e45bbd05e3377bc0b0f9}\label{main_8c_a2d40eebca898e45bbd05e3377bc0b0f9}} 
+void {\bfseries transmit\+\_\+data} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\item 
+\mbox{\Hypertarget{main_8c_a1144a0323c44b967782d2824fbf05ea2}\label{main_8c_a1144a0323c44b967782d2824fbf05ea2}} 
+void {\bfseries enter\+\_\+init} ()
+\item 
+\mbox{\Hypertarget{main_8c_a95f58454a19ce422b8950c8832426fd4}\label{main_8c_a95f58454a19ce422b8950c8832426fd4}} 
+void {\bfseries update\+\_\+init} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\item 
+\mbox{\Hypertarget{main_8c_a639a5239b6bf87b7629b5a5a781f0623}\label{main_8c_a639a5239b6bf87b7629b5a5a781f0623}} 
+void {\bfseries enter\+\_\+forward} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\item 
+\mbox{\Hypertarget{main_8c_a1f668075c48db79be24aeaefabaa0384}\label{main_8c_a1f668075c48db79be24aeaefabaa0384}} 
+void {\bfseries update\+\_\+forward} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\item 
+\mbox{\Hypertarget{main_8c_afaa4a85c724d0bb9556ad503f2ccbeff}\label{main_8c_afaa4a85c724d0bb9556ad503f2ccbeff}} 
+void {\bfseries enter\+\_\+left} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\item 
+\mbox{\Hypertarget{main_8c_a14d5485b4785c85b53295138e9dca1c4}\label{main_8c_a14d5485b4785c85b53295138e9dca1c4}} 
+void {\bfseries update\+\_\+left} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\item 
+\mbox{\Hypertarget{main_8c_a57cd6337463069840eff0eb6f7bc982e}\label{main_8c_a57cd6337463069840eff0eb6f7bc982e}} 
+void {\bfseries enter\+\_\+right} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\item 
+\mbox{\Hypertarget{main_8c_a5babdf6fce5456fffea2cc148791cb4a}\label{main_8c_a5babdf6fce5456fffea2cc148791cb4a}} 
+void {\bfseries update\+\_\+right} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\item 
+\mbox{\Hypertarget{main_8c_aaf31c07cf96f53fa4c189df852c67754}\label{main_8c_aaf31c07cf96f53fa4c189df852c67754}} 
+void {\bfseries enter\+\_\+goal\+\_\+reached} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\item 
+\mbox{\Hypertarget{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+int {\bfseries main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Basic serial communication via U\+S\+A\+RT for A\+T\+M\+E\+G\+A328. 
+
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2021-\/06-\/08 
+\end{DoxyDate}
