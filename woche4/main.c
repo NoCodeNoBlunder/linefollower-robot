@@ -39,9 +39,9 @@ enum Threshold{
  * @brief enum stores the corrosponding pins for the sensors
  */
 enum Sensor {
-    LEFT_SENSOR = PC0,
+    LEFT_SENSOR = PC2,
     MID_SENSOR = PC1,
-    RIGHT_SENSOR = PC2
+    RIGHT_SENSOR = PC0
 };
 
 /**
