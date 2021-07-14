@@ -85,22 +85,22 @@ void update_forward(FSM *fsm, RoboterData *data) {
     data->sensor_left = ADC_read_avg(LEFT_SENSOR, SAMPLE_SIZE);
     data->sensor_right = ADC_read_avg(RIGHT_SENSOR, SAMPLE_SIZE);
 
-    if (data ->sensor_left >= THRESHOLD_L) {
+    if (data->sensor_left >= THRESHOLD_L) {
         // LEFT ON TRACK
-        if (data ->sensor_right < THRESHOLD_R) {
+        if (data->sensor_right < THRESHOLD_R) {
             // LEFT ON TRACK AND RIGHT OFF TRACK
             switch_state(fsm, data, LEFT);
         }
     }
     else {
         // LEFT OFF TRACK
-        if (data ->sensor_right >= THRESHOLD_R) {
+        if (data->sensor_right >= THRESHOLD_R) {
             // LEFT OFF TRACK AND RIGHT ON TRACK
             switch_state(fsm, data, RIGHT);
         }
     }
 
-    if (data ->debug_mode) {
+    if (data->debug_mode) {
         transmit_data(fsm, data);
         _delay_ms(SHORT_wTIME);
     }
@@ -115,12 +115,12 @@ void update_left(FSM *fsm, RoboterData *data)
     data->sensor_left = ADC_read_avg(LEFT_SENSOR, SAMPLE_SIZE);
     data->sensor_right = ADC_read_avg(RIGHT_SENSOR, SAMPLE_SIZE);
 
-    if (data ->sensor_left < THRESHOLD_L || data ->sensor_right >= THRESHOLD_R) {
+    if (data->sensor_left < THRESHOLD_L || data ->sensor_right >= THRESHOLD_R) {
         // LEFT IS OFF TRACK OR RIGHT IS ON TRACK
         switch_state(fsm, data, FORWARD);
     }
 
-    if (data ->debug_mode) {
+    if (data->debug_mode) {
         transmit_data(fsm, data);
         _delay_ms(SHORT_wTIME);
     }
@@ -134,12 +134,12 @@ void update_right(FSM *fsm, RoboterData *data) {
     data->sensor_left = ADC_read_avg(LEFT_SENSOR, SAMPLE_SIZE);
     data->sensor_right = ADC_read_avg(RIGHT_SENSOR, SAMPLE_SIZE);
 
-    if (data ->sensor_left >= THRESHOLD_L || data ->sensor_right < THRESHOLD_R) {
+    if (data->sensor_left >= THRESHOLD_L || data->sensor_right < THRESHOLD_R) {
         // LEFT IS ON TRACK OR RIGHT IS OFF TRACK
         switch_state(fsm, data, FORWARD);
     }
 
-    if (data ->debug_mode) {
+    if (data->debug_mode) {
         transmit_data(fsm, data);
         _delay_ms(SHORT_wTIME);
     }
@@ -152,7 +152,7 @@ void enter_goal_reached(RoboterData *data) {
 
 int main() {
     FSM fsm;
-    RoboterData data = {data.debug_mode = 1}; // if this is set to 0 Debug mode is disabled. No data will be sent to Serial PORT.
+    RoboterData data = {data.debug_mode = 1 }; // if this is set to 0 Debug mode is disabled. No data will be sent to Serial PORT.
 
     add_state(&fsm, INIT, "Init", enter_init, update_init);
     add_state(&fsm, FORWARD, "Forward", enter_forward, update_forward);

@@ -37,16 +37,16 @@ void exit_fsm_cycle(FSM *fsm);
  */
 void add_state(FSM *fsm, State state, char *name, void (*enter), void (*update)) {
     ConcreteState *new_state = (ConcreteState*)malloc(sizeof (ConcreteState));
-    new_state ->state = state;
-    new_state ->state_name = name;
-    new_state ->enter_ptr = enter;
-    new_state ->update_ptr = update;
+    new_state->state = state;
+    new_state->state_name = name;
+    new_state->enter_ptr = enter;
+    new_state->update_ptr = update;
 
-    fsm ->states[state] = new_state;
+    fsm->states[state] = new_state;
 
     /* The first State added becomes the default state also automatically adds Exit state. */
     if (state == 0) {
-        fsm ->current_state = new_state;
+        fsm->current_state = new_state;
         add_state(fsm, EXIT, "Exit", NULL, NULL);
     }
 }
@@ -57,10 +57,10 @@ void add_state(FSM *fsm, State state, char *name, void (*enter), void (*update))
  * @param data void pointer to be able to pass an argument to update
  */
 void start_fsm_cycle(FSM *fsm, void *data) {
-    fsm -> current_state ->enter_ptr(data);   // enter is called once for the default state.
+    fsm->current_state->enter_ptr(data);   // enter is called once for the default state.
 
-    while(fsm -> current_state -> state != EXIT) {
-        fsm ->current_state ->update_ptr(fsm, data);
+    while(fsm->current_state->state != EXIT) {
+        fsm->current_state->update_ptr(fsm, data);
     }
 
     exit_fsm_cycle(fsm);                      // Shuts down the Robot and terminates the programm.
