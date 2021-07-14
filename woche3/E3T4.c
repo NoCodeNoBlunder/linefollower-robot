@@ -11,7 +11,7 @@ typedef enum {
     NONE,
     LED_LEFT_LF,
     LED_RIGHT_LF,
-    LED3,
+    LED_MID_LF,
     ALL
 } Diodes;
 
@@ -58,7 +58,7 @@ void fire_mode(Diodes diode) {
             toggle_DI();
             send_flanks(1);
             break;
-        case LED3:
+        case LED_MID_LF:
             toggle_DI();
             send_flanks(1);
             toggle_DI();
@@ -90,7 +90,7 @@ void send_start_message() {
     USART_print("x := select DriveMode\n");
     USART_print("y := n (250ms) wait cycles\n");
     USART_print("0 : RESET   ||   1 : LED_LEFT_LF\n");
-    USART_print("2 : LED_RIGHT_LF     ||   3 : LED3\n");
+    USART_print("2 : LED_RIGHT_LF     ||   3 : LED_MID_LF\n");
     USART_print("4 : ALL\n");
 }
 

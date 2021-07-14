@@ -93,9 +93,6 @@
 		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche3/iesusart.c">
 			<Option target="Roboter"/>
 		</Unit>
-		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/forward_state.c">
-			<Option target="Roboter"/>
-		</Unit>
 		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/fsm.c">
 			<Option target="Roboter"/>
 		</Unit>
@@ -126,19 +123,13 @@
 		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/iesusart.h">
 			<Option target="Roboter"/>
 		</Unit>
-		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/init_state.c">
-			<Option target="Roboter"/>
-		</Unit>
-		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/left_state.c">
-			<Option target="Roboter"/>
-		</Unit>
 		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/main.c">
 			<Option target="Roboter"/>
 		</Unit>
 		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/main.h">
 			<Option target="Roboter"/>
 		</Unit>
-		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/right_state.c">
+		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/states.c">
 			<Option target="Roboter"/>
 		</Unit>
 		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/states.h">

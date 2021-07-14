@@ -23,12 +23,7 @@ void toggle_DI() {
     toggle_pin(&PORTB, PB2);
 }
 
-void set_to_low(volatile char *group_offset, char element) {
-    group_offset[0] &= ~(1 << element);
-}
-
 void send_flanks(int flank_count) {
-
     for (int i = 0; i < flank_count; i++) {
         toggle_pin(&PORTD, PD4);
         toggle_pin(&PORTD, PD4);
@@ -36,7 +31,7 @@ void send_flanks(int flank_count) {
 }
 
 void reset() {
-    set_to_low(&PORTB, PB2);
+    set_pin_low(&PORTB, PB2);
     send_flanks(3);
 }
 
@@ -58,7 +53,7 @@ void fire_mode(Diodes diode) {
             toggle_DI();
             send_flanks(1);
             break;
-        case LED3:
+        case LED_MID_LF:
             toggle_DI();
             send_flanks(1);
             toggle_DI();
@@ -82,22 +77,6 @@ void wait_ntimes(int n) {
 
 int chr_to_int(char chr) {
     return (int)(chr) - ASCII_OFFSET;
-}
-
-void send_start_message() {
-    USART_print("Type in word containing only integers:\n");
-    USART_print("Each word consists of tupels (x,y).\n");
-    USART_print("x := select DriveMode\n");
-    USART_print("y := n (250ms) wait cycles\n");
-    USART_print("0 : RESET   ||   1 : LED_LEFT_LF\n");
-    USART_print("2 : LED_RIGHT_LF     ||   3 : LED3\n");
-    USART_print("4 : ALL\n");
-}
-
-void init_adc() {
-    USART_Init(UBRR_SETTING);
-    DDRB = (1 << DDB2);
-    DDRD = (1 << DDD4);
 }
 
 // was wäre guter name dafuer?
@@ -127,7 +106,6 @@ void event_listener() {
 
 int main(void) {
 
-    init_adc();
     send_start_message();
 
     while (1) {

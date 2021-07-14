@@ -1,6 +1,6 @@
 /**
  * @file iesmotors.c
- * @brief listens to main.c and controlls everything regarding the motors of the roboter
+ * @brief Controlls everything regarding the motors of the robot
  * @version 0.1
  * @date 2021-06-08
  */
@@ -53,7 +53,7 @@ void setup_timer0() {
 void set_duty_cycle(uint8_t pin, uint8_t value)
 {
     // TODO Codewiederholunge? Ja aber andere Register..
-    if (pin == PD6) {
+    if (pin == RIGHT_ENG) {
         if (value == 0) {
             TCCR0A &= ~(1 << COM0A1) & ~(1 << COM0A0);  // normal port operation mode
             PORTD &= ~(1 << PD6);                       // PD6 LOW
@@ -68,7 +68,7 @@ void set_duty_cycle(uint8_t pin, uint8_t value)
             OCR0A = value;
         }
     }
-    if (pin == PD5) {
+    if (pin == LEFT_ENG) {
         if (value == 0) {
             TCCR0A &= ~(1 << COM0B1) & ~(1 << COM0B0);  // normal port operation mode
             PORTD &= ~(1 << PD5);                       // PD5 LOW
