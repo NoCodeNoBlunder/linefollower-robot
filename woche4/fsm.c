@@ -42,8 +42,8 @@ void add_state(FSM *fsm, State state, char *name, void (*enter), void (*update))
 
     fsm->states[state] = new_state;
 
-    /* The first State added becomes the default state also automatically adds Exit state. */
-    if (state == 0) {
+    /* The INIT State becomes the default state. Also automatically adds Exit state. */
+    if (state == INIT) {
         fsm->current_state = new_state;
         add_state(fsm, EXIT, "Exit", NULL, NULL);
     }
@@ -70,7 +70,7 @@ void start_fsm_cycle(FSM *fsm, void *data) {
  * @param arg void pointer to be able to pass an argument to enter.
  * @param next_state enum value of the state to transition into
  */
-void switch_state(FSM *fsm, void *arg, State next_state) {
+void transition_to_state(FSM *fsm, void *arg, State next_state) {
     fsm -> current_state = fsm ->states[next_state];
     fsm ->current_state ->enter_ptr(arg);
 }

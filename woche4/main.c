@@ -40,7 +40,7 @@ void enter_init() {
 }
 
 void update_init(FSM *fsm, RoboterData *data) {
-    switch_state(fsm, data, FORWARD);
+    transition_to_state(fsm, data, FORWARD);
 }
 
 void enter_forward(RoboterData *data) {
@@ -56,14 +56,14 @@ void update_forward(FSM *fsm, RoboterData *data) {
         // LEFT ON TRACK
         if (data->sensor_right < THRESHOLD_R) {
             // LEFT ON TRACK AND RIGHT OFF TRACK
-            switch_state(fsm, data, LEFT);
+            transition_to_state(fsm, data, LEFT);
         }
     }
     else {
         // LEFT OFF TRACK
         if (data->sensor_right >= THRESHOLD_R) {
             // LEFT OFF TRACK AND RIGHT ON TRACK
-            switch_state(fsm, data, RIGHT);
+            transition_to_state(fsm, data, RIGHT);
         }
     }
 
@@ -84,7 +84,7 @@ void update_left(FSM *fsm, RoboterData *data)
 
     if (data->sensor_left < THRESHOLD_L || data ->sensor_right >= THRESHOLD_R) {
         // LEFT IS OFF TRACK OR RIGHT IS ON TRACK
-        switch_state(fsm, data, FORWARD);
+        transition_to_state(fsm, data, FORWARD);
     }
 
     if (data->debug_mode) {
@@ -103,7 +103,7 @@ void update_right(FSM *fsm, RoboterData *data) {
 
     if (data->sensor_left >= THRESHOLD_L || data->sensor_right < THRESHOLD_R) {
         // LEFT IS ON TRACK OR RIGHT IS OFF TRACK
-        switch_state(fsm, data, FORWARD);
+        transition_to_state(fsm, data, FORWARD);
     }
 
     if (data->debug_mode) {

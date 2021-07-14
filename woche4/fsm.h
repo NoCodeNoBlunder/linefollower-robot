@@ -67,6 +67,6 @@ void add_state(FSM *fsm, State state, char *name, void (*enter), void (*update))
 
 void start_fsm_cycle(FSM *fsm, void *data);
 
-void switch_state(FSM *fsm, void *arg, State next_state);
+void transition_to_state(FSM *fsm, void *arg, State next_state);
 
 #endif //FSM_C_FSM_H
