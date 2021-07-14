@@ -6,8 +6,6 @@
 
 #ifndef IESMOTORS_h
 #define IESMOTORS_h
-#include <avr/io.h>
-#include <avr/interrupt.h>
 #include "main.h"
 #include "fsm.h"
 

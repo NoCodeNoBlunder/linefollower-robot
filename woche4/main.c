@@ -12,7 +12,7 @@
 
 int main() {
     FSM fsm;
-    RoboterData data = {data.debug_mode = 0}; // if this is set to 0 Debug mode is disabled. No data will be sent to Serial PORT.
+    RoboterData data = {data.debug_mode = 1}; // if this is set to 0 Debug mode is disabled. No data will be sent to Serial PORT.
 
     add_state(&fsm, INIT, "Init", enter_init, update_init);
     add_state(&fsm, FORWARD, "Forward", enter_forward, update_forward);

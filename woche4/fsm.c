@@ -22,7 +22,6 @@ void exit_fsm_cycle(FSM *fsm);
 
 // TODO was möchte ich hier alles rüberbringen?
 // first state added becomes the default state.
-
 /**
  * Function to create and store a new state
  * @param fsm pointer to struct of type FSM which represent an instance of FSM

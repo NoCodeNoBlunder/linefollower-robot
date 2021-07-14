@@ -7,9 +7,10 @@
 
 #include <stdio.h>
 #include <util/delay.h>
+#include <avr/interrupt.h>
 #include "main.h"
-#include "fsm.h"
 #include "iesmotors.h"
+#include "fsm.h"
 #include "iesusart.h"
 #include "util.h"
 
@@ -22,8 +23,8 @@ enum {
 
 enum {
     ENG_STILL = 0,
-    ENG_SLOW = 110,
-    ENG_MID = 160,
+    ENG_SLOW = 130,
+    ENG_MID = 170,
     ENG_FAST = 210,
     ENG_MAX = 255,
 };
@@ -46,21 +47,21 @@ void setup_timer0() {
     sei();                                  // enable interrupts globally
 }
 
-/* Sets duty-cycle at pin PD5 or PD6 (OC0A or OC0B)
+/** Sets duty-cycle at pin PD5 or PD6 (OC0A or OC0B)
  * to a value (0 - 255 = 0% - 100%).
  * Timer0 needs to be setup before usage.
- * The required pins also need to be set as output first. */
+ * The required pins also need to be set as output first.
+ */
 void set_duty_cycle(uint8_t pin, uint8_t value)
 {
-    // TODO Codewiederholunge? Ja aber andere Register..
     if (pin == RIGHT_ENG) {
         if (value == 0) {
             TCCR0A &= ~(1 << COM0A1) & ~(1 << COM0A0);  // normal port operation mode
-            PORTD &= ~(1 << PD6);                       // PD6 LOW
+            PORTD &= ~(1 << RIGHT_ENG);                 // PD6 LOW
         }
         else if (value == 255) {
             TCCR0A &= ~(1 << COM0A1) & ~(1 << COM0A0);  // normal port operation mode
-            PORTD |= (1 << PD6);                        // PD6 HIGH
+            PORTD |= (1 << RIGHT_ENG);                        // PD6 HIGH
         }
         else {
             TCCR0A |= (1 << COM0A1);                    // Clear OC0A on Compare Match, set OC0A at
@@ -71,11 +72,11 @@ void set_duty_cycle(uint8_t pin, uint8_t value)
     if (pin == LEFT_ENG) {
         if (value == 0) {
             TCCR0A &= ~(1 << COM0B1) & ~(1 << COM0B0);  // normal port operation mode
-            PORTD &= ~(1 << PD5);                       // PD5 LOW
+            PORTD &= ~(1 << LEFT_ENG);                       // PD5 LOW
         }
         else if (value == 255) {
             TCCR0A &= ~(1 << COM0B1) & ~(1 << COM0B0);  // normal port operation mode
-            PORTD |= (1 << PD5);                        // PD5 HIGH
+            PORTD |= (1 << LEFT_ENG);                   // PD5 HIGH
         }
         else {
             TCCR0A |= (1 << COM0B1);                    // Clear OC0B on Compare Match, set OC0B at
@@ -85,8 +86,6 @@ void set_duty_cycle(uint8_t pin, uint8_t value)
     }
 }
 
-
-// TODO Kann ich diese Methoden zusamenfassen? Mit switch?
 void left_forward() {
     set_pin_high(&PORTD, IN1);
     set_pin_low(&PORTB, IN2);
@@ -107,28 +106,23 @@ void right_backward() {
     set_pin_low(&PORTB, IN4);
 }
 
-// TODO switch benutzen!
-void set_polarity_forward() {
-    left_forward();
-    right_forward();
+void set_polarity(State dir) {
+    switch (dir) {
+        case FORWARD:
+            left_forward();
+            right_forward();
+            break;
+        case LEFT:
+            left_backward();
+            right_forward();
+            break;
+        case RIGHT:
+            left_forward();
+            right_backward();
+            break;
+    }
 }
 
-void set_polarity_left_rot() {
-    left_backward();
-    right_forward();
-}
-
-void set_polarity_right_rot() {
-    left_forward();
-    right_backward();
-}
-
-void set_polarity_backward() {
-    left_backward();
-    right_backward();
-}
-
-// TODO FRAGE: Werde ich gelynched für diese Methode?
 void accelerate_straight(RoboterData *data, int to_value) {
     static int i, state = 0;
 
@@ -184,24 +178,22 @@ void set_direction(RoboterData *data, State state) {
 
     switch (state) {
         case LEFT:
-            data ->left_eng_speed = ENG_MID;
-            data ->right_eng_speed = ENG_FAST;
-            set_polarity_left_rot();
+            data->left_eng_speed = ENG_SLOW;
+            data->right_eng_speed = ENG_FAST;
             break;
         case RIGHT:
-            data ->left_eng_speed = ENG_FAST;
-            data ->right_eng_speed = ENG_MID;
-            set_polarity_right_rot();
+            data->left_eng_speed = ENG_FAST;
+            data->right_eng_speed = ENG_SLOW;
             break;
         case FORWARD:
-            data ->left_eng_speed = ENG_MID;
-            data ->right_eng_speed = ENG_MID;
-            set_polarity_forward();
+            data->left_eng_speed = ENG_MID;
+            data->right_eng_speed = ENG_MID;
             break;
     }
 
-    set_duty_cycle(LEFT_ENG, data ->left_eng_speed);
-    set_duty_cycle(RIGHT_ENG, data ->right_eng_speed);
+    set_polarity(state);
+    set_duty_cycle(LEFT_ENG, data->left_eng_speed);
+    set_duty_cycle(RIGHT_ENG, data->right_eng_speed);
 }
 
 
