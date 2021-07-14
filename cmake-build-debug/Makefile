@@ -276,6 +276,33 @@ woche3/iesusart.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche3/iesusart.c.s
 .PHONY : woche3/iesusart.c.s
 
+woche4/forward_state.obj: woche4/forward_state.c.obj
+
+.PHONY : woche4/forward_state.obj
+
+# target to build an object file
+woche4/forward_state.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/forward_state.c.obj
+.PHONY : woche4/forward_state.c.obj
+
+woche4/forward_state.i: woche4/forward_state.c.i
+
+.PHONY : woche4/forward_state.i
+
+# target to preprocess a source file
+woche4/forward_state.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/forward_state.c.i
+.PHONY : woche4/forward_state.c.i
+
+woche4/forward_state.s: woche4/forward_state.c.s
+
+.PHONY : woche4/forward_state.s
+
+# target to generate assembly for a file
+woche4/forward_state.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/forward_state.c.s
+.PHONY : woche4/forward_state.c.s
+
 woche4/fsm.obj: woche4/fsm.c.obj
 
 .PHONY : woche4/fsm.obj
@@ -384,6 +411,60 @@ woche4/iesusart.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/iesusart.c.s
 .PHONY : woche4/iesusart.c.s
 
+woche4/init_state.obj: woche4/init_state.c.obj
+
+.PHONY : woche4/init_state.obj
+
+# target to build an object file
+woche4/init_state.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/init_state.c.obj
+.PHONY : woche4/init_state.c.obj
+
+woche4/init_state.i: woche4/init_state.c.i
+
+.PHONY : woche4/init_state.i
+
+# target to preprocess a source file
+woche4/init_state.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/init_state.c.i
+.PHONY : woche4/init_state.c.i
+
+woche4/init_state.s: woche4/init_state.c.s
+
+.PHONY : woche4/init_state.s
+
+# target to generate assembly for a file
+woche4/init_state.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/init_state.c.s
+.PHONY : woche4/init_state.c.s
+
+woche4/left_state.obj: woche4/left_state.c.obj
+
+.PHONY : woche4/left_state.obj
+
+# target to build an object file
+woche4/left_state.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/left_state.c.obj
+.PHONY : woche4/left_state.c.obj
+
+woche4/left_state.i: woche4/left_state.c.i
+
+.PHONY : woche4/left_state.i
+
+# target to preprocess a source file
+woche4/left_state.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/left_state.c.i
+.PHONY : woche4/left_state.c.i
+
+woche4/left_state.s: woche4/left_state.c.s
+
+.PHONY : woche4/left_state.s
+
+# target to generate assembly for a file
+woche4/left_state.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/left_state.c.s
+.PHONY : woche4/left_state.c.s
+
 woche4/main.obj: woche4/main.c.obj
 
 .PHONY : woche4/main.obj
@@ -411,6 +492,33 @@ woche4/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/main.c.s
 .PHONY : woche4/main.c.s
 
+woche4/right_state.obj: woche4/right_state.c.obj
+
+.PHONY : woche4/right_state.obj
+
+# target to build an object file
+woche4/right_state.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/right_state.c.obj
+.PHONY : woche4/right_state.c.obj
+
+woche4/right_state.i: woche4/right_state.c.i
+
+.PHONY : woche4/right_state.i
+
+# target to preprocess a source file
+woche4/right_state.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/right_state.c.i
+.PHONY : woche4/right_state.c.i
+
+woche4/right_state.s: woche4/right_state.c.s
+
+.PHONY : woche4/right_state.s
+
+# target to generate assembly for a file
+woche4/right_state.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/right_state.c.s
+.PHONY : woche4/right_state.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -435,6 +543,9 @@ help:
 	@echo ... woche3/iesusart.obj
 	@echo ... woche3/iesusart.i
 	@echo ... woche3/iesusart.s
+	@echo ... woche4/forward_state.obj
+	@echo ... woche4/forward_state.i
+	@echo ... woche4/forward_state.s
 	@echo ... woche4/fsm.obj
 	@echo ... woche4/fsm.i
 	@echo ... woche4/fsm.s
@@ -447,9 +558,18 @@ help:
 	@echo ... woche4/iesusart.obj
 	@echo ... woche4/iesusart.i
 	@echo ... woche4/iesusart.s
+	@echo ... woche4/init_state.obj
+	@echo ... woche4/init_state.i
+	@echo ... woche4/init_state.s
+	@echo ... woche4/left_state.obj
+	@echo ... woche4/left_state.i
+	@echo ... woche4/left_state.s
 	@echo ... woche4/main.obj
 	@echo ... woche4/main.i
 	@echo ... woche4/main.s
+	@echo ... woche4/right_state.obj
+	@echo ... woche4/right_state.i
+	@echo ... woche4/right_state.s
 .PHONY : help
 
 

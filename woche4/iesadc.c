@@ -11,6 +11,8 @@
 #include <avr/interrupt.h>
 #include <stdio.h>
 #include "iesusart.h"
+#include "iesadc.h"
+#include "main.h"
 
 // TODO globale Variablen werden die gebraucht kommentieren!?
 unsigned int cnt = 0;
@@ -35,7 +37,7 @@ void setup_timer2() {
 
 void ADC_Init() {
     // added myself!
-    DDRC &= ~((1 << PC0) | (1 << PC1) | (1 << PC2));
+    DDRC &= ~((1 << LEFT_SENSOR) | (1 << MID_SENSOR) | (1 << RIGHT_SENSOR));
 
     ADMUX = (1 << REFS0);                                 // Why not explicitely set bit REFS1 to 0?
     ADCSRA = (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0);  // Set clock (Takt)?

@@ -5,8 +5,10 @@
  * @date 2021-06-08
  */
 
-#include "iesusart.h"
 #include <avr/io.h>
+#include "iesusart.h"
+#include "main.h"
+#include "stdio.h"
 
 /**
  * @brief
@@ -67,4 +69,20 @@ void USART_Init(unsigned long ubrr)
      * start of a simulation in SimulIDE.
     */
     USART_print("\n");
+}
+
+/**
+ * Function to transmit data via Serial Port.
+ * @param fsm pointer to instance of FSM
+ * @param data pointer to instance of RoboterData
+ * @details this function is only called when the var debug_mode is enabled in data
+ */
+void transmit_sensor_data(FSM *fsm, RoboterData *data) {
+    static char str_buf[STR_BUF_SIZE];
+
+    sprintf(str_buf,
+            "%s L:%d | M:%d | R:%d\n %d | %d\n\n",
+            fsm->current_state->state_name, data->sensor_left, data->sensor_mid, data->sensor_right,
+            data->left_eng_speed, data->right_eng_speed);
+    USART_print(str_buf);
 }

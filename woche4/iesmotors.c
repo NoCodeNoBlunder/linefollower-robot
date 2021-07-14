@@ -5,12 +5,12 @@
  * @date 2021-06-08
  */
 
-#include "iesmotors.h"
-#include "iesusart.h"
-#include "main.h"
 #include <stdio.h>
 #include <util/delay.h>
+#include "main.h"
 #include "fsm.h"
+#include "iesmotors.h"
+#include "iesusart.h"
 
 enum {
     IN1 = PD7,

@@ -9,6 +9,7 @@
 #define TYPEDEFS_H
 
 #include <avr/io.h>
+#include "fsm.h"
 
 /**
  * @def SAMPLE_SIZE determines how many sensor meassurements are taken.
@@ -16,6 +17,8 @@
 #define SAMPLE_SIZE 20
 #define STR_BUF_SIZE 40
 #define SHORT_wTIME 350
+#define EXIT_SUCCESS 0
+#define EXIT_FAILURE -1
 
 /**
  *  @enum Threshold
@@ -50,5 +53,7 @@ typedef struct RoboterData {
     unsigned char left_eng_speed; // Only has values between 0 and 255
     unsigned char right_eng_speed;
 } RoboterData;
+
+void transmit_sensor_data(FSM *fsm, RoboterData *data);
 
 #endif //TYPEDEFS_H
