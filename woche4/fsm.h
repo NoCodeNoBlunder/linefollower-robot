@@ -40,14 +40,14 @@ typedef enum {
  * @brief stores all relevant information regarding the state
  * @var state is used to distingish this state from other states
  * @var state_name is a string storing the name of the state for debugging
- * @var enter_ptr is a void function pointer to the implementation of this state's enter function
- * @var update_ptr is a void function pointer to implementation of this state's update function
+ * @var enter_function is a void function pointer to the implementation of this state's enter function
+ * @var update_function is a void function pointer to implementation of this state's update function
  */
 typedef struct ConcreteState {
     State state;
     char * state_name; // unused but good for debugging.
-    void (*enter_ptr)(void *arg);
-    void (*update_ptr)(struct FSM *fsm, void *arg);
+    void (*enter_function)(void *arg);
+    void (*update_function)(struct FSM *fsm, void *arg);
 } ConcreteState;
 
 /**
@@ -63,7 +63,7 @@ typedef struct FSM {
 
 // TODO hier muss bei den Funktionen die Signatur mit angegeben werden?
 // Nur der Return Typ der Funktionen muss hier angegeben werden.
-void add_state(FSM *fsm, State state, char *name, void (*enter), void (*update));
+void add_state(FSM *fsm, State state, char *state_name, void (*enter), void (*update));
 
 void start_fsm_cycle(FSM *fsm, void *data);
 
