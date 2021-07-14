@@ -84,7 +84,6 @@ void set_duty_cycle(uint8_t pin, uint8_t value)
     }
 }
 
-// region POLARITY
 // TODO create util file with helper methods?
 void set_high(volatile char *reg, char pin) {
     reg[0] |= (1 << pin);
@@ -133,7 +132,6 @@ void set_polarity_backward() {
     left_backward();
     right_backward();
 }
-// endregion
 
 // TODO FRAGE: Werde ich gelynched für diese Methode?
 void accelerate_straight(RoboterData *data, int to_value) {
@@ -166,9 +164,7 @@ void deaccelerate_straight(RoboterData *data, int to_value) {
 //        _delay_ms(50);
     }
 }
-// endregion
 
-// region API MOTORS
 void motors_Init() {
     // Delete everything on ports B and D
     DDRD = 0;
@@ -212,8 +208,6 @@ void set_direction(RoboterData *data, State state) {
     set_duty_cycle(LEFT_ENG, data ->left_eng_speed);
     set_duty_cycle(RIGHT_ENG, data ->right_eng_speed);
 }
-
-// endregion
 
 
 

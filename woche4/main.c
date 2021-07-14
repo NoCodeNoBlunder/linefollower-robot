@@ -9,15 +9,12 @@
  */
 
 #include <util/delay.h>
-#include <stdlib.h>
+#include <stdlib.h> // used for EXIT_SUCCESS only!
 #include "stdio.h"
 #include "main.h"
 #include "iesusart.h"
 #include "iesadc.h"
 #include "iesmotors.h"
-#include "fsm.h"
-
-
 
 /**
  * Function to transmit data via Serial Port.
@@ -35,10 +32,7 @@ void transmit_data(FSM *fsm, RoboterData *data) {
     USART_print(str_buf);
 }
 
-// region ConcreteStates Enter() and Update() implementations.
 // TODO eventuell seperate Files erstelle für die State functionen.
-
-
 void enter_init() {
     ADC_Init();
     motors_Init();
@@ -117,11 +111,6 @@ void update_right(FSM *fsm, RoboterData *data) {
         _delay_ms(SHORT_wTIME);
     }
 }
-
-void enter_goal_reached(RoboterData *data) {
-
-}
-// endregion
 
 int main() {
     FSM fsm;

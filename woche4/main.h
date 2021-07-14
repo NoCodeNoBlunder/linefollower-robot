@@ -11,7 +11,7 @@
 #include <avr/io.h>
 
 /**
- * @def SAMPLE_SIZE determines the
+ * @def SAMPLE_SIZE determines how many sensor meassurements are taken.
  */
 #define SAMPLE_SIZE 20
 #define STR_BUF_SIZE 40
