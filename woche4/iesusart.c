@@ -7,7 +7,6 @@
 
 #include <avr/io.h>
 #include "iesusart.h"
-#include "main.h"
 #include "stdio.h"
 
 /**

@@ -93,9 +93,6 @@
 		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche3/iesusart.c">
 			<Option target="Roboter"/>
 		</Unit>
-		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/compile.sh">
-			<Option target="Roboter"/>
-		</Unit>
 		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/forward_state.c">
 			<Option target="Roboter"/>
 		</Unit>
@@ -109,6 +106,12 @@
 			<Option target="Roboter"/>
 		</Unit>
 		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/iesadc.h">
+			<Option target="Roboter"/>
+		</Unit>
+		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/iesleds.c">
+			<Option target="Roboter"/>
+		</Unit>
+		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/iesleds.h">
 			<Option target="Roboter"/>
 		</Unit>
 		<Unit filename="C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/woche4/iesmotors.c">

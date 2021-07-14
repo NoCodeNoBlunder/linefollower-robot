@@ -5,7 +5,7 @@
  */
 
 
-#ifndef IESMOTORS
+#ifndef IESMOTORS_h
 #define IESMOTORS
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -14,4 +14,4 @@
 
 void motors_Init();
 void set_direction(RoboterData *data, State state);
-#endif // IESMOTORS
+#endif // IESMOTORS_h

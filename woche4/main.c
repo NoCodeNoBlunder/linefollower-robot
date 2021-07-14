@@ -1,20 +1,14 @@
 /**
  * @file main.c
  * @author Fabian Indrunas
- * @brief Configures the FSM
+ * @brief Configuration of FSM.
  * @version 0.1
  * @date 2021-06-08
  */
 
-#include <util/delay.h>
-#include <stdlib.h> // used for EXIT_SUCCESS only!
+#include <stdlib.h>
 #include "main.h"
 #include "states.h"
-
-#include "iesusart.h"
-#include "iesadc.h"
-#include "iesmotors.h"
-#include "stdio.h"
 
 int main() {
     FSM fsm;

@@ -93,6 +93,7 @@ void set_low(volatile char *reg, char pin) {
     reg[0] &= ~(1 << pin);
 }
 
+// TODO Kann ich diese Methoden zusamenfassen? Mit switch?
 void left_forward() {
     set_high(&PORTD, IN1);
     set_low(&PORTB, IN2);
@@ -113,6 +114,7 @@ void right_backward() {
     set_low(&PORTB, IN4);
 }
 
+// TODO switch benutzen!
 void set_polarity_forward() {
     left_forward();
     right_forward();

@@ -1,6 +1,6 @@
 
-#ifndef MAIN_C_STATES_H
-#define MAIN_C_STATES_H
+#ifndef STATES_h
+#define STATES_h
 
 #include <util/delay.h>
 #include "main.h"
@@ -20,4 +20,4 @@ void update_left(FSM *fsm, RoboterData *data);
 void enter_right(RoboterData *data);
 void update_right(FSM *fsm, RoboterData *data);
 
-#endif //MAIN_C_STATES_H
+#endif //STATES_h

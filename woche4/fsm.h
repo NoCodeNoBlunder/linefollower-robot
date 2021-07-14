@@ -6,8 +6,8 @@
  * @date 2021-06-08
  */
 
-#ifndef FSM_C_FSM_H
-#define FSM_C_FSM_H
+#ifndef FSM_h
+#define FSM_h
 
 // forward declaration
 struct FSM;
@@ -34,7 +34,6 @@ typedef enum {
     STATECOUNT, // Is not an actual state but is there to know the statecount.
 } State ;
 
-/* Members of a State */
 /**
  * @struct ConcreteState "fsm.h"
  * @brief stores all relevant information regarding the state
@@ -69,4 +68,4 @@ void start_fsm_cycle(FSM *fsm, void *data);
 
 void transition_to_state(FSM *fsm, void *arg, State next_state);
 
-#endif //FSM_C_FSM_H
+#endif //FSM_h

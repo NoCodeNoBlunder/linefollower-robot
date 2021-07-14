@@ -8,6 +8,8 @@
 #ifndef IESUSART_h
 #define IESUSART_h
 
+#include "main.h"
+
 /// CPU clock speed
 #ifndef F_CPU
 #define F_CPU 16E6
@@ -42,4 +44,6 @@ void USART_print(const char *c);
  */
 void USART_Init(unsigned long ubrr);
 
+
+void transmit_sensor_data(FSM *fsm, RoboterData *data);
 #endif

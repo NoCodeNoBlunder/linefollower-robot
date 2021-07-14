@@ -7,6 +7,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Roboter.dir/woche4/forward_state.c.obj"
   "CMakeFiles/Roboter.dir/woche4/fsm.c.obj"
   "CMakeFiles/Roboter.dir/woche4/iesadc.c.obj"
+  "CMakeFiles/Roboter.dir/woche4/iesleds.c.obj"
   "CMakeFiles/Roboter.dir/woche4/iesmotors.c.obj"
   "CMakeFiles/Roboter.dir/woche4/iesusart.c.obj"
   "CMakeFiles/Roboter.dir/woche4/init_state.c.obj"

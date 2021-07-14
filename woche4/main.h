@@ -4,9 +4,8 @@
  * @date 2021-06-08
  */
 
-
-#ifndef TYPEDEFS_H
-#define TYPEDEFS_H
+#ifndef MAIN_h
+#define MAIN_h
 
 #include <avr/io.h>
 #include "fsm.h"
@@ -17,8 +16,6 @@
 #define SAMPLE_SIZE 20
 #define STR_BUF_SIZE 40
 #define SHORT_wTIME 350
-#define EXIT_SUCCESS 0
-#define EXIT_FAILURE -1
 
 /**
  *  @enum Threshold
@@ -54,6 +51,6 @@ typedef struct RoboterData {
     unsigned char right_eng_speed;
 } RoboterData;
 
-void transmit_sensor_data(FSM *fsm, RoboterData *data);
 
-#endif //TYPEDEFS_H
+
+#endif //MAIN_h
