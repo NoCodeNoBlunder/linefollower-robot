@@ -32,11 +32,13 @@ enum Threshold{
  * @enum Sensor
  * @brief enum stores the corrosponding pins for the sensors
  */
-enum Sensor {
+typedef enum Sensor {
     LEFT_LF = PC2,
     MID_LF = PC1,
-    RIGHT_LF = PC0
-};
+    RIGHT_LF = PC0,
+    LEFT_AND_RIGHT = -1,
+    NONE = -2,
+} Sensor;
 
 /**
  * @struct RoboterData "main.h"

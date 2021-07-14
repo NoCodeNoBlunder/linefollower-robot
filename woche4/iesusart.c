@@ -6,6 +6,7 @@
  */
 
 #include <avr/io.h>
+#include <util/delay.h>
 #include "iesusart.h"
 #include "stdio.h"
 
@@ -76,7 +77,10 @@ void USART_Init(unsigned long ubrr)
  * @param data pointer to instance of RoboterData
  * @details this function is only called when the var debug_mode is enabled in data
  */
-void transmit_sensor_data(FSM *fsm, RoboterData *data) {
+void transmit_debug_msg(FSM *fsm, RoboterData *data) {
+
+    // only send debug msg when debug mode is enabled.
+    if(data->debug_mode == 0) { return; }
     static char str_buf[STR_BUF_SIZE];
 
     sprintf(str_buf,
@@ -84,4 +88,6 @@ void transmit_sensor_data(FSM *fsm, RoboterData *data) {
             fsm->current_state->state_name, data->sensor_left, data->sensor_mid, data->sensor_right,
             data->left_eng_speed, data->right_eng_speed);
     USART_print(str_buf);
+
+    _delay_ms(SHORT_wTIME);
 }

@@ -45,5 +45,5 @@ void USART_print(const char *c);
 void USART_Init(unsigned long ubrr);
 
 
-void transmit_sensor_data(FSM *fsm, RoboterData *data);
+void transmit_debug_msg(FSM *fsm, RoboterData *data);
 #endif

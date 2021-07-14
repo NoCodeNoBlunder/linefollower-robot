@@ -1,7 +1,7 @@
-#ifndef MAIN_C_IESLEDS_H
-#define MAIN_C_IESLEDS_H
+#ifndef IESLEDS_h
+#define IESLEDS_h
 
+void leds_Init();
+void light_led(Sensor diode);
 
-
-
-#endif //MAIN_C_IESLEDS_H
+#endif //IESLEDS_h
