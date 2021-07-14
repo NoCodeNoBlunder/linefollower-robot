@@ -12,8 +12,6 @@
 // forward declaration
 struct FSM;
 
-/* These are all the states of the FSM */
-
 /**
  * @struct State "fsm.h"
  * @brief used to differentiate between states.
@@ -24,7 +22,7 @@ struct FSM;
  *
  */
 typedef enum {
-    INIT,      // default State has to be the first state.
+    INIT,      // default State has to be the INIT state
     COUNTDOWN,
     FORWARD,
     LEFT,
@@ -44,7 +42,7 @@ typedef enum {
  */
 typedef struct ConcreteState {
     State state;
-    char * state_name; // unused but good for debugging.
+    char * state_name;
     void (*enter_function)(void *arg);
     void (*update_function)(struct FSM *fsm, void *arg);
 } ConcreteState;
@@ -60,8 +58,6 @@ typedef struct FSM {
     ConcreteState *states[STATECOUNT];
 } FSM;
 
-// TODO hier muss bei den Funktionen die Signatur mit angegeben werden?
-// Nur der Return Typ der Funktionen muss hier angegeben werden.
 void add_state(FSM *fsm, State state, char *state_name, void (*enter), void (*update));
 
 void start_fsm_cycle(FSM *fsm, void *data);

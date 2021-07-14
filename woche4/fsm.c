@@ -9,19 +9,12 @@
  */
 
 #include <stdlib.h>
-#include <stdio.h>      // Unused
-#include <util/delay.h> // Unused
 
 #include "fsm.h"
-#include "main.h"       // Unused
-#include "iesusart.h"   // Unused
 
 // forward declaration
 void exit_fsm_cycle(FSM *fsm);
 
-
-// TODO was möchte ich hier alles rüberbringen?
-// first state added becomes the default state.
 /**
  * Function to create and store a new state
  * @param fsm pointer to struct of type FSM which represent an instance of FSM
@@ -80,9 +73,6 @@ void transition_to_state(FSM *fsm, void *arg, State next_state) {
  * Function to shutdown the fsm and free storage
  */
 void exit_fsm_cycle(FSM *fsm) {
-    // TODO stop robot macht vlt doch sinn dafür eine Methode in der Main zu schreiben.
-
-    // TODO Gebe ich dadurch den ganzen durch malloc allocierten Speicher wieder frei?
     for (int i = 0; i < STATECOUNT; ++i) {
         free(fsm ->states[i]);
         fsm -> states[i] = NULL;

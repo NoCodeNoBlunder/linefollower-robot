@@ -7,7 +7,6 @@
 #ifndef IESADC_h
 #define IESADC_h
 
-// TODO Wieso musste ich das jetzt inkludieren und eben nicht?
 #include "stdint.h"
 
 void ADC_Init(void);

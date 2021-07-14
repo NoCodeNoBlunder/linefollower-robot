@@ -3,9 +3,6 @@
 #define STATES_h
 
 #include "main.h"
-//#include "iesmotors.h"
-//#include "iesadc.h"
-//#include "iesusart.h"
 
 void enter_init(void);
 void update_init(FSM *fsm, RoboterData *data);

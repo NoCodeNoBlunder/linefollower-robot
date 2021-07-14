@@ -29,16 +29,16 @@ enum Threshold{
 };
 
 /**
- * @enum Sensor
- * @brief enum stores the corrosponding pins for the sensors
+ * @enum LineFollower
+ * @brief enum stores the corrosponding pins for the sensors and also stor
  */
-typedef enum Sensor {
+typedef enum LineFollower {
     LEFT_LF = PC2,
     MID_LF = PC1,
     RIGHT_LF = PC0,
     LEFT_AND_RIGHT = -1,
     NONE = -2,
-} Sensor;
+} LineFollower;
 
 /**
  * @struct RoboterData "main.h"
@@ -52,7 +52,5 @@ typedef struct RoboterData {
     unsigned char left_eng_speed; // Only has values between 0 and 255
     unsigned char right_eng_speed;
 } RoboterData;
-
-
 
 #endif //MAIN_h

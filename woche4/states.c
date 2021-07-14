@@ -27,7 +27,6 @@ void enter_forward(RoboterData *data) {
     }
 }
 
-// TODO wie vermeide ich Codewiederholung unterhalbt der states? Inheritance?
 void update_forward(FSM *fsm, RoboterData *data) {
     data->sensor_left = ADC_read_avg(LEFT_LF, SAMPLE_SIZE);
     data->sensor_right = ADC_read_avg(RIGHT_LF, SAMPLE_SIZE);
@@ -37,7 +36,6 @@ void update_forward(FSM *fsm, RoboterData *data) {
         if (data->sensor_right < THRESHOLD_R) {
             // LEFT ON TRACK AND RIGHT OFF TRACK
             transition_to_state(fsm, data, LEFT);
-//            light_led(LEFT_LF);
         }
 
     }

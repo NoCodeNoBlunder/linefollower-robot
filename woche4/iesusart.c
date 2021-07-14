@@ -79,8 +79,7 @@ void USART_Init(unsigned long ubrr)
  */
 void transmit_debug_msg(FSM *fsm, RoboterData *data) {
 
-    // only send debug msg when debug mode is enabled.
-    if(data->debug_mode == 0) { return; }
+    if(data->debug_mode == 0) { return; }     // only send debug msg when debug mode is enabled.
     static char str_buf[STR_BUF_SIZE];
 
     sprintf(str_buf,
