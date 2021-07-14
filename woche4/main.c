@@ -9,7 +9,9 @@
  */
 
 #include <util/delay.h>
-#include <stdio.h>
+#include <stdlib.h>
+#include "stdio.h"
+#include "main.h"
 #include "iesusart.h"
 #include "iesadc.h"
 #include "iesmotors.h"
@@ -159,5 +161,5 @@ int main() {
 
     start_fsm_cycle(&fsm, &data);
 
-    USART_print("Programm terminated\n");
+    return EXIT_SUCCESS;
 }
