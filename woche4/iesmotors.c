@@ -123,37 +123,6 @@ void set_polarity(State dir) {
     }
 }
 
-void accelerate_straight(RoboterData *data, int to_value) {
-    static int i, state = 0;
-
-    switch (state) {
-        case 0: goto M0;
-        case 1: goto M1;
-    }
-
-    M0:
-        state = 1;
-        // TODO warum brauche ich eine schneller accel rate?
-        for (i = data -> right_eng_speed; i < to_value; i+=10) {
-            set_duty_cycle(LEFT_ENG, i+1);
-            set_duty_cycle(RIGHT_ENG, i+1);
-            // _delay_ms(10);
-            return;
-            M1:;
-    }
-
-    USART_print("\nICH BIN FERTIG!\n");
-}
-
-void deaccelerate_straight(RoboterData *data, int to_value) {
-    // Slowly decrease the duty
-    for (unsigned char i = 255; i > to_value; i--) {
-        set_duty_cycle(LEFT_ENG, i+1);
-        set_duty_cycle(RIGHT_ENG, i+1);
-//        _delay_ms(50);
-    }
-}
-
 void motors_Init() {
     // Delete everything on ports B and D
     DDRD = 0;
