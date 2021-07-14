@@ -37,7 +37,7 @@ enum {
 // Info is needed for PWM...?
 /* sets up timer 0 (8 bit) */
 void setup_timer0() {
-    cli();                                  // disable interrupt globally // TODO why do interrupt need to be disabled?
+cli();                                  // disable interrupt globally
     // Set Prescaler to 64
     TCCR0B = 0;
     TCCR0B |= (1 << CS00) | (1 << CS01);
@@ -55,11 +55,11 @@ void setup_timer0() {
 void set_duty_cycle(uint8_t pin, uint8_t value)
 {
     if (pin == RIGHT_ENG) {
-        if (value == 0) {
+        if (value == ENG_STILL) {
             TCCR0A &= ~(1 << COM0A1) & ~(1 << COM0A0);  // normal port operation mode
             PORTD &= ~(1 << RIGHT_ENG);                 // PD6 LOW
         }
-        else if (value == 255) {
+        else if (value == ENG_MAX) {
             TCCR0A &= ~(1 << COM0A1) & ~(1 << COM0A0);  // normal port operation mode
             PORTD |= (1 << RIGHT_ENG);                        // PD6 HIGH
         }
@@ -70,11 +70,11 @@ void set_duty_cycle(uint8_t pin, uint8_t value)
         }
     }
     if (pin == LEFT_ENG) {
-        if (value == 0) {
+        if (value == ENG_STILL) {
             TCCR0A &= ~(1 << COM0B1) & ~(1 << COM0B0);  // normal port operation mode
             PORTD &= ~(1 << LEFT_ENG);                       // PD5 LOW
         }
-        else if (value == 255) {
+        else if (value == ENG_MAX) {
             TCCR0A &= ~(1 << COM0B1) & ~(1 << COM0B0);  // normal port operation mode
             PORTD |= (1 << LEFT_ENG);                   // PD5 HIGH
         }
@@ -142,7 +142,9 @@ void motors_Init() {
     setup_timer0();
 }
 
-/* Sets Polarity and duty_cyles to control the Roboter drive direction. */
+/**
+ * Function to set engines polarity and duty_cyles to control the Roboter drive direction.
+ */
 void set_direction(RoboterData *data, State state) {
 
     switch (state) {
