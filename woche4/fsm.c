@@ -16,8 +16,6 @@
 #include "main.h"       // Unused
 #include "iesusart.h"   // Unused
 
-#define SHORT_wTIME 250
-
 // forward declaration
 void exit_fsm_cycle(FSM *fsm);
 

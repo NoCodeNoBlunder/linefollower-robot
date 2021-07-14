@@ -17,34 +17,7 @@
 #include "iesmotors.h"
 #include "fsm.h"
 
-/**
- * @def SAMPLE_SIZE determines the
- */
-#define SAMPLE_SIZE 20
-#define STR_BUF_SIZE 40
-#define SHORT_wTIME 350
 
-
-/**
- *  @enum Threshold
- *  @brief enums values determine the threshold of each sensor
- *  @details due to inaccuracy a sensor might fire early or late
- */
-enum Threshold{
-    THRESHOLD_L = 512,
-    THRESHOLD_M = 512,
-    THRESHOLD_R = 512,
-};
-
-/**
- * @enum Sensor
- * @brief enum stores the corrosponding pins for the sensors
- */
-enum Sensor {
-    LEFT_SENSOR = PC2,
-    MID_SENSOR = PC1,
-    RIGHT_SENSOR = PC0
-};
 
 /**
  * Function to transmit data via Serial Port.
