@@ -546,6 +546,33 @@ woche4/right_state.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/right_state.c.s
 .PHONY : woche4/right_state.c.s
 
+woche4/util.obj: woche4/util.c.obj
+
+.PHONY : woche4/util.obj
+
+# target to build an object file
+woche4/util.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/util.c.obj
+.PHONY : woche4/util.c.obj
+
+woche4/util.i: woche4/util.c.i
+
+.PHONY : woche4/util.i
+
+# target to preprocess a source file
+woche4/util.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/util.c.i
+.PHONY : woche4/util.c.i
+
+woche4/util.s: woche4/util.c.s
+
+.PHONY : woche4/util.s
+
+# target to generate assembly for a file
+woche4/util.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/util.c.s
+.PHONY : woche4/util.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -600,6 +627,9 @@ help:
 	@echo ... woche4/right_state.obj
 	@echo ... woche4/right_state.i
 	@echo ... woche4/right_state.s
+	@echo ... woche4/util.obj
+	@echo ... woche4/util.i
+	@echo ... woche4/util.s
 .PHONY : help
 
 

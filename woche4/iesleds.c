@@ -1,13 +1,10 @@
-//
-// Created by Fabian on 14.07.2021.
-//
-
-#include "iesleds.h"
 
 
 #include <avr/io.h>
 #include <util/delay.h>
+#include "iesleds.h"
 #include "iesusart.h"
+#include "util.h"
 
 #define SHORT_WTIME 250
 #define MID_WTIME 500
@@ -16,19 +13,14 @@
 
 typedef enum {
     NONE,
-    LED1,
-    LED2,
-    LED3,
+    LED_LEFT_LF,
+    LED_MID_LF,
+    LED_RIGHT_LF,
     ALL
 } Diodes;
 
-// TODO put this into util file? Toggle pin set to low set to high etc etc!
-void toggle_volt(volatile char *group_offset, char element) {
-    group_offset[0] ^= (1 << element);
-}
-
 void toggle_DI() {
-    toggle_volt(&PORTB, PB2);
+    toggle_pin(&PORTB, PB2);
 }
 
 void set_to_low(volatile char *group_offset, char element) {
@@ -38,8 +30,8 @@ void set_to_low(volatile char *group_offset, char element) {
 void send_flanks(int flank_count) {
 
     for (int i = 0; i < flank_count; i++) {
-        toggle_volt(&PORTD, PD4);
-        toggle_volt(&PORTD, PD4);
+        toggle_pin(&PORTD, PD4);
+        toggle_pin(&PORTD, PD4);
     }
 }
 
@@ -56,11 +48,11 @@ void fire_mode(Diodes diode) {
         case NONE:
             reset();
             break;
-        case LED1:
+        case LED_LEFT_LF:
             toggle_DI();
             send_flanks(1);
             break;
-        case LED2:
+        case LED_RIGHT_LF:
             toggle_DI();
             send_flanks(1);
             toggle_DI();
@@ -97,8 +89,8 @@ void send_start_message() {
     USART_print("Each word consists of tupels (x,y).\n");
     USART_print("x := select DriveMode\n");
     USART_print("y := n (250ms) wait cycles\n");
-    USART_print("0 : RESET   ||   1 : LED1\n");
-    USART_print("2 : LED2     ||   3 : LED3\n");
+    USART_print("0 : RESET   ||   1 : LED_LEFT_LF\n");
+    USART_print("2 : LED_RIGHT_LF     ||   3 : LED3\n");
     USART_print("4 : ALL\n");
 }
 

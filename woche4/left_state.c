@@ -7,8 +7,8 @@ void enter_left(RoboterData *data) {
 
 void update_left(FSM *fsm, RoboterData *data)
 {
-    data->sensor_left = ADC_read_avg(LEFT_SENSOR, SAMPLE_SIZE);
-    data->sensor_right = ADC_read_avg(RIGHT_SENSOR, SAMPLE_SIZE);
+    data->sensor_left = ADC_read_avg(LEFT_LF, SAMPLE_SIZE);
+    data->sensor_right = ADC_read_avg(RIGHT_LF, SAMPLE_SIZE);
 
     if (data->sensor_left < THRESHOLD_L || data ->sensor_right >= THRESHOLD_R) {
         // LEFT IS OFF TRACK OR RIGHT IS ON TRACK

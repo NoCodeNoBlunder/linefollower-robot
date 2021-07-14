@@ -9,25 +9,25 @@
 
 typedef enum {
     NONE,
-    LED1,
-    LED2,
+    LED_LEFT_LF,
+    LED_RIGHT_LF,
     LED3,
     ALL
 } Diodes;
 
-void toggle_volt(volatile char *group_offset, char element) {
+void toggle_pin(volatile char *group_offset, char element) {
     group_offset[0] ^= (1 << element);
 }
 
 void toggle_DI() {
-    toggle_volt(&PORTB, PB2);
+    toggle_pin(&PORTB, PB2);
 }
 
 void send_flanks(int flank_count) {
 
     for (int i = 0; i < flank_count; i++) {
-        toggle_volt(&PORTD, PD4);
-        toggle_volt(&PORTD, PD4);
+        toggle_pin(&PORTD, PD4);
+        toggle_pin(&PORTD, PD4);
     }
 }
 
@@ -48,11 +48,11 @@ void fire_mode(Diodes diode) {
         case NONE:
             reset();
             break;
-        case LED1:
+        case LED_LEFT_LF:
             toggle_DI();
             send_flanks(1);
             break;
-        case LED2:
+        case LED_RIGHT_LF:
             toggle_DI();
             send_flanks(1);
             toggle_DI();
@@ -89,8 +89,8 @@ void send_start_message() {
     USART_print("Each word consists of tupels (x,y).\n");
     USART_print("x := select DriveMode\n");
     USART_print("y := n (250ms) wait cycles\n");
-    USART_print("0 : RESET   ||   1 : LED1\n");
-    USART_print("2 : LED2     ||   3 : LED3\n");
+    USART_print("0 : RESET   ||   1 : LED_LEFT_LF\n");
+    USART_print("2 : LED_RIGHT_LF     ||   3 : LED3\n");
     USART_print("4 : ALL\n");
 }
 

@@ -11,6 +11,7 @@
 #include "fsm.h"
 #include "iesmotors.h"
 #include "iesusart.h"
+#include "util.h"
 
 enum {
     IN1 = PD7,
@@ -84,34 +85,26 @@ void set_duty_cycle(uint8_t pin, uint8_t value)
     }
 }
 
-// TODO create util file with helper methods?
-void set_high(volatile char *reg, char pin) {
-    reg[0] |= (1 << pin);
-}
-
-void set_low(volatile char *reg, char pin) {
-    reg[0] &= ~(1 << pin);
-}
 
 // TODO Kann ich diese Methoden zusamenfassen? Mit switch?
 void left_forward() {
-    set_high(&PORTD, IN1);
-    set_low(&PORTB, IN2);
+    set_pin_high(&PORTD, IN1);
+    set_pin_low(&PORTB, IN2);
 }
 
 void left_backward() {
-    set_high(&PORTB, IN2);
-    set_low(&PORTD, IN1);
+    set_pin_high(&PORTB, IN2);
+    set_pin_low(&PORTD, IN1);
 }
 
 void right_forward() {
-    set_high(&PORTB, IN4);
-    set_low(&PORTB, IN3);
+    set_pin_high(&PORTB, IN4);
+    set_pin_low(&PORTB, IN3);
 }
 
 void right_backward() {
-    set_high(&PORTB, IN3);
-    set_low(&PORTB, IN4);
+    set_pin_high(&PORTB, IN3);
+    set_pin_low(&PORTB, IN4);
 }
 
 // TODO switch benutzen!

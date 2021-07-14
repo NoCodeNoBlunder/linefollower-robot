@@ -14,6 +14,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Roboter.dir/woche4/left_state.c.obj"
   "CMakeFiles/Roboter.dir/woche4/main.c.obj"
   "CMakeFiles/Roboter.dir/woche4/right_state.c.obj"
+  "CMakeFiles/Roboter.dir/woche4/util.c.obj"
   "Roboter.exe"
   "Roboter.exe.manifest"
   "Roboter.pdb"

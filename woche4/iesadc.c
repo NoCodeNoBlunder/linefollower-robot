@@ -37,7 +37,7 @@ void setup_timer2() {
 
 void ADC_Init() {
     // added myself!
-    DDRC &= ~((1 << LEFT_SENSOR) | (1 << MID_SENSOR) | (1 << RIGHT_SENSOR));
+    DDRC &= ~((1 << LEFT_LF) | (1 << MID_LF) | (1 << RIGHT_LF));
 
     ADMUX = (1 << REFS0);                                 // Why not explicitely set bit REFS1 to 0?
     ADCSRA = (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0);  // Set clock (Takt)?
