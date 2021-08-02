@@ -23,7 +23,7 @@ void enter_forward(RoboterData *data) {
         light_led(LEFT_AND_RIGHT);
     }
     else {
-        light_led(NONE);
+        light_led(MID_LF);
     }
 }
 
@@ -31,6 +31,7 @@ void update_forward(FSM *fsm, RoboterData *data) {
     data->sensor_left = ADC_read_avg(LEFT_LF, SAMPLE_SIZE);
     data->sensor_right = ADC_read_avg(RIGHT_LF, SAMPLE_SIZE);
 
+    // better use &&
     if (data->sensor_left >= THRESHOLD_L) {
         // LEFT ON TRACK
         if (data->sensor_right < THRESHOLD_R) {
