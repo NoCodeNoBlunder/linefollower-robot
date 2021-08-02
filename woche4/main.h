@@ -37,7 +37,10 @@ typedef enum LineFollower {
     MID_LF = PC1,
     RIGHT_LF = PC0,
     LEFT_AND_RIGHT = -1,
-    NONE = -2,
+    LEFT_AND_MID = -2,
+    RIGHT_AND_MID = -3,
+    ALL = -4,
+    NONE = -5,
 } LineFollower;
 
 /**

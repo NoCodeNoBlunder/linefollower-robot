@@ -47,6 +47,7 @@ void update_forward(FSM *fsm, RoboterData *data) {
         }
     }
 
+    // TODO müssen die entsprechenden leds angemacht werden.
     transmit_debug_msg(fsm, data);
 }
 
@@ -58,10 +59,11 @@ void enter_left(RoboterData *data) {
 void update_left(FSM *fsm, RoboterData *data)
 {
     data->sensor_left = ADC_read_avg(LEFT_LF, SAMPLE_SIZE);
-    data->sensor_right = ADC_read_avg(RIGHT_LF, SAMPLE_SIZE);
+//    data->sensor_right = ADC_read_avg(RIGHT_LF, SAMPLE_SIZE);
+    data->sensor_mid = ADC_read_avg(MID_LF, SAMPLE_SIZE);
 
-    if (data->sensor_left < THRESHOLD_L || data ->sensor_right >= THRESHOLD_R) {
-        // LEFT IS OFF TRACK OR RIGHT IS ON TRACK
+    if (data->sensor_left < THRESHOLD_L || data ->sensor_mid >= THRESHOLD_R) {
+        // LEFT IS OFF TRACK OR MID IS ON TRACK
         transition_to_state(fsm, data, FORWARD);
     }
 
@@ -74,11 +76,12 @@ void enter_right(RoboterData *data) {
 }
 
 void update_right(FSM *fsm, RoboterData *data) {
-    data->sensor_left = ADC_read_avg(LEFT_LF, SAMPLE_SIZE);
+//    data->sensor_left = ADC_read_avg(LEFT_LF, SAMPLE_SIZE);
     data->sensor_right = ADC_read_avg(RIGHT_LF, SAMPLE_SIZE);
+    data->sensor_mid = ADC_read_avg(MID_LF, SAMPLE_SIZE);
 
-    if (data->sensor_left >= THRESHOLD_L || data->sensor_right < THRESHOLD_R) {
-        // LEFT IS ON TRACK OR RIGHT IS OFF TRACK
+    if (data->sensor_mid >= THRESHOLD_L || data->sensor_right < THRESHOLD_R) {
+        // MID IS ON TRACK OR RIGHT IS OFF TRACK
         transition_to_state(fsm, data, FORWARD);
     }
 
