@@ -11,7 +11,6 @@ compile:
 klara:
 	avr-gcc $(FILE1) $(FILE2)
 
-
 main.o:
 
 
