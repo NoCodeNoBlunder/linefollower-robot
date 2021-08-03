@@ -6,6 +6,24 @@
 #include "iesleds.h"
 #include "main.h"
 
+void take_measurement(RoboterData *data) {
+    data->sensor_left = ADC_read_avg(LEFT_LF, SAMPLE_SIZE);
+    data->sensor_right = ADC_read_avg(RIGHT_LF, SAMPLE_SIZE);
+    data->sensor_mid = ADC_read_avg(MID_LF, SAMPLE_SIZE);
+}
+
+char left_on_line(RoboterData *data) {
+    return data->sensor_left >= THRESHOLD_L;
+}
+
+char mid_on_line(RoboterData *data) {
+    return data->sensor_mid >= THRESHOLD_M;
+}
+
+char right_on_line(RoboterData *data) {
+    return data->sensor_right >= THRESHOLD_R;
+}
+
 void enter_init(void) {
     ADC_Init();
     leds_Init();
@@ -19,33 +37,28 @@ void update_init(FSM *fsm, RoboterData *data) {
 
 void enter_forward(RoboterData *data) {
     set_direction(data, FORWARD);
-
-    if(data->sensor_right >= THRESHOLD_R && data->sensor_left >= THRESHOLD_L) {
-        light_led(LEFT_AND_RIGHT);
-    }
-    else {
-        light_led(MID_LF);
-    }
+    light_led(MID_LF);
 }
 
 void update_forward(FSM *fsm, RoboterData *data) {
-    data->sensor_left = ADC_read_avg(LEFT_LF, SAMPLE_SIZE);
-    data->sensor_right = ADC_read_avg(RIGHT_LF, SAMPLE_SIZE);
-    data->sensor_mid = ADC_read_avg(MID_LF, SAMPLE_SIZE);
+
+    take_measurement(data);
 
     // TODO müssen die entsprechenden leds angemacht werden.
     transmit_debug_msg(fsm, data);
 
-    if(data->sensor_left >= THRESHOLD_L) {
-        if(data->sensor_right < THRESHOLD_R) {
+    if(left_on_line(data)) {
+        if(!right_on_line(data)) {
             // LEFT ON TRACK AND RIGHT OFF TRACK
             transition_to_state(fsm, data, LEFT);
         }
     }
-    else if(data->sensor_right >= THRESHOLD_R) {
+    else if(right_on_line(data)) {
         // LEFT OFF TRACK AND RIGHT ON TRACK
         transition_to_state(fsm, data, RIGHT);
     }
+
+    // TODO alles weiss und alles black
 }
 
 void enter_left(RoboterData *data) {
@@ -53,15 +66,12 @@ void enter_left(RoboterData *data) {
     light_led(LEFT_LF);
 }
 
-void update_left(FSM *fsm, RoboterData *data)
-{
-    data->sensor_left = ADC_read_avg(LEFT_LF, SAMPLE_SIZE);
-    data->sensor_right = ADC_read_avg(RIGHT_LF, SAMPLE_SIZE);
-    data->sensor_mid = ADC_read_avg(MID_LF, SAMPLE_SIZE);
+void update_left(FSM *fsm, RoboterData *data) {
 
+    take_measurement(data);
     transmit_debug_msg(fsm, data);
 
-    if (data->sensor_left < THRESHOLD_L || data ->sensor_mid >= THRESHOLD_R) {
+    if (!left_on_line(data) || right_on_line(data)) {
         // LEFT IS OFF TRACK OR MID IS ON TRACK
         transition_to_state(fsm, data, FORWARD);
     }
@@ -73,13 +83,11 @@ void enter_right(RoboterData *data) {
 }
 
 void update_right(FSM *fsm, RoboterData *data) {
-    data->sensor_left = ADC_read_avg(LEFT_LF, SAMPLE_SIZE);
-    data->sensor_right = ADC_read_avg(RIGHT_LF, SAMPLE_SIZE);
-    data->sensor_mid = ADC_read_avg(MID_LF, SAMPLE_SIZE);
 
+    take_measurement(data);
     transmit_debug_msg(fsm, data);
 
-    if (data->sensor_mid >= THRESHOLD_L || data->sensor_right < THRESHOLD_R) {
+    if (left_on_line(data) || !right_on_line(data)) {
         // MID IS ON TRACK OR RIGHT IS OFF TRACK
         transition_to_state(fsm, data, FORWARD);
     }

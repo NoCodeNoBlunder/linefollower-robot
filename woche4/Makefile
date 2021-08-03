@@ -11,6 +11,3 @@ compile:
 	-o tmpfile -mmcu=atmega328p -Os -D F_CPU=16E6;
 	avr-objcopy -O ihex tmpfile tmpfile.hex
 
-klara:
-	avr-gcc $(FILE1) $(FILE2)
-
