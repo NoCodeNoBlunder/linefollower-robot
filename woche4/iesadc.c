@@ -15,6 +15,7 @@
 
 void ADC_Init() {
     // TODO muss als erstes passieren.
+    // Alle pins zuruecksetzen.
     DDRD = 0;
     DDRB = 0;
 

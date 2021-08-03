@@ -13,9 +13,8 @@
 /**
  * @def SAMPLE_SIZE determines how many sensor meassurements are taken.
  */
-#define SAMPLE_SIZE 20
+#define SAMPLE_SIZE 20 // TODO flascher Ort fuer diese Konstanten?
 #define STR_BUF_SIZE 40
-#define SHORT_wTIME 200
 
 /**
  *  @enum Threshold

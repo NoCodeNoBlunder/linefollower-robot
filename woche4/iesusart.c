@@ -10,6 +10,8 @@
 #include "iesusart.h"
 #include "stdio.h"
 
+#define SHORT_wTIME 150
+
 /**
  * @brief
  * Reads a single byte out of the USART receive buffer.

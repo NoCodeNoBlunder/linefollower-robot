@@ -7,7 +7,6 @@
 #include "main.h"
 
 void enter_init(void) {
-    // TODO Reihenfolge falsch?
     ADC_Init();
     leds_Init();
     motors_Init();
@@ -34,20 +33,19 @@ void update_forward(FSM *fsm, RoboterData *data) {
     data->sensor_right = ADC_read_avg(RIGHT_LF, SAMPLE_SIZE);
     data->sensor_mid = ADC_read_avg(MID_LF, SAMPLE_SIZE);
 
-    if (data->sensor_mid < THRESHOLD_M) {
-        // MID OFF TRACK
-        if (data->sensor_left >= THRESHOLD_L && data->sensor_right < THRESHOLD_R) {
+    // TODO müssen die entsprechenden leds angemacht werden.
+    transmit_debug_msg(fsm, data);
+
+    if(data->sensor_left >= THRESHOLD_L) {
+        if(data->sensor_right < THRESHOLD_R) {
             // LEFT ON TRACK AND RIGHT OFF TRACK
             transition_to_state(fsm, data, LEFT);
         }
-        else if(data->sensor_right >= THRESHOLD_R){
-            // LEFT OFF TRACK AND RIGHT ON TRACK
-            transition_to_state(fsm, data, RIGHT);
-        }
     }
-
-    // TODO müssen die entsprechenden leds angemacht werden.
-    transmit_debug_msg(fsm, data);
+    else if(data->sensor_right >= THRESHOLD_R) {
+        // LEFT OFF TRACK AND RIGHT ON TRACK
+        transition_to_state(fsm, data, RIGHT);
+    }
 }
 
 void enter_left(RoboterData *data) {
@@ -58,15 +56,15 @@ void enter_left(RoboterData *data) {
 void update_left(FSM *fsm, RoboterData *data)
 {
     data->sensor_left = ADC_read_avg(LEFT_LF, SAMPLE_SIZE);
-//    data->sensor_right = ADC_read_avg(RIGHT_LF, SAMPLE_SIZE);
+    data->sensor_right = ADC_read_avg(RIGHT_LF, SAMPLE_SIZE);
     data->sensor_mid = ADC_read_avg(MID_LF, SAMPLE_SIZE);
+
+    transmit_debug_msg(fsm, data);
 
     if (data->sensor_left < THRESHOLD_L || data ->sensor_mid >= THRESHOLD_R) {
         // LEFT IS OFF TRACK OR MID IS ON TRACK
         transition_to_state(fsm, data, FORWARD);
     }
-
-    transmit_debug_msg(fsm, data);
 }
 
 void enter_right(RoboterData *data) {
@@ -75,14 +73,14 @@ void enter_right(RoboterData *data) {
 }
 
 void update_right(FSM *fsm, RoboterData *data) {
-//    data->sensor_left = ADC_read_avg(LEFT_LF, SAMPLE_SIZE);
+    data->sensor_left = ADC_read_avg(LEFT_LF, SAMPLE_SIZE);
     data->sensor_right = ADC_read_avg(RIGHT_LF, SAMPLE_SIZE);
     data->sensor_mid = ADC_read_avg(MID_LF, SAMPLE_SIZE);
+
+    transmit_debug_msg(fsm, data);
 
     if (data->sensor_mid >= THRESHOLD_L || data->sensor_right < THRESHOLD_R) {
         // MID IS ON TRACK OR RIGHT IS OFF TRACK
         transition_to_state(fsm, data, FORWARD);
     }
-
-    transmit_debug_msg(fsm, data);
 }
