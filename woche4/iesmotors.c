@@ -24,7 +24,7 @@ enum {
 enum {
     ENG_STILL = 0,
     ENG_SLOW = 130,
-    ENG_MID = 170,
+    ENG_MID = 140,
     ENG_FAST = 210,
     ENG_MAX = 255,
 };
