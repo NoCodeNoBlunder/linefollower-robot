@@ -4,6 +4,7 @@
 #include "iesadc.h"
 #include "iesusart.h"
 #include "iesleds.h"
+#include "main.h"
 
 void enter_init(void) {
     ADC_Init();

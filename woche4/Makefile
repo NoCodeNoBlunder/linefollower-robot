@@ -8,12 +8,10 @@ compile:
 	-o tmpfile -mmcu=atmega328p -Os -D F_CPU=16E6;
 	avr-objcopy -O ihex tmpfile tmpfile.hex
 
+flash: compile
+	avrdude -c arduino -p atmega328p -P /dev/ttyACM0 -b 115200 -U flash:w:tmpfile.hex
+
+
 klara:
 	avr-gcc $(FILE1) $(FILE2)
-
-main.o:
-
-
-states.o:
-
 

@@ -80,13 +80,15 @@ void USART_Init(unsigned long ubrr)
 void transmit_debug_msg(FSM *fsm, RoboterData *data) {
 
     if(data->debug_mode == 0) { return; }     // only send debug msg when debug mode is enabled.
+
+    static short wait_counter = 0;
     static char str_buf[STR_BUF_SIZE];
 
-    sprintf(str_buf,
-            "%s L:%d | M:%d | R:%d\n %d | %d\n\n",
-            fsm->current_state->state_name, data->sensor_left, data->sensor_mid, data->sensor_right,
-            data->left_eng_speed, data->right_eng_speed);
-    USART_print(str_buf);
-
-    _delay_ms(SHORT_wTIME);
+    if(wait_counter++ % SHORT_wTIME == 0) {
+        sprintf(str_buf,
+                "%s L:%d | M:%d | R:%d\n %d | %d\n\n",
+                fsm->current_state->state_name, data->sensor_left, data->sensor_mid, data->sensor_right,
+                data->left_eng_speed, data->right_eng_speed);
+        USART_print(str_buf);
+    }
 }

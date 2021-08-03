@@ -15,7 +15,7 @@
  */
 #define SAMPLE_SIZE 20
 #define STR_BUF_SIZE 40
-#define SHORT_wTIME 350
+#define SHORT_wTIME 200
 
 /**
  *  @enum Threshold

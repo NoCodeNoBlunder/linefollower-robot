@@ -44,15 +44,18 @@ void light_led(LineFollower diode) {
             send_flanks(1);
             break;
         case RIGHT_LF:
-            light_led(MID_LF);
-            send_flanks(1);
-            break;
-        case LEFT_AND_RIGHT:
-            light_led(MID_LF);
             toggle_DI();
             send_flanks(1);
+            toggle_DI();
+            send_flanks(2);
             break;
-        case NONE:
+        case LEFT_AND_RIGHT:
+            toggle_DI();
+            send_flanks(1);
+            toggle_DI();
+            send_flanks(1);
+            toggle_DI();
+            send_flanks(1);
             break;
         case LEFT_AND_MID:
             toggle_DI();
@@ -67,6 +70,8 @@ void light_led(LineFollower diode) {
         case ALL:
             toggle_DI();
             send_flanks(3);
+            break;
+        case NONE:
             break;
     }
 }
