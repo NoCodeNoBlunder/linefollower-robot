@@ -47,18 +47,24 @@ void update_forward(FSM *fsm, RoboterData *data) {
     // TODO müssen die entsprechenden leds angemacht werden.
     transmit_debug_msg(fsm, data);
 
-    if(left_on_line(data)) {
-        if(!right_on_line(data)) {
-            // LEFT ON TRACK AND RIGHT OFF TRACK
-            transition_to_state(fsm, data, LEFT);
+    if(!mid_on_line(data)) {
+        if(left_on_line(data)) {
+            if(!right_on_line(data)) {
+                // LEFT ON TRACK AND RIGHT OFF TRACK
+                transition_to_state(fsm, data, LEFT);
+            }
+        }
+        else if(right_on_line(data)) {
+            // LEFT OFF TRACK AND RIGHT ON TRACK
+            transition_to_state(fsm, data, RIGHT);
+        }
+        else {
+            // TODO alles weiss?
         }
     }
-    else if(right_on_line(data)) {
-        // LEFT OFF TRACK AND RIGHT ON TRACK
-        transition_to_state(fsm, data, RIGHT);
+    else if(left_on_line(data) && right_on_line(data)) {
+        // TODO CHeck for staring field
     }
-
-    // TODO alles weiss und alles black
 }
 
 void enter_left(RoboterData *data) {
@@ -71,7 +77,7 @@ void update_left(FSM *fsm, RoboterData *data) {
     take_measurement(data);
     transmit_debug_msg(fsm, data);
 
-    if (!left_on_line(data) || right_on_line(data)) {
+    if (!left_on_line(data) && mid_on_line(data)) {
         // LEFT IS OFF TRACK OR MID IS ON TRACK
         transition_to_state(fsm, data, FORWARD);
     }
@@ -87,7 +93,7 @@ void update_right(FSM *fsm, RoboterData *data) {
     take_measurement(data);
     transmit_debug_msg(fsm, data);
 
-    if (left_on_line(data) || !right_on_line(data)) {
+    if (left_on_line(data) && !right_on_line(data)) {
         // MID IS ON TRACK OR RIGHT IS OFF TRACK
         transition_to_state(fsm, data, FORWARD);
     }
