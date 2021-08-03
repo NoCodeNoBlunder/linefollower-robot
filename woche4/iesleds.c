@@ -1,5 +1,4 @@
 
-
 #include <avr/io.h>
 #include <util/delay.h>
 #include "main.h"
@@ -10,20 +9,22 @@
 #define SHORT_WTIME 250
 #define MID_WTIME 500
 #define SR_LED_COUNT 3
+#define SR_CLK PD4
+#define SR_DATA PB2
 
 void toggle_DI() {
-    toggle_pin(&PORTB, PB2);
+    toggle_pin(&PORTB, SR_DATA);
 }
 
 void send_flanks(char flank_count) {
     for (char i = 0; i < flank_count; i++) {
-        toggle_pin(&PORTD, PD4);
-        toggle_pin(&PORTD, PD4);
+        toggle_pin(&PORTD, SR_CLK);
+        toggle_pin(&PORTD, SR_CLK);
     }
 }
 
 void reset() {
-    set_pin_low(&PORTB, PB2);
+    set_pin_low(&PORTB, SR_DATA);
     send_flanks(SR_LED_COUNT);
 }
 
@@ -77,6 +78,7 @@ void light_led(LineFollower diode) {
 }
 
 void leds_Init() {
+    // Set both pins as output.
     set_pin_high(&DDRB, DDB2);
     set_pin_high(&DDRD, DDD4);
 }
