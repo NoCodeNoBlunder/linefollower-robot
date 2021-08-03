@@ -7,6 +7,7 @@
 #include "main.h"
 
 void enter_init(void) {
+    // TODO Reihenfolge falsch?
     ADC_Init();
     leds_Init();
     motors_Init();

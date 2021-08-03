@@ -14,6 +14,10 @@
 #include "main.h"
 
 void ADC_Init() {
+    // TODO muss als erstes passieren.
+    DDRD = 0;
+    DDRB = 0;
+
     DDRC &= ~((1 << LEFT_LF) | (1 << MID_LF) | (1 << RIGHT_LF));
 
     ADMUX = (1 << REFS0);

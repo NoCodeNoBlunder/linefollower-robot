@@ -124,9 +124,7 @@ void set_polarity(State dir) {
 }
 
 void motors_Init() {
-    // Delete everything on ports B and D
-    DDRD = 0;
-    DDRB = 0;
+
 
     // TODO alle pins müssen auf output gestellt sein.
     // Set PD5 and PD6 as output (EN[A|B]!)
