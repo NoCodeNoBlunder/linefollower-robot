@@ -26,7 +26,9 @@ typedef enum {
     COUNTDOWN,
     FORWARD,
     LEFT,
+    SOFT_LEFT,
     RIGHT,
+    SOFT_RIGHT,
     GOAL_REACHED,
     EXIT,
     STATECOUNT, // Is not an actual state but is there to know the statecount.

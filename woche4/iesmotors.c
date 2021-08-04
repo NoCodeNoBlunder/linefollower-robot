@@ -23,9 +23,9 @@ enum {
 
 enum {
     ENG_STILL = 0,
-    ENG_SLOW = 130,
-    ENG_MID = 140,
-    ENG_FAST = 210,
+    ENG_SLOW = 160,
+    ENG_MID = 110,
+    ENG_FAST = 190,
     ENG_MAX = 255,
 };
 
@@ -120,19 +120,27 @@ void set_polarity(State dir) {
             left_forward();
             right_backward();
             break;
+		case SOFT_LEFT:
+			left_forward();
+			right_forward();
+			break;
+		case SOFT_RIGHT:
+			left_forward();
+			right_forward();
+			break;
     }
 }
 
 void motors_Init() {
     // TODO alle pins müssen auf output gestellt sein.
     // Set PD5 and PD6 as output (EN[A|B]!)
-    DDRD = (1 << DD5) | (1 << DD6);
+    DDRD |= (1 << DD5) | (1 << DD6);
 
     // IN1
     DDRD |= (1 << DD7);
 
     // Set PB0, PB1, and PB3 as output (IN[2|3|4])
-    DDRB = (1 << DD0) | (1 << DD1) | (1 << DD3) | (1 << DD7);
+    DDRB |= (1 << DD0) | (1 << DD1) | (1 << DD3) | (1 << DD7);
 
     // Make PWM work on PD[5|6]
     setup_timer0();
@@ -142,7 +150,8 @@ void motors_Init() {
  * Function to set engines polarity and duty_cyles to control the Roboter drive direction.
  */
 void set_direction(RoboterData *data, State state) {
-
+	
+	USART_print("\nset_direction was called\n");
     switch (state) {
         case LEFT:
             data->left_eng_speed = ENG_SLOW;
@@ -156,6 +165,14 @@ void set_direction(RoboterData *data, State state) {
             data->left_eng_speed = ENG_MID;
             data->right_eng_speed = ENG_MID;
             break;
+        case SOFT_LEFT:
+			data->left_eng_speed = ENG_SLOW;
+			data->right_eng_speed = ENG_MID;
+			break;
+        case SOFT_RIGHT:
+			data->left_eng_speed = ENG_MID;
+			data->right_eng_speed = ENG_SLOW;
+			break; 
     }
 
     set_polarity(state);

@@ -10,7 +10,7 @@
 #include "iesusart.h"
 #include "stdio.h"
 
-#define SHORT_wTIME 150
+#define SHORT_wTIME 100
 
 /**
  * @brief
@@ -86,11 +86,15 @@ void transmit_debug_msg(FSM *fsm, RoboterData *data) {
     static short wait_counter = 0;
     static char str_buf[STR_BUF_SIZE];
 
-    if(wait_counter++ % SHORT_wTIME == 0) {
+    if(wait_counter % SHORT_wTIME == 0) {
         sprintf(str_buf,
                 "%s L:%d | M:%d | R:%d\n %d | %d\n\n",
                 fsm->current_state->state_name, data->sensor_left, data->sensor_mid, data->sensor_right,
                 data->left_eng_speed, data->right_eng_speed);
         USART_print(str_buf);
+        
+		
     }
+    
+    wait_counter = wait_counter < 32766 ? wait_counter + 1 : 0; 
 }

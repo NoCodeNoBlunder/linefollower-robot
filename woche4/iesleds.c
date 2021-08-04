@@ -5,6 +5,7 @@
 #include "iesleds.h"
 #include "iesusart.h"
 #include "util.h"
+#include <stdio.h>
 
 #define SHORT_WTIME 250
 #define MID_WTIME 500
@@ -29,22 +30,25 @@ void reset() {
 }
 
 void light_led(LineFollower diode) {
-
+	
     // TODO muss ich immer resetten?
     reset();
-
+  
     switch (diode) {
-        case LEFT_LF:
+        case RIGHT_LF:
+			//USART_print("\nlight led mode LEFT LF\n");
             toggle_DI();
             send_flanks(1);
             break;
         case MID_LF:
+			//USART_print("\nlight led mode MID LF\n");
             toggle_DI();
             send_flanks(1);
             toggle_DI();
             send_flanks(1);
             break;
-        case RIGHT_LF:
+        case LEFT_LF:
+			//USART_print("\nlight led mode RIGHT LF\n");
             toggle_DI();
             send_flanks(1);
             toggle_DI();
@@ -58,11 +62,11 @@ void light_led(LineFollower diode) {
             toggle_DI();
             send_flanks(1);
             break;
-        case LEFT_AND_MID:
+        case RIGHT_AND_MID:
             toggle_DI();
             send_flanks(2);
             break;
-        case RIGHT_AND_MID:
+        case LEFT_AND_MID:
             toggle_DI();
             send_flanks(2);
             toggle_DI();
@@ -75,6 +79,8 @@ void light_led(LineFollower diode) {
         case NONE:
             break;
     }
+    
+    //_delay_ms(1000);
 }
 
 void leds_Init() {
