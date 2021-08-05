@@ -6,6 +6,6 @@ set(MCU "atmega328p")
 set(F_CPU "16000000")
 set(CMAKE_SYSTEM_NAME Generic)
 
-add_executable(Roboter "woche3/E3T4.c" "woche4/iesusart.h" "woche3/iesusart.c" "woche3/E3T2.c" woche4/iesmotors.c woche4/iesmotors.h woche4/main.c woche4/iesusart.c woche3/E3T3.c woche4/iesadc.c woche4/iesadc.h woche3/StructInfo.c woche4/main.h woche4/fsm.c woche4/fsm.h woche4/states.h woche4/iesleds.c woche4/iesleds.h woche4/util.c woche4/util.h woche4/states.c)
+add_executable(Roboter "woche3/E3T4.c" "woche4/iesusart.h" "woche3/iesusart.c" "woche3/E3T2.c" woche4/iesmotors.c woche4/iesmotors.h woche4/main.c woche4/iesusart.c woche3/E3T3.c woche4/iesadc.c woche4/iesadc.h woche3/StructInfo.c woche4/main.h woche4/fsm.c woche4/fsm.h woche4/states.h woche4/iesleds.c woche4/iesleds.h woche4/util.c woche4/util.h woche4/states.c woche4/iesus.c)
 include_directories(include)
 include_directories(headers)

@@ -113,7 +113,8 @@ void enter_soft_left(RoboterData *data) {
 void update_soft_left(FSM *fsm, RoboterData *data) {
 	take_measurement(data);
 	transmit_debug_msg(fsm, data);
-	
+
+	// hier ein or? und Reihenfolge tauschen?
 	if (mid_on_line(data) && !right_on_line(data)) {
         // MID IS ON TRACK OR RIGHT IS OFF TRACK
         transition_to_state(fsm, data, FORWARD);
@@ -138,7 +139,7 @@ void update_soft_right(FSM *fsm, RoboterData *data) {
         transition_to_state(fsm, data, FORWARD);
     }
     
-    if (!mid_on_line(data) && !right_on_line(data) && !left_on_line(data)) {
+	if (!mid_on_line(data) && !right_on_line(data) && !left_on_line(data)) {
 		transition_to_state(fsm, data, RIGHT);
 	}
 }

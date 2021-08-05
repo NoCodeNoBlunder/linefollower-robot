@@ -11,3 +11,9 @@ compile:
 	-o tmpfile -mmcu=atmega328p -Os -D F_CPU=16E6;
 	avr-objcopy -O ihex tmpfile tmpfile.hex
 
+
+main.o:
+	avr-gcc main.c -o main.o -mmcu=atmega328p -Os -D F_CPU=16E6;
+
+all: main.o states.o fsm.o iesleds.o iesusart.o iesmotors.o iesadc.o util.o
+
