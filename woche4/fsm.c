@@ -66,7 +66,10 @@ void start_fsm_cycle(FSM *fsm, void *data) {
  */
 void transition_to_state(FSM *fsm, void *arg, State next_state) {
     fsm->current_state = fsm->states[next_state];
-    fsm->current_state->enter_function(arg);
+
+    if (fsm->current_state->enter_function != NULL) {
+        fsm->current_state->enter_function(arg);
+    }
 }
 
 /**

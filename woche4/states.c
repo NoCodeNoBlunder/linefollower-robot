@@ -159,19 +159,15 @@ void enter_check_starpos(RoboterData *data) {
 void update_check_startpos(FSM *fsm, RoboterData *data) {
     take_measurement(data);
 
-    if(left_on_line(data) && mid_on_line(data) && right_on_line(data)) {
-        transition_to_state(fsm, data, COUNTDOWN);
-    }
-
-    if(mid_on_line(data)) {
-        if(left_on_line(data) && right_on_line(data)) {
+    if (mid_on_line(data)) {
+        if (left_on_line(data) && right_on_line(data)) {
             light_led(ALL);
             transition_to_state(fsm, data, COUNTDOWN);
         }
-        else if(!left_on_line(data) && right_on_line(data)) {
+        else if (!left_on_line(data) && right_on_line(data)) {
             light_led(RIGHT_AND_MID);
         }
-        else if(left_on_line(data) && !right_on_line(data)) {
+        else if (left_on_line(data) && !right_on_line(data)) {
             light_led(LEFT_AND_MID);
         }
         else {
@@ -179,18 +175,16 @@ void update_check_startpos(FSM *fsm, RoboterData *data) {
         }
     }
     else {
-        if(!left_on_line(data) && right_on_line(data)) {
+        if (!left_on_line(data) && right_on_line(data)) {
             light_led(RIGHT_LF);
         }
-        if(left_on_line(data) && !right_on_line(data)) {
+        if (left_on_line(data) && !right_on_line(data)) {
             light_led(LEFT_LF);
         }
         else {
             light_led(NONE);
         }
     }
-
-
 }
 
 void enter_countdown(RoboterData *data) {
