@@ -7,6 +7,7 @@
 #include "main.h"
 
 #include <avr/interrupt.h>
+#include <stdio.h>
 
 // TODO auslagern?
 void take_measurement(RoboterData *data) {
@@ -153,15 +154,31 @@ void update_soft_right(FSM *fsm, RoboterData *data) {
 }
 
 // *******************************************************************
+// TODO warum ist das ein Float? Zahl zu gross und man muss sowieso durch 10 teilen.
+#define F_LEDS 5 // in hz
+#define COUNTDOWN_DURATION 15 // in Sekunden
+#define TIMER_SIZE 256.0 // in bit as float
+#define OF_FREQUENCY (F_CPU / TIMER_SIZE)
+#define SECONDS_PER_OF (1 / OF_FREQUENCY) // Einheiten das ist in Sekunden!
+#define LED_CYCLE_TIME ((1.0 / F_LEDS) / 2.0) // == 0.1  100ms
+#define OVERFLOWS_PER_CYCLE ((unsigned int)(LED_CYCLE_TIME / SECONDS_PER_OF))
+#define CYCLE_AMMOUNT ((short)(COUNTDOWN_DURATION * F_LEDS))
 
-// TODO warum float? Weil man sonst ein long nehmen muesste?
-#define OF_FREQUENCY F_CPU / 256.0
-#define SECONDS_PER_OF 1 / OF_FREQUENCY
-
-unsigned int cnt = 0;
+// Wie viel overflows = 200ms?
+unsigned short cnt = 0;
+unsigned char turned_on_leds = 0;
 
 ISR (TIMER2_COMPA_vect) {
     cnt+=1;
+
+    if (cnt == OVERFLOWS_PER_CYCLE) {
+        light_led(NONE);
+    }
+    else if(cnt == OVERFLOWS_PER_CYCLE * 2) {
+        light_led(ALL);
+        cnt = 0;
+        turned_on_leds++;
+    }
 }
 
 void setupTimer2() {
@@ -169,6 +186,16 @@ void setupTimer2() {
     TCCR2B = (1 << CS00);  // Prescaler: 1
     TIMSK2 |= (1 << OCIE2A);
     TCCR2A = (1 << WGM01);
+    TCNT2 = 0;
+    OCR2A = 255;
+    sei();
+}
+
+void disable_Timer2() {
+    cli();
+    TCCR2B &= ~(1 << CS00);  // Prescaler: 1
+    TIMSK2 &= ~(1 << OCIE2A);
+    TCCR2A &= ~(1 << WGM01);
     TCNT2 = 0;
     OCR2A = 255;
     sei();
@@ -200,8 +227,11 @@ void update_check_startpos(FSM *fsm, RoboterData *data) {
         if (!left_on_line(data) && right_on_line(data)) {
             light_led(RIGHT_LF);
         }
-        if (left_on_line(data) && !right_on_line(data)) {
+        else if (left_on_line(data) && !right_on_line(data)) {
             light_led(LEFT_LF);
+        }
+        else if (left_on_line(data) && right_on_line(data)) {
+            light_led(LEFT_AND_RIGHT);
         }
         else {
             light_led(NONE);
@@ -213,17 +243,21 @@ void enter_countdown(RoboterData *data) {
     light_led(ALL);
     setupTimer2();
     cnt = 0;
+    turned_on_leds = 0;
 }
 
 void update_countdown(FSM *fsm, RoboterData *data) {
+
     take_measurement(data);
 
-    if(!left_on_line(data) || !mid_on_line(data) || !right_on_line(data)) {
+    if (turned_on_leds == CYCLE_AMMOUNT - 1) {
+        disable_Timer2();
+        transition_to_state(fsm, data, FORWARD);
+    }
+    else if(!left_on_line(data) || !mid_on_line(data) || !right_on_line(data)) {
+        disable_Timer2();
         transition_to_state(fsm, data, CHECK_STARTPOS);
     }
-
-
-
 }
 
 void enter_check_lap(RoboterData *data) {

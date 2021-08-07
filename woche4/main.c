@@ -38,8 +38,16 @@ RoboterData data = { .debug_mode = DEBUG_MODE, .start_counter_mode = COUNTDOWN_M
     add_state(&fsm, COUNTDOWN, "COUNTDOWN", enter_countdown, update_countdown);
     add_state(&fsm, CHECK_LAP, "CHECK_LAP", enter_check_lap, update_check_lap);
 
+//    while (1) {
+//        light_led(ALL);
+//        _delay_ms(100);
+//        light_led(NONE);
+//        _delay_ms(100);
+//    }
+
+    light_led(NONE);
     start_fsm_cycle(&fsm, &data);
-    
+
     /*leds_Init();
     light_led(LEFT_LF);
     _delay_ms(1000);
