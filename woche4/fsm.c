@@ -65,8 +65,8 @@ void start_fsm_cycle(FSM *fsm, void *data) {
  * @param next_state enum value of the state to transition into
  */
 void transition_to_state(FSM *fsm, void *arg, State next_state) {
-    fsm -> current_state = fsm ->states[next_state];
-    fsm ->current_state ->enter_function(arg);
+    fsm->current_state = fsm->states[next_state];
+    fsm->current_state->enter_function(arg);
 }
 
 /**
@@ -74,8 +74,8 @@ void transition_to_state(FSM *fsm, void *arg, State next_state) {
  */
 void exit_fsm_cycle(FSM *fsm) {
     for (int i = 0; i < STATECOUNT; ++i) {
-        free(fsm ->states[i]);
-        fsm -> states[i] = NULL;
+        free(fsm->states[i]);
+        fsm->states[i] = NULL;
     }
 
     fsm = NULL;

@@ -18,7 +18,7 @@ int main() {
     /**
      * if debug_mode is set to 0 no data will be sent to Serial PORT.
      */
-    RoboterData data = { .debug_mode = DEBUG_MODE, .start_counter_mode = 0 };
+RoboterData data = { .debug_mode = DEBUG_MODE, .start_counter_mode = COUNTDOWN_MODE };
 
     add_state(&fsm, INIT, "Init", enter_init, update_init);
     add_state(&fsm, FORWARD, "Forward", enter_forward, update_forward);
