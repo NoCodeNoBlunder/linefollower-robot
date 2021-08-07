@@ -30,6 +30,7 @@ typedef enum {
     LEFT_HARD,
     RIGHT_HARD,
     RIGHT_SOFT,
+    CHECK_LAP,
     GOAL_REACHED,
     EXIT,
     STATECOUNT, // Is not an actual state but is there to know the amount of states.
@@ -45,7 +46,7 @@ typedef enum {
  */
 typedef struct ConcreteState {
     State state;
-    char * state_name;
+    char *state_name;
     void (*enter_function)(void *arg);
     void (*update_function)(struct FSM *fsm, void *arg);
 } ConcreteState;

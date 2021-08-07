@@ -10,6 +10,8 @@
 #include <avr/io.h>
 #include "fsm.h"
 
+// #define DEBUG_MODE
+
 /**
  * @def SAMPLE_SIZE determines how many sensor meassurements are taken.
  */
@@ -46,6 +48,7 @@ typedef enum LineFollower {
  * @struct RoboterData "main.h"
  */
 typedef struct RoboterData {
+    char start_counter_mode;
     char debug_mode;
     short sensor_left;
     short sensor_mid;

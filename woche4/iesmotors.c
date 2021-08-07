@@ -151,7 +151,7 @@ void motors_Init() {
  */
 void set_direction(RoboterData *data, State state) {
 	
-	USART_print("\nset_direction was called\n");
+	// USART_print("\nset_direction was called\n");
     switch (state) {
         case LEFT_HARD:
             data->left_eng_speed = ENG_SLOW;

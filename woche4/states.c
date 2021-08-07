@@ -6,6 +6,7 @@
 #include "iesleds.h"
 #include "main.h"
 
+// TODO auslagern?
 void take_measurement(RoboterData *data) {
     data->sensor_left = ADC_read_avg(LEFT_LF, SAMPLE_SIZE);
     data->sensor_right = ADC_read_avg(RIGHT_LF, SAMPLE_SIZE);
@@ -36,7 +37,7 @@ void update_init(FSM *fsm, RoboterData *data) {
 }
 
 void enter_forward(RoboterData *data) {
-	USART_print("\nenter_forward was called\n");
+	// USART_print("\nenter_forward was called\n");
     set_direction(data, FORWARD);
     light_led(MID_LF);
 }
@@ -143,3 +144,33 @@ void update_soft_right(FSM *fsm, RoboterData *data) {
 		transition_to_state(fsm, data, RIGHT_HARD);
 	}
 }
+
+// *******************************************************************
+
+void enter_check_starpos(RoboterData *data) {
+
+}
+
+void update_check_startpos(FSM *fsm, RoboterData *data) {
+
+}
+
+void enter_countdown(RoboterData *data) {
+
+}
+
+void update_countdown(FSM *fsm, RoboterData *data) {
+
+}
+
+void enter_check_lap(RoboterData *data) {
+
+}
+
+void update_check_lap(FSM *fsm, RoboterData *data) {
+
+}
+
+
+
+
