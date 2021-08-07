@@ -13,6 +13,13 @@
 #include "iesleds.h"
 #include <util/delay.h>
 
+#ifndef DEBUG_MODE
+#define DEBUG_MODE 0
+#endif
+#ifndef COUNTDOWN_MODE
+#define COUNTDOWN_MODE 0
+#endif
+
 int main() {
     FSM fsm;
     /**

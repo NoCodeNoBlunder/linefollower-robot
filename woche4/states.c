@@ -6,6 +6,8 @@
 #include "iesleds.h"
 #include "main.h"
 
+#include <avr/interrupt.h>
+
 // TODO auslagern?
 void take_measurement(RoboterData *data) {
     data->sensor_left = ADC_read_avg(LEFT_LF, SAMPLE_SIZE);
@@ -152,6 +154,26 @@ void update_soft_right(FSM *fsm, RoboterData *data) {
 
 // *******************************************************************
 
+// TODO warum float? Weil man sonst ein long nehmen muesste?
+#define OF_FREQUENCY F_CPU / 256.0
+#define SECONDS_PER_OF 1 / OF_FREQUENCY
+
+unsigned int cnt = 0;
+
+ISR (TIMER2_COMPA_vect) {
+    cnt+=1;
+}
+
+void setupTimer2() {
+    cli();
+    TCCR2B = (1 << CS00);  // Prescaler: 1
+    TIMSK2 |= (1 << OCIE2A);
+    TCCR2A = (1 << WGM01);
+    TCNT2 = 0;
+    OCR2A = 255;
+    sei();
+}
+
 void enter_check_starpos(RoboterData *data) {
 
 }
@@ -189,9 +211,17 @@ void update_check_startpos(FSM *fsm, RoboterData *data) {
 
 void enter_countdown(RoboterData *data) {
     light_led(ALL);
+    setupTimer2();
+    cnt = 0;
 }
 
 void update_countdown(FSM *fsm, RoboterData *data) {
+    take_measurement(data);
+
+    if(!left_on_line(data) || !mid_on_line(data) || !right_on_line(data)) {
+        transition_to_state(fsm, data, CHECK_STARTPOS);
+    }
+
 
 
 }
