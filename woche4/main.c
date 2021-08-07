@@ -22,10 +22,10 @@ int main() {
 
     add_state(&fsm, INIT, "Init", enter_init, update_init);
     add_state(&fsm, FORWARD, "Forward", enter_forward, update_forward);
-    add_state(&fsm, LEFT, "Left", enter_left, update_left);
-    add_state(&fsm, RIGHT, "Right", enter_right, update_right);
-    add_state(&fsm, SOFT_RIGHT, "SOFT RIGHT", enter_soft_right, update_soft_right);
-    add_state(&fsm, SOFT_LEFT, "SOFT LEFT", enter_soft_left, update_soft_left);
+    add_state(&fsm, LEFT_HARD, "Left", enter_left, update_left);
+    add_state(&fsm, RIGHT_HARD, "Right", enter_right, update_right);
+    add_state(&fsm, RIGHT_SOFT, "SOFT RIGHT_HARD", enter_soft_right, update_soft_right);
+    add_state(&fsm, LEFT_SOFT, "SOFT LEFT_HARD", enter_soft_left, update_soft_left);
 
     start_fsm_cycle(&fsm, &data);
     

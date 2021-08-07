@@ -49,32 +49,32 @@ void update_forward(FSM *fsm, RoboterData *data) {
     transmit_debug_msg(fsm, data);
 	
 	if(left_on_line(data)) {
-		transition_to_state(fsm, data, SOFT_LEFT);
+		transition_to_state(fsm, data, LEFT_SOFT);
 	}
 	else if(right_on_line(data)) {
-		transition_to_state(fsm, data, SOFT_RIGHT);
+		transition_to_state(fsm, data, RIGHT_SOFT);
 	}
 	
 	/*if(mid_on_line(data)) {
 		if(left_on_line(data)) {
-			transition_to_state(fsm, data, LEFT);
+			transition_to_state(fsm, data, LEFT_HARD);
 		}
 		else if(right_on_line(data)) {
-			transition_to_state(fsm, data, LEFT);
+			transition_to_state(fsm, data, LEFT_HARD);
 		}
 	}
 	else {
 		if(left_on_line(data)) {
-			transition_to_state(fsm, data, SOFT_LEFT);
+			transition_to_state(fsm, data, LEFT_SOFT);
 		}
 		else if(right_on_line(data)) {
-			transition_to_state(fsm, data, SOFT_RIGHT);
+			transition_to_state(fsm, data, RIGHT_SOFT);
 		}
 	}*/
 }
 
 void enter_left(RoboterData *data) {
-    set_direction(data, LEFT);
+    set_direction(data, LEFT_HARD);
     light_led(LEFT_LF);
 }
 
@@ -84,13 +84,13 @@ void update_left(FSM *fsm, RoboterData *data) {
     transmit_debug_msg(fsm, data);
 
     if (mid_on_line(data) /* && !left_on_line(data)*/) {
-        // LEFT IS OFF TRACK OR MID IS ON TRACK
+        // LEFT_HARD IS OFF TRACK OR MID IS ON TRACK
         transition_to_state(fsm, data, FORWARD);
     }
 }
 
 void enter_right(RoboterData *data) {
-    set_direction(data, RIGHT);
+    set_direction(data, RIGHT_HARD);
     light_led(RIGHT_LF);
 }
 
@@ -100,13 +100,13 @@ void update_right(FSM *fsm, RoboterData *data) {
     transmit_debug_msg(fsm, data);
 	
     if (mid_on_line(data) /*&& !right_on_line(data)*/) {
-        // MID IS ON TRACK OR RIGHT IS OFF TRACK
+        // MID IS ON TRACK OR RIGHT_HARD IS OFF TRACK
         transition_to_state(fsm, data, FORWARD);
     }
 }
 
 void enter_soft_left(RoboterData *data) {
-	set_direction(data, SOFT_LEFT);
+	set_direction(data, LEFT_SOFT);
 	light_led(LEFT_AND_MID);
 }
 
@@ -116,17 +116,17 @@ void update_soft_left(FSM *fsm, RoboterData *data) {
 
 	// hier ein or? und Reihenfolge tauschen?
 	if (mid_on_line(data) && !right_on_line(data)) {
-        // MID IS ON TRACK OR RIGHT IS OFF TRACK
+        // MID IS ON TRACK OR RIGHT_HARD IS OFF TRACK
         transition_to_state(fsm, data, FORWARD);
     }
     
     if (!mid_on_line(data) && !right_on_line(data) && !left_on_line(data)) {
-		transition_to_state(fsm, data, LEFT);
+		transition_to_state(fsm, data, LEFT_HARD);
 	}
 }
 
 void enter_soft_right(RoboterData *data) {
-	set_direction(data, SOFT_RIGHT);
+	set_direction(data, RIGHT_SOFT);
 	light_led(RIGHT_AND_MID);
 }
 
@@ -135,11 +135,11 @@ void update_soft_right(FSM *fsm, RoboterData *data) {
 	transmit_debug_msg(fsm, data);
 	
 	if (mid_on_line(data) && !right_on_line(data)) {
-        // MID IS ON TRACK OR RIGHT IS OFF TRACK
+        // MID IS ON TRACK OR RIGHT_HARD IS OFF TRACK
         transition_to_state(fsm, data, FORWARD);
     }
     
 	if (!mid_on_line(data) && !right_on_line(data) && !left_on_line(data)) {
-		transition_to_state(fsm, data, RIGHT);
+		transition_to_state(fsm, data, RIGHT_HARD);
 	}
 }

@@ -23,15 +23,16 @@ struct FSM;
  */
 typedef enum {
     INIT,      // default State has to be the INIT state
+    CHECK_STARTPOS,
     COUNTDOWN,
     FORWARD,
-    LEFT,
-    SOFT_LEFT,
-    RIGHT,
-    SOFT_RIGHT,
+    LEFT_SOFT,
+    LEFT_HARD,
+    RIGHT_HARD,
+    RIGHT_SOFT,
     GOAL_REACHED,
     EXIT,
-    STATECOUNT, // Is not an actual state but is there to know the statecount.
+    STATECOUNT, // Is not an actual state but is there to know the amount of states.
 } State ;
 
 /**

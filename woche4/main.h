@@ -32,9 +32,9 @@ enum Threshold{
  * @brief enum stores the corrosponding pins for the sensors and also stor
  */
 typedef enum LineFollower {
-    LEFT_LF = 2,
-    MID_LF = 1,
-    RIGHT_LF = 0,
+    LEFT_LF = 2, // PC2
+    MID_LF = 1, // PC1
+    RIGHT_LF = 0, // PC0
     LEFT_AND_RIGHT = -1,
     LEFT_AND_MID = -2,
     RIGHT_AND_MID = -3,

@@ -36,7 +36,7 @@ void light_led(LineFollower diode) {
   
     switch (diode) {
         case RIGHT_LF:
-			//USART_print("\nlight led mode LEFT LF\n");
+			//USART_print("\nlight led mode LEFT_HARD LF\n");
             toggle_DI();
             send_flanks(1);
             break;
@@ -48,7 +48,7 @@ void light_led(LineFollower diode) {
             send_flanks(1);
             break;
         case LEFT_LF:
-			//USART_print("\nlight led mode RIGHT LF\n");
+			//USART_print("\nlight led mode RIGHT_HARD LF\n");
             toggle_DI();
             send_flanks(1);
             toggle_DI();

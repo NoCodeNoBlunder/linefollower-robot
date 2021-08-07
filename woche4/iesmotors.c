@@ -23,8 +23,8 @@ enum {
 
 enum {
     ENG_STILL = 0,
-    ENG_SLOW = 160,
-    ENG_MID = 110,
+    ENG_SLOW = 110,
+    ENG_MID = 160,
     ENG_FAST = 190,
     ENG_MAX = 255,
 };
@@ -112,19 +112,19 @@ void set_polarity(State dir) {
             left_forward();
             right_forward();
             break;
-        case LEFT:
+        case LEFT_HARD:
             left_backward();
             right_forward();
             break;
-        case RIGHT:
+        case RIGHT_HARD:
             left_forward();
             right_backward();
             break;
-		case SOFT_LEFT:
+		case LEFT_SOFT:
 			left_forward();
 			right_forward();
 			break;
-		case SOFT_RIGHT:
+		case RIGHT_SOFT:
 			left_forward();
 			right_forward();
 			break;
@@ -153,11 +153,11 @@ void set_direction(RoboterData *data, State state) {
 	
 	USART_print("\nset_direction was called\n");
     switch (state) {
-        case LEFT:
+        case LEFT_HARD:
             data->left_eng_speed = ENG_SLOW;
             data->right_eng_speed = ENG_FAST;
             break;
-        case RIGHT:
+        case RIGHT_HARD:
             data->left_eng_speed = ENG_FAST;
             data->right_eng_speed = ENG_SLOW;
             break;
@@ -165,11 +165,11 @@ void set_direction(RoboterData *data, State state) {
             data->left_eng_speed = ENG_MID;
             data->right_eng_speed = ENG_MID;
             break;
-        case SOFT_LEFT:
+        case LEFT_SOFT:
 			data->left_eng_speed = ENG_SLOW;
 			data->right_eng_speed = ENG_MID;
 			break;
-        case SOFT_RIGHT:
+        case RIGHT_SOFT:
 			data->left_eng_speed = ENG_MID;
 			data->right_eng_speed = ENG_SLOW;
 			break; 
