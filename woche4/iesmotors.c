@@ -37,7 +37,7 @@ enum {
 // Info is needed for PWM...?
 /* sets up timer 0 (8 bit) */
 void setup_timer0() {
-cli();                                  // disable interrupt globally
+    cli();                                  // disable interrupt globally
     // Set Prescaler to 64
     TCCR0B = 0;
     TCCR0B |= (1 << CS00) | (1 << CS01);
