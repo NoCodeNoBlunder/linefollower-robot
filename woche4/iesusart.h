@@ -10,6 +10,8 @@
 
 #include "main.h"
 
+// TODO should this not be defined in main.h?
+
 /// CPU clock speed
 #ifndef F_CPU
 #define F_CPU 16E6

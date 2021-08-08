@@ -9,10 +9,16 @@
 #include <stdlib.h>
 #include "main.h"
 #include "states.h"
+#include "iescountdown.h"
+#include "states.h"
+
+#include "iesadc.h"
 
 #include "iesleds.h"
 #include <util/delay.h>
 
+/* TODO eventuell muss ich diese Werte nicht speichern im struct sonder einfach in main.h speichern
+ * und benutzen */
 #ifndef DEBUG_MODE
 #define DEBUG_MODE 0
 #endif
@@ -20,12 +26,31 @@
 #define COUNTDOWN_MODE 0
 #endif
 
+// is this the correct spot to put this?
+void take_measurement(RoboterData *data) {
+    data->sensor_left = ADC_read_avg(LEFT_LF, SAMPLE_SIZE);
+    data->sensor_right = ADC_read_avg(RIGHT_LF, SAMPLE_SIZE);
+    data->sensor_mid = ADC_read_avg(MID_LF, SAMPLE_SIZE);
+}
+
+char left_on_line(RoboterData *data) {
+    return data->sensor_left >= THRESHOLD_L;
+}
+
+char mid_on_line(RoboterData *data) {
+    return data->sensor_mid >= THRESHOLD_M;
+}
+
+char right_on_line(RoboterData *data) {
+    return data->sensor_right >= THRESHOLD_R;
+}
+
 int main() {
     FSM fsm;
     /**
      * if debug_mode is set to 0 no data will be sent to Serial PORT.
      */
-RoboterData data = { .debug_mode = DEBUG_MODE, .start_counter_mode = COUNTDOWN_MODE };
+    RoboterData data = { .debug_mode = DEBUG_MODE, .start_counter_mode = COUNTDOWN_MODE };
 
     add_state(&fsm, INIT, "Init", enter_init, update_init);
     add_state(&fsm, FORWARD, "Forward", enter_forward, update_forward);
@@ -34,30 +59,13 @@ RoboterData data = { .debug_mode = DEBUG_MODE, .start_counter_mode = COUNTDOWN_M
     add_state(&fsm, RIGHT_SOFT, "SOFT RIGHT_HARD", enter_soft_right, update_soft_right);
     add_state(&fsm, LEFT_SOFT, "SOFT LEFT_HARD", enter_soft_left, update_soft_left);
 
-    add_state(&fsm, CHECK_STARTPOS, "CHECK_STARTPOS", enter_check_starpos, update_check_startpos);
+    add_state(&fsm, CHECK_STARTPOS, "CHECK_STARTPOS", NULL, update_check_startpos);
     add_state(&fsm, COUNTDOWN, "COUNTDOWN", enter_countdown, update_countdown);
     add_state(&fsm, LEAVE_START, "LEAVE_START", enter_leave_start, update_leave_start);
     add_state(&fsm, CHECK_LAP, "CHECK_LAP", enter_check_lap, update_check_lap);
 
-//    while (1) {
-//        light_led(ALL);
-//        _delay_ms(100);
-//        light_led(NONE);
-//        _delay_ms(100);
-//    }
-
     light_led(NONE);
     start_fsm_cycle(&fsm, &data);
-
-    /*leds_Init();
-    light_led(LEFT_LF);
-    _delay_ms(1000);
-    light_led(MID_LF);
-    _delay_ms(1000);
-    light_led(RIGHT_LF);
-    _delay_ms(1000);
-    light_led(ALL);
-    _delay_ms(100000);*/
 
     return EXIT_SUCCESS;
 }

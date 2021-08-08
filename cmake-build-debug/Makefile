@@ -330,6 +330,33 @@ woche4/iesadc.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/iesadc.c.s
 .PHONY : woche4/iesadc.c.s
 
+woche4/iescountdown.obj: woche4/iescountdown.c.obj
+
+.PHONY : woche4/iescountdown.obj
+
+# target to build an object file
+woche4/iescountdown.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/iescountdown.c.obj
+.PHONY : woche4/iescountdown.c.obj
+
+woche4/iescountdown.i: woche4/iescountdown.c.i
+
+.PHONY : woche4/iescountdown.i
+
+# target to preprocess a source file
+woche4/iescountdown.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/iescountdown.c.i
+.PHONY : woche4/iescountdown.c.i
+
+woche4/iescountdown.s: woche4/iescountdown.c.s
+
+.PHONY : woche4/iescountdown.s
+
+# target to generate assembly for a file
+woche4/iescountdown.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/iescountdown.c.s
+.PHONY : woche4/iescountdown.c.s
+
 woche4/iesleds.obj: woche4/iesleds.c.obj
 
 .PHONY : woche4/iesleds.obj
@@ -549,6 +576,9 @@ help:
 	@echo ... woche4/iesadc.obj
 	@echo ... woche4/iesadc.i
 	@echo ... woche4/iesadc.s
+	@echo ... woche4/iescountdown.obj
+	@echo ... woche4/iescountdown.i
+	@echo ... woche4/iescountdown.s
 	@echo ... woche4/iesleds.obj
 	@echo ... woche4/iesleds.i
 	@echo ... woche4/iesleds.s

@@ -83,6 +83,40 @@ void light_led(LineFollower diode) {
     //_delay_ms(1000);
 }
 
+void select_and_light_led(FSM *fsm, RoboterData *data) {
+
+    if (mid_on_line(data)) {
+        if (left_on_line(data) && right_on_line(data)) {
+            light_led(ALL);
+            transition_to_state(fsm, data, COUNTDOWN);
+        }
+        else if (!left_on_line(data) && right_on_line(data)) {
+            light_led(RIGHT_AND_MID);
+        }
+        else if (left_on_line(data) && !right_on_line(data)) {
+            light_led(LEFT_AND_MID);
+        }
+        else {
+            light_led(MID_LF);
+        }
+    }
+    else {
+        if (!left_on_line(data) && right_on_line(data)) {
+            light_led(RIGHT_LF);
+        }
+        else if (left_on_line(data) && !right_on_line(data)) {
+            light_led(LEFT_LF);
+        }
+        else if (left_on_line(data) && right_on_line(data)) {
+            light_led(LEFT_AND_RIGHT);
+        }
+        else {
+            light_led(NONE);
+        }
+    }
+}
+
+
 void leds_Init() {
     // Set both pins as output.
     set_pin_high(&DDRB, DDB2);

@@ -5,12 +5,14 @@
  * @version 0.1
  * @date 2021-06-08
  *
- * @details the FSM
+ * @details the FSM...
  */
 
 #include <stdlib.h>
-
 #include "fsm.h"
+
+// TODO add FSM INit method to make more clear that there has to be a INIT and EXIT state?
+// ONLY Store name of states if debug mode is enabled.
 
 // forward declaration
 void exit_fsm_cycle(FSM *fsm);
