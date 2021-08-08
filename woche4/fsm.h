@@ -25,6 +25,7 @@ typedef enum {
     INIT,      // default State has to be the INIT state
     CHECK_STARTPOS,
     COUNTDOWN,
+    LEAVE_START,
     FORWARD,
     LEFT_SOFT,
     LEFT_HARD,

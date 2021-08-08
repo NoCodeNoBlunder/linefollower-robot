@@ -10,11 +10,11 @@ void update_init(FSM *fsm, RoboterData *data);
 void enter_forward(RoboterData *data);
 void update_forward(FSM *fsm, RoboterData *data);
 
-void enter_left(RoboterData *data);
-void update_left(FSM *fsm, RoboterData *data);
+void enter_left_hard(RoboterData *data);
+void update_left_hard(FSM *fsm, RoboterData *data);
 
-void enter_right(RoboterData *data);
-void update_right(FSM *fsm, RoboterData *data);
+void enter_right_hard(RoboterData *data);
+void update_right_hard(FSM *fsm, RoboterData *data);
 
 void enter_soft_left(RoboterData *data);
 void update_soft_left(FSM *fsm, RoboterData *data);
@@ -27,6 +27,9 @@ void update_check_startpos(FSM *fsm, RoboterData *data);
 
 void enter_countdown(RoboterData *data);
 void update_countdown(FSM *fsm, RoboterData *data);
+
+void enter_leave_start(RoboterData *data);
+void update_leave_start(FSM *fsm, RoboterData *data);
 
 void enter_check_lap(RoboterData *data);
 void update_check_lap(FSM *fsm, RoboterData *data);

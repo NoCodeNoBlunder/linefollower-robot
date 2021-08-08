@@ -82,12 +82,12 @@ void update_forward(FSM *fsm, RoboterData *data) {
 	}*/
 }
 
-void enter_left(RoboterData *data) {
+void enter_left_hard(RoboterData *data) {
     set_direction(data, LEFT_HARD);
     light_led(LEFT_LF);
 }
 
-void update_left(FSM *fsm, RoboterData *data) {
+void update_left_hard(FSM *fsm, RoboterData *data) {
 
     take_measurement(data);
     transmit_debug_msg(fsm, data);
@@ -98,12 +98,12 @@ void update_left(FSM *fsm, RoboterData *data) {
     }
 }
 
-void enter_right(RoboterData *data) {
+void enter_right_hard(RoboterData *data) {
     set_direction(data, RIGHT_HARD);
     light_led(RIGHT_LF);
 }
 
-void update_right(FSM *fsm, RoboterData *data) {
+void update_right_hard(FSM *fsm, RoboterData *data) {
 
     take_measurement(data);
     transmit_debug_msg(fsm, data);
@@ -193,7 +193,7 @@ void setupTimer2() {
 
 void disable_Timer2() {
     cli();
-    TCCR2B &= ~(1 << CS00);  // Prescaler: 1
+    // TCCR2B &= ~(1 << CS00);  // Prescaler: 1
     TIMSK2 &= ~(1 << OCIE2A);
     TCCR2A &= ~(1 << WGM01);
     TCNT2 = 0;
@@ -252,11 +252,25 @@ void update_countdown(FSM *fsm, RoboterData *data) {
 
     if (turned_on_leds == CYCLE_AMMOUNT - 1) {
         disable_Timer2();
-        transition_to_state(fsm, data, FORWARD);
+        // TODO wie verhindert man direkt Startfeld detection.
+        transition_to_state(fsm, data, LEAVE_START);
     }
     else if(!left_on_line(data) || !mid_on_line(data) || !right_on_line(data)) {
         disable_Timer2();
         transition_to_state(fsm, data, CHECK_STARTPOS);
+    }
+}
+
+void enter_leave_start(RoboterData *data) {
+    set_direction(data, FORWARD);
+    light_led(NONE);
+}
+
+void update_leave_start(FSM *fsm, RoboterData *data) {
+    take_measurement(data);
+
+    if (!left_on_line(data) || !mid_on_line(data) || !right_on_line(data)) {
+        transition_to_state(fsm, data, FORWARD);
     }
 }
 

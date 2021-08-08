@@ -29,13 +29,14 @@ RoboterData data = { .debug_mode = DEBUG_MODE, .start_counter_mode = COUNTDOWN_M
 
     add_state(&fsm, INIT, "Init", enter_init, update_init);
     add_state(&fsm, FORWARD, "Forward", enter_forward, update_forward);
-    add_state(&fsm, LEFT_HARD, "Left", enter_left, update_left);
-    add_state(&fsm, RIGHT_HARD, "Right", enter_right, update_right);
+    add_state(&fsm, LEFT_HARD, "Left", enter_left_hard, update_left_hard);
+    add_state(&fsm, RIGHT_HARD, "Right", enter_right_hard, update_right_hard);
     add_state(&fsm, RIGHT_SOFT, "SOFT RIGHT_HARD", enter_soft_right, update_soft_right);
     add_state(&fsm, LEFT_SOFT, "SOFT LEFT_HARD", enter_soft_left, update_soft_left);
 
     add_state(&fsm, CHECK_STARTPOS, "CHECK_STARTPOS", enter_check_starpos, update_check_startpos);
     add_state(&fsm, COUNTDOWN, "COUNTDOWN", enter_countdown, update_countdown);
+    add_state(&fsm, LEAVE_START, "LEAVE_START", enter_leave_start, update_leave_start);
     add_state(&fsm, CHECK_LAP, "CHECK_LAP", enter_check_lap, update_check_lap);
 
 //    while (1) {
