@@ -26,7 +26,6 @@ void update_init(FSM *fsm, RoboterData *data) {
 }
 
 void enter_forward(RoboterData *data) {
-	// USART_print("\nenter_forward was called\n");
     set_direction(data, FORWARD);
     light_led(MID_LF);
 }
@@ -34,33 +33,75 @@ void enter_forward(RoboterData *data) {
 void update_forward(FSM *fsm, RoboterData *data) {
 
     take_measurement(data);
-
-    // TODO müssen die entsprechenden leds angemacht werden.
     transmit_debug_msg(fsm, data);
 
-	if(left_on_line(data)) {
+    if (right_on_line(data) && !left_on_line(data)) {
+        transition_to_state(fsm, data, RIGHT_SOFT);
+    }
+    else if (left_on_line(data) && !right_on_line(data)) {
+        transition_to_state(fsm, data, LEFT_SOFT);
+    }
+
+	/*if (left_on_line(data)) {
 		transition_to_state(fsm, data, LEFT_SOFT);
 	}
-	else if(right_on_line(data)) {
+	else if (right_on_line(data)) {
 		transition_to_state(fsm, data, RIGHT_SOFT);
-	}
-
-	/*if(mid_on_line(data)) {
-		if(left_on_line(data)) {
-			transition_to_state(fsm, data, LEFT_HARD);
-		}
-		else if(right_on_line(data)) {
-			transition_to_state(fsm, data, LEFT_HARD);
-		}
-	}
-	else {
-		if(left_on_line(data)) {
-			transition_to_state(fsm, data, LEFT_SOFT);
-		}
-		else if(right_on_line(data)) {
-			transition_to_state(fsm, data, RIGHT_SOFT);
-		}
 	}*/
+}
+
+void enter_soft_left(RoboterData *data) {
+    set_direction(data, LEFT_SOFT);
+    light_led(LEFT_AND_MID);
+}
+
+void update_soft_left(FSM *fsm, RoboterData *data) {
+    take_measurement(data);
+    transmit_debug_msg(fsm, data);
+
+    if (!left_on_line(data) && !mid_on_line(data) && !right_on_line(data)) {
+        transition_to_state(fsm, data, LEFT_HARD);
+    }
+
+    else if (left_on_line(data) && !mid_on_line(data)) {
+        transition_to_state(fsm, data, LEFT_HARD);
+    }
+
+    else if (!left_on_line(data) && mid_on_line(data) || right_on_line(data)) {
+        transition_to_state(fsm, data, FORWARD);
+    }
+
+    /*// hier ein or? und Reihenfolge tauschen?
+    if (mid_on_line(data) && !right_on_line(data)) {
+        // MID IS ON TRACK OR RIGHT_HARD IS OFF TRACK
+        transition_to_state(fsm, data, FORWARD);
+    }
+
+    if (!mid_on_line(data) && !right_on_line(data) && !left_on_line(data)) {
+        transition_to_state(fsm, data, LEFT_HARD);
+    }*/
+}
+
+void enter_soft_right(RoboterData *data) {
+    set_direction(data, RIGHT_SOFT);
+    light_led(RIGHT_AND_MID);
+}
+
+void update_soft_right(FSM *fsm, RoboterData *data) {
+    take_measurement(data);
+    transmit_debug_msg(fsm, data);
+
+    if (!left_on_line(data) && !mid_on_line(data) && !right_on_line(data)) {
+        transition_to_state(fsm, data, RIGHT_HARD);
+    }
+
+    else if (right_on_line(data) && !mid_on_line(data)) {
+        transition_to_state(fsm, data, RIGHT_HARD);
+    }
+
+    else if (!right_on_line(data) && mid_on_line(data) || left_on_line(data)) {
+        transition_to_state(fsm, data, FORWARD);
+    }
 }
 
 void enter_left_hard(RoboterData *data) {
@@ -69,14 +110,27 @@ void enter_left_hard(RoboterData *data) {
 }
 
 void update_left_hard(FSM *fsm, RoboterData *data) {
-
     take_measurement(data);
     transmit_debug_msg(fsm, data);
 
-    if (mid_on_line(data) /* && !left_on_line(data)*/) {
-        // LEFT_HARD IS OFF TRACK OR MID IS ON TRACK
-        transition_to_state(fsm, data, FORWARD);
+    // hoechste prio ganz oben
+    if (!left_on_line(data) && !mid_on_line(data) && !right_on_line(data)) {
+        return;
     }
+
+    else if (left_on_line(data) && mid_on_line(data)) {
+        transition_to_state(fsm, data, LEFT_SOFT);
+    }
+
+    // evt hier !left_on_line(data) && mid_on_line(data)
+    else if (!left_on_line(data) || mid_on_line(data) || right_on_line(data)) {
+        transition_to_state(fsm, data, RIGHT_SOFT);
+    }
+
+//    if (mid_on_line(data) /* && !left_on_line(data)*/) {
+//        // LEFT_HARD IS OFF TRACK OR MID IS ON TRACK
+//        transition_to_state(fsm, data, FORWARD);
+//    }
 }
 
 void enter_right_hard(RoboterData *data) {
@@ -89,49 +143,19 @@ void update_right_hard(FSM *fsm, RoboterData *data) {
     take_measurement(data);
     transmit_debug_msg(fsm, data);
 
-    if (mid_on_line(data) /*&& !right_on_line(data)*/) {
-        // MID IS ON TRACK OR RIGHT_HARD IS OFF TRACK
-        transition_to_state(fsm, data, FORWARD);
-    }
-}
-
-void enter_soft_left(RoboterData *data) {
-	set_direction(data, LEFT_SOFT);
-	light_led(LEFT_AND_MID);
-}
-
-void update_soft_left(FSM *fsm, RoboterData *data) {
-	take_measurement(data);
-	transmit_debug_msg(fsm, data);
-
-	// hier ein or? und Reihenfolge tauschen?
-	if (mid_on_line(data) && !right_on_line(data)) {
-        // MID IS ON TRACK OR RIGHT_HARD IS OFF TRACK
-        transition_to_state(fsm, data, FORWARD);
+    // hoechste prio ganz oben
+    if (!left_on_line(data) && !mid_on_line(data) && !right_on_line(data)) {
+        return;
     }
 
-    if (!mid_on_line(data) && !right_on_line(data) && !left_on_line(data)) {
-		transition_to_state(fsm, data, LEFT_HARD);
-	}
-}
-
-void enter_soft_right(RoboterData *data) {
-	set_direction(data, RIGHT_SOFT);
-	light_led(RIGHT_AND_MID);
-}
-
-void update_soft_right(FSM *fsm, RoboterData *data) {
-	take_measurement(data);
-	transmit_debug_msg(fsm, data);
-
-	if (mid_on_line(data) && !right_on_line(data)) {
-        // MID IS ON TRACK OR RIGHT_HARD IS OFF TRACK
-        transition_to_state(fsm, data, FORWARD);
+    else if (right_on_line(data) && mid_on_line(data)) {
+        transition_to_state(fsm, data, RIGHT_SOFT);
     }
 
-	if (!mid_on_line(data) && !right_on_line(data) && !left_on_line(data)) {
-		transition_to_state(fsm, data, RIGHT_HARD);
-	}
+    else if (left_on_line(data) || mid_on_line(data) || !right_on_line(data)) {
+        transition_to_state(fsm, data, LEFT_SOFT);
+    }
+
 }
 
 void enter_leave_start(RoboterData *data) {
