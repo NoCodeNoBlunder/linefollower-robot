@@ -9,6 +9,8 @@
 #include <avr/interrupt.h>
 #include <stdio.h>
 
+#include "iescountdown.h"
+
 void enter_init(void) {
     ADC_Init();
     leds_Init();
@@ -41,6 +43,9 @@ void update_forward(FSM *fsm, RoboterData *data) {
     else if (left_on_line(data) && !right_on_line(data)) {
         transition_to_state(fsm, data, LEFT_SOFT);
     }
+    else if (left_on_line(data) && mid_on_line(data) && right_on_line(data)) {
+		transition_to_state(fsm, data, CHECK_LAP);
+	}
 
 	/*if (left_on_line(data)) {
 		transition_to_state(fsm, data, LEFT_SOFT);
@@ -177,12 +182,69 @@ void update_check_startpos(FSM *fsm, RoboterData *data) {
 }
 
 
-void enter_check_lap(RoboterData *data) {
+unsigned short cnt2 = 0;
+volatile unsigned char is_timer_done = 0;
 
+#define CHECKDURATION 0.2
+#define OVERFLOWS_FOR_CHECK ((unsigned int)(CHECKDURATION / SECONDS_PER_OF))
+
+ISR (TIMER2_OVF_vect) {
+	
+    cnt2 += 1;
+	
+	if(cnt2 == OVERFLOWS_FOR_CHECK) {
+		is_timer_done = 1;
+		cnt2 = 0;
+	}
+}
+
+void disable_of_interrupt() { 
+	cli();
+	TIMSK2 &= ~(1 << TOIE2);
+	sei();
+}
+
+void enter_check_lap(RoboterData *data) {
+	
+	USART_print("check lap");
+	// Slow the Roboter down??
+	
+	light_led(ALL);
+	is_timer_done = 0;
+	cnt2 = 0;
+	
+    cli(); 				    // disables interrupts globally
+    TCCR2B = (1 << CS00);   // Prescaler: 1
+    TIMSK2 |= (1 << TOIE2);  // enables Timer2 OVERFLOW interrupt
+    TCCR2A &= ~((1 << WGM20) | (1 << WGM21));   // Waveform generation form unter features im Datenblatt muss hier auf Normal mode sein.
+    TCNT2 = 0;				// Setzen von Timer counter
+    sei(); 				    // enables interrupts globally
+	
 }
 
 void update_check_lap(FSM *fsm, RoboterData *data) {
-
+	static char lapcounter = 0;
+	
+	take_measurement(data);
+	
+	if(is_timer_done) {
+		
+		USART_print("Ist die Runde abgeschlossen?");
+		//disable_of_interrupt();
+		lapcounter++;
+		transition_to_state(fsm, data, LEAVE_START);
+		
+		if(lapcounter == 2) {
+			set_direction(data, EXIT);
+		}
+	}
+	
+	// kann ich hier einfach in forward wechseln?
+	else if (!left_on_line(data) || !mid_on_line(data) || !right_on_line(data)) {
+		
+		//disable_of_interrupt();
+        transition_to_state(fsm, data, FORWARD);
+    }
 }
 
 

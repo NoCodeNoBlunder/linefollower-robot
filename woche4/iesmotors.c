@@ -23,9 +23,9 @@ enum {
 
 enum {
     ENG_STILL = 0,
-    ENG_SLOW = 110,
-    ENG_MID = 140,
-    ENG_FAST = 170,
+    ENG_SLOW = 140,
+    ENG_MID = 150, // wenn er zu schnell faehrt geht er zu spaet in hard turn
+    ENG_FAST = 180,
     ENG_MAX = 255,
 };
 
@@ -166,13 +166,17 @@ void set_direction(RoboterData *data, State state) {
             data->right_eng_speed = ENG_MID;
             break;
         case LEFT_SOFT:
-			data->left_eng_speed = ENG_SLOW;
+			data->left_eng_speed = ENG_SLOW; // Alternative
 			data->right_eng_speed = ENG_MID;
 			break;
         case RIGHT_SOFT:
 			data->left_eng_speed = ENG_MID;
 			data->right_eng_speed = ENG_SLOW;
 			break; 
+		case EXIT:
+			data->left_eng_speed = ENG_STILL;
+			data->right_eng_speed = ENG_STILL;
+			
     }
 
     set_polarity(state);
