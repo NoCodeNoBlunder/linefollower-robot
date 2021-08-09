@@ -33,7 +33,7 @@ enum Threshold{
  * @enum LineFollower
  * @brief enum stores the corrosponding pins for the sensors and also stor
  */
-typedef enum LineFollower {
+typedef enum LineFollower { // TODO Besseren Namen
     LEFT_LF = PC2,
     MID_LF = PC1,
     RIGHT_LF = PC0,
@@ -48,11 +48,12 @@ typedef enum LineFollower {
  * @struct RoboterData "main.h"
  */
 typedef struct RoboterData {
-    char start_counter_mode;
-    char debug_mode;
-    short sensor_left;
-    short sensor_mid;
-    short sensor_right;
+    char start_counter_mode; // TODO remove this
+    char debug_mode; // TODO remove this
+
+    unsigned short sensor_left;
+    unsigned short sensor_mid;
+    unsigned short sensor_right;
 
     unsigned char left_eng_speed; // Only has values between 0 and 255
     unsigned char right_eng_speed;
@@ -62,5 +63,6 @@ void take_measurement(RoboterData *data);
 char left_on_line(RoboterData *data);
 char mid_on_line(RoboterData *data);
 char right_on_line(RoboterData *data);
+char all_on_line(RoboterData *data);
 
 #endif //MAIN_h

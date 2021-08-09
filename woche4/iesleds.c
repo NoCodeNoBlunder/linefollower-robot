@@ -29,12 +29,12 @@ void reset() {
     send_flanks(SR_LED_COUNT);
 }
 
-void light_led(LineFollower diode) {
-	
+void light_led(LineFollower next_led_mode) {
+
     // TODO muss ich immer resetten?
     reset();
-  
-    switch (diode) {
+
+    switch (next_led_mode) {
         case RIGHT_LF:
 			//USART_print("\nlight led mode LEFT_HARD LF\n");
             toggle_DI();
@@ -79,8 +79,6 @@ void light_led(LineFollower diode) {
         case NONE:
             break;
     }
-    
-    //_delay_ms(1000);
 }
 
 void select_and_light_led(FSM *fsm, RoboterData *data) {

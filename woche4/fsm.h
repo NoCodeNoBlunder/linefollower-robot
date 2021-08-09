@@ -21,6 +21,8 @@ struct FSM;
  * @var STATECOUNT is not an actual state but is used to know the ammount of states.
  *
  */
+
+// TODO würde es kein sinn machen dieses struct in states.h zu machen?
 typedef enum {
     INIT,      // default State has to be the INIT state
     CHECK_STARTPOS,

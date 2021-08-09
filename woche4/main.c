@@ -14,6 +14,7 @@
 
 #include "iesadc.h"
 
+#include <avr/interrupt.h>
 #include "iesleds.h"
 #include <util/delay.h>
 
@@ -27,6 +28,8 @@
 #endif
 
 // is this the correct spot to put this?
+
+// TODO create a linefollower sensor file?
 void take_measurement(RoboterData *data) {
     data->sensor_left = ADC_read_avg(LEFT_LF, SAMPLE_SIZE);
     data->sensor_right = ADC_read_avg(RIGHT_LF, SAMPLE_SIZE);
@@ -43,6 +46,10 @@ char mid_on_line(RoboterData *data) {
 
 char right_on_line(RoboterData *data) {
     return data->sensor_right >= THRESHOLD_R;
+}
+
+char all_on_line(RoboterData *data) {
+    return left_on_line(data) && mid_on_line(data) && right_on_line(data);
 }
 
 int main() {
@@ -64,7 +71,6 @@ int main() {
     add_state(&fsm, LEAVE_START, "LEAVE_START", enter_leave_start, update_leave_start);
     add_state(&fsm, CHECK_LAP, "CHECK_LAP", enter_check_lap, update_check_lap);
 
-    light_led(NONE);
     start_fsm_cycle(&fsm, &data);
 
     return EXIT_SUCCESS;

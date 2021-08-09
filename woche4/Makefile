@@ -7,7 +7,7 @@ flash: compile
 
 compile:
 	avr-gcc main.c states.c fsm.c iesleds.c iesusart.c iesmotors.c iesadc.c util.c iescountdown.c \
-	-o tmpfile -mmcu=atmega328p -Os -D F_CPU=16E6 -D DEBUG_MODE=0 -D COUNTDOWN_MODE=0;
+	-o tmpfile -mmcu=atmega328p -Os -D F_CPU=16E6 -D DEBUG_MODE=0 -D COUNTDOWN_MODE=1;
 	avr-objcopy -O ihex tmpfile tmpfile.hex
 
 

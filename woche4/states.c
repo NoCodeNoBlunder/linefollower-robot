@@ -16,6 +16,7 @@ void enter_init(void) {
     leds_Init();
     motors_Init();
     USART_Init(UBRR_SETTING);
+    Timer2_init();
 }
 
 void update_init(FSM *fsm, RoboterData *data) {
@@ -23,6 +24,7 @@ void update_init(FSM *fsm, RoboterData *data) {
         transition_to_state(fsm, data, CHECK_STARTPOS);
     }
     else {
+        // hier muss ich in leave_start transition!
         transition_to_state(fsm, data, FORWARD);
     }
 }
@@ -163,9 +165,12 @@ void update_right_hard(FSM *fsm, RoboterData *data) {
 
 }
 
+// ---------------------------------------------------
+
 void enter_leave_start(RoboterData *data) {
     set_direction(data, FORWARD);
-    light_led(NONE);
+    // TODO welche LEDS mache ich hier an.
+    light_led(LEFT_AND_RIGHT);
 }
 
 void update_leave_start(FSM *fsm, RoboterData *data) {
@@ -181,11 +186,11 @@ void update_check_startpos(FSM *fsm, RoboterData *data) {
     select_and_light_led(fsm, data);
 }
 
-
-unsigned short cnt2 = 0;
-volatile unsigned char is_timer_done = 0;
+volatile unsigned short cnt2 = 0;
+volatile unsigned char check_passed = 0;
 
 #define CHECKDURATION 0.2
+#define ERROR_TOLERANCE 2
 #define OVERFLOWS_FOR_CHECK ((unsigned int)(CHECKDURATION / SECONDS_PER_OF))
 
 ISR (TIMER2_OVF_vect) {
@@ -193,24 +198,34 @@ ISR (TIMER2_OVF_vect) {
     cnt2 += 1;
 	
 	if(cnt2 == OVERFLOWS_FOR_CHECK) {
-		is_timer_done = 1;
-		cnt2 = 0;
+        check_passed = 1;
+		cnt2 = 0; // brauche ich das oder im enable
 	}
 }
+void enable_isr_checklap() {
+    cli();
+    TIMSK2 |= (1 << TOIE2);
+    TCCR2A &= ~((1 << WGM20) | (1 << WGM21));
+    TCCR2B &= ~(1 << WGM22);
+    TCNT2 = 0; // counter value.
+    sei();
+}
 
-void disable_of_interrupt() { 
-	cli();
-	TIMSK2 &= ~(1 << TOIE2);
-	sei();
+void disable_isr_checklap() {
+    // Modus zurücksetzten bringt nicht da einfach auf random Mode gestellt werden
+    // würde.
+    cli();
+    TIMSK2 &= ~(1 << TOIE2); // disable compare match interrupt.
+    sei();
 }
 
 void enter_check_lap(RoboterData *data) {
 	
 	USART_print("check lap");
 	// Slow the Roboter down??
-	
-	light_led(ALL);
-	is_timer_done = 0;
+
+    light_led(ALL);
+    check_passed = 0;
 	cnt2 = 0;
 	
     cli(); 				    // disables interrupts globally
@@ -223,28 +238,30 @@ void enter_check_lap(RoboterData *data) {
 }
 
 void update_check_lap(FSM *fsm, RoboterData *data) {
-	static char lapcounter = 0;
+	unsigned static char lapcounter = 0;
+	unsigned static char error = 0;
 	
 	take_measurement(data);
 	
-	if(is_timer_done) {
-		
+	if(check_passed) {
 		USART_print("Ist die Runde abgeschlossen?");
-		//disable_of_interrupt();
+        disable_isr_checklap();
 		lapcounter++;
 		transition_to_state(fsm, data, LEAVE_START);
 		
-		if(lapcounter == 2) {
+		if(lapcounter >= 2) {
 			set_direction(data, EXIT);
 		}
 	}
-	
-	// kann ich hier einfach in forward wechseln?
-	else if (!left_on_line(data) || !mid_on_line(data) || !right_on_line(data)) {
-		
-		//disable_of_interrupt();
-        transition_to_state(fsm, data, FORWARD);
-    }
+
+	else if (!all_on_line(data)) {
+        error++;
+
+        if (error > ERROR_TOLERANCE) {
+            disable_isr_checklap();
+            transition_to_state(fsm, data, FORWARD);
+        }
+	}
 }
 
 
