@@ -22,7 +22,7 @@ enum {
 };
 
 enum {
-    ENG_STILL = 0,
+    ENG_STILL = 0, // TODO wieso kann ich keine geringen Werte einstellen?
     ENG_SLOW = 140,
     ENG_MID = 150, // wenn er zu schnell faehrt geht er zu spaet in hard turn
     ENG_FAST = 180,
@@ -106,6 +106,16 @@ void right_backward() {
     set_pin_low(&PORTB, IN4);
 }
 
+void left_off() {
+    set_pin_low(&PORTD, IN1);
+    set_pin_low(&PORTB, IN2);
+}
+
+void right_off() {
+    set_pin_low(&PORTB, IN4);
+    set_pin_low(&PORTB, IN3);
+}
+
 void set_polarity(State dir) {
     switch (dir) {
         case FORWARD:
@@ -133,12 +143,16 @@ void set_polarity(State dir) {
             right_forward();
             break;
         case GOAL_REACHED:
-            right_forward();
             left_forward();
+            right_forward();
+            break;
+        case STILL:
+            left_off();
+            right_off();
             break;
         case EXIT:
-            left_forward();
-            right_forward();
+            left_off();
+            right_off();
             break;
         default:
             break;
@@ -165,8 +179,8 @@ void motors_Init() {
  * Function to set engines polarity and duty_cyles to control the Roboter drive direction.
  */
 void set_direction(RoboterData *data, State state) {
-	
-	// USART_print("\nset_direction was called\n");
+
+//    USART_print("\nset_direction was called\n");
     switch (state) {
         case LEFT_HARD:
             data->left_eng_speed = ENG_SLOW;
@@ -193,8 +207,8 @@ void set_direction(RoboterData *data, State state) {
             data->right_eng_speed = ENG_SLOW;
             break;
         case STILL:
-            data->left_eng_speed = ENG_STILL;
-            data->right_eng_speed = ENG_STILL;
+            data->left_eng_speed = 20;
+            data->right_eng_speed = 20;
             break;
         default:
             break;

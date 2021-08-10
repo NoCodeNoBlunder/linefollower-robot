@@ -10,8 +10,6 @@
 #include <avr/io.h>
 #include "fsm.h"
 
-// #define DEBUG_MODE
-
 /**
  * @def SAMPLE_SIZE determines how many sensor meassurements are taken.
  */

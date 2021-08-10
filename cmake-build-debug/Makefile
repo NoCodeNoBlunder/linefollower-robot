@@ -276,6 +276,33 @@ woche3/iesusart.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche3/iesusart.c.s
 .PHONY : woche3/iesusart.c.s
 
+woche4/check_lap.obj: woche4/check_lap.c.obj
+
+.PHONY : woche4/check_lap.obj
+
+# target to build an object file
+woche4/check_lap.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/check_lap.c.obj
+.PHONY : woche4/check_lap.c.obj
+
+woche4/check_lap.i: woche4/check_lap.c.i
+
+.PHONY : woche4/check_lap.i
+
+# target to preprocess a source file
+woche4/check_lap.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/check_lap.c.i
+.PHONY : woche4/check_lap.c.i
+
+woche4/check_lap.s: woche4/check_lap.c.s
+
+.PHONY : woche4/check_lap.s
+
+# target to generate assembly for a file
+woche4/check_lap.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/check_lap.c.s
+.PHONY : woche4/check_lap.c.s
+
 woche4/fsm.obj: woche4/fsm.c.obj
 
 .PHONY : woche4/fsm.obj
@@ -570,6 +597,9 @@ help:
 	@echo ... woche3/iesusart.obj
 	@echo ... woche3/iesusart.i
 	@echo ... woche3/iesusart.s
+	@echo ... woche4/check_lap.obj
+	@echo ... woche4/check_lap.i
+	@echo ... woche4/check_lap.s
 	@echo ... woche4/fsm.obj
 	@echo ... woche4/fsm.i
 	@echo ... woche4/fsm.s

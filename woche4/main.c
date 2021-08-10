@@ -18,6 +18,8 @@
 #include "iesleds.h"
 #include <util/delay.h>
 
+#include "iesmotors.h"
+
 /* TODO eventuell muss ich diese Werte nicht speichern im struct sonder einfach in main.h speichern
  * und benutzen */
 #ifndef DEBUG_MODE
