@@ -4,8 +4,6 @@
 #include "iescountdown.h"
 #include "iesleds.h"
 
-#include "iesusart.h" // TODO F_CPU is defined in iesusart!
-
 // TODO warum ist das ein Float? Zahl zu gross und man muss sowieso durch 10 teilen.
 // TODO muss das hier volatile sein?
 volatile unsigned short cnt = 0;

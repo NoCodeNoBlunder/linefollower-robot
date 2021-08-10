@@ -4,7 +4,6 @@
 
 #include "fsm.h"
 #include "main.h"
-#include "iesusart.h"
 
 #define F_LEDS 5 // in hz
 #define COUNTDOWN_DURATION 15 // in Sekunden

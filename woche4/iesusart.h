@@ -12,10 +12,6 @@
 
 // TODO should this not be defined in main.h?
 
-/// CPU clock speed
-#ifndef F_CPU
-#define F_CPU 16E6
-#endif
 /// Desired baudrate
 #define BAUD 9600
 /// What to write into the UBRR register

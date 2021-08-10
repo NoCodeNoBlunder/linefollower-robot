@@ -18,6 +18,11 @@
 #define SAMPLE_SIZE 20 // TODO flascher Ort fuer diese Konstanten?
 #define STR_BUF_SIZE 40
 
+/// CPU clock speed
+#ifndef F_CPU
+#define F_CPU 16E6
+#endif
+
 /**
  *  @enum Threshold
  *  @brief enums values determine the threshold of each sensor

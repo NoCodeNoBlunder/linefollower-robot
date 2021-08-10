@@ -250,7 +250,7 @@ void update_check_lap(FSM *fsm, RoboterData *data) {
 		transition_to_state(fsm, data, LEAVE_START);
 		
 		if(lapcounter >= 2) {
-			set_direction(data, EXIT);
+            transition_to_state(fsm, data, GOAL_REACHED);
 		}
 	}
 
@@ -262,6 +262,16 @@ void update_check_lap(FSM *fsm, RoboterData *data) {
             transition_to_state(fsm, data, FORWARD);
         }
 	}
+}
+
+void enter_goal_reached(RoboterData *data) {
+    USART_print("3 Laps completed!s");
+
+
+}
+
+void update_goal_reached(FSM *fsm, RoboterData *data) {
+
 }
 
 

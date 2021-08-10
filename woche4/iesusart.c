@@ -93,6 +93,4 @@ void transmit_debug_msg(FSM *fsm, RoboterData *data) {
                 data->left_eng_speed, data->right_eng_speed);
         USART_print(str_buf);
     }
-    
-    // wait_counter = wait_counter < 32766 ? wait_counter + 1 : 0;
 }

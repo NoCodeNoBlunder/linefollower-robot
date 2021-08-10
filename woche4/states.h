@@ -30,4 +30,7 @@ void update_check_lap(FSM *fsm, RoboterData *data);
 
 void update_check_startpos(FSM *fsm, RoboterData *data);
 
+void enter_goal_reached(RoboterData *data);
+void update_goal_reached(FSM *fsm, RoboterData *data);
+
 #endif //STATES_h

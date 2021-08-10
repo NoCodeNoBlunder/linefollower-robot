@@ -128,6 +128,12 @@ void set_polarity(State dir) {
 			left_forward();
 			right_forward();
 			break;
+        case CHECK_LAP:
+            left_forward();
+            right_forward();
+        case EXIT:
+            left_forward();
+            right_forward();
     }
 }
 
@@ -172,7 +178,10 @@ void set_direction(RoboterData *data, State state) {
         case RIGHT_SOFT:
 			data->left_eng_speed = ENG_MID;
 			data->right_eng_speed = ENG_SLOW;
-			break; 
+			break;
+        case CHECK_LAP:
+            data->left_eng_speed = ENG_SLOW;
+            data->right_eng_speed = ENG_SLOW;
 		case EXIT:
 			data->left_eng_speed = ENG_STILL;
 			data->right_eng_speed = ENG_STILL;

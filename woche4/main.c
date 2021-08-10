@@ -70,6 +70,7 @@ int main() {
     add_state(&fsm, COUNTDOWN, "COUNTDOWN", enter_countdown, update_countdown);
     add_state(&fsm, LEAVE_START, "LEAVE_START", enter_leave_start, update_leave_start);
     add_state(&fsm, CHECK_LAP, "CHECK_LAP", enter_check_lap, update_check_lap);
+    add_state(&fsm, GOAL_REACHED, "GOAL_REACHED", enter_goal_reached, update_goal_reached);
 
     start_fsm_cycle(&fsm, &data);
 
