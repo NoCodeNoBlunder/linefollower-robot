@@ -74,7 +74,7 @@ void update_soft_left(FSM *fsm, RoboterData *data) {
         transition_to_state(fsm, data, LEFT_HARD);
     }
 
-    else if (!left_on_line(data) && mid_on_line(data) || right_on_line(data)) {
+    else if ((!left_on_line(data) && mid_on_line(data)) || right_on_line(data)) {
         transition_to_state(fsm, data, FORWARD);
     }
 
@@ -106,7 +106,7 @@ void update_soft_right(FSM *fsm, RoboterData *data) {
         transition_to_state(fsm, data, RIGHT_HARD);
     }
 
-    else if (!right_on_line(data) && mid_on_line(data) || left_on_line(data)) {
+    else if ((!right_on_line(data) && mid_on_line(data)) || left_on_line(data)) {
         transition_to_state(fsm, data, FORWARD);
     }
 }
@@ -237,18 +237,17 @@ void enter_check_lap(RoboterData *data) {
 }
 
 void update_check_lap(FSM *fsm, RoboterData *data) {
-	unsigned static char lapcounter = 0;
-	unsigned static char error = 0;
+    static unsigned char error = 0;
 	
 	take_measurement(data);
 	
 	if(check_passed) {
 		USART_print("Ist die Runde abgeschlossen?");
         disable_isr_checklap();
-		lapcounter++;
+		data->lapcounter++;
 		transition_to_state(fsm, data, LEAVE_START);
 		
-		if(lapcounter >= 2) {
+		if(data->lapcounter >= 2) {
             transition_to_state(fsm, data, GOAL_REACHED);
 		}
 	}

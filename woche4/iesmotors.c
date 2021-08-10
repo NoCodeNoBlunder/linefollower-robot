@@ -155,6 +155,7 @@ void motors_Init() {
     Timer0_init();
 }
 
+// TODO maybe there should be an enum setting for the motors and not a shared one??
 /**
  * Function to set engines polarity and duty_cyles to control the Roboter drive direction.
  */
