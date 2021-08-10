@@ -78,6 +78,8 @@ void light_led(LineFollower next_led_mode) {
             break;
         case NONE:
             break;
+        default:
+            break;
     }
 }
 

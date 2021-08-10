@@ -3,6 +3,7 @@
 #include "main.h"
 #include "iescountdown.h"
 #include "iesleds.h"
+#include "iesusart.h"
 
 // TODO warum ist das ein Float? Zahl zu gross und man muss sowieso durch 10 teilen.
 // TODO muss das hier volatile sein?
@@ -78,6 +79,7 @@ void update_countdown(FSM *fsm, RoboterData *data) {
     }
 
     take_measurement(data);
+    // transmit_debug_msg(fsm, data); // TODO wieso geht das hier nicht?
 
     if (toggled_led_count == CYCLE_AMMOUNT - 1) {
         disable_isr_countdown();

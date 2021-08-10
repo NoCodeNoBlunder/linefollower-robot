@@ -24,7 +24,6 @@ void update_init(FSM *fsm, RoboterData *data) {
         transition_to_state(fsm, data, CHECK_STARTPOS);
     }
     else {
-        // hier muss ich in leave_start transition!
         transition_to_state(fsm, data, LEAVE_START);
     }
 }
@@ -146,7 +145,6 @@ void enter_right_hard(RoboterData *data) {
 }
 
 void update_right_hard(FSM *fsm, RoboterData *data) {
-
     take_measurement(data);
     transmit_debug_msg(fsm, data);
 
@@ -162,7 +160,6 @@ void update_right_hard(FSM *fsm, RoboterData *data) {
     else if (left_on_line(data) || mid_on_line(data) || !right_on_line(data)) {
         transition_to_state(fsm, data, LEFT_SOFT);
     }
-
 }
 
 // ---------------------------------------------------
@@ -184,6 +181,7 @@ void update_leave_start(FSM *fsm, RoboterData *data) {
 
 void update_check_startpos(FSM *fsm, RoboterData *data) {
     take_measurement(data);
+    transmit_debug_msg(fsm, data);
     select_and_light_led(fsm, data);
 }
 
@@ -240,8 +238,9 @@ void update_check_lap(FSM *fsm, RoboterData *data) {
     static unsigned char error = 0;
 	
 	take_measurement(data);
-	
-	if(check_passed) {
+	transmit_debug_msg(fsm, data);
+
+    if(check_passed) {
 		USART_print("Ist die Runde abgeschlossen?");
         disable_isr_checklap();
 		data->lapcounter++;
@@ -268,7 +267,7 @@ void enter_goal_reached(RoboterData *data) {
 }
 
 void update_goal_reached(FSM *fsm, RoboterData *data) {
-
+    transmit_debug_msg(fsm, data);
 }
 
 
