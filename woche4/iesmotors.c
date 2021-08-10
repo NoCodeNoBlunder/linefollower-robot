@@ -36,7 +36,7 @@ enum {
 
 // Info is needed for PWM...?
 /* sets up timer 0 (8 bit) */
-void setup_timer0() {
+void Timer0_init() {
     cli();                                  // disable interrupt globally
     // Set Prescaler to 64
     TCCR0B = 0;
@@ -131,6 +131,9 @@ void set_polarity(State dir) {
         case CHECK_LAP:
             left_forward();
             right_forward();
+        case GOAL_REACHED:
+            right_forward();
+            left_forward();
         case EXIT:
             left_forward();
             right_forward();
@@ -149,7 +152,7 @@ void motors_Init() {
     DDRB |= (1 << DD0) | (1 << DD1) | (1 << DD3) | (1 << DD7);
 
     // Make PWM work on PD[5|6]
-    setup_timer0();
+    Timer0_init();
 }
 
 /**
@@ -182,6 +185,9 @@ void set_direction(RoboterData *data, State state) {
         case CHECK_LAP:
             data->left_eng_speed = ENG_SLOW;
             data->right_eng_speed = ENG_SLOW;
+        case GOAL_REACHED:
+            data->left_eng_speed = ENG_STILL;
+            data->right_eng_speed = ENG_STILL;
 		case EXIT:
 			data->left_eng_speed = ENG_STILL;
 			data->right_eng_speed = ENG_STILL;
