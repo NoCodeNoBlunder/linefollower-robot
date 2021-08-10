@@ -25,7 +25,7 @@ void update_init(FSM *fsm, RoboterData *data) {
     }
     else {
         // hier muss ich in leave_start transition!
-        transition_to_state(fsm, data, FORWARD);
+        transition_to_state(fsm, data, LEAVE_START);
     }
 }
 
@@ -175,6 +175,7 @@ void enter_leave_start(RoboterData *data) {
 
 void update_leave_start(FSM *fsm, RoboterData *data) {
     take_measurement(data);
+    transmit_debug_msg(fsm, data);
 
     if (!left_on_line(data) || !mid_on_line(data) || !right_on_line(data)) {
         transition_to_state(fsm, data, FORWARD);

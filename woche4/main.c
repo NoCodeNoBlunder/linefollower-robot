@@ -61,10 +61,10 @@ int main() {
 
     add_state(&fsm, INIT, "Init", enter_init, update_init);
     add_state(&fsm, FORWARD, "Forward", enter_forward, update_forward);
-    add_state(&fsm, LEFT_HARD, "Left", enter_left_hard, update_left_hard);
-    add_state(&fsm, RIGHT_HARD, "Right", enter_right_hard, update_right_hard);
-    add_state(&fsm, RIGHT_SOFT, "SOFT RIGHT_HARD", enter_soft_right, update_soft_right);
-    add_state(&fsm, LEFT_SOFT, "SOFT LEFT_HARD", enter_soft_left, update_soft_left);
+    add_state(&fsm, LEFT_HARD, "Left_HARD", enter_left_hard, update_left_hard);
+    add_state(&fsm, RIGHT_HARD, "Right_HARD", enter_right_hard, update_right_hard);
+    add_state(&fsm, RIGHT_SOFT, "RIGHT_SOFT", enter_soft_right, update_soft_right);
+    add_state(&fsm, LEFT_SOFT, "LEFT_SOFT", enter_soft_left, update_soft_left);
 
     add_state(&fsm, CHECK_STARTPOS, "CHECK_STARTPOS", NULL, update_check_startpos);
     add_state(&fsm, COUNTDOWN, "COUNTDOWN", enter_countdown, update_countdown);
