@@ -223,9 +223,7 @@ void disable_isr_checklap() {
 void enter_check_lap(RoboterData *data) {
 	
 	USART_print("check lap");
-	// Slow the Roboter down??
-
-    light_led(ALL);
+    light_led(CHECK_LAP);
     check_passed = 0;
 	cnt2 = 0;
 	
@@ -267,8 +265,7 @@ void update_check_lap(FSM *fsm, RoboterData *data) {
 
 void enter_goal_reached(RoboterData *data) {
     USART_print("3 Laps completed!s");
-
-
+    set_direction(data, STILL);
 }
 
 void update_goal_reached(FSM *fsm, RoboterData *data) {

@@ -186,14 +186,10 @@ void set_direction(RoboterData *data, State state) {
             data->left_eng_speed = ENG_SLOW;
             data->right_eng_speed = ENG_SLOW;
             break;
-        case GOAL_REACHED:
+        case STILL:
             data->left_eng_speed = ENG_STILL;
             data->right_eng_speed = ENG_STILL;
             break;
-		case EXIT:
-			data->left_eng_speed = ENG_STILL;
-			data->right_eng_speed = ENG_STILL;
-			break;
     }
 
     set_polarity(state);
