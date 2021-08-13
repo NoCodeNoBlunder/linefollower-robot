@@ -29,6 +29,10 @@
 #define COUNTDOWN_MODE 0
 #endif
 
+#ifndef LAPCOUNTER_MODE
+#define LAPCOUNTER_MODE 1
+#endif
+
 // is this the correct spot to put this?
 
 // TODO create a linefollower sensor file?
@@ -60,7 +64,7 @@ int main() {
      * if debug_mode is set to 0 no data will be sent to Serial PORT.
      */
     RoboterData data = { .debug_mode = DEBUG_MODE, .start_counter_mode = COUNTDOWN_MODE,
-        .lapcounter = 0 };
+            .lapcounter = LAPCOUNTER_MODE ,.lapcounter = 0 };
 
     add_state(&fsm, INIT, "Init", enter_init, update_init);
     add_state(&fsm, FORWARD, "Forward", enter_forward, update_forward);

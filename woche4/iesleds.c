@@ -36,19 +36,19 @@ void light_led(LineFollower next_led_mode) {
 
     switch (next_led_mode) {
         case RIGHT_LF:
-			//USART_print("\nlight led mode LEFT_HARD LF\n");
+            //USART_print("\nlight led mode LEFT_HARD LF\n");
             toggle_DI();
             send_flanks(1);
             break;
         case MID_LF:
-			//USART_print("\nlight led mode MID LF\n");
+            //USART_print("\nlight led mode MID LF\n");
             toggle_DI();
             send_flanks(1);
             toggle_DI();
             send_flanks(1);
             break;
         case LEFT_LF:
-			//USART_print("\nlight led mode RIGHT_HARD LF\n");
+            //USART_print("\nlight led mode RIGHT_HARD LF\n");
             toggle_DI();
             send_flanks(1);
             toggle_DI();

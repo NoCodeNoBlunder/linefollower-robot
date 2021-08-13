@@ -23,9 +23,12 @@ enum {
 
 enum {
     ENG_STILL = 0, // TODO wieso kann ich keine geringen Werte einstellen?
-    ENG_SLOW = 140,
-    ENG_MID = 150, // wenn er zu schnell faehrt geht er zu spaet in hard turn
-    ENG_FAST = 180,
+    ENG_SLOW_VERY = 80,
+    ENG_SLOW = 125,
+    ENG_MID = 130, // wenn er zu schnell faehrt geht er zu spaet in hard turn
+    ENG_MID_P = 143, // 145 worked try reduce difference!
+    ENG_BACKTURN = 155,
+    ENG_FAST = 210,
     ENG_MAX = 255,
 };
 
@@ -130,14 +133,14 @@ void set_polarity(State dir) {
             left_forward();
             right_backward();
             break;
-		case LEFT_SOFT:
-			left_forward();
-			right_forward();
-			break;
-		case RIGHT_SOFT:
-			left_forward();
-			right_forward();
-			break;
+        case LEFT_SOFT:
+            left_forward();
+            right_forward();
+            break;
+        case RIGHT_SOFT:
+            left_forward();
+            right_forward();
+            break;
         case CHECK_LAP:
             left_forward();
             right_forward();
@@ -182,29 +185,29 @@ void set_direction(RoboterData *data, State state) {
 
 //    USART_print("\nset_direction was called\n");
     switch (state) {
-        case LEFT_HARD:
+        case FORWARD:
             data->left_eng_speed = ENG_SLOW;
-            data->right_eng_speed = ENG_FAST;
+            data->right_eng_speed = ENG_SLOW;
+            break;
+        case LEFT_HARD:
+            data->left_eng_speed = ENG_BACKTURN;
+            data->right_eng_speed = ENG_MAX;
             break;
         case RIGHT_HARD:
-            data->left_eng_speed = ENG_FAST;
-            data->right_eng_speed = ENG_SLOW;
-            break;
-        case FORWARD:
-            data->left_eng_speed = ENG_MID;
-            data->right_eng_speed = ENG_MID;
+            data->left_eng_speed = ENG_MAX;
+            data->right_eng_speed = ENG_BACKTURN;
             break;
         case LEFT_SOFT:
-			data->left_eng_speed = ENG_SLOW; // Alternative
-			data->right_eng_speed = ENG_MID;
-			break;
+            data->left_eng_speed = ENG_SLOW; // Alternative
+            data->right_eng_speed = ENG_MID;
+            break;
         case RIGHT_SOFT:
-			data->left_eng_speed = ENG_MID;
-			data->right_eng_speed = ENG_SLOW;
-			break;
-        case CHECK_LAP:
             data->left_eng_speed = ENG_SLOW;
-            data->right_eng_speed = ENG_SLOW;
+            data->right_eng_speed = ENG_MID;
+            break;
+        case CHECK_LAP:
+            data->left_eng_speed = ENG_SLOW_VERY;
+            data->right_eng_speed = ENG_SLOW_VERY;
             break;
         case STILL:
             data->left_eng_speed = 20;

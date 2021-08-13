@@ -113,7 +113,7 @@ void update_countdown(FSM *fsm, RoboterData *data) {
 void enter_goal_reached(RoboterData *data) {
     set_direction(data, STILL);
 
-    USART_print("\n3 Laps completed!s\n");
+    USART_print("\nYAY, FINISHED!\n");
     enable_isr_countdown();
     data->lapcounter = 0;
 }
