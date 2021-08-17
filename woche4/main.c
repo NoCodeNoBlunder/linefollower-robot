@@ -12,6 +12,7 @@
 #include "states.h"
 #include "iescountdown.h"
 #include "states.h"
+#include "check_lap.h"
 
 #include "iesadc.h"
 
