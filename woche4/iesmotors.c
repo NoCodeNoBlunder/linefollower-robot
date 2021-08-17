@@ -24,10 +24,10 @@ enum {
 enum {
     ENG_STILL = 0,
     ENG_FORWARD = 125,
-    ENG_SOFT_SLOW = 80,
-    ENG_SOFT_FAST = 130,
+    ENG_SOFT_SLOW = 100,
+    ENG_SOFT_FAST = 150,
     ENG_HARD_BACK = 155,
-    ENG_HARD_FORWARD = 210,
+    ENG_HARD_FORWARD = 220,
     ENG_MAX = 255,
 };
 
@@ -188,7 +188,7 @@ void set_direction(RoboterData *data, State state) {
             data->left_eng_speed = ENG_FORWARD;
             data->right_eng_speed = ENG_FORWARD;
         case LEFT_SOFT:
-            data->left_eng_speed = ENG_SOFT_SLOW; // Alternative
+            data->left_eng_speed = ENG_SOFT_SLOW;
             data->right_eng_speed = ENG_SOFT_FAST;
             break;
         case RIGHT_SOFT:

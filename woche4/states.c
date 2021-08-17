@@ -218,7 +218,7 @@ void disable_isr_checklap() {
 
 void enter_check_lap(RoboterData *data) {
 
-    USART_print("\nEntered CHeck lap!\n");
+    // USART_print("\nEntered CHeck lap!\n");
     set_direction(data, CHECK_LAP);
     enable_isr_checklap();
 }
@@ -233,7 +233,7 @@ void update_check_lap(FSM *fsm, RoboterData *data) {
         // USART_print("Ist die Runde abgeschlossen?");
         disable_isr_checklap();
         data->lapcounter++;
-        USART_print("Laps++");
+        // USART_print("Laps++");
 
         if(data->lapcounter >= 3) {
             transition_to_state(fsm, data, GOAL_REACHED);
