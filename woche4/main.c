@@ -7,6 +7,7 @@
  */
 
 #include <stdlib.h>
+#include <stdbool.h>
 #include "main.h"
 #include "states.h"
 #include "iescountdown.h"
@@ -23,14 +24,14 @@
 /* TODO eventuell muss ich diese Werte nicht speichern im struct sonder einfach in main.h speichern
  * und benutzen */
 #ifndef DEBUG_MODE
-#define DEBUG_MODE 0
+#define DEBUG_MODE false
 #endif
 #ifndef COUNTDOWN_MODE
-#define COUNTDOWN_MODE 0
+#define COUNTDOWN_MODE true
 #endif
 
 #ifndef LAPCOUNTER_MODE
-#define LAPCOUNTER_MODE 1
+#define LAPCOUNTER_MODE true
 #endif
 
 // is this the correct spot to put this?
@@ -64,7 +65,7 @@ int main() {
      * if debug_mode is set to 0 no data will be sent to Serial PORT.
      */
     RoboterData data = { .debug_mode = DEBUG_MODE, .start_counter_mode = COUNTDOWN_MODE,
-            .lapcounter = LAPCOUNTER_MODE ,.lapcounter = 0 };
+            .lapcounter_mode = LAPCOUNTER_MODE, .lapcounter = 0 };
 
     add_state(&fsm, INIT, "Init", enter_init, update_init);
     add_state(&fsm, FORWARD, "Forward", enter_forward, update_forward);

@@ -51,8 +51,8 @@ typedef enum LineFollower { // TODO Besseren Namen
  * @struct RoboterData "main.h"
  */
 typedef struct RoboterData {
-    char start_counter_mode; // TODO remove this
-    char debug_mode; // TODO remove this
+    char start_counter_mode;
+    char debug_mode;
     char lapcounter_mode;
     unsigned char lapcounter;
 

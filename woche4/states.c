@@ -64,15 +64,11 @@ void update_soft_left(FSM *fsm, RoboterData *data) {
     take_measurement(data);
     transmit_debug_msg(fsm, data);
 
-    if (!left_on_line(data) && !mid_on_line(data) && !right_on_line(data)) {
+    if (!left_on_line(data)) {
         transition_to_state(fsm, data, LEFT_HARD);
     }
 
-    else if (left_on_line(data) && !mid_on_line(data)) {
-        transition_to_state(fsm, data, LEFT_HARD);
-    }
-
-    else if ((!left_on_line(data) && mid_on_line(data)) || right_on_line(data)) {
+    else if(mid_on_line(data)) {
         transition_to_state(fsm, data, FORWARD);
     }
 }
@@ -86,15 +82,11 @@ void update_soft_right(FSM *fsm, RoboterData *data) {
     take_measurement(data);
     transmit_debug_msg(fsm, data);
 
-    if (!left_on_line(data) && !mid_on_line(data) && !right_on_line(data)) {
+    if (!right_on_line(data)) {
         transition_to_state(fsm, data, RIGHT_HARD);
     }
 
-    else if (right_on_line(data) && !mid_on_line(data)) {
-        transition_to_state(fsm, data, RIGHT_HARD);
-    }
-
-    else if ((!right_on_line(data) && mid_on_line(data)) || left_on_line(data)) {
+    else if(mid_on_line(data)) {
         transition_to_state(fsm, data, FORWARD);
     }
 }
