@@ -13,7 +13,7 @@
 #include "main.h"
 
 #define CHECKDURATION 0.17 // 0.15 and 3 worked
-#define ERROR_TOLERANCE 0 // worked with 1
+#define ERROR_TOLERANCE 0
 
 #define TIMER_SIZE 256 // in bit as float
 #define OF_FREQUENCY (F_CPU / TIMER_SIZE)

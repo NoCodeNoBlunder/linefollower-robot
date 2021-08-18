@@ -25,7 +25,7 @@ void ADC_Init() {
     ADCSRA = (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0);  // Set clock (Takt)?
     ADCSRA |= (1 << ADEN);                                // Before you can start the conversion by setting the ADSC bit, you have to "allow" it first by setting the ADEN-bit.
     ADCSRA |= (1 << ADSC);                                // Single conversion
-    while (ADCSRA & (1 << ADSC));
+    while (ADCSRA & (1 << ADSC)) { }
     ADCW;                                                 // Read once to "warm up" ADC.
 }
 
@@ -37,7 +37,7 @@ void ADC_Init() {
 uint16_t ADC_Read(uint8_t channel) {
     ADMUX = (ADMUX & ~(0x1F)) | (channel & 0x1F);
     ADCSRA |= (1 << ADSC);                          // Set the start bit
-    while (ADCSRA & (1 << ADSC));                  // Wait till MCU is finished with the calculation
+    while (ADCSRA & (1 << ADSC)) { }                // Wait till MCU is finished with the calculation
     return ADCW;                                   // Now that ADSC bit is low again, MCU finished the conversion and we are ready to return the calculated ADC-value.
 }
 
