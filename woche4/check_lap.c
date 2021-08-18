@@ -23,12 +23,12 @@ volatile unsigned short cnt2 = 0;
 volatile unsigned char check_passed = false;
 
 ISR (TIMER2_OVF_vect) {
-        cnt2 += 1;
+    cnt2 += 1;
 
-        if(cnt2 == OVERFLOWS_FOR_CHECK) {
-            check_passed = 1;
-            cnt2 = 0; // brauche ich das oder im enable
-        }
+    if(cnt2 == OVERFLOWS_FOR_CHECK) {
+        check_passed = 1;
+        cnt2 = 0; // brauche ich das oder im enable
+    }
 }
 
 void Timer2_init() {
@@ -71,13 +71,13 @@ void update_check_lap(FSM *fsm, RoboterData *data) {
     take_measurement(data);
     transmit_debug_msg(fsm, data);
 
-    if(check_passed) {
+    if (check_passed) {
         // USART_print("Ist die Runde abgeschlossen?");
         disable_isr_checklap();
-        data->lapcounter++;
+        data->laps_to_go--;
         // USART_print("Laps++");
 
-        if(data->lapcounter >= 3) {
+        if(data->laps_to_go <= 0) {
             transition_to_state(fsm, data, GOAL_REACHED);
             return;
         }

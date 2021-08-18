@@ -31,8 +31,8 @@ volatile unsigned int cnt = 0;
 volatile unsigned int cnt_countdown = 0;
 volatile unsigned char toggle_led = false;
 volatile unsigned char countdown_finished = false;
-volatile int of_for_countdown = TOTAL_OF_START;
 volatile LineFollower current_led_state = ALL;
+volatile int of_for_countdown;
 
 ISR (TIMER1_OVF_vect) {
     cnt += 1;
@@ -128,7 +128,7 @@ void enter_goal_reached(RoboterData *data) {
 
     USART_print("\nYAY, FINISHED!\n");
     enable_isr_countdown(END_C);
-    data->lapcounter = 0;
+    data->laps_to_go = LAPS;
 }
 
 void update_goal_reached(FSM *fsm, RoboterData *data) {
@@ -146,7 +146,8 @@ void update_goal_reached(FSM *fsm, RoboterData *data) {
         if (current_led_state == ALL) {
             light_led(NONE);
             current_led_state = NONE;
-        } else {
+        }
+        else {
             light_led(ALL);
             current_led_state = ALL;
         }

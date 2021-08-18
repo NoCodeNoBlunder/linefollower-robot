@@ -41,7 +41,6 @@ void update_forward(FSM *fsm, RoboterData *data) {
     take_measurement(data);
     transmit_debug_msg(fsm, data);
 
-
     if (left_on_line(data) && !right_on_line(data)) {
         transition_to_state(fsm, data, LEFT_SOFT);
     }
@@ -62,7 +61,7 @@ void update_soft_left(FSM *fsm, RoboterData *data) {
     take_measurement(data);
     transmit_debug_msg(fsm, data);
 
-    if(mid_on_line(data)) {
+    if (mid_on_line(data)) {
         transition_to_state(fsm, data, FORWARD);
     }
     // Reicht das um in Hard turn zu gehen? Nur wenn mitter nicht on line ist.
@@ -81,7 +80,7 @@ void update_soft_right(FSM *fsm, RoboterData *data) {
     take_measurement(data);
     transmit_debug_msg(fsm, data);
 
-    if(mid_on_line(data)) {
+    if (mid_on_line(data)) {
         transition_to_state(fsm, data, FORWARD);
     }
 
@@ -107,7 +106,7 @@ void update_left_hard(FSM *fsm, RoboterData *data) {
         transition_to_state(fsm, data, RIGHT_SOFT);
     }
 
-    else if(mid_on_line(data)) {
+    else if (mid_on_line(data)) {
         transition_to_state(fsm, data, FORWARD);
     }
 }
@@ -129,12 +128,10 @@ void update_right_hard(FSM *fsm, RoboterData *data) {
         transition_to_state(fsm, data, LEFT_SOFT);
     }
 
-    else if(mid_on_line(data)) {
+    else if (mid_on_line(data)) {
         transition_to_state(fsm, data, FORWARD);
     }
 }
-
-// ---------------------------------------------------
 
 void enter_leave_start(RoboterData *data) {
     set_direction(data, FORWARD);

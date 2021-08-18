@@ -28,7 +28,7 @@ void exit_fsm_cycle(FSM *fsm);
  * @details each state has to implement an update function.
  */
 void add_state(FSM *fsm, State state, char *state_name, void (*enter), void (*update)) {
-    ConcreteState *new_state = malloc(sizeof (ConcreteState));
+    ConcreteState *new_state = malloc(sizeof(ConcreteState));
     if (new_state == NULL) { exit(EXIT_FAILURE); }
 
     new_state->state = state;

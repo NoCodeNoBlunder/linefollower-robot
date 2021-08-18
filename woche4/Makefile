@@ -8,8 +8,8 @@ flash: compile
 compile:
 	avr-gcc main.c states.c fsm.c iesleds.c iesusart.c iesmotors.c iesadc.c util.c iescountdown.c \
 	check_lap.c \
-	-o tmpfile -mmcu=atmega328p -Os -D F_CPU=16E6 -D DEBUG_MODE=0 -D COUNTDOWN_MODE=1 \
-	-D LAPCOUNTER=1 -Wall;
+	-o tmpfile -mmcu=atmega328p -Os -D F_CPU=16E6 -D DEBUG_MODE=0 -D COUNTDOWN_MODE=0 \
+	-D LAPS=3 -Wall;
 	avr-objcopy -O ihex tmpfile tmpfile.hex
 
 

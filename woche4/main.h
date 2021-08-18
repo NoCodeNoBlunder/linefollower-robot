@@ -21,6 +21,11 @@
 #define F_CPU 16E6
 #endif
 
+#ifndef LAPS
+#define LAPS 3
+#endif
+
+
 /**
  *  @enum Threshold
  *  @brief enums values determine the threshold of each sensor
@@ -54,7 +59,7 @@ typedef struct RoboterData {
     char start_counter_mode;
     char debug_mode;
     char lapcounter_mode;
-    unsigned char lapcounter;
+    unsigned char laps_to_go;
 
     unsigned short sensor_left;
     unsigned short sensor_mid;
@@ -69,5 +74,6 @@ char left_on_line(RoboterData *data);
 char mid_on_line(RoboterData *data);
 char right_on_line(RoboterData *data);
 char all_on_line(RoboterData *data);
+char all_off_line(RoboterData *data);
 
 #endif //MAIN_h
