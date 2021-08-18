@@ -2,15 +2,15 @@
 #include <stdbool.h>
 #include <avr/interrupt.h>
 #include <stdio.h>
-#include "check_lap.h"
 
-#include "states.h"
+#include "check_lap.h"
+#include "linefollower.h"
+//#include "states.h"
+//#include "iesadc.h"
 #include "iesmotors.h"
-#include "iesadc.h"
 #include "iesusart.h"
 #include "iesleds.h"
 #include "main.h"
-#include "linefollower.h"
 
 #define CHECKDURATION 0.17 // 0.15 and 3 worked
 #define ERROR_TOLERANCE 0 // worked with 1

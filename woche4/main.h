@@ -25,18 +25,6 @@
 #define LAPS 3
 #endif
 
-
-/**
- *  @enum Threshold
- *  @brief enums values determine the threshold of each sensor
- *  @details due to inaccuracy a sensor might fire early or late
- */
-enum Threshold{
-    THRESHOLD_L = 512,
-    THRESHOLD_M = 512,
-    THRESHOLD_R = 512,
-};
-
 /**
  * @enum LineFollower
  * @brief enum stores the corrosponding pins for the sensors and also stor

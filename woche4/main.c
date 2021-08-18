@@ -11,16 +11,9 @@
 #include "main.h"
 #include "states.h"
 #include "iescountdown.h"
-#include "states.h"
 #include "check_lap.h"
 
-#include "iesadc.h"
-
-#include <avr/interrupt.h>
-#include "iesleds.h"
 #include <util/delay.h>
-
-#include "iesmotors.h"
 
 /* TODO eventuell muss ich diese Werte nicht speichern im struct sonder einfach in main.h speichern
  * und benutzen */

@@ -2,6 +2,17 @@
 #include "linefollower.h"
 #include "iesadc.h"
 
+/**
+ *  @enum Threshold
+ *  @brief enums values determine the threshold of each sensor
+ *  @details due to inaccuracy a sensor might fire early or late
+ */
+enum Threshold{
+    THRESHOLD_L = 512,
+    THRESHOLD_M = 512,
+    THRESHOLD_R = 512,
+};
+
 void take_measurement(RoboterData *data) {
     data->sensor_left = ADC_read_avg(LEFT_LF, SAMPLE_SIZE);
     data->sensor_right = ADC_read_avg(RIGHT_LF, SAMPLE_SIZE);
