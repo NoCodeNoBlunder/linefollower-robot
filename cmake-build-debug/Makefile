@@ -492,6 +492,33 @@ woche4/iesusart.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/iesusart.c.s
 .PHONY : woche4/iesusart.c.s
 
+woche4/linefollower.obj: woche4/linefollower.c.obj
+
+.PHONY : woche4/linefollower.obj
+
+# target to build an object file
+woche4/linefollower.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/linefollower.c.obj
+.PHONY : woche4/linefollower.c.obj
+
+woche4/linefollower.i: woche4/linefollower.c.i
+
+.PHONY : woche4/linefollower.i
+
+# target to preprocess a source file
+woche4/linefollower.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/linefollower.c.i
+.PHONY : woche4/linefollower.c.i
+
+woche4/linefollower.s: woche4/linefollower.c.s
+
+.PHONY : woche4/linefollower.s
+
+# target to generate assembly for a file
+woche4/linefollower.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Roboter.dir\build.make CMakeFiles/Roboter.dir/woche4/linefollower.c.s
+.PHONY : woche4/linefollower.c.s
+
 woche4/main.obj: woche4/main.c.obj
 
 .PHONY : woche4/main.obj
@@ -621,6 +648,9 @@ help:
 	@echo ... woche4/iesusart.obj
 	@echo ... woche4/iesusart.i
 	@echo ... woche4/iesusart.s
+	@echo ... woche4/linefollower.obj
+	@echo ... woche4/linefollower.i
+	@echo ... woche4/linefollower.s
 	@echo ... woche4/main.obj
 	@echo ... woche4/main.i
 	@echo ... woche4/main.s

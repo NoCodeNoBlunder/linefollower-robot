@@ -69,11 +69,5 @@ typedef struct RoboterData {
     unsigned char right_eng_speed;
 } RoboterData;
 
-void take_measurement(RoboterData *data);
-char left_on_line(RoboterData *data);
-char mid_on_line(RoboterData *data);
-char right_on_line(RoboterData *data);
-char all_on_line(RoboterData *data);
-char all_off_line(RoboterData *data);
 
 #endif //MAIN_h

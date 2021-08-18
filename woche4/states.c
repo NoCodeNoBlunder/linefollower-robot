@@ -12,6 +12,7 @@
 #include "check_lap.h"
 
 #include "iescountdown.h"
+#include "linefollower.h"
 
 void enter_init(void) {
     ADC_Init();
@@ -41,6 +42,7 @@ void update_forward(FSM *fsm, RoboterData *data) {
     take_measurement(data);
     transmit_debug_msg(fsm, data);
 
+    // Soll er in forward bleiben wenn er mal mitte und rechts hat?
     if (left_on_line(data) && !right_on_line(data)) {
         transition_to_state(fsm, data, LEFT_SOFT);
     }

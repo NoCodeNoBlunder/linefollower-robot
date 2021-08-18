@@ -10,7 +10,7 @@
 #include "iesusart.h"
 #include "iesleds.h"
 #include "main.h"
-
+#include "linefollower.h"
 
 #define CHECKDURATION 0.17 // 0.15 and 3 worked
 #define ERROR_TOLERANCE 0 // worked with 1

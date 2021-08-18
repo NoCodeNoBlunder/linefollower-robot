@@ -9,6 +9,7 @@
 #include "iesusart.h"
 
 #include "iesmotors.h"
+#include "linefollower.h"
 
 #define F_LEDS 5 // in hz
 #define STAR_C_DUR 15 // in Sekunden

@@ -6,6 +6,7 @@
 //#include "iesusart.h"
 #include "util.h"
 #include <stdio.h>
+#include "linefollower.h"
 
 #define SHORT_WTIME 250
 #define MID_WTIME 500
