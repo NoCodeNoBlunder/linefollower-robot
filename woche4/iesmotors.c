@@ -187,6 +187,7 @@ void set_direction(RoboterData *data, State state) {
         case FORWARD:
             data->left_eng_speed = ENG_FORWARD;
             data->right_eng_speed = ENG_FORWARD;
+            break;
         case LEFT_SOFT:
             data->left_eng_speed = ENG_SOFT_SLOW;
             data->right_eng_speed = ENG_SOFT_FAST;

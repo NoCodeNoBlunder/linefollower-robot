@@ -79,11 +79,9 @@ void update_check_lap(FSM *fsm, RoboterData *data) {
 
         if(data->laps_to_go <= 0) {
             transition_to_state(fsm, data, GOAL_REACHED);
-            return;
         }
         else {
             transition_to_state(fsm, data, LEAVE_START);
-            return;
         }
     }
 
