@@ -2,6 +2,7 @@
 #include <avr/interrupt.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <avr/wdt.h>
 
 #include "main.h"
 #include "iescountdown.h"
@@ -140,6 +141,10 @@ void update_goal_reached(FSM *fsm, RoboterData *data) {
         // USART_print("Counter finished.");
         disable_isr_countdown();
         transition_to_state(fsm, data, LEAVE_START);
+
+        /*cli();
+        wdt_enable(WDTO_15MS);
+        sei();*/
     }
     else if (toggle_led) {
         toggle_led = false;
