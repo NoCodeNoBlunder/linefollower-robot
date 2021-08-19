@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter
+# Install script for directory: D:/Radikal/Roboter
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/Radikal/Roboter/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

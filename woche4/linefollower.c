@@ -8,9 +8,9 @@
  *  @details due to inaccuracy a sensor might fire early or late
  */
 enum Threshold{
-    THRESHOLD_L = 512,
+    THRESHOLD_L = 250,
     THRESHOLD_M = 512,
-    THRESHOLD_R = 512,
+    THRESHOLD_R = 412,
 };
 
 void take_measurement(RoboterData *data) {

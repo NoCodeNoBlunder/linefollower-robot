@@ -23,11 +23,11 @@ enum {
 
 enum {
     ENG_STILL = 0,
-    ENG_FORWARD = 125,
-    ENG_SOFT_SLOW = 100,
-    ENG_SOFT_FAST = 150,
-    ENG_HARD_BACK = 155,
-    ENG_HARD_FORWARD = 220,
+    ENG_FORWARD = 120,
+    ENG_SOFT_SLOW = 65,
+    ENG_SOFT_FAST = 200,
+    ENG_HARD_BACK = 160,
+    ENG_HARD_FORWARD = 250,
     ENG_MAX = 255,
 };
 
