@@ -8,7 +8,7 @@
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <stdio.h>
+#include "../lib/stdio.h"
 #include "iesusart.h"
 #include "iesadc.h"
 #include "main.h"

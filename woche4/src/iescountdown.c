@@ -1,7 +1,7 @@
 
 #include <avr/interrupt.h>
 #include <stdbool.h>
-#include <stdio.h>
+#include "../lib/stdio.h"
 #include <avr/wdt.h>
 
 #include "main.h"

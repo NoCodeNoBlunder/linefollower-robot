@@ -1,7 +1,7 @@
 
 #include <stdbool.h>
 #include <avr/interrupt.h>
-#include <stdio.h>
+#include "../lib/stdio.h"
 
 #include "check_lap.h"
 #include "linefollower.h"

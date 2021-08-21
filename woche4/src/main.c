@@ -6,7 +6,7 @@
  * @date 2021-06-08
  */
 
-#include <stdlib.h>
+#include "../lib/stdlib.h"
 #include <stdbool.h>
 #include "main.h"
 #include "states.h"

@@ -1,7 +1,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
-#include <stdio.h>
+#include "../lib/stdio.h"
 #include "iesusart.h"
 #define ECHO PB4
 #define TRIGGER PB5

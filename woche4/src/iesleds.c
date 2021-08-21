@@ -1,6 +1,6 @@
 
 #include <avr/io.h>
-#include <stdio.h>
+#include "../lib/stdio.h"
 #include "main.h"
 #include "iesleds.h"
 #include "iesusart.h"
