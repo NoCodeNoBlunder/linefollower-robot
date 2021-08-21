@@ -1,0 +1,128 @@
+\hypertarget{fsm_8h}{}\section{fsm.\+h File Reference}
+\label{fsm_8h}\index{fsm.\+h@{fsm.\+h}}
+
+
+definition of types for \hyperlink{fsm_8c}{fsm.\+c}  
+
+
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fsm_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structConcreteState}{Concrete\+State}
+\begin{DoxyCompactList}\small\item\em stores all relevant information regarding the state \end{DoxyCompactList}\item 
+struct \hyperlink{structFSM}{F\+SM}
+\begin{DoxyCompactList}\small\item\em Stores all states. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{fsm_8h_a94b549f442dea23e06f8be5252f47403}\label{fsm_8h_a94b549f442dea23e06f8be5252f47403}} 
+typedef struct \hyperlink{structConcreteState}{Concrete\+State} {\bfseries Concrete\+State}
+\item 
+\mbox{\Hypertarget{fsm_8h_aa89fbe57e1e7daa45105ae29bf66d0ac}\label{fsm_8h_aa89fbe57e1e7daa45105ae29bf66d0ac}} 
+typedef struct \hyperlink{structFSM}{F\+SM} {\bfseries F\+SM}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}\label{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}} 
+enum {\bfseries State} \{ \newline
+{\bfseries I\+N\+IT}, 
+{\bfseries C\+H\+E\+C\+K\+\_\+\+S\+T\+A\+R\+T\+P\+OS}, 
+{\bfseries C\+O\+U\+N\+T\+D\+O\+WN}, 
+{\bfseries L\+E\+A\+V\+E\+\_\+\+S\+T\+A\+RT}, 
+\newline
+{\bfseries F\+O\+R\+W\+A\+RD}, 
+{\bfseries L\+E\+F\+T\+\_\+\+S\+O\+FT}, 
+{\bfseries L\+E\+F\+T\+\_\+\+H\+A\+RD}, 
+{\bfseries R\+I\+G\+H\+T\+\_\+\+H\+A\+RD}, 
+\newline
+{\bfseries R\+I\+G\+H\+T\+\_\+\+S\+O\+FT}, 
+{\bfseries C\+H\+E\+C\+K\+\_\+\+L\+AP}, 
+{\bfseries G\+O\+A\+L\+\_\+\+R\+E\+A\+C\+H\+ED}, 
+{\bfseries S\+T\+I\+LL}, 
+\newline
+{\bfseries E\+X\+IT}, 
+{\bfseries S\+T\+A\+T\+E\+C\+O\+U\+NT}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{fsm_8h_a2d99213b7ce90d5e4b0cbd7f261d8e3e}{add\+\_\+state} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structState}{State} state, char $\ast$state\+\_\+name, void($\ast$enter), void($\ast$update))
+\item 
+void \hyperlink{fsm_8h_a053b1146a3f1c34576d89d599e34329a}{start\+\_\+fsm\+\_\+cycle} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, void $\ast$data)
+\item 
+void \hyperlink{fsm_8h_a80016823d020a335a595bcd09bc39c96}{transition\+\_\+to\+\_\+state} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, void $\ast$arg, \hyperlink{structState}{State} next\+\_\+state)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+definition of types for \hyperlink{fsm_8c}{fsm.\+c} 
+
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2021-\/06-\/08 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{fsm_8h_a2d99213b7ce90d5e4b0cbd7f261d8e3e}\label{fsm_8h_a2d99213b7ce90d5e4b0cbd7f261d8e3e}} 
+\index{fsm.\+h@{fsm.\+h}!add\+\_\+state@{add\+\_\+state}}
+\index{add\+\_\+state@{add\+\_\+state}!fsm.\+h@{fsm.\+h}}
+\subsubsection{\texorpdfstring{add\+\_\+state()}{add\_state()}}
+{\footnotesize\ttfamily void add\+\_\+state (\begin{DoxyParamCaption}\item[{\hyperlink{structFSM}{F\+SM} $\ast$}]{fsm,  }\item[{\hyperlink{structState}{State}}]{state,  }\item[{char $\ast$}]{state\+\_\+name,  }\item[{void $\ast$}]{enter,  }\item[{void $\ast$}]{update }\end{DoxyParamCaption})}
+
+Function to create and store a new state 
+\begin{DoxyParams}{Parameters}
+{\em fsm} & pointer to struct of type \hyperlink{structFSM}{F\+SM} which represent an instance of \hyperlink{structFSM}{F\+SM} \\
+\hline
+{\em state} & enum value which is used to differentiate states\\
+\hline
+\end{DoxyParams}
+this state has to exist in \char`\"{}fsm.\+h\char`\"{} S\+T\+A\+TE Typedef. 
+\begin{DoxyParams}{Parameters}
+{\em state\+\_\+name} & string representing the state\+\_\+name of the state for debugging. Should be the same as enum. \\
+\hline
+{\em enter} & function pointer to the new states enter function implementation \\
+\hline
+{\em update} & function pointer to the new states update function implementation\\
+\hline
+\end{DoxyParams}
+each state has to implement an update function. \mbox{\Hypertarget{fsm_8h_a053b1146a3f1c34576d89d599e34329a}\label{fsm_8h_a053b1146a3f1c34576d89d599e34329a}} 
+\index{fsm.\+h@{fsm.\+h}!start\+\_\+fsm\+\_\+cycle@{start\+\_\+fsm\+\_\+cycle}}
+\index{start\+\_\+fsm\+\_\+cycle@{start\+\_\+fsm\+\_\+cycle}!fsm.\+h@{fsm.\+h}}
+\subsubsection{\texorpdfstring{start\+\_\+fsm\+\_\+cycle()}{start\_fsm\_cycle()}}
+{\footnotesize\ttfamily void start\+\_\+fsm\+\_\+cycle (\begin{DoxyParamCaption}\item[{\hyperlink{structFSM}{F\+SM} $\ast$}]{fsm,  }\item[{void $\ast$}]{data }\end{DoxyParamCaption})}
+
+Function to start the update loop
+
+every iteration the current state\textquotesingle{}s update function is called 
+\begin{DoxyParams}{Parameters}
+{\em data} & void pointer to be able to pass an argument to update \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{fsm_8h_a80016823d020a335a595bcd09bc39c96}\label{fsm_8h_a80016823d020a335a595bcd09bc39c96}} 
+\index{fsm.\+h@{fsm.\+h}!transition\+\_\+to\+\_\+state@{transition\+\_\+to\+\_\+state}}
+\index{transition\+\_\+to\+\_\+state@{transition\+\_\+to\+\_\+state}!fsm.\+h@{fsm.\+h}}
+\subsubsection{\texorpdfstring{transition\+\_\+to\+\_\+state()}{transition\_to\_state()}}
+{\footnotesize\ttfamily void transition\+\_\+to\+\_\+state (\begin{DoxyParamCaption}\item[{\hyperlink{structFSM}{F\+SM} $\ast$}]{fsm,  }\item[{void $\ast$}]{arg,  }\item[{\hyperlink{structState}{State}}]{next\+\_\+state }\end{DoxyParamCaption})}
+
+Function to switch between states.
+
+changes state to the specified state and calls it\textquotesingle{}s enter function 
+\begin{DoxyParams}{Parameters}
+{\em arg} & void pointer to be able to pass an argument to enter. \\
+\hline
+{\em next\+\_\+state} & enum value of the state to transition into \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,14 @@
+<map id="fsm.h" name="fsm.h">
+<area shape="rect" id="node2" href="$main_8h.html" title="main.h" alt="" coords="300,80,361,107"/>
+<area shape="rect" id="node6" href="$iesmotors_8h_source.html" title="iesmotors.h" alt="" coords="22,155,113,181"/>
+<area shape="rect" id="node7" href="$iesmotors_8c.html" title="Controlls everything regarding the motors of the robot. " alt="" coords="37,229,128,256"/>
+<area shape="rect" id="node11" href="$iescountdown_8h_source.html" title="iescountdown.h" alt="" coords="726,155,839,181"/>
+<area shape="rect" id="node13" href="$fsm_8c.html" title="lightweight finite state machine implementation " alt="" coords="436,80,491,107"/>
+<area shape="rect" id="node3" href="$check__lap_8h_source.html" title="check_lap.h" alt="" coords="610,155,702,181"/>
+<area shape="rect" id="node4" href="$main_8c.html" title="Configuration of FSM. " alt="" coords="572,229,633,256"/>
+<area shape="rect" id="node5" href="$linefollower_8h_source.html" title="linefollower.h" alt="" coords="393,155,492,181"/>
+<area shape="rect" id="node8" href="$iesusart_8h.html" title="Basic serial communication via USART for ATMEGA328. " alt="" coords="188,155,267,181"/>
+<area shape="rect" id="node9" href="$iesadc_8c.html" title="Provides basic functionality to read the volatege from a pin and convert it to a digital signal..." alt="" coords="270,229,340,256"/>
+<area shape="rect" id="node12" href="$states_8h_source.html" title="states.h" alt="" coords="516,155,585,181"/>
+<area shape="rect" id="node10" href="$iesusart_8c.html" title="Basic serial communication via USART for ATMEGA328. " alt="" coords="167,229,246,256"/>
+</map>

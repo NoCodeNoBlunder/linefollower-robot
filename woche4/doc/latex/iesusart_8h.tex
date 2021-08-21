@@ -1,0 +1,122 @@
+\hypertarget{iesusart_8h}{}\section{iesusart.\+h File Reference}
+\label{iesusart_8h}\index{iesusart.\+h@{iesusart.\+h}}
+
+
+Basic serial communication via U\+S\+A\+RT for A\+T\+M\+E\+G\+A328.  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+Include dependency graph for iesusart.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{iesusart_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{iesusart_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{iesusart_8h_a62634036639f88eece6fbf226b45f84b}\label{iesusart_8h_a62634036639f88eece6fbf226b45f84b}} 
+\#define \hyperlink{iesusart_8h_a62634036639f88eece6fbf226b45f84b}{B\+A\+UD}~9600
+\begin{DoxyCompactList}\small\item\em Desired baudrate. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{iesusart_8h_a9d1ebd7ca3cc636372bfeae486bc7ede}\label{iesusart_8h_a9d1ebd7ca3cc636372bfeae486bc7ede}} 
+\#define \hyperlink{iesusart_8h_a9d1ebd7ca3cc636372bfeae486bc7ede}{U\+B\+R\+R\+\_\+\+S\+E\+T\+T\+I\+NG}~\hyperlink{main_8h_a43bafb28b29491ec7f871319b5a3b2f8}{F\+\_\+\+C\+PU}/16.\+0/\hyperlink{iesusart_8h_a62634036639f88eece6fbf226b45f84b}{B\+A\+UD}-\/1
+\begin{DoxyCompactList}\small\item\em What to write into the U\+B\+RR register. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char \hyperlink{iesusart_8h_a9a4219d8cf2dbfdda96ebe6a06de0bfb}{U\+S\+A\+R\+T\+\_\+receive\+Byte} (void)
+\begin{DoxyCompactList}\small\item\em Reads a single byte out of the U\+S\+A\+RT receive buffer. A good way to use this would be calling it from an receive interrupt serice routine. \end{DoxyCompactList}\item 
+void \hyperlink{iesusart_8h_ab7983221cd707e76af1cbdc605ed8fa4}{U\+S\+A\+R\+T\+\_\+transmit\+Byte} (unsigned char data)
+\begin{DoxyCompactList}\small\item\em Writes a single byte to the U\+S\+A\+RT transmit buffer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{iesusart_8h_ad230ae1e0f1a9cb24d547b1359d49322}\label{iesusart_8h_ad230ae1e0f1a9cb24d547b1359d49322}} 
+void \hyperlink{iesusart_8h_ad230ae1e0f1a9cb24d547b1359d49322}{U\+S\+A\+R\+T\+\_\+print} (const char $\ast$c)
+\begin{DoxyCompactList}\small\item\em Transmittes a string (char by char) until \textquotesingle{}\textbackslash{}0’ is reached. \end{DoxyCompactList}\item 
+void \hyperlink{iesusart_8h_a9d08bac99e56beea16f99330cd0411d9}{U\+S\+A\+R\+T\+\_\+\+Init} (unsigned long ubrr)
+\begin{DoxyCompactList}\small\item\em Sets up the U\+S\+A\+RT port (The U\+S\+A\+RT baudrate register) \end{DoxyCompactList}\item 
+void \hyperlink{iesusart_8h_a2744fce10359c4e63ba8fcb65e7d92d2}{transmit\+\_\+debug\+\_\+msg} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Basic serial communication via U\+S\+A\+RT for A\+T\+M\+E\+G\+A328. 
+
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2021-\/06-\/08 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{iesusart_8h_a2744fce10359c4e63ba8fcb65e7d92d2}\label{iesusart_8h_a2744fce10359c4e63ba8fcb65e7d92d2}} 
+\index{iesusart.\+h@{iesusart.\+h}!transmit\+\_\+debug\+\_\+msg@{transmit\+\_\+debug\+\_\+msg}}
+\index{transmit\+\_\+debug\+\_\+msg@{transmit\+\_\+debug\+\_\+msg}!iesusart.\+h@{iesusart.\+h}}
+\subsubsection{\texorpdfstring{transmit\+\_\+debug\+\_\+msg()}{transmit\_debug\_msg()}}
+{\footnotesize\ttfamily void transmit\+\_\+debug\+\_\+msg (\begin{DoxyParamCaption}\item[{\hyperlink{structFSM}{F\+SM} $\ast$}]{fsm,  }\item[{\hyperlink{structRoboterData}{Roboter\+Data} $\ast$}]{data }\end{DoxyParamCaption})}
+
+Function to transmit data via Serial Port. 
+\begin{DoxyParams}{Parameters}
+{\em fsm} & pointer to instance of \hyperlink{structFSM}{F\+SM} \\
+\hline
+{\em data} & pointer to instance of \hyperlink{structRoboterData}{Roboter\+Data}\\
+\hline
+\end{DoxyParams}
+this function is only called when the var debug\+\_\+mode is enabled in data \mbox{\Hypertarget{iesusart_8h_a9d08bac99e56beea16f99330cd0411d9}\label{iesusart_8h_a9d08bac99e56beea16f99330cd0411d9}} 
+\index{iesusart.\+h@{iesusart.\+h}!U\+S\+A\+R\+T\+\_\+\+Init@{U\+S\+A\+R\+T\+\_\+\+Init}}
+\index{U\+S\+A\+R\+T\+\_\+\+Init@{U\+S\+A\+R\+T\+\_\+\+Init}!iesusart.\+h@{iesusart.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+Init()}{USART\_Init()}}
+{\footnotesize\ttfamily void U\+S\+A\+R\+T\+\_\+\+Init (\begin{DoxyParamCaption}\item[{unsigned long}]{ubrr }\end{DoxyParamCaption})}
+
+
+
+Sets up the U\+S\+A\+RT port (The U\+S\+A\+RT baudrate register) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ubrr} & Content to write into the U\+B\+RR register \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{iesusart_8h_a9a4219d8cf2dbfdda96ebe6a06de0bfb}\label{iesusart_8h_a9a4219d8cf2dbfdda96ebe6a06de0bfb}} 
+\index{iesusart.\+h@{iesusart.\+h}!U\+S\+A\+R\+T\+\_\+receive\+Byte@{U\+S\+A\+R\+T\+\_\+receive\+Byte}}
+\index{U\+S\+A\+R\+T\+\_\+receive\+Byte@{U\+S\+A\+R\+T\+\_\+receive\+Byte}!iesusart.\+h@{iesusart.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+receive\+Byte()}{USART\_receiveByte()}}
+{\footnotesize\ttfamily unsigned char U\+S\+A\+R\+T\+\_\+receive\+Byte (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Reads a single byte out of the U\+S\+A\+RT receive buffer. A good way to use this would be calling it from an receive interrupt serice routine. 
+
+\begin{DoxyReturn}{Returns}
+received byte
+\end{DoxyReturn}
+Reads a single byte out of the U\+S\+A\+RT receive buffer. A good way to use this would be calling it from an receive interrupt serice routine.
+
+\begin{DoxyReturn}{Returns}
+unsigned char (received byte) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{iesusart_8h_ab7983221cd707e76af1cbdc605ed8fa4}\label{iesusart_8h_ab7983221cd707e76af1cbdc605ed8fa4}} 
+\index{iesusart.\+h@{iesusart.\+h}!U\+S\+A\+R\+T\+\_\+transmit\+Byte@{U\+S\+A\+R\+T\+\_\+transmit\+Byte}}
+\index{U\+S\+A\+R\+T\+\_\+transmit\+Byte@{U\+S\+A\+R\+T\+\_\+transmit\+Byte}!iesusart.\+h@{iesusart.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+transmit\+Byte()}{USART\_transmitByte()}}
+{\footnotesize\ttfamily void U\+S\+A\+R\+T\+\_\+transmit\+Byte (\begin{DoxyParamCaption}\item[{unsigned char}]{data }\end{DoxyParamCaption})}
+
+
+
+Writes a single byte to the U\+S\+A\+RT transmit buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Byte that shall be transmitted \\
+\hline
+\end{DoxyParams}

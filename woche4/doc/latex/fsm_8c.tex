@@ -1,0 +1,101 @@
+\hypertarget{fsm_8c}{}\section{fsm.\+c File Reference}
+\label{fsm_8c}\index{fsm.\+c@{fsm.\+c}}
+
+
+lightweight finite state machine implementation  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}fsm.\+h\char`\"{}}\newline
+Include dependency graph for fsm.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{fsm_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{fsm_8c_ab92c197981768344063e8cfb6e01108c}{exit\+\_\+fsm\+\_\+cycle} (\hyperlink{structFSM}{F\+SM} $\ast$fsm)
+\item 
+void \hyperlink{fsm_8c_a2d99213b7ce90d5e4b0cbd7f261d8e3e}{add\+\_\+state} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structState}{State} state, char $\ast$state\+\_\+name, void($\ast$enter), void($\ast$update))
+\item 
+void \hyperlink{fsm_8c_a053b1146a3f1c34576d89d599e34329a}{start\+\_\+fsm\+\_\+cycle} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, void $\ast$data)
+\item 
+void \hyperlink{fsm_8c_a80016823d020a335a595bcd09bc39c96}{transition\+\_\+to\+\_\+state} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, void $\ast$arg, \hyperlink{structState}{State} next\+\_\+state)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+lightweight finite state machine implementation 
+
+\begin{DoxyAuthor}{Author}
+Fabian Indrunas 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2021-\/06-\/08
+\end{DoxyDate}
+the \hyperlink{structFSM}{F\+SM}... 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{fsm_8c_a2d99213b7ce90d5e4b0cbd7f261d8e3e}\label{fsm_8c_a2d99213b7ce90d5e4b0cbd7f261d8e3e}} 
+\index{fsm.\+c@{fsm.\+c}!add\+\_\+state@{add\+\_\+state}}
+\index{add\+\_\+state@{add\+\_\+state}!fsm.\+c@{fsm.\+c}}
+\subsubsection{\texorpdfstring{add\+\_\+state()}{add\_state()}}
+{\footnotesize\ttfamily void add\+\_\+state (\begin{DoxyParamCaption}\item[{\hyperlink{structFSM}{F\+SM} $\ast$}]{fsm,  }\item[{\hyperlink{structState}{State}}]{state,  }\item[{char $\ast$}]{state\+\_\+name,  }\item[{void $\ast$}]{enter,  }\item[{void $\ast$}]{update }\end{DoxyParamCaption})}
+
+Function to create and store a new state 
+\begin{DoxyParams}{Parameters}
+{\em fsm} & pointer to struct of type \hyperlink{structFSM}{F\+SM} which represent an instance of \hyperlink{structFSM}{F\+SM} \\
+\hline
+{\em state} & enum value which is used to differentiate states\\
+\hline
+\end{DoxyParams}
+this state has to exist in \char`\"{}fsm.\+h\char`\"{} S\+T\+A\+TE Typedef. 
+\begin{DoxyParams}{Parameters}
+{\em state\+\_\+name} & string representing the state\+\_\+name of the state for debugging. Should be the same as enum. \\
+\hline
+{\em enter} & function pointer to the new states enter function implementation \\
+\hline
+{\em update} & function pointer to the new states update function implementation\\
+\hline
+\end{DoxyParams}
+each state has to implement an update function. \mbox{\Hypertarget{fsm_8c_ab92c197981768344063e8cfb6e01108c}\label{fsm_8c_ab92c197981768344063e8cfb6e01108c}} 
+\index{fsm.\+c@{fsm.\+c}!exit\+\_\+fsm\+\_\+cycle@{exit\+\_\+fsm\+\_\+cycle}}
+\index{exit\+\_\+fsm\+\_\+cycle@{exit\+\_\+fsm\+\_\+cycle}!fsm.\+c@{fsm.\+c}}
+\subsubsection{\texorpdfstring{exit\+\_\+fsm\+\_\+cycle()}{exit\_fsm\_cycle()}}
+{\footnotesize\ttfamily void exit\+\_\+fsm\+\_\+cycle (\begin{DoxyParamCaption}\item[{\hyperlink{structFSM}{F\+SM} $\ast$}]{fsm }\end{DoxyParamCaption})}
+
+Function to shutdown the fsm and free storage \mbox{\Hypertarget{fsm_8c_a053b1146a3f1c34576d89d599e34329a}\label{fsm_8c_a053b1146a3f1c34576d89d599e34329a}} 
+\index{fsm.\+c@{fsm.\+c}!start\+\_\+fsm\+\_\+cycle@{start\+\_\+fsm\+\_\+cycle}}
+\index{start\+\_\+fsm\+\_\+cycle@{start\+\_\+fsm\+\_\+cycle}!fsm.\+c@{fsm.\+c}}
+\subsubsection{\texorpdfstring{start\+\_\+fsm\+\_\+cycle()}{start\_fsm\_cycle()}}
+{\footnotesize\ttfamily void start\+\_\+fsm\+\_\+cycle (\begin{DoxyParamCaption}\item[{\hyperlink{structFSM}{F\+SM} $\ast$}]{fsm,  }\item[{void $\ast$}]{data }\end{DoxyParamCaption})}
+
+Function to start the update loop
+
+every iteration the current state\textquotesingle{}s update function is called 
+\begin{DoxyParams}{Parameters}
+{\em data} & void pointer to be able to pass an argument to update \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{fsm_8c_a80016823d020a335a595bcd09bc39c96}\label{fsm_8c_a80016823d020a335a595bcd09bc39c96}} 
+\index{fsm.\+c@{fsm.\+c}!transition\+\_\+to\+\_\+state@{transition\+\_\+to\+\_\+state}}
+\index{transition\+\_\+to\+\_\+state@{transition\+\_\+to\+\_\+state}!fsm.\+c@{fsm.\+c}}
+\subsubsection{\texorpdfstring{transition\+\_\+to\+\_\+state()}{transition\_to\_state()}}
+{\footnotesize\ttfamily void transition\+\_\+to\+\_\+state (\begin{DoxyParamCaption}\item[{\hyperlink{structFSM}{F\+SM} $\ast$}]{fsm,  }\item[{void $\ast$}]{arg,  }\item[{\hyperlink{structState}{State}}]{next\+\_\+state }\end{DoxyParamCaption})}
+
+Function to switch between states.
+
+changes state to the specified state and calls it\textquotesingle{}s enter function 
+\begin{DoxyParams}{Parameters}
+{\em arg} & void pointer to be able to pass an argument to enter. \\
+\hline
+{\em next\+\_\+state} & enum value of the state to transition into \\
+\hline
+\end{DoxyParams}
