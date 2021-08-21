@@ -3,6 +3,12 @@
 #include "iesadc.h"
 
 /**
+ * @def SAMPLE_SIZE determines how many sensor meassurements are taken.
+ */
+#define SAMPLE_SIZE 20 
+#define STR_BUF_SIZE 40
+
+/**
  *  @enum Threshold
  *  @brief enums values determine the threshold of each sensor
  *  @details due to inaccuracy a sensor might fire early or late

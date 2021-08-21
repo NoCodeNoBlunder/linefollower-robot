@@ -25,7 +25,6 @@ void update_soft_right(FSM *fsm, RoboterData *data);
 void enter_leave_start(RoboterData *data);
 void update_leave_start(FSM *fsm, RoboterData *data);
 
-
 void update_check_startpos(FSM *fsm, RoboterData *data);
 
 void enter_goal_reached(RoboterData *data);
