@@ -4,13 +4,7 @@
 #include "iesadc.h"
 #include "iesusart.h"
 #include "iesleds.h"
-
-#include "main.h"
-#include <stdbool.h>
-#include <avr/interrupt.h>
-#include <stdio.h>
 #include "check_lap.h"
-
 #include "iescountdown.h"
 #include "linefollower.h"
 
@@ -24,7 +18,7 @@ void enter_init(void) {
 }
 
 void update_init(FSM *fsm, RoboterData *data) {
-    if(data->start_counter_mode) {
+    if (data->start_counter_mode) {
         transition_to_state(fsm, data, CHECK_STARTPOS);
     }
     else {
@@ -42,14 +36,13 @@ void update_forward(FSM *fsm, RoboterData *data) {
     take_measurement(data);
     transmit_debug_msg(fsm, data);
 
-    // Soll er in forward bleiben wenn er mal mitte und rechts hat?
     if (left_on_line(data) && !right_on_line(data)) {
         transition_to_state(fsm, data, LEFT_SOFT);
     }
     else if (right_on_line(data) && !left_on_line(data)) {
         transition_to_state(fsm, data, RIGHT_SOFT);
     }
-    else if(data->lapcounter_mode && all_on_line(data)) {
+    else if (data->lapcounter_mode && all_on_line(data)) {
         transition_to_state(fsm, data, CHECK_LAP);
     }
 }
@@ -63,8 +56,6 @@ void update_soft_left(FSM *fsm, RoboterData *data) {
     take_measurement(data);
     transmit_debug_msg(fsm, data);
 
-    // Reicht das um in Hard turn zu gehen? Nur wenn mitter nicht on line ist.
-    // alternatiib if (!left_left_on_line(data) && !mid_on_line(data) && !right_on_line)
     if (!left_on_line(data)) {
         transition_to_state(fsm, data, LEFT_HARD);
     }
@@ -106,10 +97,6 @@ void update_left_hard(FSM *fsm, RoboterData *data) {
         transition_to_state(fsm, data, LEFT_SOFT);
     }
 
-    /*else if (right_on_line(data)) {
-        transition_to_state(fsm, data, RIGHT_SOFT);
-    }*/
-
     else if (mid_on_line(data)) {
         transition_to_state(fsm, data, FORWARD);
     }
@@ -128,10 +115,6 @@ void update_right_hard(FSM *fsm, RoboterData *data) {
         transition_to_state(fsm, data, RIGHT_SOFT);
     }
 
-    /*else if (left_on_line(data)) {
-        transition_to_state(fsm, data, LEFT_SOFT);
-    }*/
-
     else if (mid_on_line(data)) {
         transition_to_state(fsm, data, FORWARD);
     }
@@ -139,9 +122,7 @@ void update_right_hard(FSM *fsm, RoboterData *data) {
 
 void enter_leave_start(RoboterData *data) {
     set_direction(data, FORWARD);
-    // TODO welche LEDS mache ich hier an.
     light_led(ALL);
-    // USART_print("\nLeave Start is entered");
 }
 
 void update_leave_start(FSM *fsm, RoboterData *data) {

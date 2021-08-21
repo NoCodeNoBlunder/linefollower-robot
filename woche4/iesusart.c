@@ -12,6 +12,8 @@
 
 #define SHORT_wTIME 100
 
+#define BUF_SIZE 40
+
 /**
  * @brief
  * Reads a single byte out of the USART receive buffer.
@@ -84,7 +86,7 @@ void transmit_debug_msg(FSM *fsm, RoboterData *data) {
     if (!data->debug_mode) { return; }     // only send debug msg when debug mode is enabled.
 
     static unsigned short wait_counter = 0;
-    static char str_buf[STR_BUF_SIZE];
+    static char str_buf[BUF_SIZE];
 
     if (wait_counter % SHORT_wTIME == 0) {
         sprintf(str_buf,

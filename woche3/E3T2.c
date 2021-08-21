@@ -8,7 +8,7 @@
 #define LOW "low"
 #define PB0_STR "PB0"
 #define PB1_STR "PB1"
-#define STR_BUF_SIZE 30
+#define BUF_SIZE 30
 
 void init_adc() {
     // Set Data Direction Register B0, B1  as input.
@@ -40,7 +40,7 @@ int main(void) {
     // Initialle Schalterstellung auslesen.
     char state_PB0 = get_is_bit_set(PINB, PB0);
     char state_PB1 = get_is_bit_set(PINB, PB1);
-    char str_buf[STR_BUF_SIZE];
+    char str_buf[BUF_SIZE];
     print_status_update(str_buf ,state_PB0, state_PB1);
 
     while(1) {

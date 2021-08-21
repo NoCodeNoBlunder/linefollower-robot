@@ -5,8 +5,7 @@
 /**
  * @def SAMPLE_SIZE determines how many sensor meassurements are taken.
  */
-#define SAMPLE_SIZE 20 
-#define STR_BUF_SIZE 40
+#define SAMPLE_SIZE 20
 
 /**
  *  @enum Threshold

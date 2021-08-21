@@ -4,7 +4,7 @@
 
 #define SHORT_WTIME 250
 #define MID_WTIME 500
-#define STR_BUF_SIZE 30
+#define BUF_SIZE 30
 #define ASCII_OFFSET 48
 
 typedef enum {
@@ -102,7 +102,7 @@ void init_adc() {
 
 // was wäre guter name dafuer?
 void event_listener() {
-    static char str_buf[STR_BUF_SIZE];
+    static char str_buf[BUF_SIZE];
     char current = '\0';
     int len = 0;
 

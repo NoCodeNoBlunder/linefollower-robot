@@ -20,6 +20,7 @@
 #ifndef DEBUG_MODE
 #define DEBUG_MODE false
 #endif
+
 #ifndef COUNTDOWN_MODE
 #define COUNTDOWN_MODE true
 #endif
