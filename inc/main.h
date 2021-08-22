@@ -1,7 +1,7 @@
 /**
  * @headerfile main.h
- * @version 0.1
  * @date 2021-06-08
+ * @author Fabian Indrunas
  */
 
 #ifndef MAIN_h

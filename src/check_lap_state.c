@@ -1,6 +1,6 @@
 
 /**
- * @file check_lap.c
+ * @file check_lap_state.c
  */
 
 #include <stdbool.h>
@@ -21,7 +21,7 @@
 #define ERROR_TOLERANCE 0
 
 /**
- * @def
+ * @def 
  */
 #define TIMER_SIZE 256 // in bit as float
 

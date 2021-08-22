@@ -1,5 +1,5 @@
 /**
- * @file iesadc.c
+ * @file adc.c
  * @brief Provides basic functionality to read the volatege from a pin and convert it
  * to a digital signal
  * @version 0.1

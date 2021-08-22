@@ -1,6 +1,6 @@
 
 /**
- * @file iesleds.c
+ * @file led_controller.c
  */
 
 #include <avr/io.h>

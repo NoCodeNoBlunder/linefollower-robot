@@ -1,6 +1,5 @@
 /**
  * @headerfile iesusart.h
- * @version 0.1
  * @date 2021-06-08
  */
 

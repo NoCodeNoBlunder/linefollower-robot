@@ -1,6 +1,6 @@
 
 /**
- * @file iescountdown.c
+ * @file countdown_states.c
  */
 
 #include <avr/interrupt.h>
