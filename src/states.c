@@ -1,4 +1,8 @@
 
+/**
+ * @file states.c
+ */
+
 #include "../inc/states.h"
 #include "../inc/iesmotors.h"
 #include "../inc/iesadc.h"

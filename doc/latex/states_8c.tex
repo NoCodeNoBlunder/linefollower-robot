@@ -1,0 +1,82 @@
+\hypertarget{states_8c}{}\section{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/src/states.c File Reference}
+\label{states_8c}\index{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/src/states.\+c@{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/src/states.\+c}}
+{\ttfamily \#include \char`\"{}../inc/states.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/iesmotors.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/iesadc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/iesusart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/iesleds.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/check\+\_\+lap.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/iescountdown.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/linefollower.\+h\char`\"{}}\newline
+Include dependency graph for states.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{states_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{states_8c_a16ce10e52b1fdb1f0b2faf0943b98730}\label{states_8c_a16ce10e52b1fdb1f0b2faf0943b98730}} 
+void {\bfseries enter\+\_\+init} (void)
+\item 
+\mbox{\Hypertarget{states_8c_a95f58454a19ce422b8950c8832426fd4}\label{states_8c_a95f58454a19ce422b8950c8832426fd4}} 
+void {\bfseries update\+\_\+init} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\item 
+void \hyperlink{states_8c_a639a5239b6bf87b7629b5a5a781f0623}{enter\+\_\+forward} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\item 
+\mbox{\Hypertarget{states_8c_a1f668075c48db79be24aeaefabaa0384}\label{states_8c_a1f668075c48db79be24aeaefabaa0384}} 
+void {\bfseries update\+\_\+forward} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\item 
+\mbox{\Hypertarget{states_8c_aa0858cea30ad1272fc505d1fdc67d664}\label{states_8c_aa0858cea30ad1272fc505d1fdc67d664}} 
+void {\bfseries enter\+\_\+soft\+\_\+left} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\item 
+\mbox{\Hypertarget{states_8c_a91d16e6ab66f7656508f93de8b22ea65}\label{states_8c_a91d16e6ab66f7656508f93de8b22ea65}} 
+void {\bfseries update\+\_\+soft\+\_\+left} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\item 
+\mbox{\Hypertarget{states_8c_a052fc65540909ebe67a240a7ac304699}\label{states_8c_a052fc65540909ebe67a240a7ac304699}} 
+void {\bfseries enter\+\_\+soft\+\_\+right} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\item 
+\mbox{\Hypertarget{states_8c_a3833aa5cc3da8c3fae5daab7b938864b}\label{states_8c_a3833aa5cc3da8c3fae5daab7b938864b}} 
+void {\bfseries update\+\_\+soft\+\_\+right} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\item 
+\mbox{\Hypertarget{states_8c_ad936a76a75b1663e8b46866f013a6cca}\label{states_8c_ad936a76a75b1663e8b46866f013a6cca}} 
+void {\bfseries enter\+\_\+left\+\_\+hard} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\item 
+\mbox{\Hypertarget{states_8c_afdc97b5fe0705c56e06a6bc80e21d927}\label{states_8c_afdc97b5fe0705c56e06a6bc80e21d927}} 
+void {\bfseries update\+\_\+left\+\_\+hard} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\item 
+\mbox{\Hypertarget{states_8c_abf5826157e2db12872d61450a56dd8ca}\label{states_8c_abf5826157e2db12872d61450a56dd8ca}} 
+void {\bfseries enter\+\_\+right\+\_\+hard} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\item 
+\mbox{\Hypertarget{states_8c_acfac09e8251305725a4cbc923f74ae46}\label{states_8c_acfac09e8251305725a4cbc923f74ae46}} 
+void {\bfseries update\+\_\+right\+\_\+hard} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\item 
+\mbox{\Hypertarget{states_8c_ae3cfc490941e7da71da6b5deb1f4c230}\label{states_8c_ae3cfc490941e7da71da6b5deb1f4c230}} 
+void {\bfseries enter\+\_\+leave\+\_\+start} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\item 
+\mbox{\Hypertarget{states_8c_a5026e387130ef522ba60b9eaada43ac7}\label{states_8c_a5026e387130ef522ba60b9eaada43ac7}} 
+void {\bfseries update\+\_\+leave\+\_\+start} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\item 
+\mbox{\Hypertarget{states_8c_a72c1b18e2bc84e9333c71a103cdda24d}\label{states_8c_a72c1b18e2bc84e9333c71a103cdda24d}} 
+void {\bfseries update\+\_\+check\+\_\+startpos} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{states_8c_a639a5239b6bf87b7629b5a5a781f0623}\label{states_8c_a639a5239b6bf87b7629b5a5a781f0623}} 
+\index{states.\+c@{states.\+c}!enter\+\_\+forward@{enter\+\_\+forward}}
+\index{enter\+\_\+forward@{enter\+\_\+forward}!states.\+c@{states.\+c}}
+\subsubsection{\texorpdfstring{enter\+\_\+forward()}{enter\_forward()}}
+{\footnotesize\ttfamily void enter\+\_\+forward (\begin{DoxyParamCaption}\item[{\hyperlink{structRoboterData}{Roboter\+Data} $\ast$}]{data }\end{DoxyParamCaption})}
+
+\begin{DoxySeeAlso}{See also}
+enter\+\_\+init(void) 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & \\
+\hline
+\end{DoxyParams}

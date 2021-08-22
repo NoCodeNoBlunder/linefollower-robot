@@ -1,12 +1,14 @@
 
+/**
+ * @file check_lap.c
+ */
+
 #include <stdbool.h>
 #include <avr/interrupt.h>
-#include "../lib/stdio.h"
+#include <stdio.h>
 
 #include "../inc/check_lap.h"
 #include "../inc/linefollower.h"
-//#include "states.h"
-//#include "iesadc.h"
 #include "../inc/iesmotors.h"
 #include "../inc/iesusart.h"
 #include "../inc/iesleds.h"

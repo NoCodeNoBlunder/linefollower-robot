@@ -1,0 +1,105 @@
+\hypertarget{check__lap_8c}{}\section{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/src/check\+\_\+lap.c File Reference}
+\label{check__lap_8c}\index{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/src/check\+\_\+lap.\+c@{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/src/check\+\_\+lap.\+c}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$avr/interrupt.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../lib/stdio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/check\+\_\+lap.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/linefollower.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/iesmotors.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/iesusart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/iesleds.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/main.\+h\char`\"{}}\newline
+Include dependency graph for check\+\_\+lap.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{check__lap_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{check__lap_8c_ab1a2830170ad972a4cb1ac373ca8de9c}\label{check__lap_8c_ab1a2830170ad972a4cb1ac373ca8de9c}} 
+\#define {\bfseries C\+H\+E\+C\+K\+D\+U\+R\+A\+T\+I\+ON}~0.\+17
+\item 
+\mbox{\Hypertarget{check__lap_8c_a4cedac15eda9472647057f296bc01186}\label{check__lap_8c_a4cedac15eda9472647057f296bc01186}} 
+\#define {\bfseries E\+R\+R\+O\+R\+\_\+\+T\+O\+L\+E\+R\+A\+N\+CE}~0
+\item 
+\mbox{\Hypertarget{check__lap_8c_a9552c41a5b5e71c374a545241bb477ed}\label{check__lap_8c_a9552c41a5b5e71c374a545241bb477ed}} 
+\#define {\bfseries T\+I\+M\+E\+R\+\_\+\+S\+I\+ZE}~256
+\item 
+\mbox{\Hypertarget{check__lap_8c_ac4ff6494a012b8d0519b4bcc1c1a23dc}\label{check__lap_8c_ac4ff6494a012b8d0519b4bcc1c1a23dc}} 
+\#define {\bfseries O\+F\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+CY}~(F\+\_\+\+C\+PU / T\+I\+M\+E\+R\+\_\+\+S\+I\+ZE)
+\item 
+\mbox{\Hypertarget{check__lap_8c_ac19a3c1a7d41be312589b161d650bc0d}\label{check__lap_8c_ac19a3c1a7d41be312589b161d650bc0d}} 
+\#define {\bfseries O\+V\+E\+R\+F\+L\+O\+W\+S\+\_\+\+F\+O\+R\+\_\+\+C\+H\+E\+CK}~((unsigned int)(O\+F\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+CY $\ast$ C\+H\+E\+C\+K\+D\+U\+R\+A\+T\+I\+ON))
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{check__lap_8c_a7cfcbe42bd266750aeb6e5d71e5ea479}\label{check__lap_8c_a7cfcbe42bd266750aeb6e5d71e5ea479}} 
+{\bfseries I\+SR} (T\+I\+M\+E\+R2\+\_\+\+O\+V\+F\+\_\+vect)
+\item 
+void \hyperlink{check__lap_8c_a9574cf353a4dd5f61b99dc455cfc7838}{Timer2\+\_\+init} ()
+\begin{DoxyCompactList}\small\item\em function to initilize Timer2 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{check__lap_8c_aec45a40c6a3bdc1855faada89666902d}\label{check__lap_8c_aec45a40c6a3bdc1855faada89666902d}} 
+void {\bfseries enable\+\_\+isr\+\_\+checklap} ()
+\item 
+\mbox{\Hypertarget{check__lap_8c_a2a637c7dffc09d3122f060707be4c924}\label{check__lap_8c_a2a637c7dffc09d3122f060707be4c924}} 
+void {\bfseries disable\+\_\+isr\+\_\+checklap} ()
+\item 
+void \hyperlink{check__lap_8c_af062fe4635ffd27e1e91326a2edb1290}{enter\+\_\+check\+\_\+lap} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\item 
+void \hyperlink{check__lap_8c_ae8a7ceaf7dfa9b8a4720cc638e40020b}{update\+\_\+check\+\_\+lap} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em state to check whether the Robot is in fact on the starting postion or not. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{check__lap_8c_ab3be0edf209b5a45d9d43b89c4ca757b}\label{check__lap_8c_ab3be0edf209b5a45d9d43b89c4ca757b}} 
+volatile unsigned short {\bfseries cnt2} = 0
+\item 
+\mbox{\Hypertarget{check__lap_8c_ab170e56c32f8331a725402aa352a8bf9}\label{check__lap_8c_ab170e56c32f8331a725402aa352a8bf9}} 
+volatile unsigned char {\bfseries check\+\_\+passed} = false
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{check__lap_8c_af062fe4635ffd27e1e91326a2edb1290}\label{check__lap_8c_af062fe4635ffd27e1e91326a2edb1290}} 
+\index{check\+\_\+lap.\+c@{check\+\_\+lap.\+c}!enter\+\_\+check\+\_\+lap@{enter\+\_\+check\+\_\+lap}}
+\index{enter\+\_\+check\+\_\+lap@{enter\+\_\+check\+\_\+lap}!check\+\_\+lap.\+c@{check\+\_\+lap.\+c}}
+\subsubsection{\texorpdfstring{enter\+\_\+check\+\_\+lap()}{enter\_check\_lap()}}
+{\footnotesize\ttfamily void enter\+\_\+check\+\_\+lap (\begin{DoxyParamCaption}\item[{\hyperlink{structRoboterData}{Roboter\+Data} $\ast$}]{data }\end{DoxyParamCaption})}
+
+function gets executed when the C\+H\+E\+C\+K\+\_\+\+L\+AP state is entered. 
+\begin{DoxyParams}{Parameters}
+{\em data} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{check__lap_8c_a9574cf353a4dd5f61b99dc455cfc7838}\label{check__lap_8c_a9574cf353a4dd5f61b99dc455cfc7838}} 
+\index{check\+\_\+lap.\+c@{check\+\_\+lap.\+c}!Timer2\+\_\+init@{Timer2\+\_\+init}}
+\index{Timer2\+\_\+init@{Timer2\+\_\+init}!check\+\_\+lap.\+c@{check\+\_\+lap.\+c}}
+\subsubsection{\texorpdfstring{Timer2\+\_\+init()}{Timer2\_init()}}
+{\footnotesize\ttfamily void Timer2\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+function to initilize Timer2 
+
+@ \mbox{\Hypertarget{check__lap_8c_ae8a7ceaf7dfa9b8a4720cc638e40020b}\label{check__lap_8c_ae8a7ceaf7dfa9b8a4720cc638e40020b}} 
+\index{check\+\_\+lap.\+c@{check\+\_\+lap.\+c}!update\+\_\+check\+\_\+lap@{update\+\_\+check\+\_\+lap}}
+\index{update\+\_\+check\+\_\+lap@{update\+\_\+check\+\_\+lap}!check\+\_\+lap.\+c@{check\+\_\+lap.\+c}}
+\subsubsection{\texorpdfstring{update\+\_\+check\+\_\+lap()}{update\_check\_lap()}}
+{\footnotesize\ttfamily void update\+\_\+check\+\_\+lap (\begin{DoxyParamCaption}\item[{\hyperlink{structFSM}{F\+SM} $\ast$}]{fsm,  }\item[{\hyperlink{structRoboterData}{Roboter\+Data} $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+state to check whether the Robot is in fact on the starting postion or not. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fsm} & \\
+\hline
+{\em data} & \\
+\hline
+\end{DoxyParams}

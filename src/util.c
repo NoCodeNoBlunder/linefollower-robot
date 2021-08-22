@@ -1,4 +1,8 @@
 
+/**
+ * @file util.c
+ */
+
 #include "../inc/util.h"
 
 void set_pin_high(volatile uint8_t *reg, char pin) {
