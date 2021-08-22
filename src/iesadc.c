@@ -9,9 +9,9 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include "../lib/stdio.h"
-#include "iesusart.h"
-#include "iesadc.h"
-#include "main.h"
+#include "../inc/iesusart.h"
+#include "../inc/iesadc.h"
+#include "../inc/main.h"
 
 void ADC_Init() {
     // TODO muss als erstes passieren.

@@ -4,13 +4,13 @@
 #include "../lib/stdio.h"
 #include <avr/wdt.h>
 
-#include "main.h"
-#include "iescountdown.h"
-#include "iesleds.h"
-#include "iesusart.h"
+#include "../inc/main.h"
+#include "../inc/iescountdown.h"
+#include "../inc/iesleds.h"
+#include "../inc/iesusart.h"
 
-#include "iesmotors.h"
-#include "linefollower.h"
+#include "../inc/iesmotors.h"
+#include "../inc/linefollower.h"
 
 #define F_LEDS 5 // in hz
 #define STAR_C_DUR 15 // in Sekunden

@@ -1,5 +1,5 @@
 
-#include "util.h"
+#include "../inc/util.h"
 
 void set_pin_high(volatile uint8_t *reg, char pin) {
     reg[0] |= (1 << pin);

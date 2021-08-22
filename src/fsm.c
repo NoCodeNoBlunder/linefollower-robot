@@ -9,7 +9,7 @@
  */
 
 #include "../lib/stdlib.h"
-#include "fsm.h"
+#include "../inc/fsm.h"
 
 // TODO add FSM INit method to make more clear that there has to be a INIT and EXIT state?
 // ONLY Store name of states if debug mode is enabled.

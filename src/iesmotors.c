@@ -8,11 +8,11 @@
 #include "../lib/stdio.h"
 #include <util/delay.h>
 #include <avr/interrupt.h>
-#include "main.h"
-#include "iesmotors.h"
-#include "fsm.h"
-#include "iesusart.h"
-#include "util.h"
+#include "../inc/main.h"
+#include "../inc/iesmotors.h"
+#include "../inc/fsm.h"
+#include "../inc/iesusart.h"
+#include "../inc/util.h"
 
 enum {
     IN1 = PD7,

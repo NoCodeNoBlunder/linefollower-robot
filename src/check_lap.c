@@ -3,14 +3,14 @@
 #include <avr/interrupt.h>
 #include "../lib/stdio.h"
 
-#include "check_lap.h"
-#include "linefollower.h"
+#include "../inc/check_lap.h"
+#include "../inc/linefollower.h"
 //#include "states.h"
 //#include "iesadc.h"
-#include "iesmotors.h"
-#include "iesusart.h"
-#include "iesleds.h"
-#include "main.h"
+#include "../inc/iesmotors.h"
+#include "../inc/iesusart.h"
+#include "../inc/iesleds.h"
+#include "../inc/main.h"
 
 /**
  * @def determines how long the robot has to be on the startfield for it to be detected.

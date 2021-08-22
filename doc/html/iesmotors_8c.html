@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: iesmotors.c File Reference</title>
+<title>Roboter: /home/ies/SHARE/Roboter/src/iesmotors.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">Roboter
    </div>
   </td>
  </tr>
@@ -56,6 +56,10 @@ $(function() {
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
@@ -68,24 +72,24 @@ $(function() {
 
 <p>Controlls everything regarding the motors of the robot.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<div class="textblock"><code>#include &quot;../lib/stdio.h&quot;</code><br />
 <code>#include &lt;util/delay.h&gt;</code><br />
 <code>#include &lt;avr/interrupt.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="main_8h_source.html">main.h</a>&quot;</code><br />
-<code>#include &quot;iesmotors.h&quot;</code><br />
-<code>#include &quot;<a class="el" href="fsm_8h_source.html">fsm.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="iesusart_8h_source.html">iesusart.h</a>&quot;</code><br />
-<code>#include &quot;util.h&quot;</code><br />
+<code>#include &quot;../inc/main.h&quot;</code><br />
+<code>#include &quot;../inc/iesmotors.h&quot;</code><br />
+<code>#include &quot;../inc/fsm.h&quot;</code><br />
+<code>#include &quot;../inc/iesusart.h&quot;</code><br />
+<code>#include &quot;../inc/util.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for iesmotors.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="iesmotors_8c__incl.png" border="0" usemap="#iesmotors_8c" alt=""/></div>
-<map name="iesmotors_8c" id="iesmotors_8c">
-<area shape="rect" id="node5" href="main_8h.html" title="main.h" alt="" coords="401,155,463,181"/>
-<area shape="rect" id="node7" href="fsm_8h.html" title="definition of types for fsm.c " alt="" coords="501,229,555,256"/>
-<area shape="rect" id="node8" href="iesmotors_8h_source.html" title="iesmotors.h" alt="" coords="483,80,573,107"/>
-<area shape="rect" id="node9" href="iesusart_8h.html" title="Basic serial communication via USART for ATMEGA328. " alt="" coords="379,80,458,107"/>
-<area shape="rect" id="node10" href="util_8h_source.html" title="util.h" alt="" coords="652,80,703,107"/>
+<div class="center"><img src="iesmotors_8c__incl.png" border="0" usemap="#_2home_2ies_2SHARE_2Roboter_2src_2iesmotors_8c" alt=""/></div>
+<map name="_2home_2ies_2SHARE_2Roboter_2src_2iesmotors_8c" id="_2home_2ies_2SHARE_2Roboter_2src_2iesmotors_8c">
+<area shape="rect" id="node5" href="main_8h_source.html" title="../inc/main.h" alt="" coords="445,169,539,196"/>
+<area shape="rect" id="node7" href="fsm_8h_source.html" title="fsm.h" alt="" coords="578,244,633,271"/>
+<area shape="rect" id="node8" href="iesmotors_8h_source.html" title="../inc/iesmotors.h" alt="" coords="544,95,667,121"/>
+<area shape="rect" id="node9" href="iesusart_8h_source.html" title="../inc/iesusart.h" alt="" coords="408,95,520,121"/>
+<area shape="rect" id="node10" href="util_8h_source.html" title="../inc/util.h" alt="" coords="745,95,828,121"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -142,8 +146,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>right_off</b> ()</td>
 <tr class="memitem:add8a0d582bf694240a1bd6fb0a80109e"><td class="memItemLeft" align="right" valign="top"><a id="add8a0d582bf694240a1bd6fb0a80109e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_polarity</b> (<a class="el" href="structState.html">State</a> dir)</td></tr>
 <tr class="separator:add8a0d582bf694240a1bd6fb0a80109e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac7ab57ee3b0d1a6aee54821aa7b79f2"><td class="memItemLeft" align="right" valign="top"><a id="aac7ab57ee3b0d1a6aee54821aa7b79f2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>motors_Init</b> ()</td></tr>
+<tr class="memitem:aac7ab57ee3b0d1a6aee54821aa7b79f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="iesmotors_8c.html#aac7ab57ee3b0d1a6aee54821aa7b79f2">motors_Init</a> ()</td></tr>
+<tr class="memdesc:aac7ab57ee3b0d1a6aee54821aa7b79f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to initilize Timer0 for the pwm to work in order to controll the engines duty cycles.  <a href="#aac7ab57ee3b0d1a6aee54821aa7b79f2">More...</a><br /></td></tr>
 <tr class="separator:aac7ab57ee3b0d1a6aee54821aa7b79f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedcc8ddfc6f7a9d3f55833ac09fa01f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="iesmotors_8c.html#aedcc8ddfc6f7a9d3f55833ac09fa01f5">set_direction</a> (<a class="el" href="structRoboterData.html">RoboterData</a> *data, <a class="el" href="structState.html">State</a> state)</td></tr>
 <tr class="separator:aedcc8ddfc6f7a9d3f55833ac09fa01f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,6 +157,27 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>motors_Init</b> ()</t
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2021-06-08 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="aac7ab57ee3b0d1a6aee54821aa7b79f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac7ab57ee3b0d1a6aee54821aa7b79f2">&#9670;&nbsp;</a></span>motors_Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void motors_Init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>function to initilize Timer0 for the pwm to work in order to controll the engines duty cycles. </p>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2021-06-08 </dd></dl>
+
+</div>
+</div>
 <a id="aedcc8ddfc6f7a9d3f55833ac09fa01f5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aedcc8ddfc6f7a9d3f55833ac09fa01f5">&#9670;&nbsp;</a></span>set_direction()</h2>
 

@@ -1,0 +1,75 @@
+/**
+ * @headerfile fsm.h
+ * @brief definition of types for fsm.c
+ * @details
+ * @version 0.1
+ * @date 2021-06-08
+ */
+
+#ifndef FSM_h
+#define FSM_h
+
+// forward declaration
+struct FSM;
+
+/**
+ * @struct State "fsm.h"
+ * @brief used to differentiate between states.
+ * @details is used to add, store, and get the desired state from struct FSM
+ * Every state added has to exist here.
+ * @var EXIT shuts down fsm update loop and is implemented automatically.
+ * @var STATECOUNT is not an actual state but is used to know the ammount of states.
+ *
+ */
+
+// TODO würde es kein sinn machen dieses struct in states.h zu machen?
+typedef enum {
+    INIT,      // default State has to be the INIT state
+    CHECK_STARTPOS,
+    COUNTDOWN,
+    LEAVE_START,
+    FORWARD,
+    LEFT_SOFT,
+    LEFT_HARD,
+    RIGHT_HARD,
+    RIGHT_SOFT,
+    CHECK_LAP,
+    GOAL_REACHED,
+    STILL,
+    EXIT,
+    STATECOUNT, // Is not an actual state but is there to know the amount of states.
+} State ;
+
+/**
+ * @struct ConcreteState "fsm.h"
+ * @brief stores all relevant information regarding the state
+ * @var state is used to distingish this state from other states
+ * @var state_name is a string storing the name of the state for debugging
+ * @var enter_function is a void function pointer to the implementation of this state's enter function
+ * @var update_function is a void function pointer to implementation of this state's update function
+ */
+typedef struct ConcreteState {
+    State state;
+    char *state_name;
+    void (*enter_function)(void *arg);
+    void (*update_function)(struct FSM *fsm, void *arg);
+} ConcreteState;
+
+/**
+ * @struct FSM "fsm.h"
+ * @brief Stores all states.
+ * @var current_state is a pointer to the current state
+ * @var states is a pointer array to each state
+ */
+typedef struct FSM {
+    ConcreteState *current_state;
+    ConcreteState *states[STATECOUNT];
+} FSM;
+
+void add_state(FSM *fsm, State state, char *state_name, void (*enter), void (*update));
+
+void start_fsm_cycle(FSM *fsm, void *data);
+
+void transition_to_state(FSM *fsm, void *arg, State next_state);
+
+#endif //FSM_h

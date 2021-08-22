@@ -8,10 +8,10 @@
 
 #include "../lib/stdlib.h"
 #include <stdbool.h>
-#include "main.h"
-#include "states.h"
-#include "iescountdown.h"
-#include "check_lap.h"
+#include "../inc/main.h"
+#include "../inc/states.h"
+#include "../inc/iescountdown.h"
+#include "../inc/check_lap.h"
 
 #include <util/delay.h>
 

@@ -1,11 +1,11 @@
 
 #include <avr/io.h>
 #include "../lib/stdio.h"
-#include "main.h"
-#include "iesleds.h"
-#include "iesusart.h"
-#include "util.h"
-#include "linefollower.h"
+#include "../inc/main.h"
+#include "../inc/iesleds.h"
+#include "../inc/iesusart.h"
+#include "../inc/util.h"
+#include "../inc/linefollower.h"
 
 #define SHORT_WTIME 250
 #define MID_WTIME 500

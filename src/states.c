@@ -1,12 +1,12 @@
 
-#include "states.h"
-#include "iesmotors.h"
-#include "iesadc.h"
-#include "iesusart.h"
-#include "iesleds.h"
-#include "check_lap.h"
-#include "iescountdown.h"
-#include "linefollower.h"
+#include "../inc/states.h"
+#include "../inc/iesmotors.h"
+#include "../inc/iesadc.h"
+#include "../inc/iesusart.h"
+#include "../inc/iesleds.h"
+#include "../inc/check_lap.h"
+#include "../inc/iescountdown.h"
+#include "../inc/linefollower.h"
 
 void enter_init(void) {
     ADC_Init();

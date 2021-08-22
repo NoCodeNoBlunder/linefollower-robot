@@ -1,18 +1,18 @@
-\hypertarget{iesmotors_8c}{}\section{iesmotors.\+c File Reference}
-\label{iesmotors_8c}\index{iesmotors.\+c@{iesmotors.\+c}}
+\hypertarget{iesmotors_8c}{}\section{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/src/iesmotors.c File Reference}
+\label{iesmotors_8c}\index{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/src/iesmotors.\+c@{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/src/iesmotors.\+c}}
 
 
 Controlls everything regarding the motors of the robot.  
 
 
-{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../lib/stdio.\+h\char`\"{}}\newline
 {\ttfamily \#include $<$util/delay.\+h$>$}\newline
 {\ttfamily \#include $<$avr/interrupt.\+h$>$}\newline
-{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}iesmotors.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}fsm.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}iesusart.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/iesmotors.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/fsm.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/iesusart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/util.\+h\char`\"{}}\newline
 Include dependency graph for iesmotors.\+c\+:
 \nopagebreak
 \begin{figure}[H]
@@ -77,9 +77,8 @@ void {\bfseries right\+\_\+off} ()
 \mbox{\Hypertarget{iesmotors_8c_add8a0d582bf694240a1bd6fb0a80109e}\label{iesmotors_8c_add8a0d582bf694240a1bd6fb0a80109e}} 
 void {\bfseries set\+\_\+polarity} (\hyperlink{structState}{State} dir)
 \item 
-\mbox{\Hypertarget{iesmotors_8c_aac7ab57ee3b0d1a6aee54821aa7b79f2}\label{iesmotors_8c_aac7ab57ee3b0d1a6aee54821aa7b79f2}} 
-void {\bfseries motors\+\_\+\+Init} ()
-\item 
+void \hyperlink{iesmotors_8c_aac7ab57ee3b0d1a6aee54821aa7b79f2}{motors\+\_\+\+Init} ()
+\begin{DoxyCompactList}\small\item\em function to initilize Timer0 for the pwm to work in order to controll the engines duty cycles. \end{DoxyCompactList}\item 
 void \hyperlink{iesmotors_8c_aedcc8ddfc6f7a9d3f55833ac09fa01f5}{set\+\_\+direction} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data, \hyperlink{structState}{State} state)
 \end{DoxyCompactItemize}
 
@@ -96,6 +95,22 @@ Controlls everything regarding the motors of the robot.
 
 
 \subsection{Function Documentation}
+\mbox{\Hypertarget{iesmotors_8c_aac7ab57ee3b0d1a6aee54821aa7b79f2}\label{iesmotors_8c_aac7ab57ee3b0d1a6aee54821aa7b79f2}} 
+\index{iesmotors.\+c@{iesmotors.\+c}!motors\+\_\+\+Init@{motors\+\_\+\+Init}}
+\index{motors\+\_\+\+Init@{motors\+\_\+\+Init}!iesmotors.\+c@{iesmotors.\+c}}
+\subsubsection{\texorpdfstring{motors\+\_\+\+Init()}{motors\_Init()}}
+{\footnotesize\ttfamily void motors\+\_\+\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+function to initilize Timer0 for the pwm to work in order to controll the engines duty cycles. 
+
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2021-\/06-\/08 
+\end{DoxyDate}
 \mbox{\Hypertarget{iesmotors_8c_aedcc8ddfc6f7a9d3f55833ac09fa01f5}\label{iesmotors_8c_aedcc8ddfc6f7a9d3f55833ac09fa01f5}} 
 \index{iesmotors.\+c@{iesmotors.\+c}!set\+\_\+direction@{set\+\_\+direction}}
 \index{set\+\_\+direction@{set\+\_\+direction}!iesmotors.\+c@{iesmotors.\+c}}
