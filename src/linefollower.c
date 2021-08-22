@@ -4,7 +4,7 @@
  */
 
 #include "../inc/linefollower.h"
-#include "../inc/iesadc.h"
+#include "../inc/adc.h"
 
 /**
  * @def SAMPLE_SIZE determines how many sensor meassurements are taken.

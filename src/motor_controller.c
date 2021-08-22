@@ -9,9 +9,9 @@
 #include <util/delay.h>
 #include <avr/interrupt.h>
 #include "../inc/main.h"
-#include "../inc/iesmotors.h"
+#include "../inc/motor_controller.h"
 #include "../inc/fsm.h"
-#include "../inc/iesusart.h"
+#include "../inc/usart.h"
 #include "../inc/util.h"
 
 enum {

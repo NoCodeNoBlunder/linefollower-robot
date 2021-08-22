@@ -4,10 +4,10 @@
  */
 
 #include <avr/io.h>
-#include <lib/stdio.h>
+#include <stdio.h>
 #include "../inc/main.h"
-#include "../inc/iesleds.h"
-#include "../inc/iesusart.h"
+#include "../inc/led_controller.h"
+#include "../inc/usart.h"
 #include "../inc/util.h"
 #include "../inc/linefollower.h"
 

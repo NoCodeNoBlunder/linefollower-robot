@@ -9,8 +9,8 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include "../lib/stdio.h"
-#include "../inc/iesusart.h"
-#include "../inc/iesadc.h"
+#include "../inc/usart.h"
+#include "../inc/adc.h"
 #include "../inc/main.h"
 
 void ADC_Init() {

@@ -7,11 +7,11 @@
 #include <avr/interrupt.h>
 #include <stdio.h>
 
-#include "../inc/check_lap.h"
+#include "../inc/check_lap_state.h"
 #include "../inc/linefollower.h"
-#include "../inc/iesmotors.h"
-#include "../inc/iesusart.h"
-#include "../inc/iesleds.h"
+#include "../inc/motor_controller.h"
+#include "../inc/usart.h"
+#include "../inc/led_controller.h"
 #include "../inc/main.h"
 
 /**

@@ -10,8 +10,8 @@
 #include <stdbool.h>
 #include "../inc/main.h"
 #include "../inc/states.h"
-#include "../inc/iescountdown.h"
-#include "../inc/check_lap.h"
+#include "../inc/countdown_states.h"
+#include "../inc/check_lap_state.h"
 
 
 /* TODO eventuell muss ich diese Werte nicht speichern im struct sonder einfach in main.h speichern

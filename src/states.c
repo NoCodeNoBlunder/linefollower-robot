@@ -4,12 +4,12 @@
  */
 
 #include "../inc/states.h"
-#include "../inc/iesmotors.h"
-#include "../inc/iesadc.h"
-#include "../inc/iesusart.h"
-#include "../inc/iesleds.h"
-#include "../inc/check_lap.h"
-#include "../inc/iescountdown.h"
+#include "../inc/motor_controller.h"
+#include "../inc/adc.h"
+#include "../inc/usart.h"
+#include "../inc/led_controller.h"
+#include "../inc/check_lap_state.h"
+#include "../inc/countdown_states.h"
 #include "../inc/linefollower.h"
 
 void enter_init(void) {

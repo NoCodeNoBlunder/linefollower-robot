@@ -9,11 +9,11 @@
 #include <avr/wdt.h>
 
 #include "../inc/main.h"
-#include "../inc/iescountdown.h"
-#include "../inc/iesleds.h"
-#include "../inc/iesusart.h"
+#include "../inc/countdown_states.h"
+#include "../inc/led_controller.h"
+#include "../inc/usart.h"
 
-#include "../inc/iesmotors.h"
+#include "../inc/motor_controller.h"
 #include "../inc/linefollower.h"
 
 #define F_LEDS 5 // in hz
