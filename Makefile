@@ -24,9 +24,11 @@ link:
 flash:
 	avrdude -c arduino -p $(MCU) -P /dev/ttyACM0 -b 115200 -U flash:w:$(BUILD_DIR)firmware.hex
 
-
 documentation:
-	cd doc && doxygen
+	cd ./doc/; doxygen
+
+open_doc:
+	xdg-open ./doc/html/index.html &
 
 clean:
 
