@@ -12,11 +12,25 @@
 #include "iesleds.h"
 #include "main.h"
 
-#define CHECKDURATION 0.17 // 0.15 and 3 worked
+/**
+ * @def determines how long the robot has to be on the startfield for it to be detected.
+ */
+#define CHECKDURATION 0.17
 #define ERROR_TOLERANCE 0
 
+/**
+ * @def
+ */
 #define TIMER_SIZE 256 // in bit as float
+
+/**
+ * @def how many timer overflows occur per second.
+ */
 #define OF_FREQUENCY (F_CPU / TIMER_SIZE)
+
+/**
+ * @def how many overflows are needed for the checkduration to elapse.
+ */
 #define OVERFLOWS_FOR_CHECK ((unsigned int)(OF_FREQUENCY * CHECKDURATION))
 
 volatile unsigned short cnt2 = 0;

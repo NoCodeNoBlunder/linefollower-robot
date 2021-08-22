@@ -10,11 +10,16 @@
 #include <avr/io.h>
 #include "fsm.h"
 
-/// CPU clock speed
+/**
+ * @def determines the CPU clock speed.
+ */
 #ifndef F_CPU
 #define F_CPU 16E6
 #endif
 
+/**
+ * @def determines how many laps the Roboter has to drive.
+ */
 #ifndef LAPS
 #define LAPS 3
 #endif
