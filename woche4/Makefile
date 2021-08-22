@@ -3,13 +3,12 @@
 CC := avr-gcc
 MCU := atmega328p
 SRC_DIR := ./src/
-# SRC_FILES = $(SRC_DIR)main.c $(SRC_DIR)states.c $(SRC_DIR)fsm.c $(SRC_DIR)iesleds.c $(SRC_DIR)iesusart.c $(SRC_DIR)iesmotors.c $(SRC_DIR)iesadc.c $(SRC_DIR)util.c \
-       		$(SRC_DIR)iescountdown.c $(SRC_DIR)check_lap.c $(SRC_DIR)linefollower.c
-SRC_FILES := $(wildcard $(SRC_DIR)/*.c)
+SRC_FILES := $(wildcard $(SRC_DIR)*.c)
 
 
-CFLAGS := -o ./build/tmpfile -mmcu=$(MCU) -Os -D F_CPU=16E6 -D DEBUG_MODE=0 -D COUNTDOWN_MODE=1 \
-		 -D LAPCOUNTER_MODE=1 -D LAPS=3 -Wall;
+CFLAGS := -o ./build/tmpfile -mmcu=$(MCU) -Os -Wall -D F_CPU=16E6 \
+	-D DEBUG_MODE=0 -D COUNTDOWN_MODE=1 -D LAPCOUNTER_MODE=1 -D LAPS=3;
+
 
 all: compile hex
 
