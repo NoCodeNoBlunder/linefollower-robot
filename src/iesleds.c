@@ -4,7 +4,7 @@
  */
 
 #include <avr/io.h>
-#include "../lib/stdio.h"
+#include <lib/stdio.h>
 #include "../inc/main.h"
 #include "../inc/iesleds.h"
 #include "../inc/iesusart.h"

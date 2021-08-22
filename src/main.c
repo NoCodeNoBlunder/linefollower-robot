@@ -6,14 +6,13 @@
  * @date 2021-06-08
  */
 
-#include "../lib/stdlib.h"
+#include <stdlib.h>
 #include <stdbool.h>
 #include "../inc/main.h"
 #include "../inc/states.h"
 #include "../inc/iescountdown.h"
 #include "../inc/check_lap.h"
 
-#include <util/delay.h>
 
 /* TODO eventuell muss ich diese Werte nicht speichern im struct sonder einfach in main.h speichern
  * und benutzen */

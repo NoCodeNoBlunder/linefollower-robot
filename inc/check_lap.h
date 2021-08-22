@@ -1,7 +1,7 @@
 
 /**
  * @headerfile check_lap.h
- * @
+ *
  */
 
 #ifndef CHECK_LAP_H

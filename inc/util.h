@@ -2,7 +2,7 @@
  * @headerfile
  */
 
-#include "../lib/stdint.h"
+#include <stdint.h>
 
 #ifndef UTIL_h
 #define UTIL_H

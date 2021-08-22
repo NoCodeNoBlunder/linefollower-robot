@@ -1,5 +1,5 @@
 /**
- * @headerfile
+ * @headerfile states.h
  */
 
 #ifndef STATES_h

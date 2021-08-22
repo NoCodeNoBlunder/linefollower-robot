@@ -5,7 +5,7 @@
 
 #include <avr/interrupt.h>
 #include <stdbool.h>
-#include "../lib/stdio.h"
+#include <stdio.h>
 #include <avr/wdt.h>
 
 #include "../inc/main.h"

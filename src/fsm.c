@@ -8,7 +8,7 @@
  * @details the FSM...
  */
 
-#include "../lib/stdlib.h"
+#include <stdlib.h>
 #include "../inc/fsm.h"
 
 // TODO add FSM INit method to make more clear that there has to be a INIT and EXIT state?

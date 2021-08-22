@@ -7,7 +7,7 @@
 #ifndef IESADC_h
 #define IESADC_h
 
-#include "../lib/stdint.h"
+#include <stdint.h>
 
 void ADC_Init(void);
 uint16_t ADC_Read(uint8_t channel);
