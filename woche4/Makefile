@@ -1,28 +1,33 @@
 
+
 CC := avr-gcc
 MCU := atmega328p
-SRC := ./src
-OBJ := ./obj
- # SRCS := $(wildcard $(SRC)/*.c) 					   # finds all .c files in the directory
-OBJS := $(patsubst $(SRC)%.c, $(SRC)%.o, $(SRCS))  # change list of source files into list of object files replacing suffix .c with .o
+SRC_DIR := ./src/
+SRC_FILES = $(SRC_DIR)main.c $(SRC_DIR)states.c $(SRC_DIR)fsm.c $(SRC_DIR)iesleds.c $(SRC_DIR)iesusart.c $(SRC_DIR)iesmotors.c $(SRC_DIR)iesadc.c $(SRC_DIR)util.c \
+       		$(SRC_DIR)iescountdown.c $(SRC_DIR)check_lap.c $(SRC_DIR)linefollower.c
 
-SRCS =  ./src/main.c ./src/states.c ./src/fsm.c ./src/iesleds.c ./src/iesusart.c ./src/iesmotors.c ./src/iesadc.c ./src/util.c \
-		./src/iescountdown.c ./src/check_lap.c ./src/linefollower.c
 
 CFLAGS := -o tmpfile -mmcu=$(MCU) -Os -D F_CPU=16E6 -D DEBUG_MODE=0 -D COUNTDOWN_MODE=1 \
 		 -D LAPCOUNTER_MODE=1 -D LAPS=3 -Wall;
 
+all: compile hex flash
 
-all: compile link $(TARGET).hex flash
+compile: $(OBJS)
+	$(CC) $(OBJS) $(CFLAGS)
 
-$(TARGET).hex: $(TARGET)
-	avr-objcopy -O ihex $< $@
+hex:
+	avr-objcopy -O ihex tmpfile tmpfile.hex
 
-link: $(OBJS)
-	$(CC) -Wall -mmcu=$(MCU) $^ -o $(TARGET)
+link:
 
-compile: $(SRCS)
-	$(CC) $(CFLAGS)
+
+flash:
+	avrdude -c arduino -p atmega328p -P /dev/ttyACM0 -b 115200 -U flash:w:tmpfile.hex
+
+
+
+
+
 
 
 
