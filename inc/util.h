@@ -1,5 +1,6 @@
 /**
- * @headerfile
+ * @file
+ * @brief defintions to helper functions.
  */
 
 #include <stdint.h>

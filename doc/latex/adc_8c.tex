@@ -11,7 +11,8 @@ Provides basic functionality to read the volatege from a pin and convert it to a
 {\ttfamily \#include \char`\"{}../inc/usart.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../inc/adc.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../inc/main.\+h\char`\"{}}\newline
-Include dependency graph for adc.\+c\+:\nopagebreak
+Include dependency graph for adc.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,10 +22,11 @@ Include dependency graph for adc.\+c\+:\nopagebreak
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{adc_8c_a3fdaf3b8949082abe85a7e7083087eb7}\label{adc_8c_a3fdaf3b8949082abe85a7e7083087eb7}} 
 void \hyperlink{adc_8c_a3fdaf3b8949082abe85a7e7083087eb7}{A\+D\+C\+\_\+\+Init} ()
-\item 
+\begin{DoxyCompactList}\small\item\em function to setup the analog to digital converter \end{DoxyCompactList}\item 
 uint16\+\_\+t \hyperlink{adc_8c_ab0bfe89c06929fe65db2112532cb4047}{A\+D\+C\+\_\+\+Read} (uint8\+\_\+t channel)
-\item 
+\begin{DoxyCompactList}\small\item\em function to measure the voltage at pin \end{DoxyCompactList}\item 
 uint16\+\_\+t \hyperlink{adc_8c_a84fd71fbb96522e5dfda8cdc815b2aeb}{A\+D\+C\+\_\+read\+\_\+avg} (uint8\+\_\+t channel, uint8\+\_\+t nsamples)
 \end{DoxyCompactItemize}
 
@@ -41,23 +43,15 @@ Provides basic functionality to read the volatege from a pin and convert it to a
 
 
 \subsection{Function Documentation}
-\mbox{\Hypertarget{adc_8c_a3fdaf3b8949082abe85a7e7083087eb7}\label{adc_8c_a3fdaf3b8949082abe85a7e7083087eb7}} 
-\index{adc.\+c@{adc.\+c}!A\+D\+C\+\_\+\+Init@{A\+D\+C\+\_\+\+Init}}
-\index{A\+D\+C\+\_\+\+Init@{A\+D\+C\+\_\+\+Init}!adc.\+c@{adc.\+c}}
-\subsubsection{\texorpdfstring{A\+D\+C\+\_\+\+Init()}{ADC\_Init()}}
-{\footnotesize\ttfamily void A\+D\+C\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
-
-\begin{DoxyVersion}{Version}
-0.\+1 
-\end{DoxyVersion}
-\begin{DoxyDate}{Date}
-2021-\/06-\/08 
-\end{DoxyDate}
 \mbox{\Hypertarget{adc_8c_ab0bfe89c06929fe65db2112532cb4047}\label{adc_8c_ab0bfe89c06929fe65db2112532cb4047}} 
 \index{adc.\+c@{adc.\+c}!A\+D\+C\+\_\+\+Read@{A\+D\+C\+\_\+\+Read}}
 \index{A\+D\+C\+\_\+\+Read@{A\+D\+C\+\_\+\+Read}!adc.\+c@{adc.\+c}}
 \subsubsection{\texorpdfstring{A\+D\+C\+\_\+\+Read()}{ADC\_Read()}}
 {\footnotesize\ttfamily uint16\+\_\+t A\+D\+C\+\_\+\+Read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel }\end{DoxyParamCaption})}
+
+
+
+function to measure the voltage at pin 
 
 Function to read the voltage and convert it to digital 
 \begin{DoxyParams}{Parameters}

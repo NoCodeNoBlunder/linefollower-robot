@@ -1,5 +1,7 @@
 /**
- * @headerfile states.h
+ * @file states.h
+ * @brief contains most of the robots States enter and update functions.
+ * @author Fabian Indrunas
  */
 
 #ifndef STATES_h

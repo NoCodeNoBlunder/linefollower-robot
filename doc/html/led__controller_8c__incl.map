@@ -1,8 +1,8 @@
 <map id="/home/ies/SHARE/Roboter/src/led_controller.c" name="/home/ies/SHARE/Roboter/src/led_controller.c">
-<area shape="rect" id="node4" href="$main_8h_source.html" title="../inc/main.h" alt="" coords="205,169,299,196"/>
-<area shape="rect" id="node6" href="$led__controller_8h_source.html" title="../inc/led_controller.h" alt="" coords="165,95,307,121"/>
-<area shape="rect" id="node7" href="$usart_8h_source.html" title="../inc/usart.h" alt="" coords="331,95,426,121"/>
-<area shape="rect" id="node8" href="$util_8h_source.html" title="../inc/util.h" alt="" coords="605,95,688,121"/>
-<area shape="rect" id="node10" href="$linefollower_8h_source.html" title="../inc/linefollower.h" alt="" coords="451,95,581,121"/>
-<area shape="rect" id="node5" href="$fsm_8h_source.html" title="fsm.h" alt="" coords="225,244,279,271"/>
+<area shape="rect" id="node4" href="$main_8h.html" title="dont know what to write here. " alt="" coords="205,169,299,196"/>
+<area shape="rect" id="node6" href="$led__controller_8h.html" title="../inc/led_controller.h" alt="" coords="165,95,307,121"/>
+<area shape="rect" id="node7" href="$usart_8h.html" title="Basic serial communication via USART for ATMEGA328. " alt="" coords="331,95,426,121"/>
+<area shape="rect" id="node8" href="$util_8h.html" title="defintions to helper functions. " alt="" coords="605,95,688,121"/>
+<area shape="rect" id="node10" href="$linefollower_8h.html" title="provides basic functionality to take measurements from all 3 sensors. " alt="" coords="451,95,581,121"/>
+<area shape="rect" id="node5" href="$fsm_8h.html" title="definition of types for fsm.c " alt="" coords="225,244,279,271"/>
 </map>

@@ -1,7 +1,6 @@
 /**
- * @file motors_controller.c
+ * @file
  * @brief Controlls everything regarding the motors of the robot
- * @version 0.1
  * @date 2021-06-08
  */
 

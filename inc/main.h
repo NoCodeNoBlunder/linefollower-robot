@@ -1,5 +1,6 @@
 /**
- * @headerfile main.h
+ * @file main.h
+ * @brief dont know what to write here.
  * @date 2021-06-08
  * @author Fabian Indrunas
  */

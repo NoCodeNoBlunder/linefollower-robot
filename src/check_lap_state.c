@@ -1,6 +1,7 @@
 
 /**
- * @file check_lap_state.c
+ * @file
+ * @brief implementation of the CHECK_LAP State
  */
 
 #include <stdbool.h>

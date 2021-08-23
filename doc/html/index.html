@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Roboter: My Personal Index Page</title>
+<title>Roboter: Main Page</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -59,19 +59,67 @@ $(function() {
 
 <div class="header">
   <div class="headertitle">
-<div class="title">My Personal Index Page </div>  </div>
+<div class="title">Roboter Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="intro_sec"></a>
+<div class="textblock"><p><a href="roboter_mind_map.pdf" target="_blank"><b>Overview</b></a></p>
+<h1><a class="anchor" id="intro_sec"></a>
 Introduction</h1>
-<ul>
-<li>stichpunkt</li>
-<li><b>FETT</b> This is the introduction.</li>
-</ul>
+<p>Welcome to a short introduction of a heartwarming project executed by a student of the university Kassel. <br />
+ The aim of this project is to create a code that programs a robot to drive three rounds on a circular track, as well as starting and ending with a countdown.<br />
+Even though the robot is adorable to observe while following on its own it is also possible to control the robot via a bluetooth connection! <br />
+If you want to know how to start and setup the robot, just keep reading and enjoy!</p>
 <h1><a class="anchor" id="install_sec"></a>
 Installation</h1>
-<h2><a class="anchor" id="step1"></a>
-Step 1: Opening the box</h2>
+<p>Installation and handelling is not as compilcated as one might think!</p><ul>
+<li>First, one has to create a USB connection between the computer and the robot.</li>
+<li>Open the terminal and navigate to the file with the code using "cd" (= change directory), or open the terminal in the desired file folder by clicking on the right mouse pad and choosing "Open Terminal Here".</li>
+<li>Depending on which option you wish, chose one of the following compiler options:</li>
+</ul>
+<h1><a class="anchor" id="Table"></a>
+Of Contents</h1>
+<h1><a class="anchor" id="Calibration"></a>
+Calibration</h1>
+<dl class="section see"><dt>See also</dt><dd>Beginners</dd></dl>
+<h1><a class="anchor" id="compiler_options"></a>
+Compiler Options</h1>
+<ul>
+<li><b>make</b>: compiles, flashes and cleans up files that are no longer useful. Debug modus is disabled.</li>
+<li><b>make debug</b>: debug modus is enabled. <br />
+</li>
+<li><b>make remote</b>: This modus enabled the remote control of the robot via cutecom. Debug modus is disabled. <br />
+</li>
+<li><b>make documentation</b>: This modus only updates the doxygen documentation. . <br />
+ <b>Attention</b> if you received the file, usually a doxyfile should already exist. However, if there is no html or latex file in the file you received, first type 'doxygen -g doxyfile' in the terminal. After that open the doxyfile in nano ('nano doxyfile' in the terminal) and search for 'OPTIMIZE_OUTPUT_FOR_C' (use the explanation at the bottom of the screen in nano for short cuts). Now you have to type 'YES' behind the '='-symbol and save the doxyfile.</li>
+</ul>
+<h1><a class="anchor" id="Amazing_features"></a>
+Extra features</h1>
+<p>The robot not only drives three rounds on a circular track, has two reliable and exact countdowns using different timer and prescaler to show the robot's (and coder's :) ) full potential, but also <b>only</b> uses timer instead of delays and has a working remote control! <br />
+To use the remote control, you first have to enable it with the compile option 'make remote'. <br />
+ Open cutecom and create a bluetooth connection. <br />
+ Then type a direction with the desired time in ms in the text box and send it. <br />
+ The robot will follow your order as long as the time you sent is not expired or you have not send a new order. Here is a list of the directions available: <br />
+</p><ul>
+<li>F: forwards</li>
+<li>B : backwards</li>
+<li>l : soft left</li>
+<li>r : soft right</li>
+<li>L : hard right</li>
+<li>R : hard left</li>
+<li>Q : do not move <br />
+ For example, if you type and send 'F100' the robot will move forwards for 100 ms.</li>
+</ul>
+<h1><a class="anchor" id="About_me"></a>
+About the author</h1>
+<p>To tell you a little bit more about myself: My name is Klara M. Gutekunst, i am currently at the end of my second semester studying computer science at the university of Kassel. <br />
+This semester we had the chance to choose a project in a variety of hands-on coding training, including programming a robot. As I have never worked with code before I started studying, <br />
+ I wanted to bring what I have learned so far to good use and actually see what some lines of code can do in real life. I have been not disappointed, as you can see: <br />
+The work really paid off and at the end my robot slowely but confidently moves around on the track!</p>
+<h1><a class="anchor" id="further_information"></a>
+Optionial information</h1>
+<p>If you wish to read more about the code and why certain code is used the way it is, just explore the option given above in the main page. <br />
+If you have any suggestions for improvement, do not hesitate and contact me: <a href="#" onclick="location.href='mai'+'lto:'+'kla'+'ra'+'.gu'+'te'+'kun'+'st'+'.kg'+'@g'+'mai'+'l.'+'com'; return false;">klara<span style="display: none;">.nosp@m.</span>.gut<span style="display: none;">.nosp@m.</span>ekuns<span style="display: none;">.nosp@m.</span>t.kg<span style="display: none;">.nosp@m.</span>@gmai<span style="display: none;">.nosp@m.</span>l.co<span style="display: none;">.nosp@m.</span>m</a> <br />
+I hope you enjoy this project as much as I did </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,6 +1,8 @@
 /**
- * @headerfile iesusart.h
+ * @file motor_controller.h
+ * @breif controlls the robots motors and therefor determines his driving direction and speed.
  * @date 2021-06-08
+ * @author Fabian Indrunas
  */
 
 #ifndef IESMOTORS_h

@@ -1,7 +1,8 @@
 
 /**
- * @headerfile check_lap.h
- *
+ * @file
+ * @brief Defines the enter and update function of the state CHECK_LAP
+ * @author Fabian Indrunas
  */
 
 #ifndef CHECK_LAP_H

@@ -1,7 +1,49 @@
-\hypertarget{index_intro_sec}{}\section{Introduction}\label{index_intro_sec}
+\href{roboter_mind_map.pdf}{\tt {\bfseries Overview}}\hypertarget{index_intro_sec}{}\section{Introduction}\label{index_intro_sec}
+Welcome to a short introduction of a heartwarming project executed by a student of the university Kassel. ~\newline
+ The aim of this project is to create a code that programs a robot to drive three rounds on a circular track, as well as starting and ending with a countdown.~\newline
+Even though the robot is adorable to observe while following on its own it is also possible to control the robot via a bluetooth connection! ~\newline
+If you want to know how to start and setup the robot, just keep reading and enjoy!\hypertarget{index_install_sec}{}\section{Installation}\label{index_install_sec}
+Installation and handelling is not as compilcated as one might think!
+\begin{DoxyItemize}
+\item First, one has to create a U\+SB connection between the computer and the robot.
+\item Open the terminal and navigate to the file with the code using \char`\"{}cd\char`\"{} (= change directory), or open the terminal in the desired file folder by clicking on the right mouse pad and choosing \char`\"{}\+Open Terminal Here\char`\"{}.
+\item Depending on which option you wish, chose one of the following compiler options\+:
+\end{DoxyItemize}\hypertarget{index_Table}{}\section{Of Contents}\label{index_Table}
+\hypertarget{index_Calibration}{}\section{Calibration}\label{index_Calibration}
+\begin{DoxySeeAlso}{See also}
+Beginners
+\end{DoxySeeAlso}
+\hypertarget{index_compiler_options}{}\section{Compiler Options}\label{index_compiler_options}
 
 \begin{DoxyItemize}
-\item stichpunkt
-\item {\bfseries F\+E\+TT} This is the introduction.
-\end{DoxyItemize}\hypertarget{index_install_sec}{}\section{Installation}\label{index_install_sec}
-\hypertarget{index_step1}{}\subsection{Step 1\+: Opening the box}\label{index_step1}
+\item {\bfseries make}\+: compiles, flashes and cleans up files that are no longer useful. Debug modus is disabled.
+\item {\bfseries make debug}\+: debug modus is enabled. ~\newline
+
+\item {\bfseries make remote}\+: This modus enabled the remote control of the robot via cutecom. Debug modus is disabled. ~\newline
+
+\item {\bfseries make documentation}\+: This modus only updates the doxygen documentation. . ~\newline
+ {\bfseries Attention} if you received the file, usually a doxyfile should already exist. However, if there is no html or latex file in the file you received, first type \textquotesingle{}doxygen -\/g doxyfile\textquotesingle{} in the terminal. After that open the doxyfile in nano (\textquotesingle{}nano doxyfile\textquotesingle{} in the terminal) and search for \textquotesingle{}O\+P\+T\+I\+M\+I\+Z\+E\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+F\+O\+R\+\_\+C\textquotesingle{} (use the explanation at the bottom of the screen in nano for short cuts). Now you have to type \textquotesingle{}Y\+ES\textquotesingle{} behind the \textquotesingle{}=\textquotesingle{}-\/symbol and save the doxyfile.
+\end{DoxyItemize}\hypertarget{index_Amazing_features}{}\section{Extra features}\label{index_Amazing_features}
+The robot not only drives three rounds on a circular track, has two reliable and exact countdowns using different timer and prescaler to show the robot\textquotesingle{}s (and coder\textquotesingle{}s \+:) ) full potential, but also {\bfseries only} uses timer instead of delays and has a working remote control! ~\newline
+To use the remote control, you first have to enable it with the compile option \textquotesingle{}make remote\textquotesingle{}. ~\newline
+ Open cutecom and create a bluetooth connection. ~\newline
+ Then type a direction with the desired time in ms in the text box and send it. ~\newline
+ The robot will follow your order as long as the time you sent is not expired or you have not send a new order. Here is a list of the directions available\+: ~\newline
+
+\begin{DoxyItemize}
+\item F\+: forwards
+\item B \+: backwards
+\item l \+: soft left
+\item r \+: soft right
+\item L \+: hard right
+\item R \+: hard left
+\item Q \+: do not move ~\newline
+ For example, if you type and send \textquotesingle{}F100\textquotesingle{} the robot will move forwards for 100 ms.
+\end{DoxyItemize}\hypertarget{index_About_me}{}\section{About the author}\label{index_About_me}
+To tell you a little bit more about myself\+: My name is Klara M. Gutekunst, i am currently at the end of my second semester studying computer science at the university of Kassel. ~\newline
+This semester we had the chance to choose a project in a variety of hands-\/on coding training, including programming a robot. As I have never worked with code before I started studying, ~\newline
+ I wanted to bring what I have learned so far to good use and actually see what some lines of code can do in real life. I have been not disappointed, as you can see\+: ~\newline
+The work really paid off and at the end my robot slowely but confidently moves around on the track!\hypertarget{index_further_information}{}\section{Optionial information}\label{index_further_information}
+If you wish to read more about the code and why certain code is used the way it is, just explore the option given above in the main page. ~\newline
+If you have any suggestions for improvement, do not hesitate and contact me\+: \href{mailto:klara.gutekunst.kg@gmail.com}{\tt klara.\+gutekunst.\+kg@gmail.\+com} ~\newline
+I hope you enjoy this project as much as I did 

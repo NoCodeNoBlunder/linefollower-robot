@@ -1,6 +1,6 @@
 <map id="/home/ies/SHARE/Roboter/src/linefollower.c" name="/home/ies/SHARE/Roboter/src/linefollower.c">
-<area shape="rect" id="node2" href="$linefollower_8h_source.html" title="../inc/linefollower.h" alt="" coords="14,95,145,121"/>
-<area shape="rect" id="node6" href="$adc_8h_source.html" title="../inc/adc.h" alt="" coords="169,95,256,121"/>
-<area shape="rect" id="node3" href="$main_8h_source.html" title="main.h" alt="" coords="49,169,110,196"/>
-<area shape="rect" id="node5" href="$fsm_8h_source.html" title="fsm.h" alt="" coords="95,244,149,271"/>
+<area shape="rect" id="node2" href="$linefollower_8h.html" title="provides basic functionality to take measurements from all 3 sensors. " alt="" coords="14,95,145,121"/>
+<area shape="rect" id="node6" href="$adc_8h.html" title="provides basic functionality to convert a analog signal to digital. " alt="" coords="169,95,256,121"/>
+<area shape="rect" id="node3" href="$main_8h.html" title="dont know what to write here. " alt="" coords="49,169,110,196"/>
+<area shape="rect" id="node5" href="$fsm_8h.html" title="definition of types for fsm.c " alt="" coords="95,244,149,271"/>
 </map>

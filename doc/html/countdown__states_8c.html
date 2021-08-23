@@ -75,24 +75,24 @@ $(function() {
 <code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;avr/wdt.h&gt;</code><br />
-<code>#include &quot;../inc/main.h&quot;</code><br />
-<code>#include &quot;../inc/countdown_states.h&quot;</code><br />
-<code>#include &quot;../inc/led_controller.h&quot;</code><br />
-<code>#include &quot;../inc/usart.h&quot;</code><br />
-<code>#include &quot;../inc/motor_controller.h&quot;</code><br />
-<code>#include &quot;../inc/linefollower.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="main_8h_source.html">../inc/main.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="countdown__states_8h_source.html">../inc/countdown_states.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="led__controller_8h_source.html">../inc/led_controller.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="usart_8h_source.html">../inc/usart.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="motor__controller_8h_source.html">../inc/motor_controller.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="linefollower_8h_source.html">../inc/linefollower.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for countdown_states.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="countdown__states_8c__incl.png" border="0" usemap="#_2home_2ies_2SHARE_2Roboter_2src_2countdown__states_8c" alt=""/></div>
 <map name="_2home_2ies_2SHARE_2Roboter_2src_2countdown__states_8c" id="_2home_2ies_2SHARE_2Roboter_2src_2countdown__states_8c">
-<area shape="rect" id="node6" href="main_8h_source.html" title="../inc/main.h" alt="" coords="649,169,744,196"/>
-<area shape="rect" id="node9" href="countdown__states_8h_source.html" title="../inc/countdown_states.h" alt="" coords="927,95,1099,121"/>
-<area shape="rect" id="node10" href="led__controller_8h_source.html" title="../inc/led_controller.h" alt="" coords="1123,95,1265,121"/>
-<area shape="rect" id="node11" href="usart_8h_source.html" title="../inc/usart.h" alt="" coords="469,95,564,121"/>
-<area shape="rect" id="node12" href="motor__controller_8h_source.html" title="../inc/motor_controller.h" alt="" coords="744,95,903,121"/>
-<area shape="rect" id="node13" href="linefollower_8h_source.html" title="../inc/linefollower.h" alt="" coords="589,95,719,121"/>
-<area shape="rect" id="node8" href="fsm_8h_source.html" title="fsm.h" alt="" coords="796,244,851,271"/>
+<area shape="rect" id="node6" href="main_8h.html" title="dont know what to write here. " alt="" coords="649,169,744,196"/>
+<area shape="rect" id="node9" href="countdown__states_8h.html" title="this file defines " alt="" coords="927,95,1099,121"/>
+<area shape="rect" id="node10" href="led__controller_8h.html" title="../inc/led_controller.h" alt="" coords="1123,95,1265,121"/>
+<area shape="rect" id="node11" href="usart_8h.html" title="Basic serial communication via USART for ATMEGA328. " alt="" coords="469,95,564,121"/>
+<area shape="rect" id="node12" href="motor__controller_8h.html" title="../inc/motor_controller.h" alt="" coords="744,95,903,121"/>
+<area shape="rect" id="node13" href="linefollower_8h.html" title="provides basic functionality to take measurements from all 3 sensors. " alt="" coords="589,95,719,121"/>
+<area shape="rect" id="node8" href="fsm_8h.html" title="definition of types for fsm.c " alt="" coords="796,244,851,271"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -175,7 +175,7 @@ volatile unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>tog
 volatile unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>countdown_finished</b> = false</td></tr>
 <tr class="separator:a9c0d6d5fdc43a0c5d2ecd53f21bbfcc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a477dd9bdb4ca1df4964719131ab1bacb"><td class="memItemLeft" align="right" valign="top"><a id="a477dd9bdb4ca1df4964719131ab1bacb"></a>
-volatile LineFollower&#160;</td><td class="memItemRight" valign="bottom"><b>current_led_state</b> = ALL</td></tr>
+volatile <a class="el" href="main_8h.html#a54f4f6ff76d0c41ba388de0d5a44e99f">LineFollower</a>&#160;</td><td class="memItemRight" valign="bottom"><b>current_led_state</b> = ALL</td></tr>
 <tr class="separator:a477dd9bdb4ca1df4964719131ab1bacb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93b18a15246074ee024c00dd151a8e02"><td class="memItemLeft" align="right" valign="top"><a id="a93b18a15246074ee024c00dd151a8e02"></a>
 volatile int&#160;</td><td class="memItemRight" valign="bottom"><b>of_for_countdown</b></td></tr>

@@ -1,9 +1,9 @@
 /**
- * @headerfile fsm.h
+ * @file
  * @brief definition of types for fsm.c
  * @details
- * @version 0.1
  * @date 2021-06-08
+ * @author Fabian Indrunas
  */
 
 #ifndef FSM_h

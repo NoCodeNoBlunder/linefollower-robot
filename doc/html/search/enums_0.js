@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['threshold',['Threshold',['../linefollower_8c.html#a4a25793c4c2c1c850fbfb0ab682c35dd',1,'linefollower.c']]]
+  ['linefollower',['LineFollower',['../main_8h.html#a54f4f6ff76d0c41ba388de0d5a44e99f',1,'main.h']]]
 ];

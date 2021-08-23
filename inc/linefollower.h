@@ -1,6 +1,7 @@
 
 /**
- * @headerfile linefollower.h
+ * @file
+ * @brief provides basic functionality to take measurements from all 3 sensors.
  */
 
 #ifndef IESMOTORS_C_LINEFOLLOWER_H
