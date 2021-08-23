@@ -62,13 +62,20 @@ $(function() {
 <div class="title">Roboter Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a href="transition_map.pdf" target="_blank"><b>Transition Map</b></a></p>
+<div class="textblock"><div class="image">
+<img src="the_robot.jpg" alt="That is the robot" title="That is the robot"/>
+</div>
 <h1><a class="anchor" id="intro_sec"></a>
 Introduction</h1>
-<p>Welcome to a short introduction of a heartwarming project executed by a student of the university Kassel. <br />
- The aim of this project is to create a code that programs a robot to drive three rounds on a circular track, as well as starting and ending with a countdown.<br />
-Even though the robot is adorable to observe while following on its own it is also possible to control the robot via a bluetooth connection! <br />
-If you want to know how to start and setup the robot, just keep reading and enjoy!</p>
+<p>Welcome to a brief introduction of a project executed by a student of the university of Kassel. <br />
+ The goal of this project is to create reliable software that controlls the robot to drive three laps on a track (<a href="track_img.jpg" target="_blank"><b>example track</b></a>) consisting of a black line, autonomously. <br />
+There is a black square placed on the track which acts as the startfield. <br />
+ The robot has three sensors which enable it to detect the black line aswell as the startfield so it can take action accordingly. <br />
+<br />
+In addition to that the robot starts driving only after being placed on the startfield which initiates a 15s countdown. <br />
+Upon being moved the countdown shall be interrupted and the robot has to look for the startfield again. <br />
+ The countdown has the robot blinking three leds with 5hz which are placed on top of the roboter. <br />
+When the robots completes 3 laps it stops and a 60s countdown starts, analog to the first countdown.</p>
 <h1><a class="anchor" id="install_sec"></a>
 Installation</h1>
 <p>Installation and handelling is not as compilcated as one might think!</p><ul>
@@ -76,11 +83,16 @@ Installation</h1>
 <li>Open the terminal and navigate to the file with the code using "cd" (= change directory), or open the terminal in the desired file folder by clicking on the right mouse pad and choosing "Open Terminal Here".</li>
 <li>Depending on which option you wish, chose one of the following compiler options:</li>
 </ul>
-<h1><a class="anchor" id="Table"></a>
-Of Contents</h1>
+<p>The <a href="transition_map.pdf" target="_blank"><b>Transition Map</b></a>.</p>
+<h1><a class="anchor" id="Hardware"></a>
+Hardware</h1>
+<h1><a class="anchor" id="Table_Of_Contents"></a>
+Table_Of_Contents</h1>
+<h2><a class="anchor" id="States"></a>
+descrption</h2>
+<p>to implement new states</p>
 <h1><a class="anchor" id="Calibration"></a>
 Calibration</h1>
-<dl class="section see"><dt>See also</dt><dd>Beginners</dd></dl>
 <h1><a class="anchor" id="compiler_options"></a>
 Compiler Options</h1>
 <ul>
@@ -119,7 +131,9 @@ The work really paid off and at the end my robot slowely but confidently moves a
 Optionial information</h1>
 <p>If you wish to read more about the code and why certain code is used the way it is, just explore the option given above in the main page. <br />
 If you have any suggestions for improvement, do not hesitate and contact me: <a href="#" onclick="location.href='mai'+'lto:'+'kla'+'ra'+'.gu'+'te'+'kun'+'st'+'.kg'+'@g'+'mai'+'l.'+'com'; return false;">klara<span style="display: none;">.nosp@m.</span>.gut<span style="display: none;">.nosp@m.</span>ekuns<span style="display: none;">.nosp@m.</span>t.kg<span style="display: none;">.nosp@m.</span>@gmai<span style="display: none;">.nosp@m.</span>l.co<span style="display: none;">.nosp@m.</span>m</a> <br />
-I hope you enjoy this project as much as I did </p>
+I hope you enjoy this project as much as I did</p>
+<h1><a class="anchor" id="Roadmap"></a>
+Roadmap</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

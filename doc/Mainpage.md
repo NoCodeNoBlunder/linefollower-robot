@@ -2,17 +2,20 @@
 
 \mainpage
 
-<a href="transition_map.pdf" target="_blank"><b>Transition Map</b></a>
+![That is the robot](the_robot.jpg "That is the robot")
+
 
 \section intro_sec Introduction
-Welcome to a short introduction of a heartwarming project executed by a
-student of the university Kassel. \n The aim of this project is to create
-a code that programs a robot to drive three rounds on a circular track,
-as well as starting and ending with a countdown.\n
-Even though the robot is adorable to observe while following on its own
-it is also possible to control the robot via a bluetooth connection! \n
-If you want to know how to start and setup the robot, just keep reading
-and enjoy!
+Welcome to a brief introduction of a project executed by a
+student of the university of Kassel. \n The goal of this project is to create reliable 
+software that controlls the robot to drive three laps on a track (<a href="track_img.jpg" target="_blank"><b>example track</b></a>) consisting of a black line, autonomously. \n
+There is a black square placed on the track which acts as the startfield. \n 
+The robot has three sensors which enable it to detect the black line aswell as the startfield so it can take action accordingly. \n\n
+In addition to that the robot starts driving only after being placed on the startfield which initiates a 15s countdown. \n
+Upon being moved the countdown shall be interrupted and the robot has to look for the startfield again. \n 
+The countdown has the robot blinking three leds with 5hz which are placed on top of the roboter. \n
+When the robots completes 3 laps it stops and a 60s countdown starts, analog to the first countdown.
+
 
 \section install_sec Installation
 Installation and handelling is not as compilcated as one might think!
@@ -24,14 +27,15 @@ Installation and handelling is not as compilcated as one might think!
 * Depending on which option you wish, chose one of the following
   compiler options:
   
+The <a href="transition_map.pdf" target="_blank"><b>Transition Map</b></a>.
+  
+\section Hardware
 
-\section Table\ Of\ Contents
+\section Table_Of_Contents
 \subsection States descrption
 \how to implement new states
   
 \section Calibration
-
-@sa Beginners
 
 \section compiler_options Compiler Options
 * **make**: compiles, flashes and cleans up files that are no longer
@@ -88,3 +92,5 @@ the way it is, just explore the option given above in the main page. \n
 If you have any suggestions for improvement, do not hesitate and contact
 me: klara.gutekunst.kg@gmail.com \n
 I hope you enjoy this project as much as I did
+
+\section Roadmap

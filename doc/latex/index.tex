@@ -1,18 +1,24 @@
-\href{transition_map.pdf}{\tt {\bfseries Transition Map}}\hypertarget{index_intro_sec}{}\section{Introduction}\label{index_intro_sec}
-Welcome to a short introduction of a heartwarming project executed by a student of the university Kassel. ~\newline
- The aim of this project is to create a code that programs a robot to drive three rounds on a circular track, as well as starting and ending with a countdown.~\newline
-Even though the robot is adorable to observe while following on its own it is also possible to control the robot via a bluetooth connection! ~\newline
-If you want to know how to start and setup the robot, just keep reading and enjoy!\hypertarget{index_install_sec}{}\section{Installation}\label{index_install_sec}
+\hypertarget{index_intro_sec}{}\section{Introduction}\label{index_intro_sec}
+Welcome to a brief introduction of a project executed by a student of the university of Kassel. ~\newline
+ The goal of this project is to create reliable software that controlls the robot to drive three laps on a track (\href{track_img.jpg}{\tt {\bfseries example track}}) consisting of a black line, autonomously. ~\newline
+There is a black square placed on the track which acts as the startfield. ~\newline
+ The robot has three sensors which enable it to detect the black line aswell as the startfield so it can take action accordingly. ~\newline
+~\newline
+In addition to that the robot starts driving only after being placed on the startfield which initiates a 15s countdown. ~\newline
+Upon being moved the countdown shall be interrupted and the robot has to look for the startfield again. ~\newline
+ The countdown has the robot blinking three leds with 5hz which are placed on top of the roboter. ~\newline
+When the robots completes 3 laps it stops and a 60s countdown starts, analog to the first countdown.\hypertarget{index_install_sec}{}\section{Installation}\label{index_install_sec}
 Installation and handelling is not as compilcated as one might think!
 \begin{DoxyItemize}
 \item First, one has to create a U\+SB connection between the computer and the robot.
 \item Open the terminal and navigate to the file with the code using \char`\"{}cd\char`\"{} (= change directory), or open the terminal in the desired file folder by clicking on the right mouse pad and choosing \char`\"{}\+Open Terminal Here\char`\"{}.
 \item Depending on which option you wish, chose one of the following compiler options\+:
-\end{DoxyItemize}\hypertarget{index_Table}{}\section{Of Contents}\label{index_Table}
-\hypertarget{index_Calibration}{}\section{Calibration}\label{index_Calibration}
-\begin{DoxySeeAlso}{See also}
-Beginners
-\end{DoxySeeAlso}
+\end{DoxyItemize}
+
+The \href{transition_map.pdf}{\tt {\bfseries Transition Map}}.\hypertarget{index_Hardware}{}\section{Hardware}\label{index_Hardware}
+\hypertarget{index_Table_Of_Contents}{}\section{Table\+\_\+\+Of\+\_\+\+Contents}\label{index_Table_Of_Contents}
+\hypertarget{index_States}{}\subsection{descrption}\label{index_States}
+to implement new states\hypertarget{index_Calibration}{}\section{Calibration}\label{index_Calibration}
 \hypertarget{index_compiler_options}{}\section{Compiler Options}\label{index_compiler_options}
 
 \begin{DoxyItemize}
@@ -46,4 +52,4 @@ This semester we had the chance to choose a project in a variety of hands-\/on c
 The work really paid off and at the end my robot slowely but confidently moves around on the track!\hypertarget{index_further_information}{}\section{Optionial information}\label{index_further_information}
 If you wish to read more about the code and why certain code is used the way it is, just explore the option given above in the main page. ~\newline
 If you have any suggestions for improvement, do not hesitate and contact me\+: \href{mailto:klara.gutekunst.kg@gmail.com}{\tt klara.\+gutekunst.\+kg@gmail.\+com} ~\newline
-I hope you enjoy this project as much as I did 
+I hope you enjoy this project as much as I did\hypertarget{Mainpage.md_Roadmap}{}\section{Roadmap}\label{Mainpage.md_Roadmap}
