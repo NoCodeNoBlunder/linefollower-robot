@@ -75,12 +75,7 @@ void USART_Init(unsigned long ubrr)
     USART_print("\n");
 }
 
-/**
- * Function to transmit data via Serial Port.
- * @param fsm pointer to instance of FSM
- * @param data pointer to instance of RoboterData
- * @details this function is only called when the var debug_mode is enabled in data
- */
+
 void transmit_debug_msg(FSM *fsm, RoboterData *data) {
 
     if (!data->debug_mode) { return; }     // only send debug msg when debug mode is enabled.

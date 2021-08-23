@@ -13,7 +13,7 @@
  */
 #define SAMPLE_SIZE 20
 
-/** @enum
+/** @enum Threshold
  *  @brief enums values determine the threshold of each sensor.
  *  When a sensors value is bigger than the Threshold the sensor detects a line.
  *  @details due to inaccuracy a sensor might fire early or late

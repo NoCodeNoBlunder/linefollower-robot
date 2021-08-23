@@ -10,9 +10,15 @@
 
 #include "main.h"
 
-/// Desired baudrate
+/**
+ * @def
+ * determines how many symbols are send per second
+ */
 #define BAUD 9600
-/// What to write into the UBRR register
+
+/**
+ * @def determines what to write into the UBRR register
+ */
 #define UBRR_SETTING F_CPU/16.0/BAUD-1
 
 /**
@@ -31,6 +37,7 @@ void USART_transmitByte(unsigned char data);
 
 /**
  * @brief Transmittes a string (char by char) until '\0’ is reached
+ * @param c pointer to the string to transmit
  */
 void USART_print(const char *c);
 
@@ -41,10 +48,12 @@ void USART_print(const char *c);
 void USART_Init(unsigned long ubrr);
 
 /**
- * @fn
- * @brief
- * @param fsm
- * @param data
+ * @brief Transmits data stored @date via Serial Port if DEBUG_MODE is enabled.
+ * This is used for debugging purposes.
+ * @param fsm passes the current state stored in the fsm instance.
+ * @param data passes sensor values and engines speed values to transmit.
+ * @details if DEBUG_MODE is enabled it severly decreases the roboters performance
+ * as transmitting via Serial Port is very expensive.
  */
 void transmit_debug_msg(FSM *fsm, RoboterData *data);
 #endif

@@ -21,7 +21,7 @@ Include dependency graph for linefollower.\+c\+:\nopagebreak
 enum \hyperlink{linefollower_8c_a4a25793c4c2c1c850fbfb0ab682c35dd}{Threshold} \{ \hyperlink{linefollower_8c_a4a25793c4c2c1c850fbfb0ab682c35ddac0784cd38ac851a082f15a3b9e94d61b}{T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+L} = 250, 
 \hyperlink{linefollower_8c_a4a25793c4c2c1c850fbfb0ab682c35dda11156d7be53a1b5fc38a1618644db2b3}{T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+M} = 512, 
 \hyperlink{linefollower_8c_a4a25793c4c2c1c850fbfb0ab682c35ddab8096b05bc76a59ac9bfd9403d67be6b}{T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+R} = 412
- \}
+ \}\begin{DoxyCompactList}\small\item\em enums values determine the threshold of each sensor. When a sensors value is bigger than the Threshold the sensor detects a line. \end{DoxyCompactList}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -47,7 +47,11 @@ char \hyperlink{linefollower_8c_af4fc7adf96af8b01a0e846872c4eda70}{all\+\_\+off\
 \subsubsection{\texorpdfstring{Threshold}{Threshold}}
 {\footnotesize\ttfamily enum \hyperlink{linefollower_8c_a4a25793c4c2c1c850fbfb0ab682c35dd}{Threshold}}
 
-\begin{DoxyEnumFields}{Enumerator}
+
+
+enums values determine the threshold of each sensor. When a sensors value is bigger than the Threshold the sensor detects a line. 
+
+due to inaccuracy a sensor might fire early or late \begin{DoxyEnumFields}{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+L@{T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+L}!linefollower.\+c@{linefollower.\+c}}\index{linefollower.\+c@{linefollower.\+c}!T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+L@{T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+L}}}\mbox{\Hypertarget{linefollower_8c_a4a25793c4c2c1c850fbfb0ab682c35ddac0784cd38ac851a082f15a3b9e94d61b}\label{linefollower_8c_a4a25793c4c2c1c850fbfb0ab682c35ddac0784cd38ac851a082f15a3b9e94d61b}} 
 T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+L&Threshold of the left sensor \\
 \hline

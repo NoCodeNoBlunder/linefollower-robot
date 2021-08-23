@@ -10,8 +10,22 @@
 #include "fsm.h"
 #include "main.h"
 
+/**
+ * @brief
+ * Initilizes Timer1 to determine when the countdown is finsihed.
+ * @details This is done with the overflow interrupt.
+ */
 void Timer1_init();
-void enter_countdown(void);
+
+/**
+ * @brief enables the overflow interrupt enabling the 15s countdown
+ */
+void enter_countdown(void);\
+
+/**
+ * @brief
+ * makes the leds blink with 5hz untill 15s elapse upon which it transitions to LEAVE_START
+ */
 void update_countdown(FSM *fsm, RoboterData *data);
 
 #endif //STATES_C_IESCOUNTDOWN_H

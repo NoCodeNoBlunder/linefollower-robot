@@ -15,37 +15,36 @@
 void take_measurement(RoboterData *data);
 
 /**
- *
- * @param data
- * @return
+ * @brief
+ * Checks wether the left sensors last messurement is above the threshold
+ * @return true if the left sensor detects the line else false.
  */
 char left_on_line(RoboterData *data);
 
 /**
- *
- * @param data
- * @return
+ * @brief
+ * Checks wether the middle sensors last messurement is above the threshold
+ * @return true if the middle sensor detects the line else false.
  */
 char mid_on_line(RoboterData *data);
 
 /**
- *
- * @param data
- * @return
+ * @brief
+ * Checks wether the right sensors last messurement is above the threshold
+ * @return true if the right sensor detects the line else false.
  */
 char right_on_line(RoboterData *data);
 
 /**
- *
- * @param data
- * @return
+ * @brief Checks wether all sensors last messurement are above the threshold
+ * @return true if all sensors detect the line.
+ * @details this happends when the robot is on the startfield or in a sharp turn.
  */
 char all_on_line(RoboterData *data);
 
 /**
- *
- * @param data
- * @return
+ * @brief Checks wether all sensor are detecting white.
+ * @return returns true if all sensor dont detect the line else false.
  */
 char all_off_line(RoboterData *data);
 

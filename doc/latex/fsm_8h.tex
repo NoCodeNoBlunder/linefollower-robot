@@ -23,7 +23,7 @@ struct \hyperlink{structFSM}{F\+SM}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{fsm_8h_a641d7bf5ab92b5c54575a27ac78c2e54}\label{fsm_8h_a641d7bf5ab92b5c54575a27ac78c2e54}} 
-typedef enum State {\bfseries State}
+typedef enum \hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State} {\bfseries State}
 \item 
 \mbox{\Hypertarget{fsm_8h_a94b549f442dea23e06f8be5252f47403}\label{fsm_8h_a94b549f442dea23e06f8be5252f47403}} 
 typedef struct \hyperlink{structConcreteState}{Concrete\+State} {\bfseries Concrete\+State}
@@ -34,8 +34,7 @@ typedef struct \hyperlink{structFSM}{F\+SM} {\bfseries F\+SM}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}\label{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}} 
-enum {\bfseries State} \{ \newline
+enum \hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State} \{ \newline
 {\bfseries I\+N\+IT}, 
 {\bfseries C\+H\+E\+C\+K\+\_\+\+S\+T\+A\+R\+T\+P\+OS}, 
 {\bfseries C\+O\+U\+N\+T\+D\+O\+WN}, 
@@ -53,16 +52,16 @@ enum {\bfseries State} \{ \newline
 \newline
 {\bfseries E\+X\+IT}, 
 {\bfseries S\+T\+A\+T\+E\+C\+O\+U\+NT}
- \}
+ \}\begin{DoxyCompactList}\small\item\em used to differentiate between states. \end{DoxyCompactList}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{fsm_8h_a2d99213b7ce90d5e4b0cbd7f261d8e3e}{add\+\_\+state} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, State state, char $\ast$state\+\_\+name, void($\ast$enter), void($\ast$update))
+void \hyperlink{fsm_8h_a2d99213b7ce90d5e4b0cbd7f261d8e3e}{add\+\_\+state} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State} state, char $\ast$state\+\_\+name, void($\ast$enter), void($\ast$update))
 \item 
 void \hyperlink{fsm_8h_a053b1146a3f1c34576d89d599e34329a}{start\+\_\+fsm\+\_\+cycle} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, void $\ast$data)
 \item 
-void \hyperlink{fsm_8h_a80016823d020a335a595bcd09bc39c96}{transition\+\_\+to\+\_\+state} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, void $\ast$arg, State next\+\_\+state)
+void \hyperlink{fsm_8h_a80016823d020a335a595bcd09bc39c96}{transition\+\_\+to\+\_\+state} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, void $\ast$arg, \hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State} next\+\_\+state)
 \end{DoxyCompactItemize}
 
 
@@ -77,12 +76,25 @@ Fabian Indrunas
 \end{DoxyAuthor}
 
 
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}\label{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}} 
+\index{fsm.\+h@{fsm.\+h}!State@{State}}
+\index{State@{State}!fsm.\+h@{fsm.\+h}}
+\subsubsection{\texorpdfstring{State}{State}}
+{\footnotesize\ttfamily enum \hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}}
+
+
+
+used to differentiate between states. 
+
+is used to add, store, and get the desired state from struct \hyperlink{structFSM}{F\+SM} Every state added has to exist here. 
+
 \subsection{Function Documentation}
 \mbox{\Hypertarget{fsm_8h_a2d99213b7ce90d5e4b0cbd7f261d8e3e}\label{fsm_8h_a2d99213b7ce90d5e4b0cbd7f261d8e3e}} 
 \index{fsm.\+h@{fsm.\+h}!add\+\_\+state@{add\+\_\+state}}
 \index{add\+\_\+state@{add\+\_\+state}!fsm.\+h@{fsm.\+h}}
 \subsubsection{\texorpdfstring{add\+\_\+state()}{add\_state()}}
-{\footnotesize\ttfamily void add\+\_\+state (\begin{DoxyParamCaption}\item[{\hyperlink{structFSM}{F\+SM} $\ast$}]{fsm,  }\item[{State}]{state,  }\item[{char $\ast$}]{state\+\_\+name,  }\item[{void $\ast$}]{enter,  }\item[{void $\ast$}]{update }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void add\+\_\+state (\begin{DoxyParamCaption}\item[{\hyperlink{structFSM}{F\+SM} $\ast$}]{fsm,  }\item[{\hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}}]{state,  }\item[{char $\ast$}]{state\+\_\+name,  }\item[{void $\ast$}]{enter,  }\item[{void $\ast$}]{update }\end{DoxyParamCaption})}
 
 Function to create and store a new state 
 \begin{DoxyParams}{Parameters}
@@ -117,7 +129,7 @@ every iteration the current state\textquotesingle{}s update function is called
 \index{fsm.\+h@{fsm.\+h}!transition\+\_\+to\+\_\+state@{transition\+\_\+to\+\_\+state}}
 \index{transition\+\_\+to\+\_\+state@{transition\+\_\+to\+\_\+state}!fsm.\+h@{fsm.\+h}}
 \subsubsection{\texorpdfstring{transition\+\_\+to\+\_\+state()}{transition\_to\_state()}}
-{\footnotesize\ttfamily void transition\+\_\+to\+\_\+state (\begin{DoxyParamCaption}\item[{\hyperlink{structFSM}{F\+SM} $\ast$}]{fsm,  }\item[{void $\ast$}]{arg,  }\item[{State}]{next\+\_\+state }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void transition\+\_\+to\+\_\+state (\begin{DoxyParamCaption}\item[{\hyperlink{structFSM}{F\+SM} $\ast$}]{fsm,  }\item[{void $\ast$}]{arg,  }\item[{\hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}}]{next\+\_\+state }\end{DoxyParamCaption})}
 
 Function to switch between states.
 

@@ -25,7 +25,7 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \item 
 \mbox{\Hypertarget{adc_8h_a5137b551f1b83b0f4d8df7d071a3d3a6}\label{adc_8h_a5137b551f1b83b0f4d8df7d071a3d3a6}} 
 void \hyperlink{adc_8h_a5137b551f1b83b0f4d8df7d071a3d3a6}{A\+D\+C\+\_\+\+Init} (void)
-\begin{DoxyCompactList}\small\item\em function to setup the analog to digital converter \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets up the analog to ditigal converter. \end{DoxyCompactList}\item 
 uint16\+\_\+t \hyperlink{adc_8h_ab0bfe89c06929fe65db2112532cb4047}{A\+D\+C\+\_\+\+Read} (uint8\+\_\+t channel)
 \begin{DoxyCompactList}\small\item\em function to measure the voltage at pin \end{DoxyCompactList}\item 
 uint16\+\_\+t \hyperlink{adc_8h_a84fd71fbb96522e5dfda8cdc815b2aeb}{A\+D\+C\+\_\+read\+\_\+avg} (uint8\+\_\+t channel, uint8\+\_\+t nsamples)
@@ -35,9 +35,6 @@ uint16\+\_\+t \hyperlink{adc_8h_a84fd71fbb96522e5dfda8cdc815b2aeb}{A\+D\+C\+\_\+
 \subsection{Detailed Description}
 provides basic functionality to convert a analog signal to digital. 
 
-\begin{DoxyDate}{Date}
-2021-\/06-\/08 
-\end{DoxyDate}
 
 
 \subsection{Function Documentation}
@@ -55,11 +52,11 @@ function to measure the voltage at pin
 \begin{DoxyParams}{Parameters}
 {\em channel} & \\
 \hline
-{\em channel} & determines which channek to measure from \\
+{\em channel} & determines which channel to measure from \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-return a digital value between 0 and 1023
+digital value between 0 and 1023
 \end{DoxyReturn}
 Function to read the voltage and convert it to digital 
 \begin{DoxyParams}{Parameters}

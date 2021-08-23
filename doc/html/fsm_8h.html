@@ -92,7 +92,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <area shape="rect" id="node11" href="check__lap__state_8h.html" title="Defines the enter and update function of the state CHECK_LAP. " alt="" coords="435,184,615,225"/>
 <area shape="rect" id="node12" href="main_8c.html" title="Configuration of FSM. " alt="" coords="27,273,207,315"/>
 <area shape="rect" id="node13" href="linefollower_8h.html" title="provides basic functionality to take measurements from all 3 sensors. " alt="" coords="639,184,819,225"/>
-<area shape="rect" id="node17" href="states_8h.html" title="contains most of the robots States enter and update functions. " alt="" coords="27,184,207,225"/>
+<area shape="rect" id="node17" href="states_8h.html" title="Contains most of the robots State&#39;s functionality. " alt="" coords="27,184,207,225"/>
 <area shape="rect" id="node9" href="states_8c.html" title="Implementations of the states. " alt="" coords="231,273,411,315"/>
 <area shape="rect" id="node10" href="usart_8c.html" title="Basic serial communication via USART for ATMEGA328. " alt="" coords="1251,273,1431,315"/>
 <area shape="rect" id="node14" href="linefollower_8c.html" title="/home/ies/SHARE/Roboter\l/src/linefollower.c" alt="" coords="435,273,615,315"/>
@@ -113,7 +113,7 @@ Data Structures</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a641d7bf5ab92b5c54575a27ac78c2e54"><td class="memItemLeft" align="right" valign="top"><a id="a641d7bf5ab92b5c54575a27ac78c2e54"></a>
-typedef enum State&#160;</td><td class="memItemRight" valign="bottom"><b>State</b></td></tr>
+typedef enum <a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a>&#160;</td><td class="memItemRight" valign="bottom"><b>State</b></td></tr>
 <tr class="separator:a641d7bf5ab92b5c54575a27ac78c2e54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94b549f442dea23e06f8be5252f47403"><td class="memItemLeft" align="right" valign="top"><a id="a94b549f442dea23e06f8be5252f47403"></a>
 typedef struct <a class="el" href="structConcreteState.html">ConcreteState</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ConcreteState</b></td></tr>
@@ -124,7 +124,7 @@ typedef struct <a class="el" href="structFSM.html">FSM</a>&#160;</td><td class="
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a5d74787dedbc4e11c1ab15bf487e61f8"><td class="memItemLeft" align="right" valign="top"><a id="a5d74787dedbc4e11c1ab15bf487e61f8"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>State</b> { <br />
+<tr class="memitem:a5d74787dedbc4e11c1ab15bf487e61f8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a> { <br />
 &#160;&#160;<b>INIT</b>, 
 <b>CHECK_STARTPOS</b>, 
 <b>COUNTDOWN</b>, 
@@ -143,23 +143,42 @@ Enumerations</h2></td></tr>
 &#160;&#160;<b>EXIT</b>, 
 <b>STATECOUNT</b>
 <br />
- }</td></tr>
+ }<tr class="memdesc:a5d74787dedbc4e11c1ab15bf487e61f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">used to differentiate between states.  <a href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">More...</a><br /></td></tr>
+</td></tr>
 <tr class="separator:a5d74787dedbc4e11c1ab15bf487e61f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a2d99213b7ce90d5e4b0cbd7f261d8e3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm_8h.html#a2d99213b7ce90d5e4b0cbd7f261d8e3e">add_state</a> (<a class="el" href="structFSM.html">FSM</a> *fsm, State state, char *state_name, void(*enter), void(*update))</td></tr>
+<tr class="memitem:a2d99213b7ce90d5e4b0cbd7f261d8e3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm_8h.html#a2d99213b7ce90d5e4b0cbd7f261d8e3e">add_state</a> (<a class="el" href="structFSM.html">FSM</a> *fsm, <a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a> state, char *state_name, void(*enter), void(*update))</td></tr>
 <tr class="separator:a2d99213b7ce90d5e4b0cbd7f261d8e3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a053b1146a3f1c34576d89d599e34329a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm_8h.html#a053b1146a3f1c34576d89d599e34329a">start_fsm_cycle</a> (<a class="el" href="structFSM.html">FSM</a> *fsm, void *data)</td></tr>
 <tr class="separator:a053b1146a3f1c34576d89d599e34329a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a80016823d020a335a595bcd09bc39c96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm_8h.html#a80016823d020a335a595bcd09bc39c96">transition_to_state</a> (<a class="el" href="structFSM.html">FSM</a> *fsm, void *arg, State next_state)</td></tr>
+<tr class="memitem:a80016823d020a335a595bcd09bc39c96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm_8h.html#a80016823d020a335a595bcd09bc39c96">transition_to_state</a> (<a class="el" href="structFSM.html">FSM</a> *fsm, void *arg, <a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a> next_state)</td></tr>
 <tr class="separator:a80016823d020a335a595bcd09bc39c96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>definition of types for <a class="el" href="fsm_8c.html" title="lightweight finite state machine implementation ">fsm.c</a> </p>
 <dl class="section date"><dt>Date</dt><dd>2021-06-08 </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Fabian Indrunas </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a5d74787dedbc4e11c1ab15bf487e61f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d74787dedbc4e11c1ab15bf487e61f8">&#9670;&nbsp;</a></span>State</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>used to differentiate between states. </p>
+<p>is used to add, store, and get the desired state from struct <a class="el" href="structFSM.html" title="Stores all states. ">FSM</a> Every state added has to exist here. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="a2d99213b7ce90d5e4b0cbd7f261d8e3e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2d99213b7ce90d5e4b0cbd7f261d8e3e">&#9670;&nbsp;</a></span>add_state()</h2>
 
@@ -175,7 +194,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">State&#160;</td>
+          <td class="paramtype"><a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a>&#160;</td>
           <td class="paramname"><em>state</em>, </td>
         </tr>
         <tr>
@@ -278,7 +297,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">State&#160;</td>
+          <td class="paramtype"><a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a>&#160;</td>
           <td class="paramname"><em>next_state</em>&#160;</td>
         </tr>
         <tr>

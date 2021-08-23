@@ -27,7 +27,8 @@
 
 /**
  * @enum LineFollower
- * @brief enum stores the corrosponding pins for the sensors and also stor
+ * @brief
+ * enum stores the corrosponding pins for the sensors and also stor
  */
 typedef enum LineFollower { // TODO Besseren Namen
     LEFT_LF = PC2,
@@ -41,20 +42,21 @@ typedef enum LineFollower { // TODO Besseren Namen
 } LineFollower;
 
 /**
- * @struct RoboterData "main.h"
+ * @struct RoboterData
+ * @brief Stores all the relevant information regarding the robot.
  */
 typedef struct RoboterData {
-    char start_counter_mode;
-    char debug_mode;
-    char lapcounter_mode;
-    unsigned char laps_to_go;
+    char start_counter_mode; /**< Stores if the robot is in COUNTDOWN_MODE. */
+    char debug_mode; /**< Stores if the robot is in DEBUG_MODE. */
+    char lapcounter_mode; /**< Stores if the robot is in LAPCOUNTER_MODE. */
+    unsigned char laps_to_go; /**< Stores how many laps the robot has to drive. */
 
-    unsigned short sensor_left;
-    unsigned short sensor_mid;
-    unsigned short sensor_right;
+    unsigned short sensor_left; /**< Stores the most recent value of the lest sensor. */
+    unsigned short sensor_mid;  /**< Stores the most recent value of the middle sensor. */
+    unsigned short sensor_right; /**< Stores the most recent value of the right sensor. */
 
-    unsigned char left_eng_speed; // Only has values between 0 and 255
-    unsigned char right_eng_speed;
+    unsigned char left_eng_speed;  /**< Stores the left engines duty cycle setting. */
+    unsigned char right_eng_speed; /**< Stores the right engines current duty cycle setting. */
 } RoboterData;
 
 

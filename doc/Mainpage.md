@@ -128,22 +128,9 @@ enum Threshold enum as needed. \n Each of the three sensors has its own value. \
 <a href="https://youtu.be/au92yQbTNe0" target="_blank"><b>Here</b></a>
  is an example how the robot should drive when it is calibrated properly.
 
-\section About_me About the author
-To tell you a little bit more about myself: My name is Fabian Indrunas,
-I am currently at the end of my second semester studying computer
-science at the university of Kassel. \n
-This semester we had the chance to choose a project in a variety of
-hands-on coding training, including programming a robot. As I have never
-worked with code before I started studying, \n I wanted to bring what I
-have learned so far to good use and actually see what some lines of
-code can do in real life.  I have been not disappointed, as you can see: \n
-The work really paid off and at the end my robot slowely but confidently
-moves around on the track!
-
 \section further_information Additional information
 If you wish to read more about the code and why certain code is used
 the way it is, just explore the option given above in the main page. \n
 If you have any suggestions for improvement, do not hesitate and contact
 me: findrunas@hotmail.com \n
 
-\section Roadmap

@@ -13,13 +13,10 @@
 struct FSM;
 
 /**
- * @typedef
+ * @typedef State
  * @brief used to differentiate between states.
  * @details is used to add, store, and get the desired state from struct FSM
- * Every state added has to exist here.
- * @var EXIT shuts down fsm update loop and is implemented automatically.
- * @var STATECOUNT is not an actual state but is used to know the ammount of states.
- *
+ * To implement a new state it has to be added here.
  */
 typedef enum State{
     INIT,      // default State has to be the INIT state

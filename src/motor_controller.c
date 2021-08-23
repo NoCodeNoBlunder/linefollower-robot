@@ -16,7 +16,7 @@
 /**
  * @enum
  * @brief
- * @sa
+ * Pin constants for to controll the engines polarity
  */
 enum {
     IN1 = PD7,
@@ -28,7 +28,7 @@ enum {
 /**
  * @enum
  * @breif
- * @sa ../res/
+ * Constants for the engine duty cycles to be set according to drive mode.
  */
 enum {
     ENG_STILL = 0,
@@ -43,6 +43,7 @@ enum {
 /**
  * @enum
  * @brief
+ * Pin constants that are responsible for the left and right engine
  */
 enum {
     LEFT_ENG = PD5,
@@ -131,6 +132,10 @@ void right_off() {
     set_pin_low(&PORTB, IN3);
 }
 
+/**
+ * Sets the polarity of the engines, determining in which direction one side is spinning.
+ * @param dir to select the polarity for the desired driving behaviour.
+ */
 void set_polarity(State dir) {
     switch (dir) {
         case FORWARD:
@@ -175,7 +180,6 @@ void set_polarity(State dir) {
 }
 
 void motors_Init() {
-    // TODO alle pins müssen auf output gestellt sein.
     // Set PD5 and PD6 as output (EN[A|B]!)
     DDRD |= (1 << DD5) | (1 << DD6);
 
@@ -189,10 +193,8 @@ void motors_Init() {
     Timer0_init();
 }
 
-// TODO maybe there should be an enum setting for the motors and not a shared one??
 void set_direction(RoboterData *data, State state) {
 
-//    USART_print("\nset_direction was called\n");
     switch (state) {
         case FORWARD:
             data->left_eng_speed = ENG_FORWARD;

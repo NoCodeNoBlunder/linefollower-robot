@@ -94,7 +94,7 @@ This graph shows which files directly or indirectly include this file:</div>
 Functions</h2></td></tr>
 <tr class="memitem:a5137b551f1b83b0f4d8df7d071a3d3a6"><td class="memItemLeft" align="right" valign="top"><a id="a5137b551f1b83b0f4d8df7d071a3d3a6"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adc_8h.html#a5137b551f1b83b0f4d8df7d071a3d3a6">ADC_Init</a> (void)</td></tr>
-<tr class="memdesc:a5137b551f1b83b0f4d8df7d071a3d3a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to setup the analog to digital converter <br /></td></tr>
+<tr class="memdesc:a5137b551f1b83b0f4d8df7d071a3d3a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up the analog to ditigal converter. <br /></td></tr>
 <tr class="separator:a5137b551f1b83b0f4d8df7d071a3d3a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0bfe89c06929fe65db2112532cb4047"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adc_8h.html#ab0bfe89c06929fe65db2112532cb4047">ADC_Read</a> (uint8_t channel)</td></tr>
 <tr class="memdesc:ab0bfe89c06929fe65db2112532cb4047"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to measure the voltage at pin  <a href="#ab0bfe89c06929fe65db2112532cb4047">More...</a><br /></td></tr>
@@ -104,7 +104,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adc_
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>provides basic functionality to convert a analog signal to digital. </p>
-<dl class="section date"><dt>Date</dt><dd>2021-06-08 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="ab0bfe89c06929fe65db2112532cb4047"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab0bfe89c06929fe65db2112532cb4047">&#9670;&nbsp;</a></span>ADC_Read()</h2>
@@ -126,11 +125,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adc_
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">channel</td><td></td></tr>
-    <tr><td class="paramname">channel</td><td>determines which channek to measure from </td></tr>
+    <tr><td class="paramname">channel</td><td>determines which channel to measure from </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>return a digital value between 0 and 1023</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>digital value between 0 and 1023</dd></dl>
 <p>Function to read the voltage and convert it to digital </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">channel</td><td>pin to read from </td></tr>
