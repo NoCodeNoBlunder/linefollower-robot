@@ -1,6 +1,6 @@
 /**
  * @file
- * @breif
+ * @brief
  * Controls the robots motors and therefore determines it's driving direction and speed.
  * @author Fabian Indrunas
  */

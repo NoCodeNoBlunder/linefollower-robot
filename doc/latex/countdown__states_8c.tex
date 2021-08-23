@@ -1,5 +1,10 @@
 \hypertarget{countdown__states_8c}{}\section{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/src/countdown\+\_\+states.c File Reference}
 \label{countdown__states_8c}\index{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/src/countdown\+\_\+states.\+c@{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/src/countdown\+\_\+states.\+c}}
+
+
+Implements both the start and end Countdown using Timer1 with Overflow interrupt.  
+
+
 {\ttfamily \#include $<$avr/interrupt.\+h$>$}\newline
 {\ttfamily \#include $<$stdbool.\+h$>$}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
@@ -10,8 +15,7 @@
 {\ttfamily \#include \char`\"{}../inc/usart.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../inc/motor\+\_\+controller.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../inc/linefollower.\+h\char`\"{}}\newline
-Include dependency graph for countdown\+\_\+states.\+c\+:
-\nopagebreak
+Include dependency graph for countdown\+\_\+states.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -64,11 +68,9 @@ enum {\bfseries C\+O\+U\+N\+T\+D\+O\+W\+N\+M\+O\+DE} \{ {\bfseries S\+T\+A\+R\+T
 \item 
 void \hyperlink{countdown__states_8c_a704821b4d760b8dfa0061a41398e98c0}{Timer1\+\_\+init} ()
 \begin{DoxyCompactList}\small\item\em Initilizes Timer1 to determine when the countdown is finsihed. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{countdown__states_8c_a11cc295dc94fc336213cd5120d1665cd}\label{countdown__states_8c_a11cc295dc94fc336213cd5120d1665cd}} 
-void {\bfseries enable\+\_\+isr\+\_\+countdown} (C\+O\+U\+N\+T\+D\+O\+W\+N\+M\+O\+DE mode)
+void \hyperlink{countdown__states_8c_a11cc295dc94fc336213cd5120d1665cd}{enable\+\_\+isr\+\_\+countdown} (C\+O\+U\+N\+T\+D\+O\+W\+N\+M\+O\+DE mode)
 \item 
-\mbox{\Hypertarget{countdown__states_8c_af3cb5cbb2c697ca301f640cb46a308af}\label{countdown__states_8c_af3cb5cbb2c697ca301f640cb46a308af}} 
-void {\bfseries disable\+\_\+isr\+\_\+countdown} ()
+void \hyperlink{countdown__states_8c_af3cb5cbb2c697ca301f640cb46a308af}{disable\+\_\+isr\+\_\+countdown} ()
 \item 
 \mbox{\Hypertarget{countdown__states_8c_a1edafe61b207c68cefb5a40585da9fbc}\label{countdown__states_8c_a1edafe61b207c68cefb5a40585da9fbc}} 
 void \hyperlink{countdown__states_8c_a1edafe61b207c68cefb5a40585da9fbc}{enter\+\_\+countdown} (void)
@@ -105,8 +107,25 @@ volatile int {\bfseries of\+\_\+for\+\_\+countdown}
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+Implements both the start and end Countdown using Timer1 with Overflow interrupt. 
+
+
+
 \subsection{Function Documentation}
-\mbox{\Hypertarget{countdown__states_8c_a704821b4d760b8dfa0061a41398e98c0}\label{countdown__states_8c_a704821b4d760b8dfa0061a41398e98c0}} 
+\mbox{\Hypertarget{countdown__states_8c_af3cb5cbb2c697ca301f640cb46a308af}\label{countdown__states_8c_af3cb5cbb2c697ca301f640cb46a308af}} 
+\index{countdown\+\_\+states.\+c@{countdown\+\_\+states.\+c}!disable\+\_\+isr\+\_\+countdown@{disable\+\_\+isr\+\_\+countdown}}
+\index{disable\+\_\+isr\+\_\+countdown@{disable\+\_\+isr\+\_\+countdown}!countdown\+\_\+states.\+c@{countdown\+\_\+states.\+c}}
+\subsubsection{\texorpdfstring{disable\+\_\+isr\+\_\+countdown()}{disable\_isr\_countdown()}}
+{\footnotesize\ttfamily void disable\+\_\+isr\+\_\+countdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+disable compare match interrupt. \mbox{\Hypertarget{countdown__states_8c_a11cc295dc94fc336213cd5120d1665cd}\label{countdown__states_8c_a11cc295dc94fc336213cd5120d1665cd}} 
+\index{countdown\+\_\+states.\+c@{countdown\+\_\+states.\+c}!enable\+\_\+isr\+\_\+countdown@{enable\+\_\+isr\+\_\+countdown}}
+\index{enable\+\_\+isr\+\_\+countdown@{enable\+\_\+isr\+\_\+countdown}!countdown\+\_\+states.\+c@{countdown\+\_\+states.\+c}}
+\subsubsection{\texorpdfstring{enable\+\_\+isr\+\_\+countdown()}{enable\_isr\_countdown()}}
+{\footnotesize\ttfamily void enable\+\_\+isr\+\_\+countdown (\begin{DoxyParamCaption}\item[{C\+O\+U\+N\+T\+D\+O\+W\+N\+M\+O\+DE}]{mode }\end{DoxyParamCaption})}
+
+set counter value to 0 \mbox{\Hypertarget{countdown__states_8c_a704821b4d760b8dfa0061a41398e98c0}\label{countdown__states_8c_a704821b4d760b8dfa0061a41398e98c0}} 
 \index{countdown\+\_\+states.\+c@{countdown\+\_\+states.\+c}!Timer1\+\_\+init@{Timer1\+\_\+init}}
 \index{Timer1\+\_\+init@{Timer1\+\_\+init}!countdown\+\_\+states.\+c@{countdown\+\_\+states.\+c}}
 \subsubsection{\texorpdfstring{Timer1\+\_\+init()}{Timer1\_init()}}
@@ -116,4 +135,6 @@ volatile int {\bfseries of\+\_\+for\+\_\+countdown}
 
 Initilizes Timer1 to determine when the countdown is finsihed. 
 
-This is done with the overflow interrupt. 
+This is done with the overflow interrupt. Prescaler\+: 1
+
+set normal mode 
