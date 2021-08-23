@@ -3,7 +3,6 @@
 /**
  * @file
  * @brief provides basic functionality to convert a analog signal to digital.
- * @date 2021-06-08
  */
 
 #ifndef IESADC_h
@@ -13,14 +12,15 @@
 #include <stdint.h>
 
 /**
- * @brief function to setup the analog to digital converter
+ * @brief
+ * Sets up the analog to ditigal converter
  */
 void ADC_Init(void);
 
 /**
  * @brief function to measure the voltage at pin @param channel
- * @param channel determines which channek to measure from
- * @return return a digital value between 0 and 1023
+ * @param channel determines which channel to measure from
+ * @return digital value between 0 and 1023
  */
 uint16_t ADC_Read(uint8_t channel);
 

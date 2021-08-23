@@ -2,8 +2,6 @@
  * @file adc.c
  * @brief Provides basic functionality to read the volatege from a pin and convert it
  * to a digital signal
- * @version 0.1
- * @date 2021-06-08
  */
 
 #include <avr/io.h>
@@ -14,8 +12,6 @@
 #include "../inc/main.h"
 
 void ADC_Init() {
-    // TODO muss als erstes passieren.
-    // Alle pins zuruecksetzen.
     DDRD = 0;
     DDRB = 0;
 
