@@ -15,7 +15,8 @@ How to compile and install the firmware on the roboter\+:
  To install the default configuration it is sufficient to navigate to the projects directory in the console and run {\bfseries make all}
 \end{DoxyItemize}\hypertarget{index_Explanation}{}\subsection{Explanation}\label{index_Explanation}
 In order to install new firmware on the robot. We first need to translate the sourcecode for the computer/ hardware to understand. ~\newline
- This is done by compiling the sourcecode into bytecode. Since the project consists of multiple sourcefiles these have to be linked together.
+ This is done by compiling the sourcecode into bytecode. Since the project consists of multiple sourcefiles these have to be linked together so the output is one object file. ~\newline
+
 
 
 \begin{DoxyItemize}
@@ -26,7 +27,25 @@ In order to install new firmware on the robot. We first need to translate the so
 The \href{transition_map.pdf}{\tt {\bfseries Transition Map}}.\hypertarget{index_Hardware}{}\section{Hardware}\label{index_Hardware}
 \hypertarget{index_Table_Of_Contents}{}\section{Table\+\_\+\+Of\+\_\+\+Contents}\label{index_Table_Of_Contents}
 \hypertarget{index_States}{}\subsection{descrption}\label{index_States}
-to implement new states\hypertarget{index_Calibration}{}\section{Calibration}\label{index_Calibration}
+to implement new states\hypertarget{index_Features}{}\section{Features}\label{index_Features}
+The hole implementation is based on the api \hyperlink{fsm_8h}{fsm.\+h} which is a finite state machine. ~\newline
+This has several advantages. The robot knows at all times in which state it currently is in. ~\newline
+This allows for more accurate state transitions which results in better driving behaviour. ~\newline
+Each state can have its own logic and transitions which can be completly independant of each other. ~\newline
+This makes it incredibly easy to debug and implement new states. ~\newline
+ When adding, a new state the logic of the allready existing transitions does not have to be modified because only the information relevant to the current state has to be interpreted.\hypertarget{index_FSM_explanation}{}\subsection{F\+S\+M\+\_\+explanation}\label{index_FSM_explanation}
+
+\begin{DoxyItemize}
+\item Each state implements an {\bfseries enter function} and an {\bfseries update function} which defines the behaviour of the state. ~\newline
+
+\item The {\bfseries enter function} is called once for every transition into an other state which invokes the new current state\textquotesingle{}s {\bfseries enter function} implementation. ~\newline
+ E.\+g. When the \hyperlink{structState}{State} Forward is entered the motor settings can be adjusted accordingly in the \hyperlink{states_8c_a639a5239b6bf87b7629b5a5a781f0623}{enter\+\_\+forward()} function as this only need to happen once in this state.
+\item The {\bfseries update function} is called repeadetly in \hyperlink{fsm_8c_a053b1146a3f1c34576d89d599e34329a}{start\+\_\+fsm\+\_\+cycle()} which invokes the current\+\_\+state {\bfseries update function}. ~\newline
+ Each \hyperlink{structState}{State} uses this function to do task that have to take place over a period of time and to determine wether to stay or to transition into another \hyperlink{structState}{State}.
+\item To transition to another state \hyperlink{fsm_8c_a80016823d020a335a595bcd09bc39c96}{transition\+\_\+to\+\_\+state()} is called. This is typically done inside of an {\bfseries update function} as it has the needed parameters.
+\item Note\+: Not every has to implement an {\bfseries enter function} but each state has to implement an {\bfseries update function}.
+\end{DoxyItemize}\hypertarget{index_how_to_add_new_state}{}\subsection{how\+\_\+to\+\_\+add\+\_\+new\+\_\+state}\label{index_how_to_add_new_state}
+\hypertarget{index_Calibration}{}\section{Calibration}\label{index_Calibration}
 \hypertarget{index_compiler_options}{}\section{Compiler Options}\label{index_compiler_options}
 
 \begin{DoxyItemize}

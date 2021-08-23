@@ -25,7 +25,8 @@ How to compile and install the firmware on the roboter:
   
   \subsection Explanation
   In order to install new firmware on the robot. We first need to translate the sourcecode for the computer/ hardware to understand. \n
-  This is done by compiling the sourcecode into bytecode. Since the project consists of multiple sourcefiles these have to be linked together.
+  This is done by compiling the sourcecode into bytecode. Since the project consists of multiple sourcefiles these have to be linked together so the output is one object file. \n
+  
 
 * Open the terminal and navigate to the file with the code using "cd"
   (= change directory), or open the terminal in the desired file folder
@@ -40,6 +41,29 @@ The <a href="transition_map.pdf" target="_blank"><b>Transition Map</b></a>.
 \section Table_Of_Contents
 \subsection States descrption
 \how to implement new states
+
+\section Features
+The hole implementation is based on the api fsm.h which is a finite state machine. \n
+This has several advantages. The robot knows at all times in which state it currently is in. \n
+This allows for more accurate state transitions which results in better driving behaviour. \n
+Each state can have its own logic and transitions which can be completly independant of each other. \n
+This makes it incredibly easy to debug and implement new states. \n When adding, a new state the logic of the allready existing transitions does not have to be modified because 
+only the information relevant to the current state has to be interpreted.
+
+  \subsection FSM_explanation
+  * Each state implements an **enter function** and an **update function** which defines the behaviour of the state. \n
+  * The **enter function** is called once for every transition into an other state which invokes the new current state's **enter function** implementation. \n
+    E.g. When the State Forward is entered the motor settings can be adjusted accordingly in the enter_forward() function as this only need to happen once in this state.
+  * The **update function** is called repeadetly in start_fsm_cycle() which invokes the current_state **update function**. \n
+    Each State uses this function to do task that have to take place over a period of time and to determine wether to stay or to transition into another State if a certain condition is met.
+  * To transition to another state transition_to_state() is called. This is typically done inside of an **update function** as it has the needed parameters.
+    
+  * Note: Not every State has to implement an **enter function** but each State has to implement an **update function**. 
+
+  \subsection how_to_add_new_state
+  
+  
+  
   
 \section Calibration
 

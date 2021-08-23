@@ -86,7 +86,8 @@ Installation</h1>
 <h2><a class="anchor" id="Explanation"></a>
 Explanation</h2>
 <p>In order to install new firmware on the robot. We first need to translate the sourcecode for the computer/ hardware to understand. <br />
- This is done by compiling the sourcecode into bytecode. Since the project consists of multiple sourcefiles these have to be linked together.</p>
+ This is done by compiling the sourcecode into bytecode. Since the project consists of multiple sourcefiles these have to be linked together so the output is one object file. <br />
+</p>
 <ul>
 <li>Open the terminal and navigate to the file with the code using "cd" (= change directory), or open the terminal in the desired file folder by clicking on the right mouse pad and choosing "Open Terminal Here".</li>
 <li>Depending on which option you wish, chose one of the following compiler options:</li>
@@ -99,6 +100,28 @@ Table_Of_Contents</h1>
 <h2><a class="anchor" id="States"></a>
 descrption</h2>
 <p>to implement new states</p>
+<h1><a class="anchor" id="Features"></a>
+Features</h1>
+<p>The hole implementation is based on the api <a class="el" href="fsm_8h.html" title="definition of types for fsm.c ">fsm.h</a> which is a finite state machine. <br />
+This has several advantages. The robot knows at all times in which state it currently is in. <br />
+This allows for more accurate state transitions which results in better driving behaviour. <br />
+Each state can have its own logic and transitions which can be completly independant of each other. <br />
+This makes it incredibly easy to debug and implement new states. <br />
+ When adding, a new state the logic of the allready existing transitions does not have to be modified because only the information relevant to the current state has to be interpreted.</p>
+<h2><a class="anchor" id="FSM_explanation"></a>
+FSM_explanation</h2>
+<ul>
+<li>Each state implements an <b>enter function</b> and an <b>update function</b> which defines the behaviour of the state. <br />
+</li>
+<li>The <b>enter function</b> is called once for every transition into an other state which invokes the new current state's <b>enter function</b> implementation. <br />
+ E.g. When the <a class="el" href="structState.html" title="used to differentiate between states. ">State</a> Forward is entered the motor settings can be adjusted accordingly in the <a class="el" href="states_8c.html#a639a5239b6bf87b7629b5a5a781f0623">enter_forward()</a> function as this only need to happen once in this state.</li>
+<li>The <b>update function</b> is called repeadetly in <a class="el" href="fsm_8c.html#a053b1146a3f1c34576d89d599e34329a">start_fsm_cycle()</a> which invokes the current_state <b>update function</b>. <br />
+ Each <a class="el" href="structState.html" title="used to differentiate between states. ">State</a> uses this function to do task that have to take place over a period of time and to determine wether to stay or to transition into another <a class="el" href="structState.html" title="used to differentiate between states. ">State</a>.</li>
+<li>To transition to another state <a class="el" href="fsm_8c.html#a80016823d020a335a595bcd09bc39c96">transition_to_state()</a> is called. This is typically done inside of an <b>update function</b> as it has the needed parameters.</li>
+<li>Note: Not every has to implement an <b>enter function</b> but each state has to implement an <b>update function</b>.</li>
+</ul>
+<h2><a class="anchor" id="how_to_add_new_state"></a>
+how_to_add_new_state</h2>
 <h1><a class="anchor" id="Calibration"></a>
 Calibration</h1>
 <h1><a class="anchor" id="compiler_options"></a>
