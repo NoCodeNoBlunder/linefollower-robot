@@ -18,9 +18,6 @@ compile: $(SRC_FILES)
 hex:
 	avr-objcopy -O ihex $(BUILD_DIR)firmware $(BUILD_DIR)firmware.hex
 
-link:
-
-
 flash:
 	avrdude -c arduino -p $(MCU) -P /dev/ttyACM0 -b 115200 -U flash:w:$(BUILD_DIR)firmware.hex
 

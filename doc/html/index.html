@@ -78,8 +78,16 @@ Upon being moved the countdown shall be interrupted and the robot has to look fo
 When the robots completes 3 laps it stops and a 60s countdown starts, analog to the first countdown.</p>
 <h1><a class="anchor" id="install_sec"></a>
 Installation</h1>
-<p>Installation and handelling is not as compilcated as one might think!</p><ul>
-<li>First, one has to create a USB connection between the computer and the robot.</li>
+<p>How to compile and install the firmware on the roboter:</p><ul>
+<li>Before the firmware can be flashed, the robot has to be <a href="flashing_process.jpg" target="_blank"><b>connected</b></a> to a pc containing the firmware.</li>
+<li>The of process compiling and flashing is automated using Makefile. <br />
+ To install the default configuration it is sufficient to navigate to the projects directory in the console and run <b>make all</b></li>
+</ul>
+<h2><a class="anchor" id="Explanation"></a>
+Explanation</h2>
+<p>In order to install new firmware on the robot. We first need to translate the sourcecode for the computer/ hardware to understand. <br />
+ This is done by compiling the sourcecode into bytecode. Since the project consists of multiple sourcefiles these have to be linked together.</p>
+<ul>
 <li>Open the terminal and navigate to the file with the code using "cd" (= change directory), or open the terminal in the desired file folder by clicking on the right mouse pad and choosing "Open Terminal Here".</li>
 <li>Depending on which option you wish, chose one of the following compiler options:</li>
 </ul>

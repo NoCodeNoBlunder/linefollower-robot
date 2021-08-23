@@ -18,9 +18,15 @@ When the robots completes 3 laps it stops and a 60s countdown starts, analog to 
 
 
 \section install_sec Installation
-Installation and handelling is not as compilcated as one might think!
-* First, one has to create a USB connection between the computer and
-  the robot.
+How to compile and install the firmware on the roboter:
+* Before the firmware can be flashed, the robot has to be <a href="flashing_process.jpg" target="_blank"><b>connected</b></a> to a pc containing the firmware.
+* The of process compiling and flashing is automated using Makefile. \n
+  To install the default configuration it is sufficient to navigate to the projects directory in the console and run **make all**
+  
+  \subsection Explanation
+  In order to install new firmware on the robot. We first need to translate the sourcecode for the computer/ hardware to understand. \n
+  This is done by compiling the sourcecode into bytecode. Since the project consists of multiple sourcefiles these have to be linked together.
+
 * Open the terminal and navigate to the file with the code using "cd"
   (= change directory), or open the terminal in the desired file folder
   by clicking on the right mouse pad and choosing "Open Terminal Here".
