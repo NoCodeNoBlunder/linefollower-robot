@@ -1,0 +1,63 @@
+\hypertarget{countdown__states_8h}{}\section{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/\+Roboter\+\_\+\+Final/inc/countdown\+\_\+states.h File Reference}
+\label{countdown__states_8h}\index{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/\+Roboter\+\_\+\+Final/inc/countdown\+\_\+states.\+h@{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/\+Roboter\+\_\+\+Final/inc/countdown\+\_\+states.\+h}}
+
+
+Controlls the.  
+
+
+{\ttfamily \#include \char`\"{}fsm.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+Include dependency graph for countdown\+\_\+states.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{countdown__states_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{countdown__states_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{countdown__states_8h_a704821b4d760b8dfa0061a41398e98c0}{Timer1\+\_\+init} ()
+\begin{DoxyCompactList}\small\item\em Initilizes Timer1 to determine when the countdown is finsihed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{countdown__states_8h_a1edafe61b207c68cefb5a40585da9fbc}\label{countdown__states_8h_a1edafe61b207c68cefb5a40585da9fbc}} 
+void \hyperlink{countdown__states_8h_a1edafe61b207c68cefb5a40585da9fbc}{enter\+\_\+countdown} (void)
+\begin{DoxyCompactList}\small\item\em enables the overflow interrupt starting the 15s countdown \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{countdown__states_8h_ac1a290010b86ae6885d77a556d27f35e}\label{countdown__states_8h_ac1a290010b86ae6885d77a556d27f35e}} 
+void \hyperlink{countdown__states_8h_ac1a290010b86ae6885d77a556d27f35e}{update\+\_\+countdown} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em makes the leds blink with 5hz untill 15s elapse upon which it transitions to L\+E\+A\+V\+E\+\_\+\+S\+T\+A\+RT \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{countdown__states_8h_aaf31c07cf96f53fa4c189df852c67754}\label{countdown__states_8h_aaf31c07cf96f53fa4c189df852c67754}} 
+void \hyperlink{countdown__states_8h_aaf31c07cf96f53fa4c189df852c67754}{enter\+\_\+goal\+\_\+reached} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em Makes the robot stop and transmits a success mesage to Serial Port. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{countdown__states_8h_a1952c5f3b65cc3fae7b3a15680297e86}\label{countdown__states_8h_a1952c5f3b65cc3fae7b3a15680297e86}} 
+void \hyperlink{countdown__states_8h_a1952c5f3b65cc3fae7b3a15680297e86}{update\+\_\+goal\+\_\+reached} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em Runs 60s end Countdown during which the leds blink with 5hz. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Controlls the. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{countdown__states_8h_a704821b4d760b8dfa0061a41398e98c0}\label{countdown__states_8h_a704821b4d760b8dfa0061a41398e98c0}} 
+\index{countdown\+\_\+states.\+h@{countdown\+\_\+states.\+h}!Timer1\+\_\+init@{Timer1\+\_\+init}}
+\index{Timer1\+\_\+init@{Timer1\+\_\+init}!countdown\+\_\+states.\+h@{countdown\+\_\+states.\+h}}
+\subsubsection{\texorpdfstring{Timer1\+\_\+init()}{Timer1\_init()}}
+{\footnotesize\ttfamily void Timer1\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initilizes Timer1 to determine when the countdown is finsihed. 
+
+This is done with the overflow interrupt. Prescaler\+: 1
+
+set normal mode 

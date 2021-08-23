@@ -1,0 +1,17 @@
+<map id="/home/ies/SHARE/Roboter/Roboter_Final/inc/main.h" name="/home/ies/SHARE/Roboter/Roboter_Final/inc/main.h">
+<area shape="rect" id="node2" href="$usart_8h.html" title="Basic serial communication via USART for ATMEGA328. " alt="" coords="532,102,712,143"/>
+<area shape="rect" id="node3" href="$adc_8c.html" title="Provides basic functionality to read the volatege from a pin and convert it to a digital signal..." alt="" coords="5,206,185,247"/>
+<area shape="rect" id="node4" href="$check__lap__state_8c.html" title="implementation of the CHECK_LAP State " alt="" coords="821,199,1001,255"/>
+<area shape="rect" id="node5" href="$countdown__states_8c.html" title="Implements both the start and end Countdown using Timer1 with Overflow interrupt. ..." alt="" coords="1025,199,1221,255"/>
+<area shape="rect" id="node6" href="$led__controller_8c.html" title="implementation of the leds controller. " alt="" coords="413,199,593,255"/>
+<area shape="rect" id="node7" href="$motor__controller_8c.html" title="Controlls everything regarding the motors of the robot. " alt="" coords="209,199,389,255"/>
+<area shape="rect" id="node10" href="$check__lap__state_8h.html" title="Defines the enter and update function of the state CHECK_LAP. " alt="" coords="1276,95,1456,151"/>
+<area shape="rect" id="node11" href="$main_8c.html" title="Configuration of FSM. " alt="" coords="1692,206,1872,247"/>
+<area shape="rect" id="node12" href="$linefollower_8h.html" title="provides basic functionality to take measurements from all 3 sensors. " alt="" coords="1043,102,1251,143"/>
+<area shape="rect" id="node14" href="$motor__controller_8h.html" title="Controls the robots motors and therefore determines it&#39;s driving direction and speed. " alt="" coords="788,95,968,151"/>
+<area shape="rect" id="node15" href="$countdown__states_8h.html" title="Controlls the. " alt="" coords="1481,95,1675,151"/>
+<area shape="rect" id="node16" href="$states_8h.html" title="Contains most of the robots State&#39;s functionality. " alt="" coords="1700,102,1880,143"/>
+<area shape="rect" id="node8" href="$states_8c.html" title="Implementations of the states. " alt="" coords="1479,206,1659,247"/>
+<area shape="rect" id="node9" href="$usart_8c.html" title="Basic serial communication via USART for ATMEGA328. " alt="" coords="617,206,797,247"/>
+<area shape="rect" id="node13" href="$linefollower_8c.html" title="Determines the sensors Thresholds. " alt="" coords="1245,206,1455,247"/>
+</map>

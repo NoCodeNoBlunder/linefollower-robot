@@ -1,0 +1,86 @@
+\hypertarget{util_8c}{}\section{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/\+Roboter\+\_\+\+Final/src/util.c File Reference}
+\label{util_8c}\index{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/\+Roboter\+\_\+\+Final/src/util.\+c@{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/\+Roboter\+\_\+\+Final/src/util.\+c}}
+
+
+Implementation of helper funcitons.  
+
+
+{\ttfamily \#include \char`\"{}../inc/util.\+h\char`\"{}}\newline
+Include dependency graph for util.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{util_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{util_8c_a81730220aca7f0c08a83c11576fb5d31}{set\+\_\+pin\+\_\+high} (volatile uint8\+\_\+t $\ast$reg, char bit)
+\begin{DoxyCompactList}\small\item\em function to set a bit in \end{DoxyCompactList}\item 
+void \hyperlink{util_8c_a6b74d1739fd54c7c063c0ed19f7d2d14}{set\+\_\+pin\+\_\+low} (volatile uint8\+\_\+t $\ast$reg, char bit)
+\item 
+void \hyperlink{util_8c_a7401f3d3d7efd2ec4c882f2817a003ff}{toggle\+\_\+pin} (volatile uint8\+\_\+t $\ast$reg, char bit)
+\begin{DoxyCompactList}\small\item\em function to toggle a bit in \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementation of helper funcitons. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{util_8c_a81730220aca7f0c08a83c11576fb5d31}\label{util_8c_a81730220aca7f0c08a83c11576fb5d31}} 
+\index{util.\+c@{util.\+c}!set\+\_\+pin\+\_\+high@{set\+\_\+pin\+\_\+high}}
+\index{set\+\_\+pin\+\_\+high@{set\+\_\+pin\+\_\+high}!util.\+c@{util.\+c}}
+\subsubsection{\texorpdfstring{set\+\_\+pin\+\_\+high()}{set\_pin\_high()}}
+{\footnotesize\ttfamily void set\+\_\+pin\+\_\+high (\begin{DoxyParamCaption}\item[{volatile uint8\+\_\+t $\ast$}]{reg,  }\item[{char}]{bit }\end{DoxyParamCaption})}
+
+
+
+function to set a bit in 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg.} & \\
+\hline
+{\em reg} & pointer to register to modify. \\
+\hline
+{\em bit} & to set to high. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{util_8c_a6b74d1739fd54c7c063c0ed19f7d2d14}\label{util_8c_a6b74d1739fd54c7c063c0ed19f7d2d14}} 
+\index{util.\+c@{util.\+c}!set\+\_\+pin\+\_\+low@{set\+\_\+pin\+\_\+low}}
+\index{set\+\_\+pin\+\_\+low@{set\+\_\+pin\+\_\+low}!util.\+c@{util.\+c}}
+\subsubsection{\texorpdfstring{set\+\_\+pin\+\_\+low()}{set\_pin\_low()}}
+{\footnotesize\ttfamily void set\+\_\+pin\+\_\+low (\begin{DoxyParamCaption}\item[{volatile uint8\+\_\+t $\ast$}]{reg,  }\item[{char}]{bit }\end{DoxyParamCaption})}
+
+function to unset a bit in 
+\begin{DoxyParams}{Parameters}
+{\em reg.} & \\
+\hline
+{\em reg} & pointer to register to modify. \\
+\hline
+{\em bit} & to set to low. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{util_8c_a7401f3d3d7efd2ec4c882f2817a003ff}\label{util_8c_a7401f3d3d7efd2ec4c882f2817a003ff}} 
+\index{util.\+c@{util.\+c}!toggle\+\_\+pin@{toggle\+\_\+pin}}
+\index{toggle\+\_\+pin@{toggle\+\_\+pin}!util.\+c@{util.\+c}}
+\subsubsection{\texorpdfstring{toggle\+\_\+pin()}{toggle\_pin()}}
+{\footnotesize\ttfamily void toggle\+\_\+pin (\begin{DoxyParamCaption}\item[{volatile uint8\+\_\+t $\ast$}]{reg,  }\item[{char}]{bit }\end{DoxyParamCaption})}
+
+
+
+function to toggle a bit in 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg.} & \\
+\hline
+{\em reg} & pointer to register to modify. \\
+\hline
+{\em bit} & to toggle. \\
+\hline
+\end{DoxyParams}

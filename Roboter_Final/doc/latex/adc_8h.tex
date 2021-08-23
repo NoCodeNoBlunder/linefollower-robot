@@ -1,0 +1,104 @@
+\hypertarget{adc_8h}{}\section{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/\+Roboter\+\_\+\+Final/inc/adc.h File Reference}
+\label{adc_8h}\index{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/\+Roboter\+\_\+\+Final/inc/adc.\+h@{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/\+Roboter\+\_\+\+Final/inc/adc.\+h}}
+
+
+provides basic functionality to convert a analog signal to digital.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for adc.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{adc_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{adc_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{adc_8h_a5137b551f1b83b0f4d8df7d071a3d3a6}\label{adc_8h_a5137b551f1b83b0f4d8df7d071a3d3a6}} 
+void \hyperlink{adc_8h_a5137b551f1b83b0f4d8df7d071a3d3a6}{A\+D\+C\+\_\+\+Init} (void)
+\begin{DoxyCompactList}\small\item\em Sets up the analog to ditigal converter. \end{DoxyCompactList}\item 
+uint16\+\_\+t \hyperlink{adc_8h_ab0bfe89c06929fe65db2112532cb4047}{A\+D\+C\+\_\+\+Read} (uint8\+\_\+t channel)
+\begin{DoxyCompactList}\small\item\em function to measure the voltage at pin \end{DoxyCompactList}\item 
+uint16\+\_\+t \hyperlink{adc_8h_a84fd71fbb96522e5dfda8cdc815b2aeb}{A\+D\+C\+\_\+read\+\_\+avg} (uint8\+\_\+t channel, uint8\+\_\+t nsamples)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+provides basic functionality to convert a analog signal to digital. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{adc_8h_ab0bfe89c06929fe65db2112532cb4047}\label{adc_8h_ab0bfe89c06929fe65db2112532cb4047}} 
+\index{adc.\+h@{adc.\+h}!A\+D\+C\+\_\+\+Read@{A\+D\+C\+\_\+\+Read}}
+\index{A\+D\+C\+\_\+\+Read@{A\+D\+C\+\_\+\+Read}!adc.\+h@{adc.\+h}}
+\subsubsection{\texorpdfstring{A\+D\+C\+\_\+\+Read()}{ADC\_Read()}}
+{\footnotesize\ttfamily uint16\+\_\+t A\+D\+C\+\_\+\+Read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel }\end{DoxyParamCaption})}
+
+
+
+function to measure the voltage at pin 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & \\
+\hline
+{\em channel} & determines which channel to measure from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+digital value between 0 and 1023
+\end{DoxyReturn}
+Function to read the voltage and convert it to digital 
+\begin{DoxyParams}{Parameters}
+{\em channel} & pin to read from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+digital uint16\+\_\+6 value ranging from 0-\/1023 
+\end{DoxyReturn}
+\mbox{\Hypertarget{adc_8h_a84fd71fbb96522e5dfda8cdc815b2aeb}\label{adc_8h_a84fd71fbb96522e5dfda8cdc815b2aeb}} 
+\index{adc.\+h@{adc.\+h}!A\+D\+C\+\_\+read\+\_\+avg@{A\+D\+C\+\_\+read\+\_\+avg}}
+\index{A\+D\+C\+\_\+read\+\_\+avg@{A\+D\+C\+\_\+read\+\_\+avg}!adc.\+h@{adc.\+h}}
+\subsubsection{\texorpdfstring{A\+D\+C\+\_\+read\+\_\+avg()}{ADC\_read\_avg()}}
+{\footnotesize\ttfamily uint16\+\_\+t A\+D\+C\+\_\+read\+\_\+avg (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel,  }\item[{uint8\+\_\+t}]{nsamples }\end{DoxyParamCaption})}
+
+function to measure the average voltage at pin 
+\begin{DoxyParams}{Parameters}
+{\em channel} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+A\+D\+C\+\_\+\+I\+N\+I\+T() 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & determines which channel to measure from \\
+\hline
+{\em nsamples} & determines the samplesize \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the average value across nsamples
+\end{DoxyReturn}
+Combines multiple readings to return more accurate values 
+\begin{DoxyParams}{Parameters}
+{\em channel} & pin to read from \\
+\hline
+{\em nsamples} & number of samples \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+average value of readings 
+\end{DoxyReturn}

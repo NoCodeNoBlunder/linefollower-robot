@@ -1,0 +1,126 @@
+\hypertarget{states_8c}{}\section{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/\+Roboter\+\_\+\+Final/src/states.c File Reference}
+\label{states_8c}\index{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/\+Roboter\+\_\+\+Final/src/states.\+c@{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/\+Roboter\+\_\+\+Final/src/states.\+c}}
+
+
+Implementations of the states.  
+
+
+{\ttfamily \#include \char`\"{}../inc/states.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/motor\+\_\+controller.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/adc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/usart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/led\+\_\+controller.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/check\+\_\+lap\+\_\+state.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/countdown\+\_\+states.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../inc/linefollower.\+h\char`\"{}}\newline
+Include dependency graph for states.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{states_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{states_8c_a16ce10e52b1fdb1f0b2faf0943b98730}\label{states_8c_a16ce10e52b1fdb1f0b2faf0943b98730}} 
+void \hyperlink{states_8c_a16ce10e52b1fdb1f0b2faf0943b98730}{enter\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em Initilizes all modules. \end{DoxyCompactList}\item 
+void \hyperlink{states_8c_a95f58454a19ce422b8950c8832426fd4}{update\+\_\+init} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em Transitions to C\+H\+E\+C\+K\+\_\+\+S\+T\+A\+RT if C\+O\+U\+N\+T\+E\+R\+\_\+\+M\+O\+DE is enabled else transitions to L\+E\+A\+V\+E\+\_\+\+S\+T\+A\+RT. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{states_8c_a639a5239b6bf87b7629b5a5a781f0623}\label{states_8c_a639a5239b6bf87b7629b5a5a781f0623}} 
+void \hyperlink{states_8c_a639a5239b6bf87b7629b5a5a781f0623}{enter\+\_\+forward} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em Makes the robot drive forward and lights the middle led. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{states_8c_a1f668075c48db79be24aeaefabaa0384}\label{states_8c_a1f668075c48db79be24aeaefabaa0384}} 
+void \hyperlink{states_8c_a1f668075c48db79be24aeaefabaa0384}{update\+\_\+forward} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em Takes a measurement and determines wether the robot should transition to another state. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{states_8c_aa0858cea30ad1272fc505d1fdc67d664}\label{states_8c_aa0858cea30ad1272fc505d1fdc67d664}} 
+void \hyperlink{states_8c_aa0858cea30ad1272fc505d1fdc67d664}{enter\+\_\+soft\+\_\+left} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em Makes the robot perform a soft left turn and lights the left and middle led. \end{DoxyCompactList}\item 
+void \hyperlink{states_8c_a91d16e6ab66f7656508f93de8b22ea65}{update\+\_\+soft\+\_\+left} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em Check wether the robot should continue the soft turn, transition into F\+O\+R\+W\+A\+RD or L\+E\+F\+T\+\_\+\+H\+A\+RD. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{states_8c_a052fc65540909ebe67a240a7ac304699}\label{states_8c_a052fc65540909ebe67a240a7ac304699}} 
+void \hyperlink{states_8c_a052fc65540909ebe67a240a7ac304699}{enter\+\_\+soft\+\_\+right} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em Makes the robot perform a soft right turn and lights the right and middle led. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{states_8c_a3833aa5cc3da8c3fae5daab7b938864b}\label{states_8c_a3833aa5cc3da8c3fae5daab7b938864b}} 
+void \hyperlink{states_8c_a3833aa5cc3da8c3fae5daab7b938864b}{update\+\_\+soft\+\_\+right} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em Checks wether the robot should continue the soft turn, transition into F\+O\+R\+W\+A\+RD or R\+I\+G\+H\+T\+\_\+\+H\+A\+RD. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{states_8c_ad936a76a75b1663e8b46866f013a6cca}\label{states_8c_ad936a76a75b1663e8b46866f013a6cca}} 
+void \hyperlink{states_8c_ad936a76a75b1663e8b46866f013a6cca}{enter\+\_\+left\+\_\+hard} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em Makes the robot perform a sharp left turn and lights the left led. \end{DoxyCompactList}\item 
+void \hyperlink{states_8c_afdc97b5fe0705c56e06a6bc80e21d927}{update\+\_\+left\+\_\+hard} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em continues the sharp turn until the left line detects the line again. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{states_8c_abf5826157e2db12872d61450a56dd8ca}\label{states_8c_abf5826157e2db12872d61450a56dd8ca}} 
+void \hyperlink{states_8c_abf5826157e2db12872d61450a56dd8ca}{enter\+\_\+right\+\_\+hard} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em Makes the robot perform a sharp right turn and lights the right led. \end{DoxyCompactList}\item 
+void \hyperlink{states_8c_acfac09e8251305725a4cbc923f74ae46}{update\+\_\+right\+\_\+hard} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em continues the shart turn untill the right line detects the line again. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{states_8c_ae3cfc490941e7da71da6b5deb1f4c230}\label{states_8c_ae3cfc490941e7da71da6b5deb1f4c230}} 
+void \hyperlink{states_8c_ae3cfc490941e7da71da6b5deb1f4c230}{enter\+\_\+leave\+\_\+start} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em Makes to Robot drive Forward. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{states_8c_a5026e387130ef522ba60b9eaada43ac7}\label{states_8c_a5026e387130ef522ba60b9eaada43ac7}} 
+void \hyperlink{states_8c_a5026e387130ef522ba60b9eaada43ac7}{update\+\_\+leave\+\_\+start} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em The robot continues to drive forward untill it leaves the startfield. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{states_8c_a72c1b18e2bc84e9333c71a103cdda24d}\label{states_8c_a72c1b18e2bc84e9333c71a103cdda24d}} 
+void \hyperlink{states_8c_a72c1b18e2bc84e9333c71a103cdda24d}{update\+\_\+check\+\_\+startpos} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em checks wether the robot is on the startfield. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementations of the states. 
+
+\begin{DoxySeeAlso}{See also}
+\href{transition_map.pdf}{\tt {\bfseries Transition Map}} 
+\end{DoxySeeAlso}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{states_8c_a95f58454a19ce422b8950c8832426fd4}\label{states_8c_a95f58454a19ce422b8950c8832426fd4}} 
+\index{states.\+c@{states.\+c}!update\+\_\+init@{update\+\_\+init}}
+\index{update\+\_\+init@{update\+\_\+init}!states.\+c@{states.\+c}}
+\subsubsection{\texorpdfstring{update\+\_\+init()}{update\_init()}}
+{\footnotesize\ttfamily void update\+\_\+init (\begin{DoxyParamCaption}\item[{\hyperlink{structFSM}{F\+SM} $\ast$}]{fsm,  }\item[{\hyperlink{structRoboterData}{Roboter\+Data} $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Transitions to C\+H\+E\+C\+K\+\_\+\+S\+T\+A\+RT if C\+O\+U\+N\+T\+E\+R\+\_\+\+M\+O\+DE is enabled else transitions to L\+E\+A\+V\+E\+\_\+\+S\+T\+A\+RT. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fsm} & pointer to fsm instance which stores all states and the current state. \\
+\hline
+{\em data} & stores all the information regarding the robot. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{states_8c_afdc97b5fe0705c56e06a6bc80e21d927}\label{states_8c_afdc97b5fe0705c56e06a6bc80e21d927}} 
+\index{states.\+c@{states.\+c}!update\+\_\+left\+\_\+hard@{update\+\_\+left\+\_\+hard}}
+\index{update\+\_\+left\+\_\+hard@{update\+\_\+left\+\_\+hard}!states.\+c@{states.\+c}}
+\subsubsection{\texorpdfstring{update\+\_\+left\+\_\+hard()}{update\_left\_hard()}}
+{\footnotesize\ttfamily void update\+\_\+left\+\_\+hard (\begin{DoxyParamCaption}\item[{\hyperlink{structFSM}{F\+SM} $\ast$}]{fsm,  }\item[{\hyperlink{structRoboterData}{Roboter\+Data} $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+continues the sharp turn until the left line detects the line again. 
+
+This state can only be entered from a S\+O\+F\+T\+\_\+\+L\+E\+FT to achieve smoother turns. \mbox{\Hypertarget{states_8c_acfac09e8251305725a4cbc923f74ae46}\label{states_8c_acfac09e8251305725a4cbc923f74ae46}} 
+\index{states.\+c@{states.\+c}!update\+\_\+right\+\_\+hard@{update\+\_\+right\+\_\+hard}}
+\index{update\+\_\+right\+\_\+hard@{update\+\_\+right\+\_\+hard}!states.\+c@{states.\+c}}
+\subsubsection{\texorpdfstring{update\+\_\+right\+\_\+hard()}{update\_right\_hard()}}
+{\footnotesize\ttfamily void update\+\_\+right\+\_\+hard (\begin{DoxyParamCaption}\item[{\hyperlink{structFSM}{F\+SM} $\ast$}]{fsm,  }\item[{\hyperlink{structRoboterData}{Roboter\+Data} $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+continues the shart turn untill the right line detects the line again. 
+
+This state can only be entered from a S\+O\+F\+T\+\_\+\+R\+I\+G\+HT to achieve smoother turns. \mbox{\Hypertarget{states_8c_a91d16e6ab66f7656508f93de8b22ea65}\label{states_8c_a91d16e6ab66f7656508f93de8b22ea65}} 
+\index{states.\+c@{states.\+c}!update\+\_\+soft\+\_\+left@{update\+\_\+soft\+\_\+left}}
+\index{update\+\_\+soft\+\_\+left@{update\+\_\+soft\+\_\+left}!states.\+c@{states.\+c}}
+\subsubsection{\texorpdfstring{update\+\_\+soft\+\_\+left()}{update\_soft\_left()}}
+{\footnotesize\ttfamily void update\+\_\+soft\+\_\+left (\begin{DoxyParamCaption}\item[{\hyperlink{structFSM}{F\+SM} $\ast$}]{fsm,  }\item[{\hyperlink{structRoboterData}{Roboter\+Data} $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Check wether the robot should continue the soft turn, transition into F\+O\+R\+W\+A\+RD or L\+E\+F\+T\+\_\+\+H\+A\+RD. 
+
+\textbackslash{} 
