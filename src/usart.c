@@ -7,8 +7,9 @@
 
 #include <avr/io.h>
 #include <util/delay.h>
+#include <stdio.h>
+
 #include "../inc/usart.h"
-#include "../lib/stdio.h"
 
 #define SHORT_wTIME 100
 

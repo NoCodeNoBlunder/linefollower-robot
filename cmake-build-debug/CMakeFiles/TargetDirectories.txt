@@ -1,3 +1,0 @@
-C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/cmake-build-debug/CMakeFiles/Roboter.dir
-C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Fabian/Desktop/Semester 2/Labor C/VM Share/Roboter/cmake-build-debug/CMakeFiles/rebuild_cache.dir

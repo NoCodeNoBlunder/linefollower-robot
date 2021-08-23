@@ -6,7 +6,7 @@
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include "../lib/stdio.h"
+#include <stdio.h>
 #include "../inc/usart.h"
 #include "../inc/adc.h"
 #include "../inc/main.h"
