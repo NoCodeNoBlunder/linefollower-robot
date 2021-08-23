@@ -9,7 +9,6 @@
 #include "main.h"
 
 /**
- * @fn
  * @brief takes measurement of all sensors and stores the values in @param data struct.
  * @param data pointer to struct containing all information regarding the robot.
  */

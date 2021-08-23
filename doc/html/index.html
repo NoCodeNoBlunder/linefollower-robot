@@ -66,7 +66,7 @@ $(function() {
 <img src="the_robot.jpg" alt="the_robot.jpg"/>
 <div class="caption">
 The Robot</div></div>
-<h1><a class="anchor" id="intro_sec"></a>
+ <h1><a class="anchor" id="intro_sec"></a>
 Introduction</h1>
 <p>Welcome to a brief introduction of a project executed by a student of the university of Kassel. <br />
  The goal of this project is to create reliable software that controlls the robot to drive three laps on a track (<a href="track_img.jpg" target="_blank"><b>example track</b></a>) consisting of a black line, autonomously. <br />
@@ -82,24 +82,43 @@ Installation</h1>
 <p>How to compile and install the firmware on the roboter:</p><ul>
 <li>Before the firmware can be flashed, the robot has to be <a href="flashing_process.jpg" target="_blank"><b>connected</b></a> to a pc containing the firmware.</li>
 <li>The of process compiling and flashing is automated using Makefile. <br />
- To install the default configuration it is sufficient to navigate to the projects directory in the console and run <b>make all</b></li>
+ To install the default configuration it is sufficient to navigate to the projects directory in the console and run <b>make</b></li>
 </ul>
 <h2><a class="anchor" id="Explanation"></a>
 Explanation</h2>
-<p>In order to install new firmware on the robot. We first need to translate the sourcecode for the computer/ hardware to understand. <br />
- This is done by compiling the sourcecode into bytecode. Since the project consists of multiple sourcefiles these have to be linked together so the output is one object file. <br />
-</p>
 <ul>
-<li>Open the terminal and navigate to the file with the code using "cd" (= change directory), or open the terminal in the desired file folder by clicking on the right mouse pad and choosing "Open Terminal Here".</li>
-<li>Depending on which option you wish, chose one of the following compiler options:</li>
+<li>In order to install new firmware on the robot. We first need to "translate" the sourcecode for the computer/ hardware to understand. <br />
+ This is done by compiling the sourcecode into bytecode. Since the project consists of multiple sourcefiles these also have to be linked together so the output is one object file. <br />
+</li>
+<li>The project can be compilated in different ways for more information view section <b>Compilation Modes</b>. <br />
+</li>
+<li>The <b>ATMEGA328P</b> uses a different encoding so the object file has to converted to a hex file <br />
+</li>
+<li>Now the correct hex file is on the computer and only has to be installed on the microcontroller.</li>
+<li>This is done by flashing.</li>
+<li>The hex and flash commands are listed in the <b>Makefile</b>.</li>
 </ul>
-<p>The <a href="transition_map.pdf" target="_blank"><b>Transition Map</b></a>.</p>
+<h2><a class="anchor" id="comp"></a>
+Compilation Modes</h2>
+<p>The Compilation modes can be adjusted as wanted by setting the values of the <b>- D Flags</b>. <br />
+ in the <b>Makefile</b> under <b>CFLAGS</b>. If a value is set to 0 the corrosponding mode is disabled otherwise it is enabled. <br />
+</p><ul>
+<li><b>DEBUG_MODE</b>: <br />
+ Turns on debug prints that are send to the <b>serial port</b> via <a class="el" href="usart_8c.html#a2744fce10359c4e63ba8fcb65e7d92d2">transmit_debug_msg()</a> <br />
+ The data send contains the current State, the sensor values and speed of the engines.</li>
+<li><b>COUNTDONW_MODE</b>: <br />
+ Enables the 15s Countdown at the start. <br />
+ Otherwise the Roboter starts with the linefollowing algorithm as soon as it is turned on.</li>
+<li><b>LAPCOUNTER_MODE</b>: <br />
+ If enabled the robot counts the laps otherwise it follows the line till it's batteries die.</li>
+<li><b>LAPS</b>: <br />
+ Determines how many laps the robot has to drive. <br />
+ <b>Note</b>: This is only relevant if <b>LAPCOUNTER_MODE</b> is enabled.</li>
+</ul>
 <h1><a class="anchor" id="Hardware"></a>
 Hardware</h1>
-<p>Microcontroller Arduino Modell: ATMEGA328P <br />
+<p>Microcontroller Arduino Modell: <b>ATMEGA328P</b> <br />
 The <a href="pin_layout.pdf" target="_blank"><b>Pin layout</b></a> can be looked up here.</p>
-<h2><a class="anchor" id="States"></a>
-descriptions</h2>
 <h1><a class="anchor" id="Features"></a>
 Features</h1>
 <p>The hole implementation is based on the api <a class="el" href="fsm_8h.html" title="definition of types for fsm.c ">fsm.h</a> which is a finite state machine. <br />
@@ -108,8 +127,8 @@ This allows for more accurate state transitions which results in better driving 
 Each state can have its own logic and transitions which can be completly independant of each other. <br />
 This makes it incredibly easy to debug and implement new states. <br />
  When adding, a new state the logic of the allready existing transitions does not have to be modified because only the information relevant to the current state has to be interpreted.</p>
-<h2><a class="anchor" id="FSM_explanation"></a>
-FSM_explanation</h2>
+<h2><a class="anchor" id="fsm_explanation"></a>
+FSM Explanation</h2>
 <ul>
 <li>Each State implements an <b>enter function</b> and an <b>update function</b> which defines the behaviour of the State. <br />
 </li>
@@ -117,35 +136,65 @@ FSM_explanation</h2>
  E.g. When the State Forward is entered the motor settings can be adjusted accordingly in the <a class="el" href="states_8c.html#a639a5239b6bf87b7629b5a5a781f0623">enter_forward()</a> function as this only need to happen once in this state.</li>
 <li>The <b>update function</b> is called repeadetly in <a class="el" href="fsm_8c.html#a053b1146a3f1c34576d89d599e34329a">start_fsm_cycle()</a> which invokes the current_state <b>update function</b>. <br />
  Each State uses this function to do task that have to take place over a period of time and to determine wether to stay or to transition into another State if a certain condition is met.</li>
-<li>To transition to another state <a class="el" href="fsm_8c.html#a80016823d020a335a595bcd09bc39c96">transition_to_state()</a> is called. This is typically done inside of an <b>update function</b> as it has the needed parameters.</li>
-<li>Note: Not every State has to implement an <b>enter function</b> but each State has to implement an <b>update function</b>.</li>
+<li>To transition to another state <a class="el" href="fsm_8c.html#a80016823d020a335a595bcd09bc39c96">transition_to_state()</a> is called. This is typically done inside of a States's <b>update function</b> as it has the needed parameters.</li>
+<li><b>Note</b>: Not every State has to implement an <b>enter function</b> but each State has to implement an <b>update function</b>.</li>
 </ul>
-<h2><a class="anchor" id="how_to_implement_new_states"></a>
-how_to_implement_new_states</h2>
+<h2><a class="anchor" id="implement_new_states"></a>
+How to implement new States</h2>
 <p>Descrition of how to add a new state.</p><ul>
 <li>Add a new state in State</li>
-<li>Create function enter_ + "name_of_state" and update_ + "name_of_state"</li>
+<li>Create function enter_ + "name_of_state" and update_ + "name_of_state" for better readabilty.</li>
 <li>Call to <a class="el" href="fsm_8c.html#a2d99213b7ce90d5e4b0cbd7f261d8e3e">add_state()</a> passing a pointer to the States's enter and update function</li>
+<li>Implement the enter and update function as wanted achieving the desired behaviour for that State.</li>
 </ul>
-<h1><a class="anchor" id="Additional_Features"></a>
-Additional_Features</h1>
-<p>The ATMEGA328p comes with 3 onboard timers which are used in order to achieve delays.</p>
+<h1><a class="anchor" id="additional_features"></a>
+Additional Features</h1>
+<p>The <b>ATMEGA328p</b> comes with 3 onboard timers which are all used in order to prevent software delays. <br />
+All delays including the delay for the start and end countdown are implemented via the usage of interrupts. <br />
+This is more efficient as the microcontroller does not have to waist energy doing nothing. Another advantage is that the programm can still be running normally during the delays which enables us to take measurements as per usuall and take action accordingly.</p>
+<h1><a class="anchor" id="States"></a>
+States</h1>
+<p>The State transitions are implemented as shown in <a href="transition_map.pdf" target="_blank"><b>Transition Map</b></a>.</p><ul>
+<li><b>INIT</b>: <br />
+ Inilizes all the modules.</li>
+<li><b>CHECK_STARTPOS</b>: <br />
+ Lights leds based on their status and transition to CHECK_STARTPOS when the startfield is detected.</li>
+<li><b>COUNTDOWN</b>: <br />
+ Starts the 15s countdown. If the robot is moved during this time the countdown is interrupted. <br />
+ If the countdown finished successfully the roboter transitions to LEAVE_START</li>
+<li><b>LEAVE_START</b>: <br />
+ In this state the robot starts to drive forward until it leaves the startfield. <br />
+ This State is used so the Robot doesn't count the startfield multiple times per pass.</li>
+<li><b>FORWARD</b>: <br />
+ The Robot drives forward by setting both engines forward and to the same speed. <br />
+ This state is left only if one or both of the side sensors detect a line.</li>
+<li><b>LEFT_SOFT</b>: <br />
+ In this state the robot performes a slight turn by making the left eng speed slower then the right via <a class="el" href="motor__controller_8c.html#aedcc8ddfc6f7a9d3f55833ac09fa01f5" title="Sets the robots&#39;s engines polarity and duty cycles therefore controlling the direction of the robot a...">set_direction()</a> <br />
+ This state is used mainly to react to slight inaccuracies when the robot wants to drive forward but <br />
+ is not doing this perfectly. There is always a small margin. This keep the robot on track.</li>
+<li><b>RIGHT_SOFT</b>: <br />
+ Analog to LEFT_SOFT</li>
+<li><b>LEFT_HARD</b>: <br />
+ This state is used for the sharp turnes. By setting the left eng backwards and the right eng to a high speed <br />
+ the robot performs a sharp turn.</li>
+<li><b>RIGHT_HARD</b>: <br />
+ Analog to LEFT_HARD</li>
+<li><b>CHECK_LAP</b>: <br />
+ State that is entered when all 3 sensors see black. <br />
+ In this case the robot checks if it is indeed on the startfield by checking if all 3 sensors detect black for an extended amount of time. /n It is not sufficient to assume it is on the startfield automatically as it can occure in the sharp turns <br />
+ that all 3 sensors see black for a very short amount of time. <br />
+ This state is used to differentiate between these two cases.</li>
+<li><b>GOAL_REACHED</b>: <br />
+ The goal is reached when the robot completed all laps. A 60s countdown is initiated.</li>
+</ul>
 <h1><a class="anchor" id="Calibration"></a>
 Calibration</h1>
-<p>Before letting the robot drive it can be wise. To calibrate the motors. /n Sometimes one motor can be stronger than the other. So the robot is thinking its driving straight <br />
+<p>Before letting the robot drive it can be wise to calibrate it's motors and sensors. <br />
+Sometimes one motor can be stronger than the other. So the robot is thinking its driving straight <br />
 but in reality driving to the site. The same can be said about the sensors. <br />
-The sensors are not always 100% accurate so it can be reasonable to adjust the Threshold enum as needed. Each of the three sensors has its own value which can be adjusted.</p>
-<h1><a class="anchor" id="compiler_options"></a>
-Compiler Options</h1>
-<ul>
-<li><b>make</b>: compiles, flashes and cleans up files that are no longer useful. Debug modus is disabled.</li>
-<li><b>make debug</b>: debug modus is enabled. <br />
-</li>
-<li><b>make remote</b>: This modus enabled the remote control of the robot via cutecom. Debug modus is disabled. <br />
-</li>
-<li><b>make documentation</b>: This modus only updates the doxygen documentation. . <br />
- <b>Attention</b> if you received the file, usually a doxyfile should already exist. However, if there is no html or latex file in the file you received, first type 'doxygen -g doxyfile' in the terminal. After that open the doxyfile in nano ('nano doxyfile' in the terminal) and search for 'OPTIMIZE_OUTPUT_FOR_C' (use the explanation at the bottom of the screen in nano for short cuts). Now you have to type 'YES' behind the '='-symbol and save the doxyfile.</li>
-</ul>
+The sensors are not always 100% accurate so it can be reasonable to adjust the enum Threshold enum as needed. <br />
+ Each of the three sensors has its own value. <br />
+<a href="https://youtu.be/au92yQbTNe0" target="_blank"><b>Here</b></a> is an example how the robot should drive when it is calibrated properly.</p>
 <h1><a class="anchor" id="About_me"></a>
 About the author</h1>
 <p>To tell you a little bit more about myself: My name is Fabian Indrunas, I am currently at the end of my second semester studying computer science at the university of Kassel. <br />
@@ -153,10 +202,10 @@ This semester we had the chance to choose a project in a variety of hands-on cod
  I wanted to bring what I have learned so far to good use and actually see what some lines of code can do in real life. I have been not disappointed, as you can see: <br />
 The work really paid off and at the end my robot slowely but confidently moves around on the track!</p>
 <h1><a class="anchor" id="further_information"></a>
-Optionial information</h1>
+Additional information</h1>
 <p>If you wish to read more about the code and why certain code is used the way it is, just explore the option given above in the main page. <br />
-If you have any suggestions for improvement, do not hesitate and contact me: <a href="#" onclick="location.href='mai'+'lto:'+'kla'+'ra'+'.gu'+'te'+'kun'+'st'+'.kg'+'@g'+'mai'+'l.'+'com'; return false;">klara<span style="display: none;">.nosp@m.</span>.gut<span style="display: none;">.nosp@m.</span>ekuns<span style="display: none;">.nosp@m.</span>t.kg<span style="display: none;">.nosp@m.</span>@gmai<span style="display: none;">.nosp@m.</span>l.co<span style="display: none;">.nosp@m.</span>m</a> <br />
-I hope you enjoy this project as much as I did</p>
+If you have any suggestions for improvement, do not hesitate and contact me: <a href="#" onclick="location.href='mai'+'lto:'+'fin'+'dr'+'una'+'s@'+'hot'+'ma'+'il.'+'co'+'m'; return false;">findr<span style="display: none;">.nosp@m.</span>unas<span style="display: none;">.nosp@m.</span>@hotm<span style="display: none;">.nosp@m.</span>ail.<span style="display: none;">.nosp@m.</span>com</a> <br />
+ </p>
 <h1><a class="anchor" id="Roadmap"></a>
 Roadmap</h1>
 </div></div><!-- contents -->

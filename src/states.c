@@ -3,6 +3,7 @@
  * @file
  * @brief Implementations of the states.
  * @sa <a href="transition_map.pdf" target="_blank"><b>Transition Map</b></a>
+ * @sa /section States
  */
 
 #include "../inc/states.h"

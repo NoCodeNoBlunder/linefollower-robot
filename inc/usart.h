@@ -40,6 +40,11 @@ void USART_print(const char *c);
  */
 void USART_Init(unsigned long ubrr);
 
-
+/**
+ * @fn
+ * @brief
+ * @param fsm
+ * @param data
+ */
 void transmit_debug_msg(FSM *fsm, RoboterData *data);
 #endif

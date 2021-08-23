@@ -13,7 +13,7 @@
 struct FSM;
 
 /**
- * @enum
+ * @typedef
  * @brief used to differentiate between states.
  * @details is used to add, store, and get the desired state from struct FSM
  * Every state added has to exist here.
@@ -21,7 +21,7 @@ struct FSM;
  * @var STATECOUNT is not an actual state but is used to know the ammount of states.
  *
  */
-typedef enum {
+typedef enum State{
     INIT,      // default State has to be the INIT state
     CHECK_STARTPOS,
     COUNTDOWN,
@@ -36,7 +36,7 @@ typedef enum {
     STILL,
     EXIT,
     STATECOUNT, // Is not an actual state but is there to know the amount of states.
-} State ;
+} State;
 
 /**
  * @struct ConcreteState "fsm.h"

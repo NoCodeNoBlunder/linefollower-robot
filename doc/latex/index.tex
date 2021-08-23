@@ -1,4 +1,4 @@
- \hypertarget{index_intro_sec}{}\section{Introduction}\label{index_intro_sec}
+  \hypertarget{index_intro_sec}{}\section{Introduction}\label{index_intro_sec}
 Welcome to a brief introduction of a project executed by a student of the university of Kassel. ~\newline
  The goal of this project is to create reliable software that controlls the robot to drive three laps on a track (\href{track_img.jpg}{\tt {\bfseries example track}}) consisting of a black line, autonomously. ~\newline
 There is a black square placed on the track which acts as the startfield. ~\newline
@@ -12,28 +12,45 @@ How to compile and install the firmware on the roboter\+:
 \begin{DoxyItemize}
 \item Before the firmware can be flashed, the robot has to be \href{flashing_process.jpg}{\tt {\bfseries connected}} to a pc containing the firmware.
 \item The of process compiling and flashing is automated using Makefile. ~\newline
- To install the default configuration it is sufficient to navigate to the projects directory in the console and run {\bfseries make all}
+ To install the default configuration it is sufficient to navigate to the projects directory in the console and run {\bfseries make}
 \end{DoxyItemize}\hypertarget{index_Explanation}{}\subsection{Explanation}\label{index_Explanation}
-In order to install new firmware on the robot. We first need to translate the sourcecode for the computer/ hardware to understand. ~\newline
- This is done by compiling the sourcecode into bytecode. Since the project consists of multiple sourcefiles these have to be linked together so the output is one object file. ~\newline
-
-
 
 \begin{DoxyItemize}
-\item Open the terminal and navigate to the file with the code using \char`\"{}cd\char`\"{} (= change directory), or open the terminal in the desired file folder by clicking on the right mouse pad and choosing \char`\"{}\+Open Terminal Here\char`\"{}.
-\item Depending on which option you wish, chose one of the following compiler options\+:
-\end{DoxyItemize}
+\item In order to install new firmware on the robot. We first need to \char`\"{}translate\char`\"{} the sourcecode for the computer/ hardware to understand. ~\newline
+ This is done by compiling the sourcecode into bytecode. Since the project consists of multiple sourcefiles these also have to be linked together so the output is one object file. ~\newline
 
-The \href{transition_map.pdf}{\tt {\bfseries Transition Map}}.\hypertarget{index_Hardware}{}\section{Hardware}\label{index_Hardware}
-Microcontroller Arduino Modell\+: A\+T\+M\+E\+G\+A328P ~\newline
-The \href{pin_layout.pdf}{\tt {\bfseries Pin layout}} can be looked up here.\hypertarget{index_States}{}\subsection{descriptions}\label{index_States}
-\hypertarget{index_Features}{}\section{Features}\label{index_Features}
+\item The project can be compilated in different ways for more information view section {\bfseries Compilation Modes}. ~\newline
+
+\item The {\bfseries A\+T\+M\+E\+G\+A328P} uses a different encoding so the object file has to converted to a hex file ~\newline
+
+\item Now the correct hex file is on the computer and only has to be installed on the microcontroller.
+\item This is done by flashing.
+\item The hex and flash commands are listed in the {\bfseries Makefile}.
+\end{DoxyItemize}\hypertarget{index_comp}{}\subsection{Compilation Modes}\label{index_comp}
+The Compilation modes can be adjusted as wanted by setting the values of the {\bfseries -\/ D Flags}. ~\newline
+ in the {\bfseries Makefile} under {\bfseries C\+F\+L\+A\+GS}. If a value is set to 0 the corrosponding mode is disabled otherwise it is enabled. ~\newline
+
+\begin{DoxyItemize}
+\item {\bfseries D\+E\+B\+U\+G\+\_\+\+M\+O\+DE}\+: ~\newline
+ Turns on debug prints that are send to the {\bfseries serial port} via \hyperlink{usart_8c_a2744fce10359c4e63ba8fcb65e7d92d2}{transmit\+\_\+debug\+\_\+msg()} ~\newline
+ The data send contains the current State, the sensor values and speed of the engines.
+\item {\bfseries C\+O\+U\+N\+T\+D\+O\+N\+W\+\_\+\+M\+O\+DE}\+: ~\newline
+ Enables the 15s Countdown at the start. ~\newline
+ Otherwise the Roboter starts with the linefollowing algorithm as soon as it is turned on.
+\item {\bfseries L\+A\+P\+C\+O\+U\+N\+T\+E\+R\+\_\+\+M\+O\+DE}\+: ~\newline
+ If enabled the robot counts the laps otherwise it follows the line till it\textquotesingle{}s batteries die.
+\item {\bfseries L\+A\+PS}\+: ~\newline
+ Determines how many laps the robot has to drive. ~\newline
+ {\bfseries Note}\+: This is only relevant if {\bfseries L\+A\+P\+C\+O\+U\+N\+T\+E\+R\+\_\+\+M\+O\+DE} is enabled.
+\end{DoxyItemize}\hypertarget{index_Hardware}{}\section{Hardware}\label{index_Hardware}
+Microcontroller Arduino Modell\+: {\bfseries A\+T\+M\+E\+G\+A328P} ~\newline
+The \href{pin_layout.pdf}{\tt {\bfseries Pin layout}} can be looked up here.\hypertarget{index_Features}{}\section{Features}\label{index_Features}
 The hole implementation is based on the api \hyperlink{fsm_8h}{fsm.\+h} which is a finite state machine. ~\newline
 This has several advantages. The robot knows at all times in which state it currently is in. ~\newline
 This allows for more accurate state transitions which results in better driving behaviour. ~\newline
 Each state can have its own logic and transitions which can be completly independant of each other. ~\newline
 This makes it incredibly easy to debug and implement new states. ~\newline
- When adding, a new state the logic of the allready existing transitions does not have to be modified because only the information relevant to the current state has to be interpreted.\hypertarget{index_FSM_explanation}{}\subsection{F\+S\+M\+\_\+explanation}\label{index_FSM_explanation}
+ When adding, a new state the logic of the allready existing transitions does not have to be modified because only the information relevant to the current state has to be interpreted.\hypertarget{index_fsm_explanation}{}\subsection{F\+S\+M Explanation}\label{index_fsm_explanation}
 
 \begin{DoxyItemize}
 \item Each State implements an {\bfseries enter function} and an {\bfseries update function} which defines the behaviour of the State. ~\newline
@@ -42,33 +59,63 @@ This makes it incredibly easy to debug and implement new states. ~\newline
  E.\+g. When the State Forward is entered the motor settings can be adjusted accordingly in the \hyperlink{states_8c_a639a5239b6bf87b7629b5a5a781f0623}{enter\+\_\+forward()} function as this only need to happen once in this state.
 \item The {\bfseries update function} is called repeadetly in \hyperlink{fsm_8c_a053b1146a3f1c34576d89d599e34329a}{start\+\_\+fsm\+\_\+cycle()} which invokes the current\+\_\+state {\bfseries update function}. ~\newline
  Each State uses this function to do task that have to take place over a period of time and to determine wether to stay or to transition into another State if a certain condition is met.
-\item To transition to another state \hyperlink{fsm_8c_a80016823d020a335a595bcd09bc39c96}{transition\+\_\+to\+\_\+state()} is called. This is typically done inside of an {\bfseries update function} as it has the needed parameters.
-\item Note\+: Not every State has to implement an {\bfseries enter function} but each State has to implement an {\bfseries update function}.
-\end{DoxyItemize}\hypertarget{index_how_to_implement_new_states}{}\subsection{how\+\_\+to\+\_\+implement\+\_\+new\+\_\+states}\label{index_how_to_implement_new_states}
+\item To transition to another state \hyperlink{fsm_8c_a80016823d020a335a595bcd09bc39c96}{transition\+\_\+to\+\_\+state()} is called. This is typically done inside of a States\textquotesingle{}s {\bfseries update function} as it has the needed parameters.
+\item {\bfseries Note}\+: Not every State has to implement an {\bfseries enter function} but each State has to implement an {\bfseries update function}.
+\end{DoxyItemize}\hypertarget{index_implement_new_states}{}\subsection{How to implement new States}\label{index_implement_new_states}
 Descrition of how to add a new state.
 \begin{DoxyItemize}
 \item Add a new state in State
-\item Create function enter\+\_\+ + \char`\"{}name\+\_\+of\+\_\+state\char`\"{} and update\+\_\+ + \char`\"{}name\+\_\+of\+\_\+state\char`\"{}
+\item Create function enter\+\_\+ + \char`\"{}name\+\_\+of\+\_\+state\char`\"{} and update\+\_\+ + \char`\"{}name\+\_\+of\+\_\+state\char`\"{} for better readabilty.
 \item Call to \hyperlink{fsm_8c_a2d99213b7ce90d5e4b0cbd7f261d8e3e}{add\+\_\+state()} passing a pointer to the States\textquotesingle{}s enter and update function
-\end{DoxyItemize}\hypertarget{index_Additional_Features}{}\section{Additional\+\_\+\+Features}\label{index_Additional_Features}
-The A\+T\+M\+E\+G\+A328p comes with 3 onboard timers which are used in order to achieve delays.\hypertarget{index_Calibration}{}\section{Calibration}\label{index_Calibration}
-Before letting the robot drive it can be wise. To calibrate the motors. /n Sometimes one motor can be stronger than the other. So the robot is thinking its driving straight ~\newline
-but in reality driving to the site. The same can be said about the sensors. ~\newline
-The sensors are not always 100\% accurate so it can be reasonable to adjust the Threshold enum as needed. Each of the three sensors has its own value which can be adjusted.\hypertarget{index_compiler_options}{}\section{Compiler Options}\label{index_compiler_options}
-
+\item Implement the enter and update function as wanted achieving the desired behaviour for that State.
+\end{DoxyItemize}\hypertarget{index_additional_features}{}\section{Additional Features}\label{index_additional_features}
+The {\bfseries A\+T\+M\+E\+G\+A328p} comes with 3 onboard timers which are all used in order to prevent software delays. ~\newline
+All delays including the delay for the start and end countdown are implemented via the usage of interrupts. ~\newline
+This is more efficient as the microcontroller does not have to waist energy doing nothing. Another advantage is that the programm can still be running normally during the delays which enables us to take measurements as per usuall and take action accordingly.\hypertarget{index_States}{}\section{States}\label{index_States}
+The State transitions are implemented as shown in \href{transition_map.pdf}{\tt {\bfseries Transition Map}}.
 \begin{DoxyItemize}
-\item {\bfseries make}\+: compiles, flashes and cleans up files that are no longer useful. Debug modus is disabled.
-\item {\bfseries make debug}\+: debug modus is enabled. ~\newline
-
-\item {\bfseries make remote}\+: This modus enabled the remote control of the robot via cutecom. Debug modus is disabled. ~\newline
-
-\item {\bfseries make documentation}\+: This modus only updates the doxygen documentation. . ~\newline
- {\bfseries Attention} if you received the file, usually a doxyfile should already exist. However, if there is no html or latex file in the file you received, first type \textquotesingle{}doxygen -\/g doxyfile\textquotesingle{} in the terminal. After that open the doxyfile in nano (\textquotesingle{}nano doxyfile\textquotesingle{} in the terminal) and search for \textquotesingle{}O\+P\+T\+I\+M\+I\+Z\+E\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+F\+O\+R\+\_\+C\textquotesingle{} (use the explanation at the bottom of the screen in nano for short cuts). Now you have to type \textquotesingle{}Y\+ES\textquotesingle{} behind the \textquotesingle{}=\textquotesingle{}-\/symbol and save the doxyfile.
-\end{DoxyItemize}\hypertarget{index_About_me}{}\section{About the author}\label{index_About_me}
+\item {\bfseries I\+N\+IT}\+: ~\newline
+ Inilizes all the modules.
+\item {\bfseries C\+H\+E\+C\+K\+\_\+\+S\+T\+A\+R\+T\+P\+OS}\+: ~\newline
+ Lights leds based on their status and transition to C\+H\+E\+C\+K\+\_\+\+S\+T\+A\+R\+T\+P\+OS when the startfield is detected.
+\item {\bfseries C\+O\+U\+N\+T\+D\+O\+WN}\+: ~\newline
+ Starts the 15s countdown. If the robot is moved during this time the countdown is interrupted. ~\newline
+ If the countdown finished successfully the roboter transitions to L\+E\+A\+V\+E\+\_\+\+S\+T\+A\+RT
+\item {\bfseries L\+E\+A\+V\+E\+\_\+\+S\+T\+A\+RT}\+: ~\newline
+ In this state the robot starts to drive forward until it leaves the startfield. ~\newline
+ This State is used so the Robot doesn\textquotesingle{}t count the startfield multiple times per pass.
+\item {\bfseries F\+O\+R\+W\+A\+RD}\+: ~\newline
+ The Robot drives forward by setting both engines forward and to the same speed. ~\newline
+ This state is left only if one or both of the side sensors detect a line.
+\item {\bfseries L\+E\+F\+T\+\_\+\+S\+O\+FT}\+: ~\newline
+ In this state the robot performes a slight turn by making the left eng speed slower then the right via \hyperlink{motor__controller_8c_aedcc8ddfc6f7a9d3f55833ac09fa01f5}{set\+\_\+direction()} ~\newline
+ This state is used mainly to react to slight inaccuracies when the robot wants to drive forward but ~\newline
+ is not doing this perfectly. There is always a small margin. This keep the robot on track.
+\item {\bfseries R\+I\+G\+H\+T\+\_\+\+S\+O\+FT}\+: ~\newline
+ Analog to L\+E\+F\+T\+\_\+\+S\+O\+FT
+\item {\bfseries L\+E\+F\+T\+\_\+\+H\+A\+RD}\+: ~\newline
+ This state is used for the sharp turnes. By setting the left eng backwards and the right eng to a high speed ~\newline
+ the robot performs a sharp turn.
+\item {\bfseries R\+I\+G\+H\+T\+\_\+\+H\+A\+RD}\+: ~\newline
+ Analog to L\+E\+F\+T\+\_\+\+H\+A\+RD
+\item {\bfseries C\+H\+E\+C\+K\+\_\+\+L\+AP}\+: ~\newline
+ State that is entered when all 3 sensors see black. ~\newline
+ In this case the robot checks if it is indeed on the startfield by checking if all 3 sensors detect black for an extended amount of time. /n It is not sufficient to assume it is on the startfield automatically as it can occure in the sharp turns ~\newline
+ that all 3 sensors see black for a very short amount of time. ~\newline
+ This state is used to differentiate between these two cases.
+\item {\bfseries G\+O\+A\+L\+\_\+\+R\+E\+A\+C\+H\+ED}\+: ~\newline
+ The goal is reached when the robot completed all laps. A 60s countdown is initiated.
+\end{DoxyItemize}\hypertarget{index_Calibration}{}\section{Calibration}\label{index_Calibration}
+Before letting the robot drive it can be wise to calibrate it\textquotesingle{}s motors and sensors. ~\newline
+Sometimes one motor can be stronger than the other. So the robot is thinking its driving straight ~\newline
+but in reality driving to the site. The same can be said about the sensors. ~\newline
+The sensors are not always 100\% accurate so it can be reasonable to adjust the enum Threshold enum as needed. ~\newline
+ Each of the three sensors has its own value. ~\newline
+\href{https://youtu.be/au92yQbTNe0}{\tt {\bfseries Here}} is an example how the robot should drive when it is calibrated properly.\hypertarget{index_About_me}{}\section{About the author}\label{index_About_me}
 To tell you a little bit more about myself\+: My name is Fabian Indrunas, I am currently at the end of my second semester studying computer science at the university of Kassel. ~\newline
 This semester we had the chance to choose a project in a variety of hands-\/on coding training, including programming a robot. As I have never worked with code before I started studying, ~\newline
  I wanted to bring what I have learned so far to good use and actually see what some lines of code can do in real life. I have been not disappointed, as you can see\+: ~\newline
-The work really paid off and at the end my robot slowely but confidently moves around on the track!\hypertarget{index_further_information}{}\section{Optionial information}\label{index_further_information}
+The work really paid off and at the end my robot slowely but confidently moves around on the track!\hypertarget{index_further_information}{}\section{Additional information}\label{index_further_information}
 If you wish to read more about the code and why certain code is used the way it is, just explore the option given above in the main page. ~\newline
-If you have any suggestions for improvement, do not hesitate and contact me\+: \href{mailto:klara.gutekunst.kg@gmail.com}{\tt klara.\+gutekunst.\+kg@gmail.\+com} ~\newline
-I hope you enjoy this project as much as I did\hypertarget{Mainpage.md_Roadmap}{}\section{Roadmap}\label{Mainpage.md_Roadmap}
+If you have any suggestions for improvement, do not hesitate and contact me\+: \href{mailto:findrunas@hotmail.com}{\tt findrunas@hotmail.\+com} ~\newline
+ \hypertarget{Mainpage.md_Roadmap}{}\section{Roadmap}\label{Mainpage.md_Roadmap}
