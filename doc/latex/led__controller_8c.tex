@@ -1,5 +1,10 @@
 \hypertarget{led__controller_8c}{}\section{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/src/led\+\_\+controller.c File Reference}
 \label{led__controller_8c}\index{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/src/led\+\_\+controller.\+c@{/home/ies/\+S\+H\+A\+R\+E/\+Roboter/src/led\+\_\+controller.\+c}}
+
+
+implementation of the leds controller.  
+
+
 {\ttfamily \#include $<$avr/io.\+h$>$}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}../inc/main.\+h\char`\"{}}\newline
@@ -16,12 +21,6 @@ Include dependency graph for led\+\_\+controller.\+c\+:\nopagebreak
 \end{figure}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{led__controller_8c_af06d9f6715dca56eb43aa185eb4acbdf}\label{led__controller_8c_af06d9f6715dca56eb43aa185eb4acbdf}} 
-\#define {\bfseries S\+H\+O\+R\+T\+\_\+\+W\+T\+I\+ME}~250
-\item 
-\mbox{\Hypertarget{led__controller_8c_a21c22d3cf309b826c3ff00385756cdaa}\label{led__controller_8c_a21c22d3cf309b826c3ff00385756cdaa}} 
-\#define {\bfseries M\+I\+D\+\_\+\+W\+T\+I\+ME}~500
 \item 
 \mbox{\Hypertarget{led__controller_8c_a72cf42dec6e29c265297139af93d6f42}\label{led__controller_8c_a72cf42dec6e29c265297139af93d6f42}} 
 \#define {\bfseries S\+R\+\_\+\+L\+E\+D\+\_\+\+C\+O\+U\+NT}~3
@@ -52,6 +51,11 @@ void \hyperlink{led__controller_8c_a53aef9f33bac9c80913ea4021030472f}{leds\+\_\+
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+implementation of the leds controller. 
+
+
+
 \subsection{Function Documentation}
 \mbox{\Hypertarget{led__controller_8c_a53aef9f33bac9c80913ea4021030472f}\label{led__controller_8c_a53aef9f33bac9c80913ea4021030472f}} 
 \index{led\+\_\+controller.\+c@{led\+\_\+controller.\+c}!leds\+\_\+\+Init@{leds\+\_\+\+Init}}
@@ -59,7 +63,7 @@ void \hyperlink{led__controller_8c_a53aef9f33bac9c80913ea4021030472f}{leds\+\_\+
 \subsubsection{\texorpdfstring{leds\+\_\+\+Init()}{leds\_Init()}}
 {\footnotesize\ttfamily void leds\+\_\+\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-function to initilize the leds. \mbox{\Hypertarget{led__controller_8c_a1b33b3f432313e5d047fed9227589458}\label{led__controller_8c_a1b33b3f432313e5d047fed9227589458}} 
+function to initilize the leds. Set both pins as output. \mbox{\Hypertarget{led__controller_8c_a1b33b3f432313e5d047fed9227589458}\label{led__controller_8c_a1b33b3f432313e5d047fed9227589458}} 
 \index{led\+\_\+controller.\+c@{led\+\_\+controller.\+c}!light\+\_\+led@{light\+\_\+led}}
 \index{light\+\_\+led@{light\+\_\+led}!led\+\_\+controller.\+c@{led\+\_\+controller.\+c}}
 \subsubsection{\texorpdfstring{light\+\_\+led()}{light\_led()}}

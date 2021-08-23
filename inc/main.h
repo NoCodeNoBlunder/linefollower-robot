@@ -1,7 +1,7 @@
 /**
- * @file main.h
- * @brief dont know what to write here.
- * @date 2021-06-08
+ * @file
+ * @brief
+ * Contains Definitions that are used accross the hole project.
  * @author Fabian Indrunas
  */
 

@@ -68,6 +68,9 @@ $(function() {
 <div class="title">led_controller.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Controlls the leds which are mounted on top of the robot.  
+<a href="#details">More...</a></p>
 <div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
@@ -75,7 +78,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <map name="_2home_2ies_2SHARE_2Roboter_2inc_2led__controller_8hdep" id="_2home_2ies_2SHARE_2Roboter_2inc_2led__controller_8hdep">
 <area shape="rect" id="node2" href="check__lap__state_8c.html" title="implementation of the CHECK_LAP State " alt="" coords="5,95,185,136"/>
 <area shape="rect" id="node3" href="countdown__states_8c.html" title="/home/ies/SHARE/Roboter\l/src/countdown_states.c" alt="" coords="209,95,389,136"/>
-<area shape="rect" id="node4" href="led__controller_8c.html" title="/home/ies/SHARE/Roboter\l/src/led_controller.c" alt="" coords="413,95,593,136"/>
+<area shape="rect" id="node4" href="led__controller_8c.html" title="implementation of the leds controller. " alt="" coords="413,95,593,136"/>
 <area shape="rect" id="node5" href="states_8c.html" title="Implementations of the states. " alt="" coords="617,95,797,136"/>
 </map>
 </div>
@@ -91,7 +94,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aaeb3807aec9c38edac067a5c20b24cc1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led__controller_8h.html#aaeb3807aec9c38edac067a5c20b24cc1">select_and_light_led</a> (<a class="el" href="structFSM.html">FSM</a> *fsm, <a class="el" href="structRoboterData.html">RoboterData</a> *data)</td></tr>
 <tr class="separator:aaeb3807aec9c38edac067a5c20b24cc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Controlls the leds which are mounted on top of the robot. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a53aef9f33bac9c80913ea4021030472f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a53aef9f33bac9c80913ea4021030472f">&#9670;&nbsp;</a></span>leds_Init()</h2>
 
@@ -107,6 +112,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>function to initilize the leds. </p>
+<p>Set both pins as output. </p>
 
 </div>
 </div>

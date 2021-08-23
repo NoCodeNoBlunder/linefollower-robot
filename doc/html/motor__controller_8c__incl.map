@@ -1,5 +1,5 @@
 <map id="/home/ies/SHARE/Roboter/src/motor_controller.c" name="/home/ies/SHARE/Roboter/src/motor_controller.c">
-<area shape="rect" id="node5" href="$main_8h.html" title="dont know what to write here. " alt="" coords="413,169,507,196"/>
+<area shape="rect" id="node5" href="$main_8h.html" title="Contains Definitions that are used accross the hole project. " alt="" coords="413,169,507,196"/>
 <area shape="rect" id="node7" href="$fsm_8h.html" title="definition of types for fsm.c " alt="" coords="550,244,605,271"/>
 <area shape="rect" id="node8" href="$motor__controller_8h.html" title="../inc/motor_controller.h" alt="" coords="498,95,657,121"/>
 <area shape="rect" id="node9" href="$usart_8h.html" title="Basic serial communication via USART for ATMEGA328. " alt="" coords="379,95,474,121"/>

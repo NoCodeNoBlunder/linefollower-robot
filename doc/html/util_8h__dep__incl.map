@@ -1,5 +1,5 @@
 <map id="/home/ies/SHARE/Roboter/inc/util.h" name="/home/ies/SHARE/Roboter/inc/util.h">
-<area shape="rect" id="node2" href="$led__controller_8c.html" title="/home/ies/SHARE/Roboter\l/src/led_controller.c" alt="" coords="5,95,185,136"/>
+<area shape="rect" id="node2" href="$led__controller_8c.html" title="implementation of the leds controller. " alt="" coords="5,95,185,136"/>
 <area shape="rect" id="node3" href="$motor__controller_8c.html" title="Controlls everything regarding the motors of the robot. " alt="" coords="209,95,389,136"/>
-<area shape="rect" id="node4" href="$util_8c.html" title="/home/ies/SHARE/Roboter\l/src/util.c" alt="" coords="413,95,593,136"/>
+<area shape="rect" id="node4" href="$util_8c.html" title="Implementation of helper funcitons. " alt="" coords="413,95,593,136"/>
 </map>

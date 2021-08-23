@@ -69,7 +69,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>this file defines  
+<p>Controlls the.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="fsm_8h_source.html">fsm.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="main_8h_source.html">main.h</a>&quot;</code><br />
@@ -79,7 +79,7 @@ Include dependency graph for countdown_states.h:</div>
 <div class="center"><img src="countdown__states_8h__incl.png" border="0" usemap="#_2home_2ies_2SHARE_2Roboter_2inc_2countdown__states_8h" alt=""/></div>
 <map name="_2home_2ies_2SHARE_2Roboter_2inc_2countdown__states_8h" id="_2home_2ies_2SHARE_2Roboter_2inc_2countdown__states_8h">
 <area shape="rect" id="node2" href="fsm_8h.html" title="definition of types for fsm.c " alt="" coords="35,169,89,196"/>
-<area shape="rect" id="node3" href="main_8h.html" title="dont know what to write here. " alt="" coords="99,95,161,121"/>
+<area shape="rect" id="node3" href="main_8h.html" title="Contains Definitions that are used accross the hole project. " alt="" coords="99,95,161,121"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -97,19 +97,50 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a704821b4d760b8dfa0061a41398e98c0"><td class="memItemLeft" align="right" valign="top"><a id="a704821b4d760b8dfa0061a41398e98c0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Timer1_init</b> ()</td></tr>
+<tr class="memitem:a704821b4d760b8dfa0061a41398e98c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="countdown__states_8h.html#a704821b4d760b8dfa0061a41398e98c0">Timer1_init</a> ()</td></tr>
+<tr class="memdesc:a704821b4d760b8dfa0061a41398e98c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initilizes Timer1 to determine when the countdown is finsihed.  <a href="#a704821b4d760b8dfa0061a41398e98c0">More...</a><br /></td></tr>
 <tr class="separator:a704821b4d760b8dfa0061a41398e98c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1edafe61b207c68cefb5a40585da9fbc"><td class="memItemLeft" align="right" valign="top"><a id="a1edafe61b207c68cefb5a40585da9fbc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>enter_countdown</b> (void)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="countdown__states_8h.html#a1edafe61b207c68cefb5a40585da9fbc">enter_countdown</a> (void)</td></tr>
+<tr class="memdesc:a1edafe61b207c68cefb5a40585da9fbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">enables the overflow interrupt starting the 15s countdown <br /></td></tr>
 <tr class="separator:a1edafe61b207c68cefb5a40585da9fbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1a290010b86ae6885d77a556d27f35e"><td class="memItemLeft" align="right" valign="top"><a id="ac1a290010b86ae6885d77a556d27f35e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>update_countdown</b> (<a class="el" href="structFSM.html">FSM</a> *fsm, <a class="el" href="structRoboterData.html">RoboterData</a> *data)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="countdown__states_8h.html#ac1a290010b86ae6885d77a556d27f35e">update_countdown</a> (<a class="el" href="structFSM.html">FSM</a> *fsm, <a class="el" href="structRoboterData.html">RoboterData</a> *data)</td></tr>
+<tr class="memdesc:ac1a290010b86ae6885d77a556d27f35e"><td class="mdescLeft">&#160;</td><td class="mdescRight">makes the leds blink with 5hz untill 15s elapse upon which it transitions to LEAVE_START <br /></td></tr>
 <tr class="separator:ac1a290010b86ae6885d77a556d27f35e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf31c07cf96f53fa4c189df852c67754"><td class="memItemLeft" align="right" valign="top"><a id="aaf31c07cf96f53fa4c189df852c67754"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="countdown__states_8h.html#aaf31c07cf96f53fa4c189df852c67754">enter_goal_reached</a> (<a class="el" href="structRoboterData.html">RoboterData</a> *data)</td></tr>
+<tr class="memdesc:aaf31c07cf96f53fa4c189df852c67754"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes the robot stop and transmits a success mesage to Serial Port. <br /></td></tr>
+<tr class="separator:aaf31c07cf96f53fa4c189df852c67754"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1952c5f3b65cc3fae7b3a15680297e86"><td class="memItemLeft" align="right" valign="top"><a id="a1952c5f3b65cc3fae7b3a15680297e86"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="countdown__states_8h.html#a1952c5f3b65cc3fae7b3a15680297e86">update_goal_reached</a> (<a class="el" href="structFSM.html">FSM</a> *fsm, <a class="el" href="structRoboterData.html">RoboterData</a> *data)</td></tr>
+<tr class="memdesc:a1952c5f3b65cc3fae7b3a15680297e86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs 60s end Countdown during which the leds blink with 5hz. <br /></td></tr>
+<tr class="separator:a1952c5f3b65cc3fae7b3a15680297e86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>this file defines </p>
-</div></div><!-- contents -->
+<div class="textblock"><p>Controlls the. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a704821b4d760b8dfa0061a41398e98c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a704821b4d760b8dfa0061a41398e98c0">&#9670;&nbsp;</a></span>Timer1_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Timer1_init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initilizes Timer1 to determine when the countdown is finsihed. </p>
+<p>This is done with the overflow interrupt. </p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

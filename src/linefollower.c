@@ -2,6 +2,7 @@
 /**
  * @file
  * @brief
+ * Determines the sensors Thresholds
  */
 
 #include "../inc/linefollower.h"

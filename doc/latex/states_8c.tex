@@ -13,7 +13,8 @@ Implementations of the states.
 {\ttfamily \#include \char`\"{}../inc/check\+\_\+lap\+\_\+state.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../inc/countdown\+\_\+states.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../inc/linefollower.\+h\char`\"{}}\newline
-Include dependency graph for states.\+c\+:\nopagebreak
+Include dependency graph for states.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -56,14 +57,14 @@ void \hyperlink{states_8c_abf5826157e2db12872d61450a56dd8ca}{enter\+\_\+right\+\
 void \hyperlink{states_8c_acfac09e8251305725a4cbc923f74ae46}{update\+\_\+right\+\_\+hard} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
 \begin{DoxyCompactList}\small\item\em continues the shart turn untill the right line detects the line again. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{states_8c_ae3cfc490941e7da71da6b5deb1f4c230}\label{states_8c_ae3cfc490941e7da71da6b5deb1f4c230}} 
-void {\bfseries enter\+\_\+leave\+\_\+start} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
-\item 
+void \hyperlink{states_8c_ae3cfc490941e7da71da6b5deb1f4c230}{enter\+\_\+leave\+\_\+start} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em Makes to Robot drive Forward. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{states_8c_a5026e387130ef522ba60b9eaada43ac7}\label{states_8c_a5026e387130ef522ba60b9eaada43ac7}} 
-void {\bfseries update\+\_\+leave\+\_\+start} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
-\item 
+void \hyperlink{states_8c_a5026e387130ef522ba60b9eaada43ac7}{update\+\_\+leave\+\_\+start} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em The robot continues to drive forward untill it leaves the startfield. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{states_8c_a72c1b18e2bc84e9333c71a103cdda24d}\label{states_8c_a72c1b18e2bc84e9333c71a103cdda24d}} 
-void {\bfseries update\+\_\+check\+\_\+startpos} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
-\end{DoxyCompactItemize}
+void \hyperlink{states_8c_a72c1b18e2bc84e9333c71a103cdda24d}{update\+\_\+check\+\_\+startpos} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em checks wether the robot is on the startfield. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}

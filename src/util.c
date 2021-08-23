@@ -1,6 +1,8 @@
 
 /**
- * @file util.c
+ * @file
+ * @brief
+ * Implementation of helper funcitons.
  */
 
 #include "../inc/util.h"

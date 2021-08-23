@@ -97,14 +97,5 @@ void update_leave_start(FSM *fsm, RoboterData *data);
  */
 void update_check_startpos(FSM *fsm, RoboterData *data);
 
-/**
- * @brief Makes the robot stop and transmits a success mesage to Serial Port
- */
-void enter_goal_reached(RoboterData *data);
-
-/**
- * @brief Runs 60s end Countdown during which the leds blink with 5hz
- */
-void update_goal_reached(FSM *fsm, RoboterData *data);
 
 #endif //STATES_h

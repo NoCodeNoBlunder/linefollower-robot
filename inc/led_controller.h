@@ -1,7 +1,7 @@
 /**
  * @file
  * @brief
- *
+ * Controlls the leds which are mounted on top of the robot.
  */
 
 #ifndef IESLEDS_h

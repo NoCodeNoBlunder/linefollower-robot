@@ -1,7 +1,7 @@
 /**
- * @file motor_controller.h
- * @breif controlls the robots motors and therefor determines his driving direction and speed.
- * @date 2021-06-08
+ * @file
+ * @breif
+ * Controls the robots motors and therefore determines it's driving direction and speed.
  * @author Fabian Indrunas
  */
 

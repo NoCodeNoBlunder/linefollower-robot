@@ -10,7 +10,8 @@
 {\ttfamily \#include \char`\"{}../inc/usart.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../inc/motor\+\_\+controller.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../inc/linefollower.\+h\char`\"{}}\newline
-Include dependency graph for countdown\+\_\+states.\+c\+:\nopagebreak
+Include dependency graph for countdown\+\_\+states.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -61,9 +62,8 @@ enum {\bfseries C\+O\+U\+N\+T\+D\+O\+W\+N\+M\+O\+DE} \{ {\bfseries S\+T\+A\+R\+T
 \mbox{\Hypertarget{countdown__states_8c_ab16889ae984b9b798989a0d239283cac}\label{countdown__states_8c_ab16889ae984b9b798989a0d239283cac}} 
 {\bfseries I\+SR} (T\+I\+M\+E\+R1\+\_\+\+O\+V\+F\+\_\+vect)
 \item 
-\mbox{\Hypertarget{countdown__states_8c_a704821b4d760b8dfa0061a41398e98c0}\label{countdown__states_8c_a704821b4d760b8dfa0061a41398e98c0}} 
-void {\bfseries Timer1\+\_\+init} ()
-\item 
+void \hyperlink{countdown__states_8c_a704821b4d760b8dfa0061a41398e98c0}{Timer1\+\_\+init} ()
+\begin{DoxyCompactList}\small\item\em Initilizes Timer1 to determine when the countdown is finsihed. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{countdown__states_8c_a11cc295dc94fc336213cd5120d1665cd}\label{countdown__states_8c_a11cc295dc94fc336213cd5120d1665cd}} 
 void {\bfseries enable\+\_\+isr\+\_\+countdown} (C\+O\+U\+N\+T\+D\+O\+W\+N\+M\+O\+DE mode)
 \item 
@@ -71,17 +71,17 @@ void {\bfseries enable\+\_\+isr\+\_\+countdown} (C\+O\+U\+N\+T\+D\+O\+W\+N\+M\+O
 void {\bfseries disable\+\_\+isr\+\_\+countdown} ()
 \item 
 \mbox{\Hypertarget{countdown__states_8c_a1edafe61b207c68cefb5a40585da9fbc}\label{countdown__states_8c_a1edafe61b207c68cefb5a40585da9fbc}} 
-void {\bfseries enter\+\_\+countdown} (void)
-\item 
+void \hyperlink{countdown__states_8c_a1edafe61b207c68cefb5a40585da9fbc}{enter\+\_\+countdown} (void)
+\begin{DoxyCompactList}\small\item\em enables the overflow interrupt starting the 15s countdown \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{countdown__states_8c_ac1a290010b86ae6885d77a556d27f35e}\label{countdown__states_8c_ac1a290010b86ae6885d77a556d27f35e}} 
-void {\bfseries update\+\_\+countdown} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
-\item 
+void \hyperlink{countdown__states_8c_ac1a290010b86ae6885d77a556d27f35e}{update\+\_\+countdown} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em makes the leds blink with 5hz untill 15s elapse upon which it transitions to L\+E\+A\+V\+E\+\_\+\+S\+T\+A\+RT \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{countdown__states_8c_aaf31c07cf96f53fa4c189df852c67754}\label{countdown__states_8c_aaf31c07cf96f53fa4c189df852c67754}} 
-void {\bfseries enter\+\_\+goal\+\_\+reached} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
-\item 
+void \hyperlink{countdown__states_8c_aaf31c07cf96f53fa4c189df852c67754}{enter\+\_\+goal\+\_\+reached} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em Makes the robot stop and transmits a success mesage to Serial Port. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{countdown__states_8c_a1952c5f3b65cc3fae7b3a15680297e86}\label{countdown__states_8c_a1952c5f3b65cc3fae7b3a15680297e86}} 
-void {\bfseries update\+\_\+goal\+\_\+reached} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
-\end{DoxyCompactItemize}
+void \hyperlink{countdown__states_8c_a1952c5f3b65cc3fae7b3a15680297e86}{update\+\_\+goal\+\_\+reached} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
+\begin{DoxyCompactList}\small\item\em Runs 60s end Countdown during which the leds blink with 5hz. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -103,3 +103,17 @@ volatile \hyperlink{main_8h_a54f4f6ff76d0c41ba388de0d5a44e99f}{Line\+Follower} {
 \mbox{\Hypertarget{countdown__states_8c_a93b18a15246074ee024c00dd151a8e02}\label{countdown__states_8c_a93b18a15246074ee024c00dd151a8e02}} 
 volatile int {\bfseries of\+\_\+for\+\_\+countdown}
 \end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{countdown__states_8c_a704821b4d760b8dfa0061a41398e98c0}\label{countdown__states_8c_a704821b4d760b8dfa0061a41398e98c0}} 
+\index{countdown\+\_\+states.\+c@{countdown\+\_\+states.\+c}!Timer1\+\_\+init@{Timer1\+\_\+init}}
+\index{Timer1\+\_\+init@{Timer1\+\_\+init}!countdown\+\_\+states.\+c@{countdown\+\_\+states.\+c}}
+\subsubsection{\texorpdfstring{Timer1\+\_\+init()}{Timer1\_init()}}
+{\footnotesize\ttfamily void Timer1\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initilizes Timer1 to determine when the countdown is finsihed. 
+
+This is done with the overflow interrupt. 

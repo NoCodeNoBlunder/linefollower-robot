@@ -47,7 +47,7 @@ Include dependency graph for check\+\_\+lap\+\_\+state.\+c\+:\nopagebreak
 \item 
 \mbox{\Hypertarget{check__lap__state_8c_a9574cf353a4dd5f61b99dc455cfc7838}\label{check__lap__state_8c_a9574cf353a4dd5f61b99dc455cfc7838}} 
 void \hyperlink{check__lap__state_8c_a9574cf353a4dd5f61b99dc455cfc7838}{Timer2\+\_\+init} ()
-\begin{DoxyCompactList}\small\item\em function to initilize Timer2 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Initilizes Timer2. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{check__lap__state_8c_aec45a40c6a3bdc1855faada89666902d}\label{check__lap__state_8c_aec45a40c6a3bdc1855faada89666902d}} 
 void {\bfseries enable\+\_\+isr\+\_\+checklap} ()
 \item 
@@ -56,6 +56,7 @@ void {\bfseries disable\+\_\+isr\+\_\+checklap} ()
 \item 
 void \hyperlink{check__lap__state_8c_af062fe4635ffd27e1e91326a2edb1290}{enter\+\_\+check\+\_\+lap} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
 \item 
+\mbox{\Hypertarget{check__lap__state_8c_ae8a7ceaf7dfa9b8a4720cc638e40020b}\label{check__lap__state_8c_ae8a7ceaf7dfa9b8a4720cc638e40020b}} 
 void \hyperlink{check__lap__state_8c_ae8a7ceaf7dfa9b8a4720cc638e40020b}{update\+\_\+check\+\_\+lap} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structRoboterData}{Roboter\+Data} $\ast$data)
 \begin{DoxyCompactList}\small\item\em state to check whether the Robot is in fact on the starting postion or not. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
@@ -82,24 +83,3 @@ implementation of the C\+H\+E\+C\+K\+\_\+\+L\+AP State
 {\footnotesize\ttfamily void enter\+\_\+check\+\_\+lap (\begin{DoxyParamCaption}\item[{\hyperlink{structRoboterData}{Roboter\+Data} $\ast$}]{data }\end{DoxyParamCaption})}
 
 function gets executed when the C\+H\+E\+C\+K\+\_\+\+L\+AP state is entered. 
-\begin{DoxyParams}{Parameters}
-{\em data} & \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{check__lap__state_8c_ae8a7ceaf7dfa9b8a4720cc638e40020b}\label{check__lap__state_8c_ae8a7ceaf7dfa9b8a4720cc638e40020b}} 
-\index{check\+\_\+lap\+\_\+state.\+c@{check\+\_\+lap\+\_\+state.\+c}!update\+\_\+check\+\_\+lap@{update\+\_\+check\+\_\+lap}}
-\index{update\+\_\+check\+\_\+lap@{update\+\_\+check\+\_\+lap}!check\+\_\+lap\+\_\+state.\+c@{check\+\_\+lap\+\_\+state.\+c}}
-\subsubsection{\texorpdfstring{update\+\_\+check\+\_\+lap()}{update\_check\_lap()}}
-{\footnotesize\ttfamily void update\+\_\+check\+\_\+lap (\begin{DoxyParamCaption}\item[{\hyperlink{structFSM}{F\+SM} $\ast$}]{fsm,  }\item[{\hyperlink{structRoboterData}{Roboter\+Data} $\ast$}]{data }\end{DoxyParamCaption})}
-
-
-
-state to check whether the Robot is in fact on the starting postion or not. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em fsm} & \\
-\hline
-{\em data} & \\
-\hline
-\end{DoxyParams}
