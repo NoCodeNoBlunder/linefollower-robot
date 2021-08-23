@@ -17,9 +17,10 @@
 void motors_Init();
 
 /**
- *
+ * @brief Sets the robots's engines polarity and duty cycles therefore controlling
+ * the direction of the robot and its speed
  * @param data pointer to Roboterdata struct
- * @param
+ * @param state determines how the engines will be set.
  */
 void set_direction(RoboterData *data, State state);
 

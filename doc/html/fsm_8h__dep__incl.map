@@ -13,7 +13,7 @@
 <area shape="rect" id="node12" href="$main_8c.html" title="Configuration of FSM. " alt="" coords="27,273,207,315"/>
 <area shape="rect" id="node13" href="$linefollower_8h.html" title="provides basic functionality to take measurements from all 3 sensors. " alt="" coords="639,184,819,225"/>
 <area shape="rect" id="node17" href="$states_8h.html" title="contains most of the robots States enter and update functions. " alt="" coords="27,184,207,225"/>
-<area shape="rect" id="node9" href="$states_8c.html" title="/home/ies/SHARE/Roboter\l/src/states.c" alt="" coords="231,273,411,315"/>
+<area shape="rect" id="node9" href="$states_8c.html" title="Implementations of the states. " alt="" coords="231,273,411,315"/>
 <area shape="rect" id="node10" href="$usart_8c.html" title="Basic serial communication via USART for ATMEGA328. " alt="" coords="1251,273,1431,315"/>
 <area shape="rect" id="node14" href="$linefollower_8c.html" title="/home/ies/SHARE/Roboter\l/src/linefollower.c" alt="" coords="435,273,615,315"/>
 </map>

@@ -1,8 +1,8 @@
 
 /**
  * @file
- * @brief
- * @sa <a href="roboter_mind_map.pdf" target="_blank"><b>Overview</b></a>
+ * @brief Implementations of the states.
+ * @sa <a href="transition_map.pdf" target="_blank"><b>Transition Map</b></a>
  */
 
 #include "../inc/states.h"

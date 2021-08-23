@@ -62,9 +62,10 @@ $(function() {
 <div class="title">Roboter Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><div class="image">
-<img src="the_robot.jpg" alt="That is the robot" title="That is the robot"/>
-</div>
+<div class="textblock"><p> <style>div.image img[src="the_robot.jpg"]{width:700px;}</style>  </p><div class="image">
+<img src="the_robot.jpg" alt="the_robot.jpg"/>
+<div class="caption">
+The Robot</div></div>
 <h1><a class="anchor" id="intro_sec"></a>
 Introduction</h1>
 <p>Welcome to a brief introduction of a project executed by a student of the university of Kassel. <br />
@@ -95,11 +96,10 @@ Explanation</h2>
 <p>The <a href="transition_map.pdf" target="_blank"><b>Transition Map</b></a>.</p>
 <h1><a class="anchor" id="Hardware"></a>
 Hardware</h1>
-<h1><a class="anchor" id="Table_Of_Contents"></a>
-Table_Of_Contents</h1>
+<p>Microcontroller Arduino Modell: ATMEGA328P <br />
+The <a href="pin_layout.pdf" target="_blank"><b>Pin layout</b></a> can be looked up here.</p>
 <h2><a class="anchor" id="States"></a>
-descrption</h2>
-<p>to implement new states</p>
+descriptions</h2>
 <h1><a class="anchor" id="Features"></a>
 Features</h1>
 <p>The hole implementation is based on the api <a class="el" href="fsm_8h.html" title="definition of types for fsm.c ">fsm.h</a> which is a finite state machine. <br />
@@ -111,19 +111,30 @@ This makes it incredibly easy to debug and implement new states. <br />
 <h2><a class="anchor" id="FSM_explanation"></a>
 FSM_explanation</h2>
 <ul>
-<li>Each state implements an <b>enter function</b> and an <b>update function</b> which defines the behaviour of the state. <br />
+<li>Each State implements an <b>enter function</b> and an <b>update function</b> which defines the behaviour of the State. <br />
 </li>
 <li>The <b>enter function</b> is called once for every transition into an other state which invokes the new current state's <b>enter function</b> implementation. <br />
- E.g. When the <a class="el" href="structState.html" title="used to differentiate between states. ">State</a> Forward is entered the motor settings can be adjusted accordingly in the <a class="el" href="states_8c.html#a639a5239b6bf87b7629b5a5a781f0623">enter_forward()</a> function as this only need to happen once in this state.</li>
+ E.g. When the State Forward is entered the motor settings can be adjusted accordingly in the <a class="el" href="states_8c.html#a639a5239b6bf87b7629b5a5a781f0623">enter_forward()</a> function as this only need to happen once in this state.</li>
 <li>The <b>update function</b> is called repeadetly in <a class="el" href="fsm_8c.html#a053b1146a3f1c34576d89d599e34329a">start_fsm_cycle()</a> which invokes the current_state <b>update function</b>. <br />
- Each <a class="el" href="structState.html" title="used to differentiate between states. ">State</a> uses this function to do task that have to take place over a period of time and to determine wether to stay or to transition into another <a class="el" href="structState.html" title="used to differentiate between states. ">State</a>.</li>
+ Each State uses this function to do task that have to take place over a period of time and to determine wether to stay or to transition into another State if a certain condition is met.</li>
 <li>To transition to another state <a class="el" href="fsm_8c.html#a80016823d020a335a595bcd09bc39c96">transition_to_state()</a> is called. This is typically done inside of an <b>update function</b> as it has the needed parameters.</li>
-<li>Note: Not every has to implement an <b>enter function</b> but each state has to implement an <b>update function</b>.</li>
+<li>Note: Not every State has to implement an <b>enter function</b> but each State has to implement an <b>update function</b>.</li>
 </ul>
-<h2><a class="anchor" id="how_to_add_new_state"></a>
-how_to_add_new_state</h2>
+<h2><a class="anchor" id="how_to_implement_new_states"></a>
+how_to_implement_new_states</h2>
+<p>Descrition of how to add a new state.</p><ul>
+<li>Add a new state in State</li>
+<li>Create function enter_ + "name_of_state" and update_ + "name_of_state"</li>
+<li>Call to <a class="el" href="fsm_8c.html#a2d99213b7ce90d5e4b0cbd7f261d8e3e">add_state()</a> passing a pointer to the States's enter and update function</li>
+</ul>
+<h1><a class="anchor" id="Additional_Features"></a>
+Additional_Features</h1>
+<p>The ATMEGA328p comes with 3 onboard timers which are used in order to achieve delays.</p>
 <h1><a class="anchor" id="Calibration"></a>
 Calibration</h1>
+<p>Before letting the robot drive it can be wise. To calibrate the motors. /n Sometimes one motor can be stronger than the other. So the robot is thinking its driving straight <br />
+but in reality driving to the site. The same can be said about the sensors. <br />
+The sensors are not always 100% accurate so it can be reasonable to adjust the Threshold enum as needed. Each of the three sensors has its own value which can be adjusted.</p>
 <h1><a class="anchor" id="compiler_options"></a>
 Compiler Options</h1>
 <ul>
@@ -135,26 +146,9 @@ Compiler Options</h1>
 <li><b>make documentation</b>: This modus only updates the doxygen documentation. . <br />
  <b>Attention</b> if you received the file, usually a doxyfile should already exist. However, if there is no html or latex file in the file you received, first type 'doxygen -g doxyfile' in the terminal. After that open the doxyfile in nano ('nano doxyfile' in the terminal) and search for 'OPTIMIZE_OUTPUT_FOR_C' (use the explanation at the bottom of the screen in nano for short cuts). Now you have to type 'YES' behind the '='-symbol and save the doxyfile.</li>
 </ul>
-<h1><a class="anchor" id="Amazing_features"></a>
-Extra features</h1>
-<p>The robot not only drives three rounds on a circular track, has two reliable and exact countdowns using different timer and prescaler to show the robot's (and coder's :) ) full potential, but also <b>only</b> uses timer instead of delays and has a working remote control! <br />
-To use the remote control, you first have to enable it with the compile option 'make remote'. <br />
- Open cutecom and create a bluetooth connection. <br />
- Then type a direction with the desired time in ms in the text box and send it. <br />
- The robot will follow your order as long as the time you sent is not expired or you have not send a new order. Here is a list of the directions available: <br />
-</p><ul>
-<li>F: forwards</li>
-<li>B : backwards</li>
-<li>l : soft left</li>
-<li>r : soft right</li>
-<li>L : hard right</li>
-<li>R : hard left</li>
-<li>Q : do not move <br />
- For example, if you type and send 'F100' the robot will move forwards for 100 ms.</li>
-</ul>
 <h1><a class="anchor" id="About_me"></a>
 About the author</h1>
-<p>To tell you a little bit more about myself: My name is Klara M. Gutekunst, i am currently at the end of my second semester studying computer science at the university of Kassel. <br />
+<p>To tell you a little bit more about myself: My name is Fabian Indrunas, I am currently at the end of my second semester studying computer science at the university of Kassel. <br />
 This semester we had the chance to choose a project in a variety of hands-on coding training, including programming a robot. As I have never worked with code before I started studying, <br />
  I wanted to bring what I have learned so far to good use and actually see what some lines of code can do in real life. I have been not disappointed, as you can see: <br />
 The work really paid off and at the end my robot slowely but confidently moves around on the track!</p>

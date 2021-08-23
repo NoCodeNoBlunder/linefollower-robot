@@ -74,13 +74,13 @@ void {\bfseries left\+\_\+off} ()
 void {\bfseries right\+\_\+off} ()
 \item 
 \mbox{\Hypertarget{motor__controller_8c_add8a0d582bf694240a1bd6fb0a80109e}\label{motor__controller_8c_add8a0d582bf694240a1bd6fb0a80109e}} 
-void {\bfseries set\+\_\+polarity} (\hyperlink{structState}{State} dir)
+void {\bfseries set\+\_\+polarity} (State dir)
 \item 
 \mbox{\Hypertarget{motor__controller_8c_aac7ab57ee3b0d1a6aee54821aa7b79f2}\label{motor__controller_8c_aac7ab57ee3b0d1a6aee54821aa7b79f2}} 
 void \hyperlink{motor__controller_8c_aac7ab57ee3b0d1a6aee54821aa7b79f2}{motors\+\_\+\+Init} ()
 \begin{DoxyCompactList}\small\item\em function to initilize Timer0 for the pwm to work in order to controll the engines duty cycles. \end{DoxyCompactList}\item 
-void \hyperlink{motor__controller_8c_aedcc8ddfc6f7a9d3f55833ac09fa01f5}{set\+\_\+direction} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data, \hyperlink{structState}{State} state)
-\end{DoxyCompactItemize}
+void \hyperlink{motor__controller_8c_aedcc8ddfc6f7a9d3f55833ac09fa01f5}{set\+\_\+direction} (\hyperlink{structRoboterData}{Roboter\+Data} $\ast$data, State state)
+\begin{DoxyCompactList}\small\item\em Sets the robots\textquotesingle{}s engines polarity and duty cycles therefore controlling the direction of the robot and its speed. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -96,9 +96,20 @@ Controlls everything regarding the motors of the robot.
 \index{motor\+\_\+controller.\+c@{motor\+\_\+controller.\+c}!set\+\_\+direction@{set\+\_\+direction}}
 \index{set\+\_\+direction@{set\+\_\+direction}!motor\+\_\+controller.\+c@{motor\+\_\+controller.\+c}}
 \subsubsection{\texorpdfstring{set\+\_\+direction()}{set\_direction()}}
-{\footnotesize\ttfamily void set\+\_\+direction (\begin{DoxyParamCaption}\item[{\hyperlink{structRoboterData}{Roboter\+Data} $\ast$}]{data,  }\item[{\hyperlink{structState}{State}}]{state }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void set\+\_\+direction (\begin{DoxyParamCaption}\item[{\hyperlink{structRoboterData}{Roboter\+Data} $\ast$}]{data,  }\item[{State}]{state }\end{DoxyParamCaption})}
 
-Function to set engines polarity and duty\+\_\+cyles to control the Roboter drive direction. \mbox{\Hypertarget{motor__controller_8c_abb45263d7fd584db888c9e77cc6a7941}\label{motor__controller_8c_abb45263d7fd584db888c9e77cc6a7941}} 
+
+
+Sets the robots\textquotesingle{}s engines polarity and duty cycles therefore controlling the direction of the robot and its speed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & pointer to Roboterdata struct \\
+\hline
+{\em state} & determines how the engines will be set. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{motor__controller_8c_abb45263d7fd584db888c9e77cc6a7941}\label{motor__controller_8c_abb45263d7fd584db888c9e77cc6a7941}} 
 \index{motor\+\_\+controller.\+c@{motor\+\_\+controller.\+c}!set\+\_\+duty\+\_\+cycle@{set\+\_\+duty\+\_\+cycle}}
 \index{set\+\_\+duty\+\_\+cycle@{set\+\_\+duty\+\_\+cycle}!motor\+\_\+controller.\+c@{motor\+\_\+controller.\+c}}
 \subsubsection{\texorpdfstring{set\+\_\+duty\+\_\+cycle()}{set\_duty\_cycle()}}

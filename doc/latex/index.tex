@@ -1,4 +1,4 @@
-\hypertarget{index_intro_sec}{}\section{Introduction}\label{index_intro_sec}
+ \hypertarget{index_intro_sec}{}\section{Introduction}\label{index_intro_sec}
 Welcome to a brief introduction of a project executed by a student of the university of Kassel. ~\newline
  The goal of this project is to create reliable software that controlls the robot to drive three laps on a track (\href{track_img.jpg}{\tt {\bfseries example track}}) consisting of a black line, autonomously. ~\newline
 There is a black square placed on the track which acts as the startfield. ~\newline
@@ -25,9 +25,9 @@ In order to install new firmware on the robot. We first need to translate the so
 \end{DoxyItemize}
 
 The \href{transition_map.pdf}{\tt {\bfseries Transition Map}}.\hypertarget{index_Hardware}{}\section{Hardware}\label{index_Hardware}
-\hypertarget{index_Table_Of_Contents}{}\section{Table\+\_\+\+Of\+\_\+\+Contents}\label{index_Table_Of_Contents}
-\hypertarget{index_States}{}\subsection{descrption}\label{index_States}
-to implement new states\hypertarget{index_Features}{}\section{Features}\label{index_Features}
+Microcontroller Arduino Modell\+: A\+T\+M\+E\+G\+A328P ~\newline
+The \href{pin_layout.pdf}{\tt {\bfseries Pin layout}} can be looked up here.\hypertarget{index_States}{}\subsection{descriptions}\label{index_States}
+\hypertarget{index_Features}{}\section{Features}\label{index_Features}
 The hole implementation is based on the api \hyperlink{fsm_8h}{fsm.\+h} which is a finite state machine. ~\newline
 This has several advantages. The robot knows at all times in which state it currently is in. ~\newline
 This allows for more accurate state transitions which results in better driving behaviour. ~\newline
@@ -36,17 +36,25 @@ This makes it incredibly easy to debug and implement new states. ~\newline
  When adding, a new state the logic of the allready existing transitions does not have to be modified because only the information relevant to the current state has to be interpreted.\hypertarget{index_FSM_explanation}{}\subsection{F\+S\+M\+\_\+explanation}\label{index_FSM_explanation}
 
 \begin{DoxyItemize}
-\item Each state implements an {\bfseries enter function} and an {\bfseries update function} which defines the behaviour of the state. ~\newline
+\item Each State implements an {\bfseries enter function} and an {\bfseries update function} which defines the behaviour of the State. ~\newline
 
 \item The {\bfseries enter function} is called once for every transition into an other state which invokes the new current state\textquotesingle{}s {\bfseries enter function} implementation. ~\newline
- E.\+g. When the \hyperlink{structState}{State} Forward is entered the motor settings can be adjusted accordingly in the \hyperlink{states_8c_a639a5239b6bf87b7629b5a5a781f0623}{enter\+\_\+forward()} function as this only need to happen once in this state.
+ E.\+g. When the State Forward is entered the motor settings can be adjusted accordingly in the \hyperlink{states_8c_a639a5239b6bf87b7629b5a5a781f0623}{enter\+\_\+forward()} function as this only need to happen once in this state.
 \item The {\bfseries update function} is called repeadetly in \hyperlink{fsm_8c_a053b1146a3f1c34576d89d599e34329a}{start\+\_\+fsm\+\_\+cycle()} which invokes the current\+\_\+state {\bfseries update function}. ~\newline
- Each \hyperlink{structState}{State} uses this function to do task that have to take place over a period of time and to determine wether to stay or to transition into another \hyperlink{structState}{State}.
+ Each State uses this function to do task that have to take place over a period of time and to determine wether to stay or to transition into another State if a certain condition is met.
 \item To transition to another state \hyperlink{fsm_8c_a80016823d020a335a595bcd09bc39c96}{transition\+\_\+to\+\_\+state()} is called. This is typically done inside of an {\bfseries update function} as it has the needed parameters.
-\item Note\+: Not every has to implement an {\bfseries enter function} but each state has to implement an {\bfseries update function}.
-\end{DoxyItemize}\hypertarget{index_how_to_add_new_state}{}\subsection{how\+\_\+to\+\_\+add\+\_\+new\+\_\+state}\label{index_how_to_add_new_state}
-\hypertarget{index_Calibration}{}\section{Calibration}\label{index_Calibration}
-\hypertarget{index_compiler_options}{}\section{Compiler Options}\label{index_compiler_options}
+\item Note\+: Not every State has to implement an {\bfseries enter function} but each State has to implement an {\bfseries update function}.
+\end{DoxyItemize}\hypertarget{index_how_to_implement_new_states}{}\subsection{how\+\_\+to\+\_\+implement\+\_\+new\+\_\+states}\label{index_how_to_implement_new_states}
+Descrition of how to add a new state.
+\begin{DoxyItemize}
+\item Add a new state in State
+\item Create function enter\+\_\+ + \char`\"{}name\+\_\+of\+\_\+state\char`\"{} and update\+\_\+ + \char`\"{}name\+\_\+of\+\_\+state\char`\"{}
+\item Call to \hyperlink{fsm_8c_a2d99213b7ce90d5e4b0cbd7f261d8e3e}{add\+\_\+state()} passing a pointer to the States\textquotesingle{}s enter and update function
+\end{DoxyItemize}\hypertarget{index_Additional_Features}{}\section{Additional\+\_\+\+Features}\label{index_Additional_Features}
+The A\+T\+M\+E\+G\+A328p comes with 3 onboard timers which are used in order to achieve delays.\hypertarget{index_Calibration}{}\section{Calibration}\label{index_Calibration}
+Before letting the robot drive it can be wise. To calibrate the motors. /n Sometimes one motor can be stronger than the other. So the robot is thinking its driving straight ~\newline
+but in reality driving to the site. The same can be said about the sensors. ~\newline
+The sensors are not always 100\% accurate so it can be reasonable to adjust the Threshold enum as needed. Each of the three sensors has its own value which can be adjusted.\hypertarget{index_compiler_options}{}\section{Compiler Options}\label{index_compiler_options}
 
 \begin{DoxyItemize}
 \item {\bfseries make}\+: compiles, flashes and cleans up files that are no longer useful. Debug modus is disabled.
@@ -56,24 +64,8 @@ This makes it incredibly easy to debug and implement new states. ~\newline
 
 \item {\bfseries make documentation}\+: This modus only updates the doxygen documentation. . ~\newline
  {\bfseries Attention} if you received the file, usually a doxyfile should already exist. However, if there is no html or latex file in the file you received, first type \textquotesingle{}doxygen -\/g doxyfile\textquotesingle{} in the terminal. After that open the doxyfile in nano (\textquotesingle{}nano doxyfile\textquotesingle{} in the terminal) and search for \textquotesingle{}O\+P\+T\+I\+M\+I\+Z\+E\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+F\+O\+R\+\_\+C\textquotesingle{} (use the explanation at the bottom of the screen in nano for short cuts). Now you have to type \textquotesingle{}Y\+ES\textquotesingle{} behind the \textquotesingle{}=\textquotesingle{}-\/symbol and save the doxyfile.
-\end{DoxyItemize}\hypertarget{index_Amazing_features}{}\section{Extra features}\label{index_Amazing_features}
-The robot not only drives three rounds on a circular track, has two reliable and exact countdowns using different timer and prescaler to show the robot\textquotesingle{}s (and coder\textquotesingle{}s \+:) ) full potential, but also {\bfseries only} uses timer instead of delays and has a working remote control! ~\newline
-To use the remote control, you first have to enable it with the compile option \textquotesingle{}make remote\textquotesingle{}. ~\newline
- Open cutecom and create a bluetooth connection. ~\newline
- Then type a direction with the desired time in ms in the text box and send it. ~\newline
- The robot will follow your order as long as the time you sent is not expired or you have not send a new order. Here is a list of the directions available\+: ~\newline
-
-\begin{DoxyItemize}
-\item F\+: forwards
-\item B \+: backwards
-\item l \+: soft left
-\item r \+: soft right
-\item L \+: hard right
-\item R \+: hard left
-\item Q \+: do not move ~\newline
- For example, if you type and send \textquotesingle{}F100\textquotesingle{} the robot will move forwards for 100 ms.
 \end{DoxyItemize}\hypertarget{index_About_me}{}\section{About the author}\label{index_About_me}
-To tell you a little bit more about myself\+: My name is Klara M. Gutekunst, i am currently at the end of my second semester studying computer science at the university of Kassel. ~\newline
+To tell you a little bit more about myself\+: My name is Fabian Indrunas, I am currently at the end of my second semester studying computer science at the university of Kassel. ~\newline
 This semester we had the chance to choose a project in a variety of hands-\/on coding training, including programming a robot. As I have never worked with code before I started studying, ~\newline
  I wanted to bring what I have learned so far to good use and actually see what some lines of code can do in real life. I have been not disappointed, as you can see\+: ~\newline
 The work really paid off and at the end my robot slowely but confidently moves around on the track!\hypertarget{index_further_information}{}\section{Optionial information}\label{index_further_information}

@@ -2,7 +2,8 @@
 
 \mainpage
 
-![That is the robot](the_robot.jpg "That is the robot")
+\htmlonly <style>div.image img[src="the_robot.jpg"]{width:700px;}</style> \endhtmlonly
+@image html the_robot.jpg "The Robot"
 
 
 \section intro_sec Introduction
@@ -37,10 +38,11 @@ How to compile and install the firmware on the roboter:
 The <a href="transition_map.pdf" target="_blank"><b>Transition Map</b></a>.
   
 \section Hardware
+Microcontroller Arduino Modell: ATMEGA328P \n
+The <a href="pin_layout.pdf" target="_blank"><b>Pin layout</b></a> can be looked up here.
 
-\section Table_Of_Contents
-\subsection States descrption
-\how to implement new states
+
+\subsection States descriptions
 
 \section Features
 The hole implementation is based on the api fsm.h which is a finite state machine. \n
@@ -51,7 +53,7 @@ This makes it incredibly easy to debug and implement new states. \n When adding,
 only the information relevant to the current state has to be interpreted.
 
   \subsection FSM_explanation
-  * Each state implements an **enter function** and an **update function** which defines the behaviour of the state. \n
+  * Each State implements an **enter function** and an **update function** which defines the behaviour of the State. \n
   * The **enter function** is called once for every transition into an other state which invokes the new current state's **enter function** implementation. \n
     E.g. When the State Forward is entered the motor settings can be adjusted accordingly in the enter_forward() function as this only need to happen once in this state.
   * The **update function** is called repeadetly in start_fsm_cycle() which invokes the current_state **update function**. \n
@@ -60,12 +62,23 @@ only the information relevant to the current state has to be interpreted.
     
   * Note: Not every State has to implement an **enter function** but each State has to implement an **update function**. 
 
-  \subsection how_to_add_new_state
+  \subsection how_to_implement_new_states
+  Descrition of how to add a new state. 
+  * Add a new state in State
+  * Create function enter_ + "name_of_state" and update_ + "name_of_state"
+  * Call to add_state() passing a pointer to the States's enter and update function
   
-  
-  
-  
+\section Additional_Features
+The ATMEGA328p comes with 3 onboard timers which are used in order to achieve delays.
+
+
+
 \section Calibration
+Before letting the robot drive it can be wise. To calibrate the motors. /n
+Sometimes one motor can be stronger than the other. So the robot is thinking its driving straight \n
+but in reality driving to the site. The same can be said about the sensors. \n
+The sensors are not always 100% accurate so it can be reasonable to adjust the
+Threshold enum as needed. Each of the three sensors has its own value which can be adjusted.
 
 \section compiler_options Compiler Options
 * **make**: compiles, flashes and cleans up files that are no longer
@@ -82,31 +95,10 @@ only the information relevant to the current state has to be interpreted.
   'OPTIMIZE_OUTPUT_FOR_C' (use the explanation at the bottom of the screen
   in nano for short cuts). Now you have to type 'YES' behind the
   '='-symbol and save the doxyfile.
-
-\section Amazing_features Extra features
-The robot not only drives three rounds on a circular track, has two
-reliable and exact countdowns using different timer and prescaler to
-show the robot's (and coder's :) ) full potential, but also
-**only** uses timer instead of delays and has a working remote control! \n
-To use the remote control, you first have to enable it with the compile
-option 'make remote'. \n Open cutecom and create a bluetooth
-connection. \n Then type a direction with the desired
-time in ms in the text box and send it. \n The robot will follow your
-order as long as the time you sent is not expired or you have not
-send a new order. Here is a list of the directions available: \n
-* F: forwards
-* B : backwards
-* l : soft left
-* r : soft right
-* L : hard right
-* R : hard left
-* Q : do not move
-  \n For example, if you type and send 'F100' the robot will move
-  forwards for 100 ms.
-
+  
 \section About_me About the author
-To tell you a little bit more about myself: My name is Klara M. Gutekunst,
-i am currently at the end of my second semester studying computer
+To tell you a little bit more about myself: My name is Fabian Indrunas,
+I am currently at the end of my second semester studying computer
 science at the university of Kassel. \n
 This semester we had the chance to choose a project in a variety of
 hands-on coding training, including programming a robot. As I have never

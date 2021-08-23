@@ -1,25 +1,27 @@
 
 /**
- * @file linefollower.c
+ * @file
+ * @brief
  */
 
 #include "../inc/linefollower.h"
 #include "../inc/adc.h"
 
 /**
- * @def SAMPLE_SIZE determines how many sensor meassurements are taken.
+ * @def
+ * determines how many sensor meassurements are taken per function call.
  */
 #define SAMPLE_SIZE 20
 
-/**
- *  @enum Threshold
- *  @brief enums values determine the threshold of each sensor
+/** @enum
+ *  @brief enums values determine the threshold of each sensor.
+ *  When a sensors value is bigger than the Threshold the sensor detects a line.
  *  @details due to inaccuracy a sensor might fire early or late
  */
 enum Threshold{
-    THRESHOLD_L = 250,
-    THRESHOLD_M = 512,
-    THRESHOLD_R = 412,
+    THRESHOLD_L = 250, /**< Threshold of the left sensor*/
+    THRESHOLD_M = 512, /**< Threshold of the middle sensor*/
+    THRESHOLD_R = 412, /**< Threshold of the right sensor*/
 };
 
 void take_measurement(RoboterData *data) {

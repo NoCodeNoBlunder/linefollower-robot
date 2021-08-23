@@ -6,7 +6,6 @@ var searchData=
   ['set_5fpin_5fhigh',['set_pin_high',['../util_8c.html#ac903a30f9c0bd66cf55aba32f6275350',1,'set_pin_high(volatile uint8_t *reg, char pin):&#160;util.c'],['../util_8h.html#ac903a30f9c0bd66cf55aba32f6275350',1,'set_pin_high(volatile uint8_t *reg, char pin):&#160;util.c']]],
   ['set_5fpin_5flow',['set_pin_low',['../util_8c.html#afadc6f7f080476710942b6047ddec485',1,'set_pin_low(volatile uint8_t *reg, char pin):&#160;util.c'],['../util_8h.html#afadc6f7f080476710942b6047ddec485',1,'set_pin_low(volatile uint8_t *reg, char pin):&#160;util.c']]],
   ['start_5ffsm_5fcycle',['start_fsm_cycle',['../fsm_8c.html#a053b1146a3f1c34576d89d599e34329a',1,'start_fsm_cycle(FSM *fsm, void *data):&#160;fsm.c'],['../fsm_8h.html#a053b1146a3f1c34576d89d599e34329a',1,'start_fsm_cycle(FSM *fsm, void *data):&#160;fsm.c']]],
-  ['state',['State',['../structState.html',1,'']]],
   ['states_2ec',['states.c',['../states_8c.html',1,'']]],
   ['states_2eh',['states.h',['../states_8h.html',1,'']]]
 ];

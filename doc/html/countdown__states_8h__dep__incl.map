@@ -1,5 +1,5 @@
 <map id="/home/ies/SHARE/Roboter/inc/countdown_states.h" name="/home/ies/SHARE/Roboter/inc/countdown_states.h">
 <area shape="rect" id="node2" href="$countdown__states_8c.html" title="/home/ies/SHARE/Roboter\l/src/countdown_states.c" alt="" coords="5,95,185,136"/>
 <area shape="rect" id="node3" href="$main_8c.html" title="Configuration of FSM. " alt="" coords="209,95,389,136"/>
-<area shape="rect" id="node4" href="$states_8c.html" title="/home/ies/SHARE/Roboter\l/src/states.c" alt="" coords="413,95,593,136"/>
+<area shape="rect" id="node4" href="$states_8c.html" title="Implementations of the states. " alt="" coords="413,95,593,136"/>
 </map>

@@ -17,13 +17,14 @@ Include dependency graph for fsm.\+c\+:\nopagebreak
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{fsm_8c_ab92c197981768344063e8cfb6e01108c}\label{fsm_8c_ab92c197981768344063e8cfb6e01108c}} 
 void \hyperlink{fsm_8c_ab92c197981768344063e8cfb6e01108c}{exit\+\_\+fsm\+\_\+cycle} (\hyperlink{structFSM}{F\+SM} $\ast$fsm)
-\item 
-void \hyperlink{fsm_8c_a2d99213b7ce90d5e4b0cbd7f261d8e3e}{add\+\_\+state} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, \hyperlink{structState}{State} state, char $\ast$state\+\_\+name, void($\ast$enter), void($\ast$update))
+\begin{DoxyCompactList}\small\item\em shuts down the fsm and frees storage. \end{DoxyCompactList}\item 
+void \hyperlink{fsm_8c_a2d99213b7ce90d5e4b0cbd7f261d8e3e}{add\+\_\+state} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, State state, char $\ast$state\+\_\+name, void($\ast$enter), void($\ast$update))
 \item 
 void \hyperlink{fsm_8c_a053b1146a3f1c34576d89d599e34329a}{start\+\_\+fsm\+\_\+cycle} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, void $\ast$data)
 \item 
-void \hyperlink{fsm_8c_a80016823d020a335a595bcd09bc39c96}{transition\+\_\+to\+\_\+state} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, void $\ast$arg, \hyperlink{structState}{State} next\+\_\+state)
+void \hyperlink{fsm_8c_a80016823d020a335a595bcd09bc39c96}{transition\+\_\+to\+\_\+state} (\hyperlink{structFSM}{F\+SM} $\ast$fsm, void $\ast$arg, State next\+\_\+state)
 \end{DoxyCompactItemize}
 
 
@@ -46,7 +47,7 @@ the \hyperlink{structFSM}{F\+SM}...
 \index{fsm.\+c@{fsm.\+c}!add\+\_\+state@{add\+\_\+state}}
 \index{add\+\_\+state@{add\+\_\+state}!fsm.\+c@{fsm.\+c}}
 \subsubsection{\texorpdfstring{add\+\_\+state()}{add\_state()}}
-{\footnotesize\ttfamily void add\+\_\+state (\begin{DoxyParamCaption}\item[{\hyperlink{structFSM}{F\+SM} $\ast$}]{fsm,  }\item[{\hyperlink{structState}{State}}]{state,  }\item[{char $\ast$}]{state\+\_\+name,  }\item[{void $\ast$}]{enter,  }\item[{void $\ast$}]{update }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void add\+\_\+state (\begin{DoxyParamCaption}\item[{\hyperlink{structFSM}{F\+SM} $\ast$}]{fsm,  }\item[{State}]{state,  }\item[{char $\ast$}]{state\+\_\+name,  }\item[{void $\ast$}]{enter,  }\item[{void $\ast$}]{update }\end{DoxyParamCaption})}
 
 Function to create and store a new state 
 \begin{DoxyParams}{Parameters}
@@ -64,13 +65,7 @@ this state has to exist in \char`\"{}fsm.\+h\char`\"{} S\+T\+A\+TE Typedef.
 {\em update} & function pointer to the new states update function implementation\\
 \hline
 \end{DoxyParams}
-each state has to implement an update function. \mbox{\Hypertarget{fsm_8c_ab92c197981768344063e8cfb6e01108c}\label{fsm_8c_ab92c197981768344063e8cfb6e01108c}} 
-\index{fsm.\+c@{fsm.\+c}!exit\+\_\+fsm\+\_\+cycle@{exit\+\_\+fsm\+\_\+cycle}}
-\index{exit\+\_\+fsm\+\_\+cycle@{exit\+\_\+fsm\+\_\+cycle}!fsm.\+c@{fsm.\+c}}
-\subsubsection{\texorpdfstring{exit\+\_\+fsm\+\_\+cycle()}{exit\_fsm\_cycle()}}
-{\footnotesize\ttfamily void exit\+\_\+fsm\+\_\+cycle (\begin{DoxyParamCaption}\item[{\hyperlink{structFSM}{F\+SM} $\ast$}]{fsm }\end{DoxyParamCaption})}
-
-Function to shutdown the fsm and free storage \mbox{\Hypertarget{fsm_8c_a053b1146a3f1c34576d89d599e34329a}\label{fsm_8c_a053b1146a3f1c34576d89d599e34329a}} 
+each state has to implement an update function. \mbox{\Hypertarget{fsm_8c_a053b1146a3f1c34576d89d599e34329a}\label{fsm_8c_a053b1146a3f1c34576d89d599e34329a}} 
 \index{fsm.\+c@{fsm.\+c}!start\+\_\+fsm\+\_\+cycle@{start\+\_\+fsm\+\_\+cycle}}
 \index{start\+\_\+fsm\+\_\+cycle@{start\+\_\+fsm\+\_\+cycle}!fsm.\+c@{fsm.\+c}}
 \subsubsection{\texorpdfstring{start\+\_\+fsm\+\_\+cycle()}{start\_fsm\_cycle()}}
@@ -87,7 +82,7 @@ every iteration the current state\textquotesingle{}s update function is called
 \index{fsm.\+c@{fsm.\+c}!transition\+\_\+to\+\_\+state@{transition\+\_\+to\+\_\+state}}
 \index{transition\+\_\+to\+\_\+state@{transition\+\_\+to\+\_\+state}!fsm.\+c@{fsm.\+c}}
 \subsubsection{\texorpdfstring{transition\+\_\+to\+\_\+state()}{transition\_to\_state()}}
-{\footnotesize\ttfamily void transition\+\_\+to\+\_\+state (\begin{DoxyParamCaption}\item[{\hyperlink{structFSM}{F\+SM} $\ast$}]{fsm,  }\item[{void $\ast$}]{arg,  }\item[{\hyperlink{structState}{State}}]{next\+\_\+state }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void transition\+\_\+to\+\_\+state (\begin{DoxyParamCaption}\item[{\hyperlink{structFSM}{F\+SM} $\ast$}]{fsm,  }\item[{void $\ast$}]{arg,  }\item[{State}]{next\+\_\+state }\end{DoxyParamCaption})}
 
 Function to switch between states.
 

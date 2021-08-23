@@ -11,7 +11,7 @@
 <area shape="rect" id="node14" href="$motor__controller_8h.html" title="/home/ies/SHARE/Roboter\l/inc/motor_controller.h" alt="" coords="789,95,969,136"/>
 <area shape="rect" id="node15" href="$countdown__states_8h.html" title="this file defines " alt="" coords="1453,95,1633,136"/>
 <area shape="rect" id="node16" href="$states_8h.html" title="contains most of the robots States enter and update functions. " alt="" coords="1657,95,1837,136"/>
-<area shape="rect" id="node8" href="$states_8c.html" title="/home/ies/SHARE/Roboter\l/src/states.c" alt="" coords="1433,184,1613,225"/>
+<area shape="rect" id="node8" href="$states_8c.html" title="Implementations of the states. " alt="" coords="1433,184,1613,225"/>
 <area shape="rect" id="node9" href="$usart_8c.html" title="Basic serial communication via USART for ATMEGA328. " alt="" coords="617,184,797,225"/>
 <area shape="rect" id="node13" href="$linefollower_8c.html" title="/home/ies/SHARE/Roboter\l/src/linefollower.c" alt="" coords="1229,184,1409,225"/>
 </map>

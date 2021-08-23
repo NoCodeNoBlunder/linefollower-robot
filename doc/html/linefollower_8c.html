@@ -92,16 +92,16 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a4a25793c4c2c1c850fbfb0ab682c35dd"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linefollower_8c.html#a4a25793c4c2c1c850fbfb0ab682c35dd">Threshold</a> { <b>THRESHOLD_L</b> = 250, 
-<b>THRESHOLD_M</b> = 512, 
-<b>THRESHOLD_R</b> = 412
- }<tr class="memdesc:a4a25793c4c2c1c850fbfb0ab682c35dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">enums values determine the threshold of each sensor  <a href="linefollower_8c.html#a4a25793c4c2c1c850fbfb0ab682c35dd">More...</a><br /></td></tr>
-</td></tr>
+<tr class="memitem:a4a25793c4c2c1c850fbfb0ab682c35dd"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linefollower_8c.html#a4a25793c4c2c1c850fbfb0ab682c35dd">Threshold</a> { <a class="el" href="linefollower_8c.html#a4a25793c4c2c1c850fbfb0ab682c35ddac0784cd38ac851a082f15a3b9e94d61b">THRESHOLD_L</a> = 250, 
+<a class="el" href="linefollower_8c.html#a4a25793c4c2c1c850fbfb0ab682c35dda11156d7be53a1b5fc38a1618644db2b3">THRESHOLD_M</a> = 512, 
+<a class="el" href="linefollower_8c.html#a4a25793c4c2c1c850fbfb0ab682c35ddab8096b05bc76a59ac9bfd9403d67be6b">THRESHOLD_R</a> = 412
+ }</td></tr>
 <tr class="separator:a4a25793c4c2c1c850fbfb0ab682c35dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a97911348c4c74018613c7c3abee651d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linefollower_8c.html#a97911348c4c74018613c7c3abee651d7">take_measurement</a> (<a class="el" href="structRoboterData.html">RoboterData</a> *data)</td></tr>
+<tr class="memitem:a97911348c4c74018613c7c3abee651d7"><td class="memItemLeft" align="right" valign="top"><a id="a97911348c4c74018613c7c3abee651d7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>take_measurement</b> (<a class="el" href="structRoboterData.html">RoboterData</a> *data)</td></tr>
 <tr class="separator:a97911348c4c74018613c7c3abee651d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a223dea92fd6db8859dc30308f124671f"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linefollower_8c.html#a223dea92fd6db8859dc30308f124671f">left_on_line</a> (<a class="el" href="structRoboterData.html">RoboterData</a> *data)</td></tr>
 <tr class="separator:a223dea92fd6db8859dc30308f124671f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -126,9 +126,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>enums values determine the threshold of each sensor </p>
-<p>due to inaccuracy a sensor might fire early or late </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a4a25793c4c2c1c850fbfb0ab682c35ddac0784cd38ac851a082f15a3b9e94d61b"></a>THRESHOLD_L&#160;</td><td class="fielddoc"><p>Threshold of the left sensor </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4a25793c4c2c1c850fbfb0ab682c35dda11156d7be53a1b5fc38a1618644db2b3"></a>THRESHOLD_M&#160;</td><td class="fielddoc"><p>Threshold of the middle sensor </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4a25793c4c2c1c850fbfb0ab682c35ddab8096b05bc76a59ac9bfd9403d67be6b"></a>THRESHOLD_R&#160;</td><td class="fielddoc"><p>Threshold of the right sensor </p>
+</td></tr>
+</table>
 
 </div>
 </div>
@@ -255,30 +260,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
-
-</div>
-</div>
-<a id="a97911348c4c74018613c7c3abee651d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97911348c4c74018613c7c3abee651d7">&#9670;&nbsp;</a></span>take_measurement()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void take_measurement </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structRoboterData.html">RoboterData</a> *&#160;</td>
-          <td class="paramname"><em>data</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">data</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>

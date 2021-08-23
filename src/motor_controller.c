@@ -13,6 +13,11 @@
 #include "../inc/usart.h"
 #include "../inc/util.h"
 
+/**
+ * @enum
+ * @brief
+ * @sa
+ */
 enum {
     IN1 = PD7,
     IN2 = PB0,
@@ -20,6 +25,11 @@ enum {
     IN4 = PB3
 };
 
+/**
+ * @enum
+ * @breif
+ * @sa ../res/
+ */
 enum {
     ENG_STILL = 0,
     ENG_FORWARD = 120,
@@ -30,6 +40,10 @@ enum {
     ENG_MAX = 255,
 };
 
+/**
+ * @enum
+ * @brief
+ */
 enum {
     LEFT_ENG = PD5,
     RIGHT_ENG = PD6
@@ -176,9 +190,6 @@ void motors_Init() {
 }
 
 // TODO maybe there should be an enum setting for the motors and not a shared one??
-/**
- * Function to set engines polarity and duty_cyles to control the Roboter drive direction.
- */
 void set_direction(RoboterData *data, State state) {
 
 //    USART_print("\nset_direction was called\n");
