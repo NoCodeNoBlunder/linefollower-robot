@@ -2,7 +2,7 @@
 
 \mainpage
 
-<a href="roboter_mind_map.pdf" target="_blank"><b>Overview</b></a>
+<a href="transition_map.pdf" target="_blank"><b>Transition Map</b></a>
 
 \section intro_sec Introduction
 Welcome to a short introduction of a heartwarming project executed by a
@@ -25,7 +25,9 @@ Installation and handelling is not as compilcated as one might think!
   compiler options:
   
 
-\section Table Of Contents
+\section Table\ Of\ Contents
+\subsection States descrption
+\how to implement new states
   
 \section Calibration
 
