@@ -7,13 +7,13 @@
 
 \section intro_sec Introduction
 Welcome to a brief introduction of a project executed by a
-student of the university of Kassel. \n The goal of this project is to create reliable 
-software that controlls the robot to drive three laps on a track (<a href="track_img.jpg" target="_blank"><b>example track</b></a>) consisting of a black line, autonomously. \n
-There is a black square placed on the track which acts as the startfield. \n 
-The robot has three sensors which enable it to detect the black line aswell as the startfield so it can take action accordingly. \n\n
-In addition to that the robot starts driving only after being placed on the startfield which initiates a 15s countdown. \n
-Upon being moved the countdown shall be interrupted and the robot has to look for the startfield again. \n 
-The countdown has the robot blinking three leds with 5hz which are placed on top of the roboter. \n
+student of the university of Kassel. \n The goal of this project is to create reliable
+software that controls the robot so it drives three laps on a track (<a href="track_img.jpg" target="_blank"><b>example track</b></a>) consisting of a black line, autonomously. \n
+There is a black square placed on the track which acts as the starfield. \n
+The robot has three sensors which enable it to detect the black line as well as the starfield so it can take action accordingly. \n\n
+In addition to that the robot starts driving only after being placed on the starfield which initiates a 15s countdown. \n
+Upon being moved the countdown shall be interrupted and the robot has to look for the starfield again. \n
+During the countdown three on board leds are blinking with 5hz. \n
 When the robots completes 3 laps it stops and a 60s countdown starts, analog to the first countdown.
 
 

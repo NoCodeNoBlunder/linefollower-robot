@@ -1,4 +1,4 @@
-<map id="/home/ies/SHARE/Roboter/Roboter_Final/src/main.c" name="/home/ies/SHARE/Roboter/Roboter_Final/src/main.c">
+<map id="/home/ies/SHARE/Roboter/src/main.c" name="/home/ies/SHARE/Roboter/src/main.c">
 <area shape="rect" id="node4" href="$main_8h.html" title="Contains Definitions that are used accross the hole project. " alt="" coords="403,169,498,196"/>
 <area shape="rect" id="node7" href="$states_8h.html" title="Contains most of the robots State&#39;s functionality. " alt="" coords="243,95,346,121"/>
 <area shape="rect" id="node8" href="$countdown__states_8h.html" title="Controlls the. " alt="" coords="555,95,727,121"/>

@@ -1,5 +1,5 @@
-<map id="/home/ies/SHARE/Roboter/Roboter_Final/inc/adc.h" name="/home/ies/SHARE/Roboter/Roboter_Final/inc/adc.h">
+<map id="/home/ies/SHARE/Roboter/inc/adc.h" name="/home/ies/SHARE/Roboter/inc/adc.h">
 <area shape="rect" id="node2" href="$adc_8c.html" title="Provides basic functionality to read the volatege from a pin and convert it to a digital signal..." alt="" coords="5,95,185,136"/>
-<area shape="rect" id="node3" href="$linefollower_8c.html" title="Determines the sensors Thresholds. " alt="" coords="209,95,419,136"/>
-<area shape="rect" id="node4" href="$states_8c.html" title="Implementations of the states. " alt="" coords="443,95,623,136"/>
+<area shape="rect" id="node3" href="$linefollower_8c.html" title="Determines the sensors Thresholds. " alt="" coords="209,95,389,136"/>
+<area shape="rect" id="node4" href="$states_8c.html" title="Implementations of the states. " alt="" coords="413,95,593,136"/>
 </map>

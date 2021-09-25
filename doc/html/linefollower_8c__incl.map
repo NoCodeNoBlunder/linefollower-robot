@@ -1,4 +1,4 @@
-<map id="/home/ies/SHARE/Roboter/Roboter_Final/src/linefollower.c" name="/home/ies/SHARE/Roboter/Roboter_Final/src/linefollower.c">
+<map id="/home/ies/SHARE/Roboter/src/linefollower.c" name="/home/ies/SHARE/Roboter/src/linefollower.c">
 <area shape="rect" id="node2" href="$linefollower_8h.html" title="provides basic functionality to take measurements from all 3 sensors. " alt="" coords="14,95,145,121"/>
 <area shape="rect" id="node6" href="$adc_8h.html" title="provides basic functionality to convert a analog signal to digital. " alt="" coords="169,95,256,121"/>
 <area shape="rect" id="node3" href="$main_8h.html" title="Contains Definitions that are used accross the hole project. " alt="" coords="49,169,110,196"/>
