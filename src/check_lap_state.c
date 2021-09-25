@@ -83,7 +83,7 @@ void enter_check_lap(RoboterData *data) {
 }
 
 void update_check_lap(FSM *fsm, RoboterData *data) {
-    static unsigned char error = 0;
+    unsigned char error = 0;
 
     take_measurement(data);
     transmit_debug_msg(fsm, data);
