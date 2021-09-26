@@ -83,7 +83,7 @@ void enter_check_lap(RoboterData *data) {
 }
 
 void update_check_lap(FSM *fsm, RoboterData *data) {
-    unsigned char error = 0;
+    static unsigned char error = 0;
 
     take_measurement(data);
     transmit_debug_msg(fsm, data);
@@ -92,6 +92,7 @@ void update_check_lap(FSM *fsm, RoboterData *data) {
         // USART_print("Ist die Runde abgeschlossen?");
         disable_isr_checklap();
         data->laps_to_go--;
+        error = 0
         // USART_print("Laps++");
 
         if(data->laps_to_go <= 0) {
@@ -107,6 +108,7 @@ void update_check_lap(FSM *fsm, RoboterData *data) {
 
         if (error > ERROR_TOLERANCE) {
             disable_isr_checklap();
+            error = 0;
             transition_to_state(fsm, data, FORWARD);
         }
     }
