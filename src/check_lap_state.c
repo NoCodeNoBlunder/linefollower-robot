@@ -92,7 +92,7 @@ void update_check_lap(FSM *fsm, RoboterData *data) {
         // USART_print("Ist die Runde abgeschlossen?");
         disable_isr_checklap();
         data->laps_to_go--;
-        error = 0
+        error = 0;
         // USART_print("Laps++");
 
         if(data->laps_to_go <= 0) {
