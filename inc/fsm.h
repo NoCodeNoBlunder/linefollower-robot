@@ -9,8 +9,12 @@
 #ifndef FSM_h
 #define FSM_h
 
+#include "main.h"
+
+//struct RoboterData;
+
 // forward declaration
-struct FSM;
+typedef struct FSM_S FSM;
 
 /**
  * @typedef State
@@ -48,7 +52,7 @@ typedef struct ConcreteState {
     State state;
     char *state_name;
     void (*enter_function)(void *arg);
-    void (*update_function)(struct FSM *fsm, void *arg);
+    void (*update_function)(FSM *fsm, void *arg);
 } ConcreteState;
 
 /**
@@ -57,7 +61,7 @@ typedef struct ConcreteState {
  * @var current_state is a pointer to the current state
  * @var states is a pointer array to each state
  */
-typedef struct FSM {
+typedef struct FSM_S {
     ConcreteState *current_state;
     ConcreteState *states[STATECOUNT];
 } FSM;
