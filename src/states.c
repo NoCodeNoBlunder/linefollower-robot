@@ -18,11 +18,6 @@
 
 void enter_init(RoboterData *data) {
     USART_Init(UBRR_SETTING);
-
-//    static char str_buf[20];
-//    sprintf(str_buf, "%d %d %d %d %d\n", data->calibration_mode, data->debug_mode, data->start_counter_mode, data->lapcounter_mode, data->laps_to_go);
-//    USART_print(str_buf);
-
     ADC_Init();
     leds_Init();
     motors_Init();

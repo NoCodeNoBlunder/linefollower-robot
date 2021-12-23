@@ -94,7 +94,7 @@ void transmit_debug_msg(FSM *fsm, RoboterData *data) {
 //        static char str_buf[20];
 //        sprintf(str_buf, "%s %d %d %d %d %d\n", fsm->current_state->state_name, data->calibration_mode, data->debug_mode, data->start_counter_mode, data->lapcounter_mode, data->laps_to_go);
 //        USART_print(str_buf);
-        
+
         wait_counter = 0;
     }
     
