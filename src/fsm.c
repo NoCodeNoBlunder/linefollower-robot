@@ -8,6 +8,9 @@
  * @details the FSM...
  */
 
+#include "stdio.h"
+#include "../inc/usart.h"
+
 #include <stdlib.h>
 #include "../inc/fsm.h"
 
@@ -19,7 +22,7 @@ void exit_fsm_cycle(FSM *fsm);
 
 
 void add_state(FSM *fsm, State state, char *state_name, void (*enter), void (*update)) {
-    ConcreteState *new_state = malloc(sizeof(ConcreteState));
+    ConcreteState *new_state = (ConcreteState*)malloc(sizeof(ConcreteState));
     if (new_state == NULL) { exit(EXIT_FAILURE); }
 
     new_state->state = state;
@@ -37,6 +40,14 @@ void add_state(FSM *fsm, State state, char *state_name, void (*enter), void (*up
 }
 
 void start_fsm_cycle(FSM *fsm, void *data) {
+
+    USART_Init(UBRR_SETTING);
+
+    RoboterData *data2 = data;
+    static char str_buf[20];
+    sprintf(str_buf, "%d %d %d %d %d\n", data2->calibration_mode, data2->debug_mode, data2->start_counter_mode, data2->lapcounter_mode, data2->laps_to_go);
+    USART_print(str_buf);
+
     fsm->current_state->enter_function(data);   // enter is called once for the default state.
 
     while(fsm->current_state->state != EXIT) {

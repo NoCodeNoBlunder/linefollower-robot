@@ -7,7 +7,7 @@ BUILD_DIR := ./build/
 SRC_FILES := $(wildcard $(SRC_DIR)*.c)
 
 CFLAGS := -o $(BUILD_DIR)firmware -mmcu=$(MCU) -Os -Wall -D F_CPU=16E6 \
-	-D DEBUG_MODE=1 -D COUNTDOWN_MODE=0 -D LAPCOUNTER_MODE=0 -D LAPS=3;
+	-D CALIBRATION_MODE=0 -D DEBUG_MODE=1 -D COUNTDOWN_MODE=0 -D LAPCOUNTER_MODE=1 -D LAPS=3;
 
 all: compile hex flash
 

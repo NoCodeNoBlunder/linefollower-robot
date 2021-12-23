@@ -5,6 +5,8 @@
  * @sa <a href="transition_map.pdf" target="_blank"><b>Transition Map</b></a>
  */
 
+#include <stdio.h>
+
 #include "../inc/states.h"
 #include "../inc/motor_controller.h"
 #include "../inc/adc.h"
@@ -14,23 +16,33 @@
 #include "../inc/countdown_states.h"
 #include "../inc/linefollower.h"
 
-void enter_init(void) {
-    ADC_Init();
-    leds_Init();
-    motors_Init();
-    USART_Init(UBRR_SETTING);
-    Timer1_init();
-    Timer2_init();
+void enter_init(RoboterData *data) {
+//    USART_Init(UBRR_SETTING);
+//
+//    static char str_buf[20];
+//    sprintf(str_buf, "%d %d %d %d %d\n", data->calibration_mode, data->debug_mode, data->start_counter_mode, data->lapcounter_mode, data->laps_to_go);
+//    USART_print(str_buf);
+
+//    ADC_Init();
+//    leds_Init();
+//    motors_Init();
+//    Timer1_init();
+//    Timer2_init();
+
+
 }
 
 void update_init(FSM *fsm, RoboterData *data) {
-    if (data->start_counter_mode) {
-        transition_to_state(fsm, data, CHECK_STARTPOS);
-    }
 
-    else {
-        transition_to_state(fsm, data, LEAVE_START);
-    }
+//    if (data->calibration_mode) {
+//        transition_to_state(fsm, data, CALIBRATION);
+//    }
+//    else if (data->start_counter_mode) {
+//        transition_to_state(fsm, data, CHECK_STARTPOS);
+//    }
+//    else {
+//        transition_to_state(fsm, data, LEAVE_START);
+//    }
 }
 
 void enter_forward(RoboterData *data) {
@@ -52,6 +64,8 @@ void update_forward(FSM *fsm, RoboterData *data) {
     else if (data->lapcounter_mode && all_on_line(data)) {
         transition_to_state(fsm, data, CHECK_LAP);
     }
+
+
 }
 
 void enter_soft_left(RoboterData *data) {
@@ -66,7 +80,7 @@ void update_soft_left(FSM *fsm, RoboterData *data) {
     if (!left_on_line(data)) {
         transition_to_state(fsm, data, LEFT_HARD);
     }
-    
+
     else if (mid_on_line(data)) {
         transition_to_state(fsm, data, FORWARD);
     }
@@ -81,11 +95,10 @@ void update_soft_right(FSM *fsm, RoboterData *data) {
     take_measurement(data);
     transmit_debug_msg(fsm, data);
 
-
     if (!right_on_line(data)) {
         transition_to_state(fsm, data, RIGHT_HARD);
     }
-    
+
     else if (mid_on_line(data)) {
         transition_to_state(fsm, data, FORWARD);
     }
@@ -104,9 +117,10 @@ void update_left_hard(FSM *fsm, RoboterData *data) {
         transition_to_state(fsm, data, LEFT_SOFT);
     }
 
-    else if (mid_on_line(data)) {
-        transition_to_state(fsm, data, FORWARD);
-    }
+    // INFO Removed duo to home edition!
+//    else if (mid_on_line(data)) {
+//        transition_to_state(fsm, data, FORWARD);
+//    }
 }
 
 void enter_right_hard(RoboterData *data) {
@@ -122,9 +136,9 @@ void update_right_hard(FSM *fsm, RoboterData *data) {
         transition_to_state(fsm, data, RIGHT_SOFT);
     }
 
-    else if (mid_on_line(data)) {
-        transition_to_state(fsm, data, FORWARD);
-    }
+//    else if (mid_on_line(data)) {
+//        transition_to_state(fsm, data, FORWARD);
+//    }
 }
 
 void enter_leave_start(RoboterData *data) {
@@ -145,7 +159,26 @@ void update_check_startpos(FSM *fsm, RoboterData *data) {
     take_measurement(data);
     transmit_debug_msg(fsm, data);
     select_and_light_led(fsm, data);
+
+    if (mid_on_line(data)) {
+        if (left_on_line(data) && right_on_line(data)) {
+            transition_to_state(fsm, data, COUNTDOWN);
+        }
+    }
 }
+
+void enter_calibration(RoboterData *data) {
+    data->debug_mode = 1;
+}
+
+void update_calibration(FSM *fsm, RoboterData *data) {
+    take_measurement(data);
+    transmit_debug_msg(fsm, data);
+    select_and_light_led(fsm, data);
+}
+
+
+
 
 
 

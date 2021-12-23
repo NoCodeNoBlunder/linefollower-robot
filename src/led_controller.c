@@ -99,12 +99,13 @@ void light_led(LineFollower next_led_mode) {
     }
 }
 
+// TODO das ist bullshit here this should only light led and not change states.
 void select_and_light_led(FSM *fsm, RoboterData *data) {
 
     if (mid_on_line(data)) {
         if (left_on_line(data) && right_on_line(data)) {
             light_led(ALL);
-            transition_to_state(fsm, data, COUNTDOWN);
+//            transition_to_state(fsm, data, COUNTDOWN);
         }
         else if (!left_on_line(data) && right_on_line(data)) {
             light_led(RIGHT_AND_MID);

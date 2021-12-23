@@ -46,9 +46,10 @@ typedef enum LineFollower { // TODO Besseren Namen
  * @brief Stores all the relevant information regarding the robot.
  */
 typedef struct RoboterData {
-    char start_counter_mode; /**< Stores if the robot is in COUNTDOWN_MODE. */
-    char debug_mode; /**< Stores if the robot is in DEBUG_MODE. */
-    char lapcounter_mode; /**< Stores if the robot is in LAPCOUNTER_MODE. */
+    unsigned char calibration_mode;
+    unsigned char start_counter_mode; /**< Stores if the robot is in COUNTDOWN_MODE. */
+    unsigned char debug_mode; /**< Stores if the robot is in DEBUG_MODE. */
+    unsigned char lapcounter_mode; /**< Stores if the robot is in LAPCOUNTER_MODE. */
     unsigned char laps_to_go; /**< Stores how many laps the robot has to drive. */
 
     unsigned short sensor_left; /**< Stores the most recent value of the lest sensor. */

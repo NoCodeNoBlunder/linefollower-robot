@@ -31,6 +31,7 @@ typedef enum State{
     CHECK_LAP,
     GOAL_REACHED,
     STILL,
+    CALIBRATION,
     EXIT,
     STATECOUNT, // Is not an actual state but is there to know the amount of states.
 } State;

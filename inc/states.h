@@ -12,7 +12,7 @@
 /**
  * @brief Initilizes all modules.
  */
-void enter_init(void);
+void enter_init(RoboterData *data);
 
 /**
  * @brief Transitions to CHECK_START if COUNTER_MODE is enabled
@@ -96,6 +96,12 @@ void update_leave_start(FSM *fsm, RoboterData *data);
  * checks wether the robot is on the startfield.
  */
 void update_check_startpos(FSM *fsm, RoboterData *data);
+
+
+void enter_calibration(RoboterData *data);
+
+
+void update_calibration(FSM *fsm, RoboterData *data);
 
 
 #endif //STATES_h

@@ -77,7 +77,7 @@ void disable_isr_checklap() {
 
 void enter_check_lap(RoboterData *data) {
 
-    // USART_print("\nEntered CHeck lap!\n");
+    USART_print("\nEntered CHeck lap!\n");
     set_direction(data, CHECK_LAP);
     enable_isr_checklap();
 }
