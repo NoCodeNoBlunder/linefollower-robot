@@ -21,7 +21,7 @@
 void exit_fsm_cycle(FSM *fsm);
 
 
-void add_state(FSM *fsm, State state, char *state_name, void (*enter), void (*update)) {
+void add_state(FSM *fsm, State state, char *state_name, void (*enter)(RoboterData*), void (*update)(FSM*, RoboterData *)) {
     ConcreteState *new_state = (ConcreteState*)malloc(sizeof(ConcreteState));
     if (new_state == NULL) { exit(EXIT_FAILURE); }
 
@@ -39,14 +39,14 @@ void add_state(FSM *fsm, State state, char *state_name, void (*enter), void (*up
     }
 }
 
-void start_fsm_cycle(FSM *fsm, void *data) {
+void start_fsm_cycle(FSM *fsm, RoboterData *data) {
 
-    USART_Init(UBRR_SETTING);
-
-    RoboterData *data2 = data;
-    static char str_buf[20];
-    sprintf(str_buf, "%d %d %d %d %d\n", data2->calibration_mode, data2->debug_mode, data2->start_counter_mode, data2->lapcounter_mode, data2->laps_to_go);
-    USART_print(str_buf);
+//    USART_Init(UBRR_SETTING);
+//
+//    RoboterData *data2 = data;
+//    static char str_buf[20];
+//    sprintf(str_buf, "%d %d %d %d %d\n", data2->calibration_mode, data2->debug_mode, data2->start_counter_mode, data2->lapcounter_mode, data2->laps_to_go);
+//    USART_print(str_buf);
 
     fsm->current_state->enter_function(data);   // enter is called once for the default state.
 
@@ -57,7 +57,7 @@ void start_fsm_cycle(FSM *fsm, void *data) {
     exit_fsm_cycle(fsm);                      // Shuts down the Robot and terminates the programm.
 }
 
-void transition_to_state(FSM *fsm, void *arg, State next_state) {
+void transition_to_state(FSM *fsm, RoboterData *arg, State next_state) {
     fsm->current_state = fsm->states[next_state];
 
     if (fsm->current_state->enter_function != NULL) {

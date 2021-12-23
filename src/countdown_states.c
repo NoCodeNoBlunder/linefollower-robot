@@ -96,7 +96,7 @@ void disable_isr_countdown() {
     sei();
 }
 
-void enter_countdown(void) {
+void enter_countdown(RoboterData *data) {
     light_led(ALL);
     enable_isr_countdown(START_C);
 }

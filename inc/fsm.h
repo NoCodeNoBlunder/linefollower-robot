@@ -11,8 +11,8 @@
 
 #include "main.h"
 
-//struct RoboterData;
-
+// TODO why I need to do this?
+typedef struct RoboterData_S RoboterData;
 // forward declaration
 typedef struct FSM_S FSM;
 
@@ -51,8 +51,8 @@ typedef enum State{
 typedef struct ConcreteState {
     State state;
     char *state_name;
-    void (*enter_function)(void *arg);
-    void (*update_function)(FSM *fsm, void *arg);
+    void (*enter_function)(RoboterData *arg);
+    void (*update_function)(FSM *fsm, RoboterData *arg);
 } ConcreteState;
 
 /**
@@ -76,14 +76,14 @@ typedef struct FSM_S {
  * @param update function pointer to the new states update function implementation
  * @details each state has to implement an update function.
  */
-void add_state(FSM *fsm, State state, char *state_name, void (*enter), void (*update));
+void add_state(FSM *fsm, State state, char *state_name, void (*enter) (RoboterData *), void (*update) (FSM*, RoboterData*));
 
 /**
  * Function to start the update loop
  * @details every iteration the current state's update function is called
  * @param data void pointer to be able to pass an argument to update
  */
-void start_fsm_cycle(FSM *fsm, void *data);
+void start_fsm_cycle(FSM *fsm, RoboterData *data);
 
 /**
  * Function to switch between states.
@@ -91,6 +91,6 @@ void start_fsm_cycle(FSM *fsm, void *data);
  * @param arg void pointer to be able to pass an argument to enter.
  * @param next_state enum value of the state to transition into
  */
-void transition_to_state(FSM *fsm, void *arg, State next_state);
+void transition_to_state(FSM *fsm, RoboterData *arg, State next_state);
 
 #endif //FSM_h

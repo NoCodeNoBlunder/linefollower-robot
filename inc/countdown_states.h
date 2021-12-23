@@ -21,7 +21,7 @@ void Timer1_init();
 /**
  * @brief enables the overflow interrupt starting the 15s countdown
  */
-void enter_countdown(void);\
+void enter_countdown(RoboterData *data);
 
 /**
  * @brief

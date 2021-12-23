@@ -45,7 +45,7 @@ typedef enum LineFollower { // TODO Besseren Namen
  * @struct RoboterData
  * @brief Stores all the relevant information regarding the robot.
  */
-typedef struct RoboterData {
+typedef struct RoboterData_S {
     unsigned char calibration_mode;
     unsigned char start_counter_mode; /**< Stores if the robot is in COUNTDOWN_MODE. */
     unsigned char debug_mode; /**< Stores if the robot is in DEBUG_MODE. */

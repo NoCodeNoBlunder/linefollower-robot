@@ -17,32 +17,30 @@
 #include "../inc/linefollower.h"
 
 void enter_init(RoboterData *data) {
-//    USART_Init(UBRR_SETTING);
-//
+    USART_Init(UBRR_SETTING);
+
 //    static char str_buf[20];
 //    sprintf(str_buf, "%d %d %d %d %d\n", data->calibration_mode, data->debug_mode, data->start_counter_mode, data->lapcounter_mode, data->laps_to_go);
 //    USART_print(str_buf);
 
-//    ADC_Init();
-//    leds_Init();
-//    motors_Init();
-//    Timer1_init();
-//    Timer2_init();
-
-
+    ADC_Init();
+    leds_Init();
+    motors_Init();
+    Timer1_init();
+    Timer2_init();
 }
 
 void update_init(FSM *fsm, RoboterData *data) {
 
-//    if (data->calibration_mode) {
-//        transition_to_state(fsm, data, CALIBRATION);
-//    }
-//    else if (data->start_counter_mode) {
-//        transition_to_state(fsm, data, CHECK_STARTPOS);
-//    }
-//    else {
-//        transition_to_state(fsm, data, LEAVE_START);
-//    }
+    if (data->calibration_mode) {
+        transition_to_state(fsm, data, CALIBRATION);
+    }
+    else if (data->start_counter_mode) {
+        transition_to_state(fsm, data, CHECK_STARTPOS);
+    }
+    else {
+        transition_to_state(fsm, data, LEAVE_START);
+    }
 }
 
 void enter_forward(RoboterData *data) {
@@ -64,8 +62,6 @@ void update_forward(FSM *fsm, RoboterData *data) {
     else if (data->lapcounter_mode && all_on_line(data)) {
         transition_to_state(fsm, data, CHECK_LAP);
     }
-
-
 }
 
 void enter_soft_left(RoboterData *data) {
@@ -117,10 +113,9 @@ void update_left_hard(FSM *fsm, RoboterData *data) {
         transition_to_state(fsm, data, LEFT_SOFT);
     }
 
-    // INFO Removed duo to home edition!
-//    else if (mid_on_line(data)) {
-//        transition_to_state(fsm, data, FORWARD);
-//    }
+    else if (mid_on_line(data)) {
+        transition_to_state(fsm, data, FORWARD);
+    }
 }
 
 void enter_right_hard(RoboterData *data) {
@@ -136,9 +131,9 @@ void update_right_hard(FSM *fsm, RoboterData *data) {
         transition_to_state(fsm, data, RIGHT_SOFT);
     }
 
-//    else if (mid_on_line(data)) {
-//        transition_to_state(fsm, data, FORWARD);
-//    }
+    else if (mid_on_line(data)) {
+        transition_to_state(fsm, data, FORWARD);
+    }
 }
 
 void enter_leave_start(RoboterData *data) {

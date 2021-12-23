@@ -13,7 +13,7 @@
 
 #define SHORT_wTIME 100
 
-#define BUF_SIZE 40
+#define BUF_SIZE 20
 
 /**
  * @brief
@@ -85,15 +85,15 @@ void transmit_debug_msg(FSM *fsm, RoboterData *data) {
     static char str_buf[BUF_SIZE];
 
     if (wait_counter % SHORT_wTIME == 0) {
-//        sprintf(str_buf,
-//                "%s L:%d | M:%d | R:%d\n %d | %d\n\n",
-//                fsm->current_state->state_name, data->sensor_left, data->sensor_mid, data->sensor_right,
-//                data->left_eng_speed, data->right_eng_speed);
-//        USART_print(str_buf);
+        sprintf(str_buf,
+                "%s L:%d | M:%d | R:%d\n %d | %d\n\n",
+                fsm->current_state->state_name, data->sensor_left, data->sensor_mid, data->sensor_right,
+                data->left_eng_speed, data->right_eng_speed);
+        USART_print(str_buf);
 
 //        static char str_buf[20];
-        sprintf(str_buf, "%s %d %d %d %d %d\n", fsm->current_state->state_name, data->calibration_mode, data->debug_mode, data->start_counter_mode, data->lapcounter_mode, data->laps_to_go);
-        USART_print(str_buf);
+//        sprintf(str_buf, "%s %d %d %d %d %d\n", fsm->current_state->state_name, data->calibration_mode, data->debug_mode, data->start_counter_mode, data->lapcounter_mode, data->laps_to_go);
+//        USART_print(str_buf);
         
         wait_counter = 0;
     }
