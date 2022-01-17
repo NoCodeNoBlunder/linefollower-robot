@@ -33,10 +33,10 @@ enum {
 enum {
     ENG_STILL = 0,
     ENG_FORWARD = 120,
-    ENG_SOFT_SLOW = 65,
-    ENG_SOFT_FAST = 200,
-    ENG_HARD_BACK = 160,
-    ENG_HARD_FORWARD = 250,
+    ENG_SOFT_SLOW = 60,
+    ENG_SOFT_FAST = 220,
+    ENG_HARD_BACK = 155,
+    ENG_HARD_FORWARD = 255,
     ENG_MAX = 255,
 };
 
