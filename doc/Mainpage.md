@@ -132,5 +132,5 @@ enum Threshold enum as needed. \n Each of the three sensors has its own value. \
 If you wish to read more about the code and why certain code is used
 the way it is, just explore the option given above in the main page. \n
 If you have any suggestions for improvement, do not hesitate and contact
-me: findrunas@hotmail.com \n
+me: findrunas@protonmail.com \n
 
